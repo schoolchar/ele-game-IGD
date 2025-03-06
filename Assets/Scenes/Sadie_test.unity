@@ -179,38 +179,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: player
       objectReference: {fileID: 0}
-    - target: {fileID: 1690930992629750781, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
-      propertyPath: moveSpeed
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1690930992629750781, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
-      propertyPath: groundDrag
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1690930992629750781, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
-      propertyPath: orientation
-      value: 
-      objectReference: {fileID: 1150806626}
-    - target: {fileID: 1690930992629750781, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
-      propertyPath: jumpCooldown
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1690930992629750781, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
-      propertyPath: playerHeight
-      value: 1.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 1690930992629750781, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
-      propertyPath: airMultiplier
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1690930992629750781, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
-      propertyPath: isGround.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 1690930992629750781, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
-      propertyPath: playerJumpForce
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 7430955000731920862, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -222,10 +190,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1394019053864438680, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1955329695}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
 --- !u!1 &1269355468
 GameObject:
@@ -472,10 +437,6 @@ PrefabInstance:
       propertyPath: orientation
       value: 
       objectReference: {fileID: 1150806626}
-    - target: {fileID: 1689084303225879165, guid: c15360e40207334438b79c8f3047d1a8, type: 3}
-      propertyPath: rotationSpeed
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 3598479013491014328, guid: c15360e40207334438b79c8f3047d1a8, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.8626676
@@ -668,11 +629,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &1955329691 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1394019053864438680, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
-  m_PrefabInstance: {fileID: 1225222961}
-  m_PrefabAsset: {fileID: 0}
 --- !u!54 &1955329693 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 6958148102252536532, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
@@ -683,19 +639,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 331960211524314063, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
   m_PrefabInstance: {fileID: 1225222961}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1955329695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1955329691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a337c9313fcd2cc4d9e19ea0447720a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 10
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

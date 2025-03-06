@@ -490,7 +490,7 @@ MonoBehaviour:
   player: {fileID: 0}
   playerPhy: {fileID: 0}
   rb: {fileID: 0}
-  rotationSpeed: 0
+  rotationSpeed: 10
 --- !u!1 &4971065985088931046
 GameObject:
   m_ObjectHideFlags: 3
