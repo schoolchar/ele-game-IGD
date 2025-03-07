@@ -6,18 +6,14 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManger : MonoBehaviour
 {
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI livesText;
-    private int score;
-    private int lives;
+    public GameObject player;
+    public Transform playerSpawnpoint;
+    private GameObject playerInstance;
 
     // Start is called before the first frame update
     void Start()
     {
-        score = 0;
-        lives = 0;
-        scoreText.text = "Score: " + score;
-        livesText.text = "Lives: " + lives;
+        SpawnPlayer();
     }
 
     // Update is called once per frame
@@ -26,14 +22,10 @@ public class GameManger : MonoBehaviour
         
     }
 
-    public void EarnScore(int newScore)
+    void SpawnPlayer()
     {
-        score = score + newScore;
-        scoreText.text = "Score: " + score;
+        // Spawns player at PlayerSpawnpoint
+        playerInstance = Instantiate(player, playerSpawnpoint.position, playerSpawnpoint.rotation);
     }
 
-    public void LivesCounter(int newLife)
-    {
-        livesText.text = "Lives: " + newLife;
-    }
 }
