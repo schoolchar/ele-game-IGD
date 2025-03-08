@@ -4,9 +4,20 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    //Controls player XP, health, and upgrades that affect xp and health
+
+
+
     public int health;
+    public int xp;
 
 
+    [Header("Upgrades - XP")]
+    public bool xpMod;
+    public int xpModVal;
+
+    [Header("Ungrades - Trapeze")]
+    public PlayerMovement playerMovement;
     private void OnTriggerEnter(Collider other)
     {
         LoseHealth(other);
@@ -41,5 +52,17 @@ public class PlayerHealth : MonoBehaviour
         }
         
     } //END CheckForDeath()
+
+    void AddXP(int xpGain)
+    {
+        if(xpMod)
+        {
+            xpGain *= xpModVal;
+        }
+
+        xp += xpGain;
+    }
+
+
     
 }
