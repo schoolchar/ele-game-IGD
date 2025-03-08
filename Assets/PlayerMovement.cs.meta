@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Scripts/CharacterStats.cs.meta
-guid: 7e7c811f97fd4304e86bdfb8ded1b426
-========
-guid: a6a535129cb63de48b6fc42695172f49
->>>>>>>> origin/Lilian:Assets/EnemyMovement.cs.meta
+guid: 46c9c5fe1d9ca3b42be8ec858ee4da1e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
