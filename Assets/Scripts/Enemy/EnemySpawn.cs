@@ -33,7 +33,7 @@ public class EnemySpawn : MonoBehaviour
 
         while (!stop)
         {
-            randomEnemy = Random.Range(0, 4);
+            randomEnemy = Random.Range(0, 1);
             Vector3 spawnPosition = new Vector3(1, 1, 0);
             Instantiate(enemies[randomEnemy], spawnPosition + transform.TransformPoint(0, 0, 0), gameObject.transform.rotation);
             yield return new WaitForSeconds(spawnWait);
