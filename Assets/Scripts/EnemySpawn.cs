@@ -43,7 +43,7 @@ public class EnemySpawn : MonoBehaviour
             float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
             float distance = Random.Range(spawnDistanceMin, spawnDistanceMax);
             Vector3 spawnPosition = playerPosition + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * distance;
-            Instantiate(enemies[randomEnemy], spawnPosition, gameObject.transform.rotation);
+            Instantiate(enemies[randomEnemy], spawnPosition, player.transform.rotation);
             yield return new WaitForSeconds(spawnWait);
         }
     }
