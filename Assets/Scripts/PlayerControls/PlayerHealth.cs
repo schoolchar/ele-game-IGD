@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -11,6 +13,10 @@ public class PlayerHealth : MonoBehaviour
     public int health;
     public int xp;
 
+    [Header("UI")]
+    [SerializeField] private TextMeshProUGUI hpText;
+    [SerializeField] private TextMeshProUGUI xpText;
+    
 
     [Header("Upgrades - XP")]
     public bool xpMod;
@@ -18,21 +24,40 @@ public class PlayerHealth : MonoBehaviour
 
     [Header("Ungrades - Trapeze")]
     public PlayerMovement playerMovement;
-    private void OnTriggerEnter(Collider other)
+
+    private void Start()
+    {
+        InitValues();
+    }
+
+    private void OnCollisionEnter(Collision other)
     {
         LoseHealth(other);
     }
 
+
+    void InitValues()
+    {
+        //Change later to not use tags
+        hpText = GameObject.FindGameObjectWithTag("HPText").GetComponent<TextMeshProUGUI>();
+        xpText = GameObject.FindGameObjectWithTag("XPText").GetComponent<TextMeshProUGUI>();
+
+        hpText.text = "Health = " + health;
+        xpText.text = "XP = " + xp;
+    }
+
+
     /// <summary>
     /// Decrease player health by 1 when it collides with an enemy
     /// </summary>
-    void LoseHealth(Collider _other)
+    void LoseHealth(Collision _other)
     {
         //Check for enemy
         if(_other.gameObject.tag == "Enemy")
         {
             //Decrement health
             health--;
+            hpText.text = "Health = " + health.ToString();
 
             //Check if player is at 0 health
             CheckForDeath();
@@ -58,6 +83,7 @@ public class PlayerHealth : MonoBehaviour
         if(xpMod)
         {
             xpGain *= xpModVal;
+            xpText.text = "XP = " + xp.ToString();
         }
 
         xp += xpGain;

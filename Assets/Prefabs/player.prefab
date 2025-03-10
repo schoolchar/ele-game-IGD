@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 6958148102252536532}
   - component: {fileID: 1690930992629750781}
   - component: {fileID: 2125592141690816146}
-  - component: {fileID: 4996272210551581718}
   - component: {fileID: -1059422275450723310}
   m_Layer: 0
   m_Name: player
@@ -134,25 +133,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   xp: 0
-  xpMod: 0
-  xpModVal: 0
-  playerMovement: {fileID: 0}
---- !u!114 &4996272210551581718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1394019053864438680}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dba703e2a06e4d9469cb84c311028a0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  xp: 0
-  damage: {fileID: 0}
-  armor: {fileID: 0}
-  maxHealth: 100
+  hpText: {fileID: 0}
+  xpText: {fileID: 0}
   xpMod: 0
   xpModVal: 0
   playerMovement: {fileID: 0}
