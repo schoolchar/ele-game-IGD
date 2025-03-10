@@ -271,8 +271,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c9c5fe1d9ca3b42be8ec858ee4da1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 10
-  RotateSpeed: 75
 --- !u!114 &29779862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -876,9 +874,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a535129cb63de48b6fc42695172f49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolRoute: {fileID: 1044877490}
-  player: {fileID: 29779859}
-  chasingPlayer: 0
 --- !u!135 &582477382
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1283,7 +1278,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1014823706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1709,14 +1704,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2366581d71d2ee54ea9742a059414f46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
-  - {fileID: 582477375}
-  spawnValues: {x: 0, y: 0, z: 0}
-  spawnWait: 0
-  spawnMostWait: 3
-  spawnLeastWait: 0.5
-  startWait: 0
-  stop: 0
 --- !u!4 &1486839278
 Transform:
   m_ObjectHideFlags: 0
