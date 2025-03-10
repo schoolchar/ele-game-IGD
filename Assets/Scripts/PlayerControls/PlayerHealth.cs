@@ -8,8 +8,6 @@ public class PlayerHealth : MonoBehaviour
 {
     //Controls player XP, health, and upgrades that affect xp and health
 
-
-
     public int health;
     public int xp;
 
@@ -28,11 +26,12 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         InitValues();
+        
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter(Collision _other)
     {
-        LoseHealth(other);
+        LoseHealth(_other);
     }
 
 
@@ -50,14 +49,17 @@ public class PlayerHealth : MonoBehaviour
     /// <summary>
     /// Decrease player health by 1 when it collides with an enemy
     /// </summary>
-    void LoseHealth(Collision _other)
+    void LoseHealth(Collision other)
     {
         //Check for enemy
-        if(_other.gameObject.tag == "Enemy")
+        if(other.gameObject.tag == "Enemy")
         {
             //Decrement health
-            health--;
-            hpText.text = "Health = " + health.ToString();
+            if (health > 0)
+            {
+                health--;
+                hpText.text = "Health = " + health.ToString();
+            }
 
             //Check if player is at 0 health
             CheckForDeath();
@@ -74,11 +76,12 @@ public class PlayerHealth : MonoBehaviour
         {
             //Run death code
             Debug.Log("Player dies");
+            Destroy(this.gameObject);
         }
         
     } //END CheckForDeath()
 
-    void AddXP(int xpGain)
+    /*void AddXP(int xpGain)
     {
         if(xpMod)
         {
@@ -87,7 +90,7 @@ public class PlayerHealth : MonoBehaviour
         }
 
         xp += xpGain;
-    }
+    }*/
 
 
     
