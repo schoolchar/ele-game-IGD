@@ -32,12 +32,13 @@ public class EnemySpawn : MonoBehaviour
 
     IEnumerator waitSpawner()
     {
-        Vector3 playerPosition = player.transform.position;
 
+        Vector3 playerPosition = player.transform.position;
         yield return new WaitForSeconds(startWait);
 
         while (!stop)
         {
+
             randomEnemy = Random.Range(0, 3);
             float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
             float distance = Random.Range(spawnDistanceMin, spawnDistanceMax);
