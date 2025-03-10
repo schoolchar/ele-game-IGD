@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/CharacterStats.cs.meta
+guid: 0d7d66d67ab3b8d47934f66f2ff2badb
+========
+guid: a6a535129cb63de48b6fc42695172f49
+>>>>>>>> origin/Lilian:Assets/EnemyMovement.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
