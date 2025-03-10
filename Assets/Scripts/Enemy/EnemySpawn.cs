@@ -38,7 +38,6 @@ public class EnemySpawn : MonoBehaviour
 
         while (!stop)
         {
-
             randomEnemy = Random.Range(0, 3);
             float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
             float distance = Random.Range(spawnDistanceMin, spawnDistanceMax);
