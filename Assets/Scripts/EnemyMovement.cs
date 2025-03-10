@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     }
     void Update()
     {
+        transform.LookAt(player);
         transform.position = Vector3.MoveTowards(transform.position, player.position, Movespeed * Time.deltaTime);
     }
 }
