@@ -8,11 +8,11 @@ public class EnemySpawn : MonoBehaviour
     public GameObject[] enemies;
     public GameObject player;
 
-    public float minSpawnDistance = 5f;
-    public float maxSpawnDistance = 10f;
+    public float spawnDistanceMin = 8f;
+    public float spawnDistanceMax = 12f;
     public float spawnWait;
-    public float spawnMostWait;
-    public float spawnLeastWait;
+    public float spawnMostWait = 5f;
+    public float spawnLeastWait = 0.5f;
     public int startWait;
     public bool stop;
 
@@ -38,10 +38,10 @@ public class EnemySpawn : MonoBehaviour
 
         while (!stop)
         {
-            randomEnemy = Random.Range(0, 1);
-            float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
-            float distance = Random.Range(minSpawnDistance, maxSpawnDistance);
-            Vector3 spawnPosition = playerPosition + new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * distance;
+            randomEnemy = Random.Range(0, 3);
+            float angle = Random.Range(0f, 180f) * Mathf.Deg2Rad;
+            float distance = Random.Range(spawnDistanceMin, spawnDistanceMax);
+            Vector3 spawnPosition = playerPosition + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * distance;
             Instantiate(enemies[randomEnemy], spawnPosition, gameObject.transform.rotation);
             yield return new WaitForSeconds(spawnWait);
         }
