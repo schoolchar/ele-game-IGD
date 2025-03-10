@@ -8,7 +8,6 @@ public class Enemy : MonoBehaviour
     {
         Movespeed = 5;
         player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
-        //player = player.transform;
     }
     void Update()
     {
