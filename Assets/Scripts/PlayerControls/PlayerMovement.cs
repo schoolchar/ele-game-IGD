@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     //gets the orientation 
     public Transform orientation;
+    public Transform playerPhy;
 
     //players height
     public float playerHeight;

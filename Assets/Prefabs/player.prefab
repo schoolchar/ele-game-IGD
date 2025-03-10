@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 6958148102252536532}
   - component: {fileID: 1690930992629750781}
   - component: {fileID: 2125592141690816146}
+  - component: {fileID: 4996272210551581718}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -109,6 +110,7 @@ MonoBehaviour:
   moveSpeed: 7
   groundDrag: 5
   orientation: {fileID: 8430957841030942930}
+  playerPhy: {fileID: 8298063471953436020}
   playerHeight: 1.75
   playerJumpForce: 10
   jumpCooldown: 0.25
@@ -130,6 +132,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
+  xp: 0
+  xpMod: 0
+  xpModVal: 0
+  playerMovement: {fileID: 0}
+--- !u!114 &4996272210551581718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394019053864438680}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba703e2a06e4d9469cb84c311028a0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xp: 0
+  damage: {fileID: 0}
+  armor: {fileID: 0}
+  maxHealth: 100
+  xpMod: 0
+  xpModVal: 0
+  playerMovement: {fileID: 0}
 --- !u!1 &2568844095252763819
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,7 +217,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: f8ea43c9eae6d3a41a8587ce4259d250, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -298,7 +323,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: f8ea43c9eae6d3a41a8587ce4259d250, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

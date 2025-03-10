@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class CamLook : MonoBehaviour
 {
@@ -10,12 +11,16 @@ public class CamLook : MonoBehaviour
     public Transform playerPhy;
     public Rigidbody rb;
 
+    private PlayerMovement playerMovement;
+    private CinemachineFreeLook freeLook; 
+
     public float rotationSpeed;
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        InitValues();
     }
 
     // Update is called once per frame
@@ -33,5 +38,21 @@ public class CamLook : MonoBehaviour
             playerPhy.forward = Vector3.Slerp(playerPhy.forward, inputDir.normalized, Time.deltaTime * rotationSpeed);
         }
 
+    }
+
+    /// <summary>
+    /// Load in values from player movement
+    /// </summary>
+    void InitValues()
+    {
+        freeLook = GetComponent<CinemachineFreeLook>();
+        playerMovement = FindAnyObjectByType<PlayerMovement>();
+        player = playerMovement.gameObject.transform;
+        rb = player.gameObject.GetComponent<Rigidbody>();
+        orientation = playerMovement.orientation;
+        playerPhy = playerMovement.playerPhy;
+
+        freeLook.Follow = player;
+        freeLook.LookAt = player;
     }
 }
