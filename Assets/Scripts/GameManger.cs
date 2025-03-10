@@ -11,7 +11,7 @@ public class GameManger : MonoBehaviour
     private GameObject playerInstance;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         SpawnPlayer();
     }
