@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 1690930992629750781}
   - component: {fileID: 2125592141690816146}
   - component: {fileID: 4996272210551581718}
+  - component: {fileID: -1059422275450723310}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -155,6 +156,30 @@ MonoBehaviour:
   xpMod: 0
   xpModVal: 0
   playerMovement: {fileID: 0}
+--- !u!114 &-1059422275450723310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394019053864438680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7a1053bca24e9c4bacfa2bab9c8023c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies:
+  - {fileID: 8215437133942422569, guid: a3091732e7c08b3498e7f445aa525e18, type: 3}
+  - {fileID: 6951876110663002591, guid: 113258b49195e7e4b962ab21d0e95bbf, type: 3}
+  - {fileID: 1774706551322449466, guid: 57f0edd1d60c0774e99e8a560ed8e20e, type: 3}
+  player: {fileID: 1394019053864438680}
+  spawnDistanceMin: 8
+  spawnDistanceMax: 12
+  spawnWait: 0
+  spawnMostWait: 5
+  spawnLeastWait: 0.5
+  startWait: 0
+  stop: 0
 --- !u!1 &2568844095252763819
 GameObject:
   m_ObjectHideFlags: 0
