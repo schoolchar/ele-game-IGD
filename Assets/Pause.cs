@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Pause : MonoBehaviour
 {
-   // public GameObject PauseMenu;
+    public GameObject PauseMenu;
    // public Button UnPause;
     public bool isPaused;
 
@@ -13,7 +13,8 @@ public class Pause : MonoBehaviour
     void Start()
     {
         isPaused = false;
-    
+        PauseMenu.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -25,7 +26,7 @@ public class Pause : MonoBehaviour
             PauseGame();
         }
 
-        if(Input.GetKeyDown(KeyCode.U))
+        if (Input.GetKeyDown(KeyCode.U))
         {
             UnPauseGame();
             Debug.Log("UnPaused");
@@ -36,7 +37,7 @@ public class Pause : MonoBehaviour
 
     public void PauseGame()
     {
-       // PauseMenu.SetActive(true);
+        PauseMenu.SetActive(true);
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -45,7 +46,7 @@ public class Pause : MonoBehaviour
 
     public void UnPauseGame()
     {
-       // PauseMenu.SetActive(false);
+        PauseMenu.SetActive(false);
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
