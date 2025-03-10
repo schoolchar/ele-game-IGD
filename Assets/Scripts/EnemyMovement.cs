@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
     public int Movespeed;
     void Start()
     {
+        player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
         Movespeed = 5;
         player = player.transform;
     }
