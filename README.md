@@ -1,5 +1,5 @@
 Elephant Game
-Sadie Raghunand, Corinne Daigle, Charlotte Rappaport
+Sadie Raghunand, Corinne Daigle, Charlotte Rappaport, Lilian Wagner, and Dylan Hendricks
 
 High Concept Statement:
 
