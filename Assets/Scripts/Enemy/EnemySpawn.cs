@@ -8,8 +8,8 @@ public class EnemySpawn : MonoBehaviour
     public GameObject[] enemies;
     public GameObject player;
 
-    public float spawnDistanceMin = 8f;
-    public float spawnDistanceMax = 12f;
+    public float spawnDistanceMin = 10f;
+    public float spawnDistanceMax = 14f;
     public float spawnWait;
     public float spawnMostWait = 5f;
     public float spawnLeastWait = 0.5f;
