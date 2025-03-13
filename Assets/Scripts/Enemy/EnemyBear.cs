@@ -19,6 +19,7 @@ public class EnemyBear : MonoBehaviour
     [Header("Stopping Distance")]
     private float stoppingDistance;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +31,7 @@ public class EnemyBear : MonoBehaviour
 
         moveSpeed = baseSpeed + Random.Range(-randomSpeed, randomSpeed);
         player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
+        
     }
 
     // Update is called once per frame

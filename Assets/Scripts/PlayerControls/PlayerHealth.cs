@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
 
     public int health;
     public int xp;
+    public bool ifPlayerAlive;
 
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI hpText;
@@ -26,7 +27,7 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         InitValues();
-        
+        ifPlayerAlive = true;
     }
 
     private void OnCollisionEnter(Collision _other)
@@ -76,9 +77,8 @@ public class PlayerHealth : MonoBehaviour
         {
             //Run death code
             Debug.Log("Player dies");
-            Destroy(this.gameObject);
         }
-        
+
     } //END CheckForDeath()
 
     /*void AddXP(int xpGain)

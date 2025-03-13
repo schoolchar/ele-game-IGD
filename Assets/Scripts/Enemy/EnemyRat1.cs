@@ -11,9 +11,10 @@ public class EnemyRat1 : MonoBehaviour
     [Header("Stopping Distance")]
     private float stoppingDistance;
 
+
     void Start()
     {
-        stoppingDistance = 1f;
+        stoppingDistance = 1.1f;
         moveSpeed = 4f;
         player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
     }
@@ -32,5 +33,6 @@ public class EnemyRat1 : MonoBehaviour
         {
             moveSpeed = 0;
         }
+
     }
 }

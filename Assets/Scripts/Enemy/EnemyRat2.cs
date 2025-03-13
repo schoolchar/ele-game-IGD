@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyRat2 : MonoBehaviour
@@ -11,9 +12,11 @@ public class EnemyRat2 : MonoBehaviour
     [Header("Stopping Distance")]
     private float stoppingDistance;
 
+    public bool playerAlive;
+
     void Start()
     {
-        stoppingDistance = 1f;
+        stoppingDistance = 1.1f;
         moveSpeed = 5f;
         player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
     }
@@ -32,5 +35,12 @@ public class EnemyRat2 : MonoBehaviour
         {
             moveSpeed = 0;
         }
+
+    }
+
+    private void OnCollisionEnter(Collision _other)
+    {
+        moveSpeed = 1f;
+        Debug.Log("RatGaze");
     }
 }

@@ -19,10 +19,9 @@ public class EnemyClown : MonoBehaviour
     void Start()
     {
         StartCoroutine(TimeShoot());
-        stoppingDistance = 8f;
+        stoppingDistance = 5f;
         moveSpeed = 5f;
         player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
-        
     }
 
     void Update()
@@ -40,7 +39,7 @@ public class EnemyClown : MonoBehaviour
         {
             moveSpeed = 0f;
         }
-        
+
     }
 
     void Shoot()
