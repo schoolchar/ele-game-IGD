@@ -8,7 +8,7 @@ public class PlayerHealth : MonoBehaviour
 {
     //Controls player XP, health, and upgrades that affect xp and health
 
-
+    public int maxHealth; //Maximum amount of health the player can have at any point
 
     public int health;
     public int xp;
