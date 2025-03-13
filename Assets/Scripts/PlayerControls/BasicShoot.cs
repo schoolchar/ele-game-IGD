@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BasicShoot : MonoBehaviour
 {
+    //This is more of a debugging thing, base attack before more complex attacks are implemente
+
+
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject spawnPt;
     private int waitTime = 3;
