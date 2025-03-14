@@ -41,6 +41,12 @@ public class EnemyRat2 : MonoBehaviour
     private void OnCollisionEnter(Collision _other)
     {
         moveSpeed = 1f;
-        Debug.Log("RatGaze");
+        Debug.Log("RatGazeOn");
+    }
+
+    private void OnCollisionExit(Collision _other)
+    {
+        moveSpeed = 5f;
+        Debug.Log("RatGazeOff");
     }
 }
