@@ -14,7 +14,7 @@ public class EnemyClown : MonoBehaviour
     [Header("Shoot")]
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject spawnPt;
-    private float waitTime = 3f;
+    private float waitTime = 4f;
 
     void Start()
     {
