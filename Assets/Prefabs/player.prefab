@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 2125592141690816146}
   - component: {fileID: -1059422275450723310}
   - component: {fileID: 561606230722805421}
+  - component: {fileID: -560020401638639148}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -61,7 +62,7 @@ Transform:
   m_GameObject: {fileID: 1394019053864438680}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.23, z: 0}
+  m_LocalPosition: {x: 1997.9508, y: 21661.285, z: -9255.195}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -175,8 +176,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec744b8fb292bed46a907eb4738d3084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playercollisions: {fileID: -560020401638639148}
+  player: {fileID: 331960211524314063}
   bullet: {fileID: 6291107187475892311, guid: 26b54513dd22c46458ab8dea0d1d717c, type: 3}
   spawnPt: {fileID: 6492741029138889382}
+  knife: {fileID: 6291107187475892311, guid: 9189478540e5d4f40813c74eb5a8a0af, type: 3}
+  fire: {fileID: 6291107187475892311, guid: 4342c354115f07647a854cde4b49e132, type: 3}
+--- !u!114 &-560020401638639148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394019053864438680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f026c4b290ac147990873a4cd3e012, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Playerhasknife: 0
+  Playerhasfire: 0
+  firespawned: 0
 --- !u!1 &2568844095252763819
 GameObject:
   m_ObjectHideFlags: 0
