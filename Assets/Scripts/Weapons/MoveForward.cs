@@ -36,7 +36,8 @@ public class MoveForward : MonoBehaviour
         if(_collision.gameObject.tag == "Enemy")
         {
             Debug.Log("Enemy hit");
-            Destroy(_collision.gameObject);
+            _collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1); //1 is placeholder damage
+            //Destroy(_collision.gameObject);
             DestroyBullet();
         }
     }
