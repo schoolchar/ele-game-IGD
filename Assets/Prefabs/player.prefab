@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8430957841030942930}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: orientation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,8 +45,8 @@ GameObject:
   - component: {fileID: 2125592141690816146}
   - component: {fileID: -1059422275450723310}
   - component: {fileID: 561606230722805421}
-  - component: {fileID: -560020401638639148}
-  m_Layer: 0
+  - component: {fileID: 3603362229090026712}
+  m_Layer: 7
   m_Name: player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -176,13 +176,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec744b8fb292bed46a907eb4738d3084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Playercollisions: {fileID: -560020401638639148}
   player: {fileID: 331960211524314063}
   bullet: {fileID: 6291107187475892311, guid: 26b54513dd22c46458ab8dea0d1d717c, type: 3}
   spawnPt: {fileID: 6492741029138889382}
-  knife: {fileID: 6291107187475892311, guid: 9189478540e5d4f40813c74eb5a8a0af, type: 3}
   fire: {fileID: 6291107187475892311, guid: 4342c354115f07647a854cde4b49e132, type: 3}
---- !u!114 &-560020401638639148
+--- !u!114 &3603362229090026712
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,12 +189,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1394019053864438680}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2f026c4b290ac147990873a4cd3e012, type: 3}
+  m_Script: {fileID: 11500000, guid: 92b0113cd3b34cb428aa58404ec937e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Playerhasknife: 0
-  Playerhasfire: 0
-  firespawned: 0
+  EnemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  knife: {fileID: 6291107187475892311, guid: 9189478540e5d4f40813c74eb5a8a0af, type: 3}
+  projectileSpeed: 20
+  fireRate: 1
+  hasKnife: 1
 --- !u!1 &2568844095252763819
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,7 +211,7 @@ GameObject:
   - component: {fileID: 6775908980655610359}
   - component: {fileID: 8546010319045020570}
   - component: {fileID: 6447734848143133335}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,7 +316,7 @@ GameObject:
   - component: {fileID: 6069023693107406447}
   - component: {fileID: 7430955000731920862}
   - component: {fileID: 5777958391361081663}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: playerOBJ
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -420,7 +422,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5159428653020994104}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BulletSpawnPt
   m_TagString: Untagged
   m_Icon: {fileID: 0}

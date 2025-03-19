@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7745401882579081330}
   - component: {fileID: 1089549676084057215}
   - component: {fileID: 2597170734889935361}
-  - component: {fileID: 5554672862679047912}
+  - component: {fileID: 8430249380449250953}
   m_Layer: 0
   m_Name: Ringoffire
   m_TagString: Untagged
@@ -99,7 +99,7 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -134,7 +134,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &5554672862679047912
+--- !u!114 &8430249380449250953
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,5 +147,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 331960211524314063, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
-  distance: 5
+  distance: 1
   speed: 180
+  fire: {fileID: 0}
