@@ -8,13 +8,13 @@ public class BasicShoot : MonoBehaviour
     public Transform player;
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject spawnPt;
-    [SerializeField] GameObject fire;
+   // [SerializeField] GameObject fire;
     private int waitTime = 3;
     private void Start()
     {
         StartCoroutine(TimeShoot());
        // Debug.Log("Ring of fire");
-        Instantiate(fire, player.transform.position, player.transform.rotation);
+       // Instantiate(fire, player.transform.position, player.transform.rotation);
     }
 
     private void Update()

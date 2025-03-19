@@ -171,7 +171,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1394019053864438680}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec744b8fb292bed46a907eb4738d3084, type: 3}
   m_Name: 
@@ -179,7 +179,6 @@ MonoBehaviour:
   player: {fileID: 331960211524314063}
   bullet: {fileID: 6291107187475892311, guid: 26b54513dd22c46458ab8dea0d1d717c, type: 3}
   spawnPt: {fileID: 6492741029138889382}
-  fire: {fileID: 6291107187475892311, guid: 4342c354115f07647a854cde4b49e132, type: 3}
 --- !u!114 &3603362229090026712
 MonoBehaviour:
   m_ObjectHideFlags: 0
