@@ -39,11 +39,19 @@ public class PlayerHealth : MonoBehaviour
     void InitValues()
     {
         //Change later to not use tags
-        hpText = GameObject.FindGameObjectWithTag("HPText").GetComponent<TextMeshProUGUI>();
-        xpText = GameObject.FindGameObjectWithTag("XPText").GetComponent<TextMeshProUGUI>();
 
-        hpText.text = "Health = " + health;
-        xpText.text = "XP = " + xp;
+        //Debug if statememt
+        if(hpText != null && xpText != null)
+        {
+            hpText = GameObject.FindGameObjectWithTag("HPText").GetComponent<TextMeshProUGUI>();
+            xpText = GameObject.FindGameObjectWithTag("XPText").GetComponent<TextMeshProUGUI>();
+
+            hpText.text = "Health = " + health;
+            xpText.text = "XP = " + xp;
+        }
+       
+
+        
     }
 
 
@@ -53,7 +61,7 @@ public class PlayerHealth : MonoBehaviour
     void LoseHealth(Collision _other)
     {
         //Check for enemy
-        if(_other.gameObject.tag == "Enemy")
+        if(_other.gameObject.tag == "Enemy" && hpText != null)
         {
             //Decrement health
             health--;
