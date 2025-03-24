@@ -5,8 +5,8 @@ using UnityEngine;
 public class CharacterStats : MonoBehaviour
 {
     public int xp;
-    public Stat damage;
-    public Stat armor;
+    //public Stat damage;
+    //public Stat armor;
     public int maxHealth = 100;
 
     [Header("Upgrades - XP")]
@@ -35,7 +35,7 @@ public class CharacterStats : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        damage -= armor.GetValue();
+        //damage -= armor.GetValue();
 
         currentHealth -= damage;
         damage = Mathf.Clamp(damage, 0, int.MaxValue);
