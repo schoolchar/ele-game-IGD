@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Pause : MonoBehaviour
@@ -42,4 +43,8 @@ public class Pause : MonoBehaviour
         isPaused = false;
     }
 
+    public void QuitPause()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
