@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public float health;
-
+    public int xpOnDeath;
     public void TakeDamage(float _damage)
     {
         health -= _damage;
@@ -16,6 +16,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if(health <= 0)
         {
+            FindAnyObjectByType<CharacterStats>().AddXP(xpOnDeath);
             Destroy(this.gameObject);
         }
     }

@@ -18,11 +18,6 @@ public class CharacterStats : MonoBehaviour
 
     public int currentHealth { get; private set;}
 
-    private void Start()
-    {
-        
-    }
-
     private void Awake()
     {
         currentHealth = maxHealth;
@@ -63,7 +58,7 @@ public class CharacterStats : MonoBehaviour
 
     }
 
-    void AddXP(int xpGain)
+    public void AddXP(int xpGain)
     {
         if (xpMod)
         {
