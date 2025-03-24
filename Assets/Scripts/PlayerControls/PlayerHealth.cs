@@ -9,21 +9,20 @@ public class PlayerHealth : MonoBehaviour
     //Controls player XP, health, and upgrades that affect xp and health
 
     public int maxHealth; //Maximum amount of health the player can have at any point
-
     public int health;
     public int xp;
 
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI hpText;
     [SerializeField] private TextMeshProUGUI xpText;
-    
+
 
     [Header("Upgrades - XP")]
     public bool xpMod;
     public int xpModVal;
 
-    [Header("Ungrades - Trapeze")]
-    public PlayerMovement playerMovement;
+    //[Header("Ungrades - Trapeze")]
+    //public PlayerMovement playerMovement;
 
     private void Start()
     {
@@ -41,17 +40,14 @@ public class PlayerHealth : MonoBehaviour
         //Change later to not use tags
 
         //Debug if statememt
-        if(hpText != null && xpText != null)
+        if (hpText != null && xpText != null)
         {
-            hpText = GameObject.FindGameObjectWithTag("HPText").GetComponent<TextMeshProUGUI>();
-            xpText = GameObject.FindGameObjectWithTag("XPText").GetComponent<TextMeshProUGUI>();
+            //hpText = GameObject.FindGameObjectWithTag("HPText").GetComponent<TextMeshProUGUI>();
+            //xpText = GameObject.FindGameObjectWithTag("XPText").GetComponent<TextMeshProUGUI>();
 
             hpText.text = "Health = " + health;
             xpText.text = "XP = " + xp;
         }
-       
-
-        
     }
 
 
@@ -61,7 +57,7 @@ public class PlayerHealth : MonoBehaviour
     void LoseHealth(Collision _other)
     {
         //Check for enemy
-        if(_other.gameObject.tag == "Enemy" && hpText != null)
+        if (_other.gameObject.tag == "Enemy" && hpText != null)
         {
             //Decrement health
             health--;
@@ -78,17 +74,17 @@ public class PlayerHealth : MonoBehaviour
     void CheckForDeath()
     {
         //Check if player is at 0 health
-        if(health <= 0)
+        if (health <= 0)
         {
             //Run death code
             Debug.Log("Player dies");
         }
-        
+
     } //END CheckForDeath()
 
     void AddXP(int xpGain)
     {
-        if(xpMod)
+        if (xpMod)
         {
             xpGain *= xpModVal;
             xpText.text = "XP = " + xp.ToString();
@@ -96,7 +92,4 @@ public class PlayerHealth : MonoBehaviour
 
         xp += xpGain;
     }
-
-
-    
 }

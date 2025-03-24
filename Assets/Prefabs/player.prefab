@@ -134,14 +134,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a337c9313fcd2cc4d9e19ea0447720a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
   health: 10
   xp: 0
-  ifPlayerAlive: 0
-  hpText: {fileID: 0}
-  xpText: {fileID: 0}
+  hpText: {fileID: 2317868090069878077, guid: 568694028d3657a45a386543c8a628f7, type: 3}
+  xpText: {fileID: 2317868090069878077, guid: 568694028d3657a45a386543c8a628f7, type: 3}
   xpMod: 0
   xpModVal: 0
-  playerMovement: {fileID: 0}
 --- !u!114 &-1059422275450723310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,7 +197,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2

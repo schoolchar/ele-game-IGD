@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 5571265326194855365}
   - component: {fileID: 7142047545365689782}
   - component: {fileID: 4291399888549874279}
+  - component: {fileID: 4264605685840963423}
   - component: {fileID: 3578867354834392779}
+  - component: {fileID: -6146973168494588282}
   m_Layer: 0
   m_Name: Rat1
   m_TagString: Enemy
@@ -104,8 +106,22 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.2, y: 1.2, z: 1.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4264605685840963423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066476162147660454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f6534e5bd28334ab200f18dce6766d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 2
+  enemyTakeDamage: 2
 --- !u!114 &3578867354834392779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,3 +136,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 331960211524314063, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
   moveSpeed: 0
+--- !u!54 &-6146973168494588282
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066476162147660454}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0

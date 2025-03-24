@@ -5,19 +5,24 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public float health;
-    public int xpOnDeath;
-    public void TakeDamage(float _damage)
+    public float enemyTakeDamage = 2f;
+
+    public void TakeDamage()
     {
-        health -= _damage;
+        health -= enemyTakeDamage;
         CheckForDeath();
     }
 
     private void CheckForDeath()
     {
-        if(health <= 0)
+        if (health <= 0)
         {
-            FindAnyObjectByType<CharacterStats>().AddXP(xpOnDeath);
             Destroy(this.gameObject);
         }
+    }
+
+    private void OnCollisionEnter(Collision _other)
+    {
+        TakeDamage();
     }
 }

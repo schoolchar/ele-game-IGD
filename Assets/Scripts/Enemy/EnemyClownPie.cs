@@ -4,27 +4,49 @@ using UnityEngine;
 
 public class EnemyClownPie : MonoBehaviour
 {
-    [Header("Movement")]
-    public Transform player;
-    public float moveSpeed;
+    public int speed = 5;
 
-    void Start()
+    private void Start()
     {
-        moveSpeed = 5f;
-        player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
+        StartCoroutine(BulletLifetime());
     }
+
+
+    // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
-        transform.LookAt(player);
+        Move();
     }
 
-    void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.tag == "Player")
+        HitPlayer(collision);
+    }
+
+    private void Move()
+    {
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+    }
+
+
+    void HitPlayer(Collision _collision)
+    {
+        if (_collision.gameObject.tag == "Player")
         {
-            Destroy(this.gameObject);
+            Debug.Log("Enemy hit");
+            
+            DestroyBullet();
         }
-        
+    }
+
+    void DestroyBullet()
+    {
+        Destroy(this.gameObject);
+    }
+
+    IEnumerator BulletLifetime()
+    {
+        yield return new WaitForSeconds(5);
+        DestroyBullet();
     }
 }
