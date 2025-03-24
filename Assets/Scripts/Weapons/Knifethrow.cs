@@ -22,6 +22,8 @@ public class Knifethrow : MonoBehaviour
     //get component player script
     public bool hasKnife = true;
 
+    int Increment = 0;
+
     void Update()
     {
         if (Time.time > nextFireTime)
@@ -33,6 +35,14 @@ public class Knifethrow : MonoBehaviour
                 nextFireTime = Time.time + 1.0f / fireRate;
             }
         }
+
+        //if the player levels knife weapon, speed increases
+
+      /*  if()
+        {
+            Increment = Increment + 1;
+            projectileSpeed = projectileSpeed * Increment;
+        }*/
     }
 
     GameObject FindNearestEnemy()

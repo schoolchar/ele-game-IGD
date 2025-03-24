@@ -574,13 +574,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ringoffire
       objectReference: {fileID: 0}
+    - target: {fileID: 6291107187475892311, guid: 4342c354115f07647a854cde4b49e132, type: 3}
+      propertyPath: m_TagString
+      value: fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 8430249380449250953, guid: 4342c354115f07647a854cde4b49e132, type: 3}
+      propertyPath: test
+      value: 
+      objectReference: {fileID: 1977763591}
+    - target: {fileID: 8430249380449250953, guid: 4342c354115f07647a854cde4b49e132, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8430249380449250953, guid: 4342c354115f07647a854cde4b49e132, type: 3}
       propertyPath: distance
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8430249380449250953, guid: 4342c354115f07647a854cde4b49e132, type: 3}
       propertyPath: baseSpeed
-      value: 400
+      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1891,6 +1903,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1977763591 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6291107187475892311, guid: 4342c354115f07647a854cde4b49e132, type: 3}
+  m_PrefabInstance: {fileID: 514594813}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2018013573
 GameObject:
   m_ObjectHideFlags: 0

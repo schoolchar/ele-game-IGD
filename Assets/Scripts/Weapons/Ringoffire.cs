@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Palmmedia.ReportGenerator.Core.Parser.Analysis;
 using UnityEngine;
 
 public class Ringoffire : MonoBehaviour
@@ -9,6 +10,7 @@ public class Ringoffire : MonoBehaviour
     public float baseSpeed = 180.0f;
     private Vector3 lastPlayerPosition;
     private float playerSpeed;
+    float adjustedSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -48,11 +50,22 @@ public class Ringoffire : MonoBehaviour
 
     void FireRing()
     {
-        // Add the player's speed to the base speed to get the adjusted speed
-        float adjustedSpeed = baseSpeed + playerSpeed;
+        adjustedSpeed = (baseSpeed + playerSpeed) * 1.5f;
 
-        // Rotate around the player with the adjusted speed
-        transform.RotateAround(player.position, Vector3.up, adjustedSpeed * Time.deltaTime);
+        if(Time.timeScale == 0)
+         {
+            GameObject.Find("Ringoffire").SetActive(false);
+         }
+
+       
+        if(Time.timeScale == 1)
+        {
+            GameObject.Find("Ringoffire").SetActive(true);
+
+             // Rotate around the player with the adjusted speed
+            transform.RotateAround(player.position, Vector3.up, adjustedSpeed * Time.deltaTime);
+         }
+
 
         // Maintain the specified distance from the player
         transform.position = player.position + (transform.position - player.position).normalized * distance;
