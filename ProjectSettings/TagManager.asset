@@ -7,7 +7,8 @@ TagManager:
   - Enemy
   - HPText
   - XPText
-  - Projectile
+  - knife
+  - fire
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - UI
   - Ground
   - Player
-  - 
-  - 
+  - Enemy
+  - Knife
   - 
   - 
   - 
