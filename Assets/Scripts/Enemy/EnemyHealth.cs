@@ -5,11 +5,11 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public float health;
-    private float damageTake = 2f;
+    public float enemyTakeDamage = 2f;
 
     public void TakeDamage()
     {
-        health -= damageTake;
+        health -= enemyTakeDamage;
         CheckForDeath();
     }
 

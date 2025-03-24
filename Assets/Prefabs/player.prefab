@@ -141,7 +141,6 @@ MonoBehaviour:
   xpText: {fileID: 2317868090069878077, guid: 568694028d3657a45a386543c8a628f7, type: 3}
   xpMod: 0
   xpModVal: 0
-  playerMovement: {fileID: 0}
 --- !u!114 &-1059422275450723310
 MonoBehaviour:
   m_ObjectHideFlags: 0
