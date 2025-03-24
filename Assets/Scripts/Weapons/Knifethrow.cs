@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Knifethrow : MonoBehaviour
 {
+    UpgradeScriptObj upgradeScriptObj;
     // The layer mask for the enemy
     public LayerMask EnemyLayerMask;
 
@@ -22,8 +23,6 @@ public class Knifethrow : MonoBehaviour
     //get component player script
     public bool hasKnife = true;
 
-    int Increment = 0;
-
     void Update()
     {
         if (Time.time > nextFireTime)
@@ -35,14 +34,6 @@ public class Knifethrow : MonoBehaviour
                 nextFireTime = Time.time + 1.0f / fireRate;
             }
         }
-
-        //if the player levels knife weapon, speed increases
-
-      /*  if()
-        {
-            Increment = Increment + 1;
-            projectileSpeed = projectileSpeed * Increment;
-        }*/
     }
 
     GameObject FindNearestEnemy()
@@ -66,7 +57,6 @@ public class Knifethrow : MonoBehaviour
 
     void ShootAt(GameObject target)
     {
-       // GameObject projectile = Instantiate(knife, transform.position + target.transform.position.normalized, Quaternion.Euler(new Vector3(0, 0, 0)));
         GameObject projectile = Instantiate(knife, transform.position, Quaternion.identity);
 
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
