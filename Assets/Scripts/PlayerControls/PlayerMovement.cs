@@ -51,7 +51,8 @@ public class PlayerMovement : MonoBehaviour
 
     //Weapon upgrades
     public GameObject ringOfFire;
-    public GameObject knifeThrow;
+    public Ringoffire ringOfFireScript;
+    public Knifethrow knifeThrow;
 
     // on start up, i may be over-commenting
     private void Start()
@@ -103,7 +104,7 @@ public class PlayerMovement : MonoBehaviour
         {
             readyToJump = false;
 
-            jump();
+            //jump();
 
             //calls the jumpReset function, delayed by jumpCooldown variable
             Invoke(nameof(jumpReset), jumpCooldown);

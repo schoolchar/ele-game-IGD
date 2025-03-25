@@ -29,7 +29,7 @@ public class MoveForward : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         HitEnemy(collision);
-        DestroyBullet();
+        //DestroyBullet();
     }
 
     private void Move()
@@ -53,6 +53,7 @@ public class MoveForward : MonoBehaviour
 
     void DestroyBullet()
     {
+        Debug.Log("Bullet destroy called");
         Destroy(this.gameObject);
     }
 
