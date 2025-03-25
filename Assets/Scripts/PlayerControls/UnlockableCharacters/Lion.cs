@@ -12,7 +12,7 @@ public class Lion : MonoBehaviour, ICharacterActions
     [SerializeField] private Animator animator;
 
 
-    private void Start()
+    private void OnEnable()
     {
         StartCoroutine(TimeAttack());
     }
@@ -48,7 +48,7 @@ public class Lion : MonoBehaviour, ICharacterActions
 
     IEnumerator TurnOffAttack()
     {
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(1).Length);
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(0).Length);
         isAttacking= false;
 
         StartCoroutine(TimeAttack());

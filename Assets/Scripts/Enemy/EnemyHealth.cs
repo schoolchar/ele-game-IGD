@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public float health;
+    public int xpOnDeath;
     public float enemyTakeDamage = 2f;
 
     public void TakeDamage(float _damage = 0)
@@ -25,13 +26,14 @@ public class EnemyHealth : MonoBehaviour
     {
         if (health <= 0)
         {
+            FindAnyObjectByType<PlayerHealth>().AddXP(xpOnDeath);
             Destroy(this.gameObject);
         }
     }
 
     private void OnCollisionEnter(Collision _other)
     {
-        TakeDamage();
+        //TakeDamage();
 
         if (_other.gameObject.tag == "Projectile")
         {
