@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
     //Controls player XP, health, and upgrades that affect xp and health
-
-    public int maxHealth; //Maximum amount of health the player can have at any point
+    public int maxHealth;
     public int health;
     public int xp;
+
+    public ChooseWeapons chooseWeapons;
 
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI hpText;
@@ -21,8 +23,8 @@ public class PlayerHealth : MonoBehaviour
     public bool xpMod;
     public int xpModVal;
 
-    //[Header("Ungrades - Trapeze")]
-    //public PlayerMovement playerMovement;
+    [Header("Ungrades - Trapeze")]
+    public PlayerMovement playerMovement;
 
     private void Start()
     {
@@ -35,20 +37,22 @@ public class PlayerHealth : MonoBehaviour
     }
 
 
-    void InitValues()
+   public void InitValues()
     {
+        health = maxHealth;
         //Change later to not use tags
+        hpText = GameObject.FindGameObjectWithTag("HPText").GetComponent<TextMeshProUGUI>();
+        xpText = GameObject.FindGameObjectWithTag("XPText").GetComponent<TextMeshProUGUI>();
 
-        //Debug if statememt
-        if (hpText != null && xpText != null)
-        {
-            //hpText = GameObject.FindGameObjectWithTag("HPText").GetComponent<TextMeshProUGUI>();
-            //xpText = GameObject.FindGameObjectWithTag("XPText").GetComponent<TextMeshProUGUI>();
+        hpText.text = "Health = " + health;
+        xpText.text = "XP = " + xp;
 
-            hpText.text = "Health = " + health;
-            xpText.text = "XP = " + xp;
-        }
+        chooseWeapons = FindAnyObjectByType<ChooseWeapons>();
     }
+
+
+        
+    
 
 
     /// <summary>
@@ -57,7 +61,7 @@ public class PlayerHealth : MonoBehaviour
     void LoseHealth(Collision _other)
     {
         //Check for enemy
-        if (_other.gameObject.tag == "Enemy" && hpText != null)
+        if(_other.gameObject.tag == "Enemy")
         {
             //Decrement health
             health--;
@@ -78,18 +82,27 @@ public class PlayerHealth : MonoBehaviour
         {
             //Run death code
             Debug.Log("Player dies");
+            playerMovement.ringOfFire.SetActive(false);
+            playerMovement.knifeThrow.SetActive(false); 
+            SceneManager.LoadScene(0);
         }
-
+        
     } //END CheckForDeath()
 
-    void AddXP(int xpGain)
+    public void AddXP(int xpGain)
     {
         if (xpMod)
         {
             xpGain *= xpModVal;
-            xpText.text = "XP = " + xp.ToString();
+           
         }
 
         xp += xpGain;
+        xpText.text = "XP = " + xp.ToString();
+
+        chooseWeapons.ActivateMenu(xp);
     }
+
+
+    
 }

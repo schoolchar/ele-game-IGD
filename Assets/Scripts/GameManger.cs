@@ -13,13 +13,20 @@ public class GameManger : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        SpawnPlayer();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
+        //If there is no player, aka this is the first round the player has done, spawn in a player
+        if(FindAnyObjectByType<PlayerMovement>() == null)
+        {
+            SpawnPlayer();
+        }
+        //If player has played already
+        else
+        {
+            playerInstance = FindAnyObjectByType<PlayerMovement>().gameObject;
+            playerInstance.transform.position = playerSpawnpoint.position;
+        }
         
+       
     }
 
     void SpawnPlayer()

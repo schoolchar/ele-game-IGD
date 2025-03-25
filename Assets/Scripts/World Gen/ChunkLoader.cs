@@ -14,6 +14,7 @@ public class ChunkLoader : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindWithTag("Player").transform;
         lastPlayerPosition = player.position;
         BuildFloor();
     }
@@ -40,7 +41,7 @@ public class ChunkLoader : MonoBehaviour
             {
                 Vector3 tilePosition = new Vector3(
                     Mathf.Floor(playerPosition.x / tileSize) * tileSize + x * tileSize,
-                    Mathf.Floor(playerPosition.y / tileSize) * tileSize,
+                    Mathf.Floor(0 / tileSize) * tileSize,
                     Mathf.Floor(playerPosition.z / tileSize) * tileSize + z * tileSize
                 );
 
