@@ -247,6 +247,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   ringOfFire: {fileID: 7899741544625694635}
+  ringOfFireScript: {fileID: 5625355020158714229}
   knifeThrow: {fileID: 5785051854309656066}
 --- !u!114 &2125592141690816146
 MonoBehaviour:
@@ -1404,6 +1405,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4342c354115f07647a854cde4b49e132, type: 3}
+--- !u!114 &5625355020158714229 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8430249380449250953, guid: 4342c354115f07647a854cde4b49e132, type: 3}
+  m_PrefabInstance: {fileID: 4246619241226645500}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7899741544625694635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16b2a8ec237dfae4fbf6a8cad6f68e6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7899741544625694635 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6291107187475892311, guid: 4342c354115f07647a854cde4b49e132, type: 3}

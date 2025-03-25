@@ -51,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Weapon upgrades
     public GameObject ringOfFire;
+    public Ringoffire ringOfFireScript;
     public Knifethrow knifeThrow;
 
     // on start up, i may be over-commenting
