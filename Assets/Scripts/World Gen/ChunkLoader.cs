@@ -16,7 +16,7 @@ public class ChunkLoader : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player").transform;
         lastPlayerPosition = player.position;
-        //BuildFloor();
+        BuildFloor();
     }
 
     void Update()
