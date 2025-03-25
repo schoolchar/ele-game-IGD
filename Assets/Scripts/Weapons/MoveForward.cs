@@ -43,7 +43,7 @@ public class MoveForward : MonoBehaviour
         if(_collision.gameObject.tag == "Enemy")
         {
             Debug.Log("Enemy hit");
-           enemyHealth = _collision.gameObject.GetComponent<EnemyHealth>();
+            enemyHealth = _collision.gameObject.GetComponent<EnemyHealth>();
             enemyHealth.TakeDamage(enemyTakeDamage);
             //Destroy(_collision.gameObject);
 
