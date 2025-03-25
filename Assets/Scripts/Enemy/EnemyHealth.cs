@@ -7,10 +7,18 @@ public class EnemyHealth : MonoBehaviour
     public float health;
     public float enemyTakeDamage = 2f;
 
-    public void TakeDamage()
+    public void TakeDamage(float _damage = 0)
     {
-        health -= enemyTakeDamage;
-        CheckForDeath();
+        if(_damage == 0)
+        {
+            health -= enemyTakeDamage;
+        }
+        else
+        {
+            health -= _damage;
+        }
+
+            CheckForDeath();
     }
 
     private void CheckForDeath()
