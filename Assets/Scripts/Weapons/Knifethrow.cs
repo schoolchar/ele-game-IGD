@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -23,6 +24,9 @@ public class Knifethrow : MonoBehaviour
     //get component player script
     public bool hasKnife = true;
 
+
+    //Player
+    [SerializeField] private GameObject player;
     void Update()
     {
         if (Time.time > nextFireTime)
@@ -34,6 +38,11 @@ public class Knifethrow : MonoBehaviour
                 nextFireTime = Time.time + 1.0f / fireRate;
             }
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        DoDamage(collision);
     }
 
     GameObject FindNearestEnemy()
@@ -65,6 +74,15 @@ public class Knifethrow : MonoBehaviour
         {
             Vector3 direction = (target.transform.position - transform.position).normalized;
             rb.velocity = direction * projectileSpeed;
+        }
+    }
+
+    void DoDamage(Collision _collision)
+    {
+        if (_collision.gameObject.layer == 8)
+        {
+            _collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1);
+            transform.position = player.transform.position;
         }
     }
 }

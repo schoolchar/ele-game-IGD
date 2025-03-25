@@ -13,7 +13,7 @@ public class Ringoffire : MonoBehaviour
     float adjustedSpeed;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
         lastPlayerPosition = player.position;
@@ -36,7 +36,7 @@ public class Ringoffire : MonoBehaviour
         if (_collision.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Enemy hit");
-            Destroy(_collision.gameObject);
+            _collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1);
         }
     }
 

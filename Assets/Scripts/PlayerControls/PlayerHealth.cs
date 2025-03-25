@@ -12,6 +12,8 @@ public class PlayerHealth : MonoBehaviour
     public int health;
     public int xp;
 
+    public ChooseWeapons chooseWeapons;
+
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI hpText;
     [SerializeField] private TextMeshProUGUI xpText;
@@ -44,6 +46,8 @@ public class PlayerHealth : MonoBehaviour
 
         hpText.text = "Health = " + health;
         xpText.text = "XP = " + xp;
+
+        chooseWeapons = FindAnyObjectByType<ChooseWeapons>();
     }
 
 
@@ -78,6 +82,8 @@ public class PlayerHealth : MonoBehaviour
         {
             //Run death code
             Debug.Log("Player dies");
+            playerMovement.ringOfFire.SetActive(false);
+            playerMovement.knifeThrow.SetActive(false); 
             SceneManager.LoadScene(0);
         }
         
@@ -93,6 +99,8 @@ public class PlayerHealth : MonoBehaviour
 
         xp += xpGain;
         xpText.text = "XP = " + xp.ToString();
+
+        chooseWeapons.ActivateMenu(xp);
     }
 
 

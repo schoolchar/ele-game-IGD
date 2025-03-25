@@ -48,6 +48,11 @@ public class PlayerMovement : MonoBehaviour
     //ref for rigidbody
     Rigidbody rb;
 
+
+    //Weapon upgrades
+    public GameObject ringOfFire;
+    public GameObject knifeThrow;
+
     // on start up, i may be over-commenting
     private void Start()
     {
