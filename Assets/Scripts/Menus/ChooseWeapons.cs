@@ -60,7 +60,7 @@ public class ChooseWeapons : MonoBehaviour
     {
         ringText.text = "Knife Throw enabled";
 
-        player.knifeThrow.SetActive(true);
+        player.knifeThrow.enabled = true;
         DeactivateMenu();
     }
 }

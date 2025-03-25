@@ -12,7 +12,7 @@ public class Lion : MonoBehaviour, ICharacterActions
     [SerializeField] private Animator animator;
 
 
-    private void Start()
+    private void OnEnable()
     {
         StartCoroutine(TimeAttack());
     }

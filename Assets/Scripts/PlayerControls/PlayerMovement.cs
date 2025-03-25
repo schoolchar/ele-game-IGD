@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Weapon upgrades
     public GameObject ringOfFire;
-    public GameObject knifeThrow;
+    public Knifethrow knifeThrow;
 
     // on start up, i may be over-commenting
     private void Start()

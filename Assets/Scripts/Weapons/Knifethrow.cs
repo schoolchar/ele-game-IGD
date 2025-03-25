@@ -27,17 +27,25 @@ public class Knifethrow : MonoBehaviour
 
     //Player
     [SerializeField] private GameObject player;
+
+    private void OnEnable()
+    {
+        hasKnife = true;
+        StartCoroutine(TimeShooting());
+    }
+
     void Update()
     {
-        if (Time.time > nextFireTime)
+        /*if (Time.time > nextFireTime)
         {
+            Debug.Log("time greter than fire time");
             GameObject nearestEnemy = FindNearestEnemy();
             if (nearestEnemy != null && hasKnife == true)
             {
                 ShootAt(nearestEnemy);
                 nextFireTime = Time.time + 1.0f / fireRate;
             }
-        }
+        }*/
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -60,12 +68,13 @@ public class Knifethrow : MonoBehaviour
                 nearestEnemy = hitCollider.gameObject;
             }
         }
-
+        Debug.Log("Nearest enemy = " + nearestEnemy);
         return nearestEnemy;
     }
 
     void ShootAt(GameObject target)
     {
+        Debug.Log("Knife throw called");
         GameObject projectile = Instantiate(knife, transform.position, Quaternion.identity);
 
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
@@ -84,5 +93,19 @@ public class Knifethrow : MonoBehaviour
             _collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1);
             transform.position = player.transform.position;
         }
+    }
+
+    IEnumerator TimeShooting()
+    {
+        yield return new WaitForSeconds(fireRate);
+        Debug.Log("Knife");
+        GameObject nearestEnemy = FindNearestEnemy();
+        if (nearestEnemy != null && hasKnife == true)
+        {
+            Debug.Log("Conditions for knife throw met");
+            ShootAt(nearestEnemy);
+            nextFireTime = Time.time + 1.0f / fireRate;
+        }
+        StartCoroutine(TimeShooting());
     }
 }
