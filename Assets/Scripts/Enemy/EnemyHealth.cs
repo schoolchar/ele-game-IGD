@@ -22,6 +22,11 @@ public class EnemyHealth : MonoBehaviour
 
     private void OnCollisionEnter(Collision _other)
     {
-        //TakeDamage(_other);
+        TakeDamage();
+
+        if (_other.gameObject.tag == "Projectile")
+        {
+            Destroy(_other.gameObject);
+        }
     }
 }
