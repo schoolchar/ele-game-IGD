@@ -27,7 +27,7 @@ public class Elephant : MonoBehaviour, ICharacterActions
 
     public void Attack(EnemyHealth _enemy)
     {
-        _enemy.TakeDamage(0.5f); //Placeholder value
+        ;
     }
 
     private IEnumerator DelayWaterSpread(int _nextWaterIndx)
@@ -35,7 +35,7 @@ public class Elephant : MonoBehaviour, ICharacterActions
         yield return new WaitForSeconds(0.5f);
         waterPlanes[_nextWaterIndx].SetActive(true);
 
-        if (waterPlanes[_nextWaterIndx + 1] != null)
+        if (_nextWaterIndx + 1 != waterPlanes.Length)
         {
             StartCoroutine(DelayWaterSpread(_nextWaterIndx + 1));
         }

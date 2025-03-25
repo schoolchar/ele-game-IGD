@@ -9,6 +9,9 @@ TagManager:
   - XPText
   - knife
   - fire
+  - Projectile
+  - Pickup
+  - PlayerMesh
   layers:
   - Default
   - TransparentFX

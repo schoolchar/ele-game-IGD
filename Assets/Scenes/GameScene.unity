@@ -1030,6 +1030,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1216462416}
+  - component: {fileID: 1216462417}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -1047,6 +1048,85 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1216462417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216462414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7a1053bca24e9c4bacfa2bab9c8023c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies:
+  - {fileID: 6951876110663002591, guid: 113258b49195e7e4b962ab21d0e95bbf, type: 3}
+  - {fileID: 1774706551322449466, guid: 57f0edd1d60c0774e99e8a560ed8e20e, type: 3}
+  - {fileID: 2066476162147660454, guid: 1b68fc4f3c3327f47b3e5a27a95cf7c1, type: 3}
+  - {fileID: 8215437133942422569, guid: a3091732e7c08b3498e7f445aa525e18, type: 3}
+  player: {fileID: 0}
+  spawnDistanceMin: 10
+  spawnDistanceMax: 14
+  spawnWait: 5
+  spawnMostWait: 5
+  spawnLeastWait: 2
+  startWait: 0
+  stop: 0
+  timeToIncrease: 25
+  increaseAmount: 0.5
+--- !u!1 &1249513147
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1249513149}
+  - component: {fileID: 1249513148}
+  m_Layer: 0
+  m_Name: WorldGen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1249513148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249513147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa2b35fab3e9ed240a233d24153ccbad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  tileSize: 10
+  radius: 5
+  tilePrefabs:
+  - {fileID: 405941489781696850, guid: e1b7167107224894f901615b9256dca5, type: 3}
+  - {fileID: 6448981361676765761, guid: 1936c97ddc1931c4d81602eab9a787f7, type: 3}
+  - {fileID: 7862906353367876470, guid: 31331c475d14cba46a15551ca5e001fd, type: 3}
+  - {fileID: 6044915511358701663, guid: 0ba8210708cfc4c47a5e7724a3ff547c, type: 3}
+--- !u!4 &1249513149
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249513147}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.818155, y: -0.09657489, z: -7.7311277}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2110,3 +2190,4 @@ SceneRoots:
   - {fileID: 1092344840}
   - {fileID: 1275372924}
   - {fileID: 1712913305}
+  - {fileID: 1249513149}

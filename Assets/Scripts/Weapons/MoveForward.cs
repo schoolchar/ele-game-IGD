@@ -6,7 +6,7 @@ using UnityEngine;
 public class MoveForward : MonoBehaviour
 {
     public int speed = 5;
-    public float enemyTakeDamage;
+    public float enemyTakeDamage =1;
     public GameObject bullet;
 
     private GameObject enemy;
@@ -15,7 +15,7 @@ public class MoveForward : MonoBehaviour
     private void Start()
     {
         StartCoroutine(BulletLifetime());
-        enemy = GameObject.FindGameObjectWithTag("Enemy");
+        //enemy = GameObject.FindGameObjectWithTag("Enemy");
     }
 
 
@@ -23,7 +23,7 @@ public class MoveForward : MonoBehaviour
     void Update()
     {
         Move();
-        enemyHealth.GetComponent<EnemyHealth>();
+        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -43,12 +43,11 @@ public class MoveForward : MonoBehaviour
         if(_collision.gameObject.tag == "Enemy")
         {
             Debug.Log("Enemy hit");
-            enemyHealth.TakeDamage();
-        }
-        if (_collision.gameObject.tag == "Projectile")
-        {
-            Debug.Log("Enemy hit");
-            Destroy(_collision.gameObject);
+           enemyHealth = _collision.gameObject.GetComponent<EnemyHealth>();
+            enemyHealth.TakeDamage(enemyTakeDamage);
+            //Destroy(_collision.gameObject);
+
+            DestroyBullet();
         }
     }
 

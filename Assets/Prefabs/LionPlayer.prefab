@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 6229940665064227789}
   m_Layer: 7
   m_Name: LionPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -260,7 +260,6 @@ MonoBehaviour:
   xpText: {fileID: 0}
   xpMod: 0
   xpModVal: 0
-  playerMovement: {fileID: 0}
 --- !u!114 &6229940665064227789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,6 +284,8 @@ MonoBehaviour:
   spawnLeastWait: 0.5
   startWait: 0
   stop: 0
+  timeToIncrease: 25
+  increaseAmount: 0.5
 --- !u!1 &8661916814247941423
 GameObject:
   m_ObjectHideFlags: 0

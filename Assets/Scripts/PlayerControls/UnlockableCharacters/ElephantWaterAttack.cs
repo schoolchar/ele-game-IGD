@@ -1,0 +1,21 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ElephantWaterAttack : MonoBehaviour
+{
+    void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            Attack(other.gameObject.GetComponent<EnemyHealth>());
+        }
+    }
+
+
+    public void Attack(EnemyHealth _enemy)
+    {
+        _enemy.TakeDamage(0.5f); //Placeholder value
+    }
+
+}

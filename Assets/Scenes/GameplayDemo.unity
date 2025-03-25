@@ -122,7 +122,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
-
 --- !u!1 &220193337
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,7 +563,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1044877490}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1489,7 +1487,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1486839278}
-  - component: {fileID: 1486839277}
+  - component: {fileID: 1486839279}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -1497,18 +1495,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1486839277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1486839276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2366581d71d2ee54ea9742a059414f46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1486839278
 Transform:
   m_ObjectHideFlags: 0
@@ -1524,6 +1510,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1486839279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486839276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7a1053bca24e9c4bacfa2bab9c8023c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies: []
+  player: {fileID: 0}
+  spawnDistanceMin: 10
+  spawnDistanceMax: 14
+  spawnWait: 0
+  spawnMostWait: 5
+  spawnLeastWait: 2
+  startWait: 0
+  stop: 0
+  timeToIncrease: 25
+  increaseAmount: 0.5
 --- !u!1 &1620053541
 GameObject:
   m_ObjectHideFlags: 0
