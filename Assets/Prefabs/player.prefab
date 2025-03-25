@@ -247,7 +247,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   ringOfFire: {fileID: 7899741544625694635}
-  knifeThrow: {fileID: 8996010513189500247}
+  knifeThrow: {fileID: 5785051854309656066}
 --- !u!114 &2125592141690816146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -735,6 +735,7 @@ GameObject:
   - component: {fileID: 6069023693107406447}
   - component: {fileID: 7430955000731920862}
   - component: {fileID: 5777958391361081663}
+  - component: {fileID: 5785051854309656066}
   m_Layer: 0
   m_Name: playerOBJ
   m_TagString: PlayerMesh
@@ -838,6 +839,26 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5785051854309656066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4009431451348019332}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92b0113cd3b34cb428aa58404ec937e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  knife: {fileID: 6291107187475892311, guid: 9189478540e5d4f40813c74eb5a8a0af, type: 3}
+  projectileSpeed: 20
+  fireRate: 1
+  hasKnife: 1
+  player: {fileID: 1394019053864438680}
 --- !u!1 &4170697916228129724
 GameObject:
   m_ObjectHideFlags: 0
@@ -1316,11 +1337,6 @@ PrefabInstance:
 --- !u!4 &7848028629297045055 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5151963170061296447, guid: 9189478540e5d4f40813c74eb5a8a0af, type: 3}
-  m_PrefabInstance: {fileID: 3140908079709601024}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8996010513189500247 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6291107187475892311, guid: 9189478540e5d4f40813c74eb5a8a0af, type: 3}
   m_PrefabInstance: {fileID: 3140908079709601024}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4246619241226645500
