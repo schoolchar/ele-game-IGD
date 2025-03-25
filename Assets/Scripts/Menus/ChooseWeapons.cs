@@ -53,14 +53,16 @@ public class ChooseWeapons : MonoBehaviour
         ringText.text = "Ring of Fire enabled";
 
         player.ringOfFire.SetActive(true);
+        player.ringOfFireScript.enabled = true;
         DeactivateMenu();
     }
 
     public void EnableKnifeThrow()
     {
-        ringText.text = "Knife Throw enabled";
+        knifeText.text = "Knife Throw enabled";
 
         player.knifeThrow.enabled = true;
+        player.knifeThrow.hasKnife = true;
         DeactivateMenu();
     }
 }

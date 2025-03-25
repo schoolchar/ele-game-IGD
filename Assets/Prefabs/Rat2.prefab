@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -1726280509082710634}
   - component: {fileID: 2850969256361197015}
   - component: {fileID: 6697232077304740910}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Rat2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -121,7 +121,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
-  xpOnDeath: 4
   enemyTakeDamage: 2
 --- !u!114 &2850969256361197015
 MonoBehaviour:
