@@ -58,9 +58,10 @@ public class ChooseWeapons : MonoBehaviour
 
     public void EnableKnifeThrow()
     {
-        ringText.text = "Knife Throw enabled";
+        knifeText.text = "Knife Throw enabled";
 
         player.knifeThrow.enabled = true;
+        player.knifeThrow.hasKnife = true;
         DeactivateMenu();
     }
 }
