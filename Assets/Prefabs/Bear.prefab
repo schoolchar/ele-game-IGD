@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  xpOnDeath: 2
+  enemyTakeDamage: 2
 --- !u!114 &8082440333175056553
 MonoBehaviour:
   m_ObjectHideFlags: 0
