@@ -16,12 +16,24 @@ public class EnemyClown : MonoBehaviour
     [SerializeField] GameObject spawnPt;
     private float waitTime = 4f;
 
+    [Header("Health")]
+    public float health, maxHealth;
+    public int xpOnDeath;
+    public float enemyTakeDamage = 2f;
+    [SerializeField] FloatingHealthbar healthbar;
+
+    private void Awake()
+    {
+        healthbar = GetComponent<FloatingHealthbar>();
+    }
+
     void Start()
     {
         StartCoroutine(TimeShoot());
         stoppingDistance = 5f;
         moveSpeed = 5f;
         player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
+        healthbar.UpdateHealthBar(health, maxHealth);
     }
 
     void Update()
@@ -53,5 +65,40 @@ public class EnemyClown : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         Shoot();
+    }
+
+    public void TakeDamage(float _damage = 0)
+    {
+        healthbar.UpdateHealthBar(health, maxHealth);
+
+        if (_damage == 0)
+        {
+            health -= enemyTakeDamage;
+        }
+        else
+        {
+            health -= _damage;
+        }
+
+        CheckForDeath();
+    }
+
+    private void CheckForDeath()
+    {
+        if (health <= 0)
+        {
+            FindAnyObjectByType<PlayerHealth>().AddXP(xpOnDeath);
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void OnCollisionEnter(Collision _other)
+    {
+        //TakeDamage();
+
+        if (_other.gameObject.tag == "Projectile")
+        {
+            Destroy(_other.gameObject);
+        }
     }
 }

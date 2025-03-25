@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public float health, maxHealth;
-
+    public float health, maxHealth = 8f;
     public int xpOnDeath;
     public float enemyTakeDamage = 2f;
     [SerializeField] FloatingHealthbar healthbar;
