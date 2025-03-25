@@ -4,13 +4,27 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public float health;
+    public float health, maxHealth;
+
     public int xpOnDeath;
     public float enemyTakeDamage = 2f;
+    [SerializeField] FloatingHealthbar healthbar;
+
+    private void Awake()
+    {
+        healthbar = GetComponent<FloatingHealthbar>();
+    }
+
+    private void Start()
+    {
+        healthbar.UpdateHealthBar(health, maxHealth);
+    }
 
     public void TakeDamage(float _damage = 0)
     {
-        if(_damage == 0)
+        healthbar.UpdateHealthBar(health, maxHealth);
+
+        if (_damage == 0)
         {
             health -= enemyTakeDamage;
         }
@@ -19,7 +33,7 @@ public class EnemyHealth : MonoBehaviour
             health -= _damage;
         }
 
-            CheckForDeath();
+        CheckForDeath();
     }
 
     private void CheckForDeath()
