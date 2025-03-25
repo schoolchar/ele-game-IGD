@@ -63,7 +63,7 @@ public class Ringoffire : MonoBehaviour
             GameObject.Find("Ringoffire").SetActive(true);
 
              // Rotate around the player with the adjusted speed
-            transform.RotateAround(player.position, Vector3.up, adjustedSpeed * Time.deltaTime);
+            transform.RotateAround(player.position, Vector3.down, adjustedSpeed * Time.deltaTime);
          }
 
         // Maintain the specified distance from the player
