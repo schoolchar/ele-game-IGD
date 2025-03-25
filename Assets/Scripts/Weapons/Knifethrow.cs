@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class Knifethrow : MonoBehaviour
 {
-    UpgradeScriptObj upgradeScriptObj;
     // The layer mask for the enemy
     public LayerMask EnemyLayerMask;
 

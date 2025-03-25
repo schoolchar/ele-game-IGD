@@ -66,7 +66,6 @@ public class Ringoffire : MonoBehaviour
             transform.RotateAround(player.position, Vector3.up, adjustedSpeed * Time.deltaTime);
          }
 
-
         // Maintain the specified distance from the player
         transform.position = player.position + (transform.position - player.position).normalized * distance;
     }
