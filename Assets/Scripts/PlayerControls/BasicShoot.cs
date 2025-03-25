@@ -17,10 +17,7 @@ public class BasicShoot : MonoBehaviour
        // Instantiate(fire, player.transform.position, player.transform.rotation);
     }
 
-    private void Update()
-    {
 
-    }
     void Shoot()
     {
         Instantiate(bullet, spawnPt.transform.position, spawnPt.transform.rotation);
