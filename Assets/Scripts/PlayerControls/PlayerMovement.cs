@@ -103,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
         {
             readyToJump = false;
 
-            jump();
+            //jump();
 
             //calls the jumpReset function, delayed by jumpCooldown variable
             Invoke(nameof(jumpReset), jumpCooldown);
