@@ -53,7 +53,6 @@ public class ChooseWeapons : MonoBehaviour
         ringText.text = "Ring of Fire enabled";
 
         player.ringOfFire.SetActive(true);
-        player.ringOfFireScript.enabled = true;
         DeactivateMenu();
     }
 
