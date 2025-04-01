@@ -16,24 +16,13 @@ public class EnemyClown : MonoBehaviour
     [SerializeField] GameObject spawnPt;
     private float waitTime = 4f;
 
-    [Header("Health")]
-    public float health, maxHealth;
-    public int xpOnDeath;
-    public float enemyTakeDamage = 2f;
-    [SerializeField] FloatingHealthbar healthbar;
-
-    private void Awake()
-    {
-        healthbar = GetComponent<FloatingHealthbar>();
-    }
-
     void Start()
     {
         StartCoroutine(TimeShoot());
         stoppingDistance = 5f;
         moveSpeed = 5f;
         player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
-        healthbar.UpdateHealthBar(health, maxHealth);
+        
     }
 
     void Update()
@@ -52,7 +41,6 @@ public class EnemyClown : MonoBehaviour
         {
             moveSpeed = 0f;
         }
-
     }
 
     void Shoot()

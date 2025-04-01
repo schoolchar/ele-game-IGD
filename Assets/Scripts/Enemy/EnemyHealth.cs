@@ -1,22 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public float health, maxHealth = 8f;
+    public float health;
+    public float maxHealth;
+
+    public GameObject healthBarUI;
+    public Slider slider;
+
     public int xpOnDeath;
     public float enemyTakeDamage = 2f;
-    [SerializeField] FloatingHealthbar healthbar;
-
-    private void Awake()
-    {
-        healthbar = GetComponentInChildren<FloatingHealthbar>();
-    }
 
     private void Start()
     {
-        healthbar.UpdateHealthBar(health, maxHealth);
+        health = maxHealth;
+        slider.value = CalculateHealth();
+    }
+
+    private void Update()
+    {
+        slider.value = CalculateHealth();
+
+        if (health < maxHealth)
+        {
+            healthBarUI.SetActive(true);
+        }
     }
 
     public void TakeDamage(float _damage = 0)
@@ -28,7 +40,6 @@ public class EnemyHealth : MonoBehaviour
         else
         {
             health -= _damage;
-            healthbar.UpdateHealthBar(health, maxHealth);
         }
 
         CheckForDeath();
