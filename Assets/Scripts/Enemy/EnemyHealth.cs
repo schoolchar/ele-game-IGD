@@ -11,7 +11,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void Awake()
     {
-        healthbar = GetComponent<FloatingHealthbar>();
+        healthbar = GetComponentInChildren<FloatingHealthbar>();
     }
 
     private void Start()
@@ -21,8 +21,6 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(float _damage = 0)
     {
-        healthbar.UpdateHealthBar(health, maxHealth);
-
         if (_damage == 0)
         {
             health -= enemyTakeDamage;
@@ -30,6 +28,7 @@ public class EnemyHealth : MonoBehaviour
         else
         {
             health -= _damage;
+            healthbar.UpdateHealthBar(health, maxHealth);
         }
 
         CheckForDeath();

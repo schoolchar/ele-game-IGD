@@ -67,31 +67,6 @@ public class EnemyClown : MonoBehaviour
         Shoot();
     }
 
-    public void TakeDamage(float _damage = 0)
-    {
-        healthbar.UpdateHealthBar(health, maxHealth);
-
-        if (_damage == 0)
-        {
-            health -= enemyTakeDamage;
-        }
-        else
-        {
-            health -= _damage;
-        }
-
-        CheckForDeath();
-    }
-
-    private void CheckForDeath()
-    {
-        if (health <= 0)
-        {
-            FindAnyObjectByType<PlayerHealth>().AddXP(xpOnDeath);
-            Destroy(this.gameObject);
-        }
-    }
-
     private void OnCollisionEnter(Collision _other)
     {
         //TakeDamage();

@@ -601,6 +601,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8885580598800822285, guid: 57f0edd1d60c0774e99e8a560ed8e20e, type: 3}
+      propertyPath: healthbar
+      value: 
+      objectReference: {fileID: 5933781853846318498}
+    - target: {fileID: -8885580598800822285, guid: 57f0edd1d60c0774e99e8a560ed8e20e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8885580598800822285, guid: 57f0edd1d60c0774e99e8a560ed8e20e, type: 3}
       propertyPath: maxHealth
       value: 8
       objectReference: {fileID: 0}
@@ -680,6 +688,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6202453686911847550, guid: 57f0edd1d60c0774e99e8a560ed8e20e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -70
+      objectReference: {fileID: 0}
+    - target: {fileID: 6202453686911847550, guid: 57f0edd1d60c0774e99e8a560ed8e20e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -40
+      objectReference: {fileID: 0}
     - target: {fileID: 6241472851783180490, guid: 57f0edd1d60c0774e99e8a560ed8e20e, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.013458981
@@ -758,6 +774,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5933781853846318498 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4968990363800147386, guid: 57f0edd1d60c0774e99e8a560ed8e20e, type: 3}
+  m_PrefabInstance: {fileID: 5933781853846318496}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351969354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70e498783afa4e2478b9c700376db917, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807

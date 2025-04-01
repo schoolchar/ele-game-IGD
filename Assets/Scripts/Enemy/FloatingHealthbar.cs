@@ -6,12 +6,6 @@ using UnityEngine.UI;
 public class FloatingHealthbar : MonoBehaviour
 {
     [SerializeField] private Slider slider;
-
-    public void Start()
-    {
-        
-    }
-
     public void UpdateHealthBar(float currentValue, float maxValue) 
     {
        slider.value = currentValue / maxValue;
