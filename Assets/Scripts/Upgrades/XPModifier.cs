@@ -19,5 +19,6 @@ public class XPModifier : UpgradeParent
         }
         
         IncreaseLevel();
+        saveData.SaveXPUpgrade();
     }
 }

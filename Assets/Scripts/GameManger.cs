@@ -10,6 +10,8 @@ public class GameManger : MonoBehaviour
     public Transform playerSpawnpoint;
     private GameObject playerInstance;
 
+    public bool newGame;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -33,6 +35,17 @@ public class GameManger : MonoBehaviour
     {
         // Spawns player at PlayerSpawnpoint
         playerInstance = Instantiate(player, playerSpawnpoint.position, playerSpawnpoint.rotation);
+        SaveData _save = playerInstance.GetComponent<SaveData>();
+        if (!newGame)
+        {
+           
+            _save.LoadPlayerData();
+            _save.LoadUpgradeData();
+        }
+        else if(newGame)
+        {
+            _save.ClearData();
+        }
     }
 
 }

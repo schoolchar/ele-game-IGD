@@ -60,5 +60,6 @@ public class Magnetism : UpgradeParent
         }
 
         IncreaseLevel();
+        saveData.SaveMagUpgrade();
     }
 }
