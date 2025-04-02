@@ -10,4 +10,5 @@ public class UpgradeScriptObj : ScriptableObject
     public int affectOnSpeed;
     public int affectOnMag;
     public int magSpeed;
+    public int level;
 }

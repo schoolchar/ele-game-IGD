@@ -32,6 +32,11 @@ public class UpgradeParent : MonoBehaviour, IUpgrade
         ;
     }
 
+    public virtual void IncreaseLevel()
+    {
+        scriptObj.level++;
+    }
+
 
    
 

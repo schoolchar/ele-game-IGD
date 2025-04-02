@@ -6,6 +6,7 @@ using UnityEngine;
 public class Magnetism : UpgradeParent
 {
     SphereCollider magCollider;
+    private float radiusMult = 0.1f;
     public List<GameObject> pickup;
     public GameObject player;
     bool pulling;
@@ -47,7 +48,17 @@ public class Magnetism : UpgradeParent
 
     public override void ActivateUpgrade()
     {
-        active = true;
-        magCollider.radius = scriptObj.magSpeed;
+        if(scriptObj.level == 0)
+        {
+            active = true;
+            magCollider.radius = scriptObj.magSpeed;
+        }
+        else
+        {
+            magCollider.radius *= radiusMult;
+            radiusMult += 0.1f;
+        }
+
+        IncreaseLevel();
     }
 }
