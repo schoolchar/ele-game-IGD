@@ -275,6 +275,7 @@ public class SaveData : MonoBehaviour
 
         LoadPlayerData();
         LoadUpgradeData();
+        levelText.text = "Highest Level Achieved: " + 0.ToString();
         reset = true;
     }
     #endregion
