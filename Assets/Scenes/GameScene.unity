@@ -1429,7 +1429,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1275372921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1860,6 +1860,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1394019053864438680, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
   playerSpawnpoint: {fileID: 1008310542}
+  newGame: 0
 --- !u!4 &1604657244
 Transform:
   m_ObjectHideFlags: 0
