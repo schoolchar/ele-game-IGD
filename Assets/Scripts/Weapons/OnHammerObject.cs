@@ -10,6 +10,7 @@ public class OnHammerObject : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             //damage stuff
+            Debug.Log("Enemy hit");
         }
     }
 }
