@@ -62,4 +62,10 @@ public class Magnetism : UpgradeParent
         IncreaseLevel();
         saveData.SaveMagUpgrade();
     }
+
+
+    public UpgradeScriptObj GetScriptObj()
+    {
+        return scriptObj;
+    }
 }

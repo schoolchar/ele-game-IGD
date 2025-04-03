@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SaveData : MonoBehaviour
 {
@@ -9,106 +11,251 @@ public class SaveData : MonoBehaviour
     [SerializeField] private UpgradeScriptObj xp;
     [SerializeField] private UpgradeScriptObj mag;
 
+    [Header("Only on player")]
     [SerializeField] private PlayerHealth playerHealth;
 
+    [Header("Only on main menu")]
+    [SerializeField] private GameObject storeButton;
+    public bool reset = true;
+
     //Keys:
-    //AffectOnHealth
-    //AffectOnXP
-    //AffectOnSpeed
-    //AffectOnMag
-    //MagSpeed
-    //HealthLevel
-    //XPLevel
-    //MagLevel
-    //HighScore
-    //Money
-    //Lion - bool but int not set 
-    //Elephant - bool but int not set
+    //AffectOnHealth.txt
+    //AffectOnXP.txt
+    //AffectOnSpeed.txt
+    //AffectOnMag.txt
+    //MagSpeed.txt
+    //HealthLevel.txt
+    //XPLevel.txt
+    //MagLevel.txt
+    //HighScore.txt
+    //Money.txt
+    //Lion.txt - bool but int not set 
+    //Elephant.txt - bool but int not set
 
     //Add more as upgrades are made
+
+    private void Start()
+    {
+        /*if(SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            LoadUpgradeData();
+            if(reset == false)
+            {
+                storeButton.SetActive(true);
+                Debug.Log("Reset false");
+            }
+        }*/
+    }
+
+    #region Saving
     public void SaveMoney()
     {
-        PlayerPrefs.SetInt("Money", playerHealth.money);
-        PlayerPrefs.Save();
+        string _path = Application.persistentDataPath + "/Money.txt";
+        File.WriteAllText(_path, playerHealth.money.ToString());
+        Debug.Log(_path);
     }
 
     public void SaveHighScore() //Right now set ti highest level in a run
     {
-         if(PlayerPrefs.GetInt("HighScore") < playerHealth.level || PlayerPrefs.HasKey("HighScore") == false)
-         {
-             PlayerPrefs.SetInt("HighScore", playerHealth.level);
-            PlayerPrefs.Save();
-         }
-        
+        string _path = Application.persistentDataPath + "/HighScore.txt";
+        File.WriteAllText(_path, playerHealth.level.ToString());
+        Debug.Log(_path);
+       
     }
 
     public void SaveHealthUpgrade()
     {
-        PlayerPrefs.SetInt("AffectOnHealth", health.affectOnHealth);
-        PlayerPrefs.SetInt("HealthLevel", health.level);
-        PlayerPrefs.Save();
+        string _path = Application.persistentDataPath + "/AffectOnHealth.txt";
+        File.WriteAllText(_path, health.affectOnHealth.ToString());
+        Debug.Log(_path);
+
+        string _path1 = Application.persistentDataPath + "/HealthLevel.txt";
+        File.WriteAllText(_path1, health.level.ToString());
+        Debug.Log(_path1);
     }
 
     public void SaveXPUpgrade()
     {
-        PlayerPrefs.SetInt("AffectOnXP", xp.affectOnXP);
-        PlayerPrefs.SetInt("XPLevel", xp.level);
-        PlayerPrefs.Save();
+        string _path = Application.persistentDataPath + "/AffectOnXP.txt";
+        File.WriteAllText(_path, xp.affectOnXP.ToString());
+        Debug.Log(_path);
+
+        string _path1 = Application.persistentDataPath + "/XPLevel.txt";
+        File.WriteAllText(_path1, xp.level.ToString());
+        Debug.Log(_path1);
     }
 
     public void SaveMagUpgrade()
     {
-        PlayerPrefs.SetInt("AffectOnMag", mag.affectOnMag);
-        PlayerPrefs.SetInt("MagLevel", mag.level);
-        PlayerPrefs.Save();
+        string _path = Application.persistentDataPath + "/AffectOnMag.txt";
+        File.WriteAllText(_path, mag.affectOnMag.ToString());
+        Debug.Log(_path);
+
+        string _path1 = Application.persistentDataPath + "/MagLevel.txt";
+        File.WriteAllText(_path1, mag.level.ToString());
+        Debug.Log(_path1);
     }
+    #endregion
 
     #region Loading
     //Call on continue game
     public void LoadPlayerData()
     {
-        if(PlayerPrefs.HasKey("Money"))
-        playerHealth.money = PlayerPrefs.GetInt("Money");
+        string _path = Application.persistentDataPath + "/Money.txt";
+        if(File.Exists(_path))
+        {
+            string _val = File.ReadAllText(_path);
+            playerHealth.money = int.Parse(_val);
+            Debug.Log("Money loaded: " + playerHealth.money);
+        }
+
     }
 
     //Call on continue game
     public void LoadUpgradeData()
     {
-        if(PlayerPrefs.HasKey("AffectOnHealth"))
+        //Get affect on health for upgrade
+        string _pathHealth = Application.persistentDataPath + "/AffectOnHealth.txt";
+        if (File.Exists(_pathHealth))
         {
-            health.affectOnHealth = PlayerPrefs.GetInt("AffectOnHealth");
-            health.level = PlayerPrefs.GetInt("HealthLevel");
+            string _val = File.ReadAllText(_pathHealth);
+            health.affectOnHealth = int.Parse(_val);
+            Debug.Log("Affect on health loaded: " + health.affectOnHealth);
+            reset = false;
         }
 
-        if(PlayerPrefs.HasKey("AffectOnXP"))
+        //Get health level
+        string _pathHealthLvl = Application.persistentDataPath + "/HealthLevel.txt";
+        if (File.Exists(_pathHealthLvl))
         {
-            xp.affectOnXP = PlayerPrefs.GetInt("AffectOnXP");
-            xp.level = PlayerPrefs.GetInt("XPLevel");
+            string _val = File.ReadAllText(_pathHealthLvl);
+            health.level = int.Parse(_val);
+            Debug.Log("Health upgrade level loaded: " + health.level);
+            reset = false;
         }
 
-        if(PlayerPrefs.HasKey("AffectOnMag"))
+        //Get affect on xp for upgrade
+        string _pathXP = Application.persistentDataPath + "/AffectOnXP.txt";
+        if (File.Exists(_pathXP))
         {
-            mag.affectOnMag = PlayerPrefs.GetInt("AffectOnMag");
-            mag.level = PlayerPrefs.GetInt("MagLevel");
+            string _val = File.ReadAllText(_pathXP);
+            xp.affectOnXP = int.Parse(_val);
+            Debug.Log("Affect on xp loaded: " + xp.affectOnXP);
+            reset = false;
         }
+
+        //Get xp level
+        string _pathXPLvl = Application.persistentDataPath + "/XPLevel.txt";
+        if (File.Exists(_pathXPLvl))
+        {
+            string _val = File.ReadAllText(_pathXPLvl);
+            xp.level = int.Parse(_val);
+            Debug.Log("XP level loaded" + xp.level);
+            reset = false;
+        }
+
+        //Get affect on magnetism for upgrade
+        string _pathMag = Application.persistentDataPath + "/AffectOnMag.txt";
+        if (File.Exists(_pathMag))
+        {
+            string _val = File.ReadAllText(_pathMag);
+            mag.affectOnMag = int.Parse(_val);
+            Debug.Log("Affect on magnetism loaded" + mag.affectOnMag);
+            reset = false;
+        }
+
+        //Get magnetism level
+        string _pathMagLvl = Application.persistentDataPath + "/MagLevel.txt";
+        if (File.Exists(_pathMagLvl))
+        {
+            string _val = File.ReadAllText(_pathMagLvl);
+            mag.level = int.Parse(_val);
+            Debug.Log("Magnetism level loaded:" + mag.level);
+            reset = false;
+        }
+
+        
     }
 
     //Call on new game
     public void ClearData()
     {
-        PlayerPrefs.SetInt("Money", 0);
-        PlayerPrefs.SetInt("HighScore", 0);
-        PlayerPrefs.SetInt("AffectOnHealth", 10);
-        PlayerPrefs.SetInt("AffectOnXP", 2);
-        PlayerPrefs.SetInt("AffectOnMag", 5);
-        PlayerPrefs.SetInt("HealthLevel", 0);
-        PlayerPrefs.SetInt("XPLevel", 0);
-        PlayerPrefs.SetInt("MagLevel", 0);
-        PlayerPrefs.SetInt("Lion", 0);
-        PlayerPrefs.SetInt("Elephant", 0);
-        PlayerPrefs.Save();
+        //Player variables
+        //Player money
+        string _path = Application.persistentDataPath + "/Money.txt";
+        if (File.Exists(_path))
+        {
+            File.WriteAllText(_path, 0.ToString());
+        }
+
+        //Player high score
+        string _pathScore = Application.persistentDataPath + "/HighScore.txt";
+        if (File.Exists(_pathScore))
+        {
+            File.WriteAllText(_pathScore, 0.ToString());
+        }
+
+        //If lion unlocked
+        string _pathLion = Application.persistentDataPath + "Lion.txt";
+        if (File.Exists(_pathLion))
+        {
+            File.WriteAllText(_pathLion, 0.ToString());
+        }
+
+        //If elephant unlocked
+        string _pathElephant = Application.persistentDataPath + "Elephant.txt";
+        if (File.Exists(_pathElephant))
+        {
+            File.WriteAllText(_pathElephant, 0.ToString());
+        }
+
+        //Upgrade variables
+        //Get affect on health for upgrade
+        string _pathHealth = Application.persistentDataPath + "/AffectOnHealth.txt";
+        if (File.Exists(_pathHealth))
+        {
+            File.WriteAllText (_pathHealth, 10.ToString());
+        }
+
+        //Get health level
+        string _pathHealthLvl = Application.persistentDataPath + "/HealthLevel.txt";
+        if (File.Exists(_pathHealthLvl))
+        {
+            File.WriteAllText(_pathHealthLvl, 0.ToString());
+        }
+
+        //Get affect on xp for upgrade
+        string _pathXP = Application.persistentDataPath + "/AffectOnXP.txt";
+        if (File.Exists(_pathXP))
+        {
+            File.WriteAllText(_pathXP, 2.ToString());
+        }
+
+        //Get xp level
+        string _pathXPLvl = Application.persistentDataPath + "/XPLevel.txt";
+        if (File.Exists(_pathXPLvl))
+        {
+            File.WriteAllText(_pathXPLvl, 0.ToString());
+        }
+
+        //Get affect on magnetism for upgrade
+        string _pathMag = Application.persistentDataPath + "/AffectOnMag.txt";
+        if (File.Exists(_pathMag))
+        {
+            File.WriteAllText( _pathMag, 5.ToString());
+        }
+
+        //Get magnetism level
+        string _pathMagLvl = Application.persistentDataPath + "/MagLevel.txt";
+        if (File.Exists(_pathMagLvl))
+        {
+            File.WriteAllText(_pathMagLvl, 0.ToString());
+        }
+
+
         LoadPlayerData();
         LoadUpgradeData();
+        reset = true;
     }
     #endregion
 }
