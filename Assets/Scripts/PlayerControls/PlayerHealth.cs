@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -95,7 +96,24 @@ public class PlayerHealth : MonoBehaviour
             playerMovement.ringOfFire.SetActive(false);
             playerMovement.knifeThrow.hasKnife = false;
             playerMovement.knifeThrow.enabled = false;
-            saveData.SaveHighScore();
+
+            //Check if this is the highest level the player has reached
+            string _path = Application.persistentDataPath + "/HighScore.txt";
+            if(File.Exists(_path))
+            {
+                int _highScore = int.Parse(File.ReadAllText(_path));
+                if(level > _highScore)
+                {
+                    saveData.SaveHighScore(level);
+                }
+            }
+            else
+            {
+                saveData.SaveHighScore(level);
+            }
+
+
+            
             level = 0;
             SceneManager.LoadScene(0);
         }

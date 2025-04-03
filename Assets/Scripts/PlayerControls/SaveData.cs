@@ -4,6 +4,8 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class SaveData : MonoBehaviour
 {
@@ -16,6 +18,7 @@ public class SaveData : MonoBehaviour
 
     [Header("Only on main menu")]
     [SerializeField] private GameObject storeButton;
+    [SerializeField] private TextMeshProUGUI levelText;
     public bool reset = true;
 
     //Keys:
@@ -45,6 +48,7 @@ public class SaveData : MonoBehaviour
                 Debug.Log("Reset false");
             }
         }*/
+        LoadHighScore();
     }
 
     #region Saving
@@ -55,10 +59,10 @@ public class SaveData : MonoBehaviour
         Debug.Log(_path);
     }
 
-    public void SaveHighScore() //Right now set ti highest level in a run
+    public void SaveHighScore(int _score) //Right now set ti highest level in a run
     {
         string _path = Application.persistentDataPath + "/HighScore.txt";
-        File.WriteAllText(_path, playerHealth.level.ToString());
+        File.WriteAllText(_path, _score.ToString());
         Debug.Log(_path);
        
     }
@@ -109,6 +113,22 @@ public class SaveData : MonoBehaviour
             Debug.Log("Money loaded: " + playerHealth.money);
         }
 
+    }
+
+    public void LoadHighScore()
+    {
+        string _path = Application.persistentDataPath + "/HighScore.txt";
+        if(File.Exists(_path))
+        {
+            string _val = File.ReadAllText(_path);
+            int _level = int.Parse(_val);
+            levelText.text = "Highest Level Achieved: " + _level;
+            Debug.Log("Highest level loaded: " + _level);
+        }
+        else
+        {
+            levelText.text = "Highest Level Achieved: " + 0.ToString();
+        }
     }
 
     //Call on continue game
