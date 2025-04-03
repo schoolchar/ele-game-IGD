@@ -30,7 +30,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Start()
     {
-        InitValues();
+        //InitValues();
     }
 
     private void OnCollisionEnter(Collision other)

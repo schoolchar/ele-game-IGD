@@ -31,6 +31,11 @@ public class GameManger : MonoBehaviour
        
     }
 
+    private void Start()
+    {
+        player.GetComponent<PlayerHealth>().InitValues();
+    }
+
     void SpawnPlayer()
     {
         // Spawns player at PlayerSpawnpoint
