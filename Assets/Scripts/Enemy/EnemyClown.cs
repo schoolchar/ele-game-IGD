@@ -22,6 +22,7 @@ public class EnemyClown : MonoBehaviour
         stoppingDistance = 5f;
         moveSpeed = 5f;
         player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
+        
     }
 
     void Update()
@@ -40,7 +41,6 @@ public class EnemyClown : MonoBehaviour
         {
             moveSpeed = 0f;
         }
-
     }
 
     void Shoot()
@@ -53,5 +53,15 @@ public class EnemyClown : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         Shoot();
+    }
+
+    private void OnCollisionEnter(Collision _other)
+    {
+        //TakeDamage();
+
+        if (_other.gameObject.tag == "Projectile")
+        {
+            Destroy(_other.gameObject);
+        }
     }
 }
