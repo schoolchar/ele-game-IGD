@@ -11,6 +11,7 @@ public class ChooseWeapons : MonoBehaviour
     private int nextMilestone = 1;
     [SerializeField] private Canvas weaponsCanvas;
     private PlayerMovement player;
+    private PlayerHealth playerHealth;
 
     [SerializeField] private TextMeshProUGUI ringText;
     [SerializeField] private TextMeshProUGUI knifeText;
@@ -19,6 +20,7 @@ public class ChooseWeapons : MonoBehaviour
     private void Start()
     {
         player = FindAnyObjectByType<PlayerMovement>();
+        playerHealth = player.gameObject.GetComponent<PlayerHealth>();
     }
 
     /// <summary>
@@ -33,6 +35,7 @@ public class ChooseWeapons : MonoBehaviour
             weaponsCanvas.enabled = true;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            playerHealth.level++;
         }
     }
     /// <summary>

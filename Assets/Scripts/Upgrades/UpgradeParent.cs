@@ -5,11 +5,13 @@ using UnityEngine;
 public class UpgradeParent : MonoBehaviour, IUpgrade
 {
     protected PlayerHealth playerHealth;
+    protected SaveData saveData;
     public UpgradeScriptObj scriptObj;
 
     void Start()
     {
         playerHealth = FindAnyObjectByType<PlayerHealth>();
+        saveData = playerHealth.gameObject.GetComponent<SaveData>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -30,6 +32,11 @@ public class UpgradeParent : MonoBehaviour, IUpgrade
     public virtual void ActivateUpgrade() 
     {
         ;
+    }
+
+    public virtual void IncreaseLevel()
+    {
+        scriptObj.level++;
     }
 
 

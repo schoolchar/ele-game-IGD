@@ -11,9 +11,11 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth;
     public int health;
     public int xp;
+    public int money;
+    public int level; //Reset every run
 
     public ChooseWeapons chooseWeapons;
-
+    public SaveData saveData;
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI hpText;
     [SerializeField] private TextMeshProUGUI xpText;
@@ -48,6 +50,7 @@ public class PlayerHealth : MonoBehaviour
         xpText.text = "XP = " + xp;
 
         chooseWeapons = FindAnyObjectByType<ChooseWeapons>();
+        saveData = GetComponent<SaveData>();
     }
 
 
@@ -84,7 +87,9 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log("Player dies");
             playerMovement.ringOfFire.SetActive(false);
             playerMovement.knifeThrow.hasKnife = false;
-            playerMovement.knifeThrow.enabled = false; 
+            playerMovement.knifeThrow.enabled = false;
+            saveData.SaveHighScore();
+            level = 0;
             SceneManager.LoadScene(0);
         }
         
