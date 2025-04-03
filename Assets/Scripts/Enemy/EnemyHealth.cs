@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +8,6 @@ public class EnemyHealth : MonoBehaviour
     public float health;
     public float maxHealth;
 
-    public GameObject healthBarUI;
     public Slider slider;
 
     public int xpOnDeath;
@@ -18,21 +16,18 @@ public class EnemyHealth : MonoBehaviour
     private void Start()
     {
         health = maxHealth;
-        slider.value = CalculateHealth();
     }
 
-    private void Update()
+    public void UpdateHealthBar(float currentValue, float maxValue)
     {
-        slider.value = CalculateHealth();
-
-        if (health < maxHealth)
-        {
-            healthBarUI.SetActive(true);
-        }
+        slider.value = currentValue / maxValue;
     }
+
 
     public void TakeDamage(float _damage = 0)
     {
+        UpdateHealthBar(health, maxHealth);
+
         if (_damage == 0)
         {
             health -= enemyTakeDamage;
@@ -41,12 +36,6 @@ public class EnemyHealth : MonoBehaviour
         {
             health -= _damage;
         }
-
-        CheckForDeath();
-    }
-
-    private void CheckForDeath()
-    {
         if (health <= 0)
         {
             FindAnyObjectByType<PlayerHealth>().AddXP(xpOnDeath);

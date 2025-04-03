@@ -193,7 +193,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 3571395880959495953}
   m_HandleRect: {fileID: 0}
-  m_Direction: 1
+  m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
@@ -367,8 +367,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 8
-  xpOnDeath: 0
+  maxHealth: 100
+  slider: {fileID: 8418033365231570946}
+  xpOnDeath: 2
   enemyTakeDamage: 2
 --- !u!1 &2402806418348017610
 GameObject:
@@ -450,7 +451,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 7665010956012023283, guid: 095b779b98af85945bbde0b881c04c9a, type: 3}
+  m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
