@@ -14,6 +14,8 @@ public class PlayerHealth : MonoBehaviour
     public int money;
     public int level; //Reset every run
 
+    public bool debugHealth;
+
     public ChooseWeapons chooseWeapons;
     public SaveData saveData;
     [Header("UI")]
@@ -41,6 +43,11 @@ public class PlayerHealth : MonoBehaviour
 
    public void InitValues()
     {
+        if(debugHealth)
+        {
+            maxHealth = 200;
+        }
+
         health = maxHealth;
         //Change later to not use tags
         hpText = GameObject.FindGameObjectWithTag("HPText").GetComponent<TextMeshProUGUI>();

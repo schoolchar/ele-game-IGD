@@ -13,9 +13,11 @@ public class EnemyHealth : MonoBehaviour
     public int xpOnDeath;
     public float enemyTakeDamage = 2f;
 
+    private MoneyDrop moneyDrop;
     private void Start()
     {
         health = maxHealth;
+        moneyDrop = GetComponent<MoneyDrop>();
     }
 
     public void UpdateHealthBar(float currentValue, float maxValue)
@@ -26,6 +28,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(float _damage = 0)
     {
+        if(slider != null) 
         UpdateHealthBar(health, maxHealth);
 
         if (_damage == 0)
@@ -39,7 +42,8 @@ public class EnemyHealth : MonoBehaviour
         if (health <= 0)
         {
             FindAnyObjectByType<PlayerHealth>().AddXP(xpOnDeath);
-            Destroy(this.gameObject);
+            moneyDrop.DropCoins();
+           // Destroy(this.gameObject);
         }
     }
 

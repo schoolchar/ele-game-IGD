@@ -11,6 +11,7 @@ public class MoneyDrop : MonoBehaviour
     [SerializeField] private GameObject[] dropPos;
     public void DropCoins() //Should be called on enemy death
     {
+        Debug.Log("Drop coins");
         int _posInx = 0;
         for(int i = 0; i < money; i++)
         {
@@ -21,5 +22,7 @@ public class MoneyDrop : MonoBehaviour
                 _posInx = 0;
             }
         }
+
+        Destroy(this.gameObject);
     }
 }
