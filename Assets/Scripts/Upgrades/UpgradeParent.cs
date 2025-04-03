@@ -5,13 +5,15 @@ using UnityEngine;
 public class UpgradeParent : MonoBehaviour, IUpgrade
 {
     protected PlayerHealth playerHealth;
+    [SerializeField] protected PlayerMovement playerMovement;
     protected SaveData saveData;
     public UpgradeScriptObj scriptObj;
 
-    void Start()
+    public void Awake()
     {
         playerHealth = FindAnyObjectByType<PlayerHealth>();
         saveData = playerHealth.gameObject.GetComponent<SaveData>();
+        playerMovement = playerHealth.gameObject.GetComponent<PlayerMovement>();
     }
 
     private void OnCollisionEnter(Collision collision)
