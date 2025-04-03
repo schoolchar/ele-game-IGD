@@ -12,6 +12,7 @@ public class SaveData : MonoBehaviour
     [SerializeField] private UpgradeScriptObj health;
     [SerializeField] private UpgradeScriptObj xp;
     [SerializeField] private UpgradeScriptObj mag;
+    [SerializeField] private UpgradeScriptObj speed;
 
     [Header("Only on player")]
     [SerializeField] private PlayerHealth playerHealth;
@@ -26,10 +27,12 @@ public class SaveData : MonoBehaviour
     //AffectOnXP.txt
     //AffectOnSpeed.txt
     //AffectOnMag.txt
+    //AffectOnSpeed.txt
     //MagSpeed.txt
     //HealthLevel.txt
     //XPLevel.txt
     //MagLevel.txt
+    //SpeedLevel.txt
     //HighScore.txt
     //Money.txt
     //Lion.txt - bool but int not set 
@@ -97,6 +100,17 @@ public class SaveData : MonoBehaviour
 
         string _path1 = Application.persistentDataPath + "/MagLevel.txt";
         File.WriteAllText(_path1, mag.level.ToString());
+        Debug.Log(_path1);
+    }
+
+    public void SaveSpeedUpgrade()
+    {
+        string _path = Application.persistentDataPath + "/AffectOnSpeed.txt";
+        File.WriteAllText(_path, speed.affectOnSpeed.ToString());
+        Debug.Log(_path);
+
+        string _path1 = Application.persistentDataPath + "/SpeedLevel.txt";
+        File.WriteAllText(_path1, speed.level.ToString());
         Debug.Log(_path1);
     }
     #endregion
@@ -194,7 +208,27 @@ public class SaveData : MonoBehaviour
             reset = false;
         }
 
-        
+        //Get affect on speed for upgrade
+        string _pathSpeed = Application.persistentDataPath + "/AffectOnSeed.txt";
+        if (File.Exists(_pathSpeed))
+        {
+            string _val = File.ReadAllText(_pathSpeed);
+            speed.affectOnSpeed = int.Parse(_val);
+            Debug.Log("Affect on magnetism loaded" + speed.affectOnSpeed);
+            reset = false;
+        }
+
+        //Get Speed level
+        string _pathSpeedLvl = Application.persistentDataPath + "/SpeedLevel.txt";
+        if (File.Exists(_pathSpeedLvl))
+        {
+            string _val = File.ReadAllText(_pathSpeedLvl);
+            speed.level = int.Parse(_val);
+            Debug.Log("Magnetism level loaded:" + speed.level);
+            reset = false;
+        }
+
+
     }
 
     //Call on new game
@@ -270,6 +304,20 @@ public class SaveData : MonoBehaviour
         if (File.Exists(_pathMagLvl))
         {
             File.WriteAllText(_pathMagLvl, 0.ToString());
+        }
+
+        //Get affect on speed for upgrade
+        string _pathSpeed = Application.persistentDataPath + "/AffectOnSeed.txt";
+        if(File.Exists(_pathSpeed))
+        {
+            File.WriteAllText(_pathSpeed, 50.ToString());
+        }
+
+        //Get Speed level
+        string _pathSpeedLvl = Application.persistentDataPath + "/SpeedLevel.txt";
+        if(File.Exists(_pathSpeedLvl))
+        {
+            File.WriteAllText(_pathSpeedLvl, 0.ToString());
         }
 
 

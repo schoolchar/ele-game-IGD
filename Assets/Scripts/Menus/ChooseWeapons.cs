@@ -8,7 +8,7 @@ public class ChooseWeapons : MonoBehaviour
 {
     private int oldXPNum;
     private int currentXP;
-    private int nextMilestone = 1;
+    private int nextMilestone = 5;
     [SerializeField] private Canvas weaponsCanvas;
     private PlayerMovement player;
     private PlayerHealth playerHealth;
@@ -24,7 +24,7 @@ public class ChooseWeapons : MonoBehaviour
     }
 
     /// <summary>
-    /// Enables weapon choosing menu, right now uses intervals of xp in 5
+    /// Enables weapon choosing menu, right now uses intervals mult 2
     /// </summary>
     public void ActivateMenu(int _currentXP)
     {
@@ -45,7 +45,7 @@ public class ChooseWeapons : MonoBehaviour
     {
         Time.timeScale = 1;
         oldXPNum = currentXP;
-        nextMilestone += 5;
+        nextMilestone *= 2;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         weaponsCanvas.enabled = false;

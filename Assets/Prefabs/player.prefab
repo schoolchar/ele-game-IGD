@@ -472,6 +472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 684947fc3dc1224438ea215aa457c670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerMovement: {fileID: 0}
   scriptObj: {fileID: 11400000, guid: 60f0ee77f6233de42986773750eb3ea3, type: 2}
   pickup: []
   player: {fileID: 1394019053864438680}
@@ -543,8 +544,10 @@ MonoBehaviour:
   health: {fileID: 11400000, guid: 57839554a6c85da438b9c57114758b9e, type: 2}
   xp: {fileID: 11400000, guid: 1e3e635d04b4270408b4d884fc896d38, type: 2}
   mag: {fileID: 11400000, guid: 60f0ee77f6233de42986773750eb3ea3, type: 2}
+  speed: {fileID: 11400000, guid: 163442cb1f935354b83a0eb5a6303248, type: 2}
   playerHealth: {fileID: 2125592141690816146}
   storeButton: {fileID: 0}
+  levelText: {fileID: 0}
   reset: 1
 --- !u!1 &1555237959989853747
 GameObject:
