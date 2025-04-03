@@ -86,7 +86,6 @@ public class PlayerHealth : MonoBehaviour
             //Run death code
             Debug.Log("Player dies");
             playerMovement.ringOfFire.SetActive(false);
-            playerMovement.ringOfFireScript.enabled = false;
             playerMovement.knifeThrow.hasKnife = false;
             playerMovement.knifeThrow.enabled = false;
             saveData.SaveHighScore();
