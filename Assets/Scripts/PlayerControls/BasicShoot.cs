@@ -7,6 +7,7 @@ public class BasicShoot : MonoBehaviour
 {
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject spawnPt;
+    [SerializeField] private GameObject playerPhys;
    // [SerializeField] GameObject fire;
     private int waitTime = 3;
     private void Start()
@@ -20,7 +21,7 @@ public class BasicShoot : MonoBehaviour
 
     void Shoot()
     {
-        Instantiate(bullet, spawnPt.transform.position, spawnPt.transform.rotation);
+        Instantiate(bullet, spawnPt.transform.position, playerPhys.transform.rotation);
         StartCoroutine(TimeShoot());
     }
 

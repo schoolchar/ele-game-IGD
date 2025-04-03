@@ -122,6 +122,7 @@ MonoBehaviour:
   speed: 5
   enemyTakeDamage: 0
   bullet: {fileID: 6291107187475892311}
+  debugHealth: 1
 --- !u!54 &2597170734889935361
 Rigidbody:
   m_ObjectHideFlags: 0
