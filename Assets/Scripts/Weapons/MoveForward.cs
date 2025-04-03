@@ -17,7 +17,7 @@ public class MoveForward : MonoBehaviour
     private void Start()
     {
        rb = GetComponent<Rigidbody>();
-        player = FindAnyObjectByType<Knifethrow>().gameObject;
+        player = FindAnyObjectByType<PlayerMovement>().gameObject;
         StartCoroutine(BulletLifetime());
         //enemy = GameObject.FindGameObjectWithTag("Enemy");
     }
