@@ -55,6 +55,7 @@ public class SaveData : MonoBehaviour
     }
 
     #region Saving
+    //Save the amount of money the player has
     public void SaveMoney()
     {
         string _path = Application.persistentDataPath + "/Money.txt";
@@ -62,7 +63,8 @@ public class SaveData : MonoBehaviour
         Debug.Log(_path);
     }
 
-    public void SaveHighScore(int _score) //Right now set ti highest level in a run
+    //Save the highest level the player has reached in one run
+    public void SaveHighScore(int _score) 
     {
         string _path = Application.persistentDataPath + "/HighScore.txt";
         File.WriteAllText(_path, _score.ToString());
@@ -70,45 +72,59 @@ public class SaveData : MonoBehaviour
        
     }
 
+    //Store data for affect on max health and max health upgrade lavel
     public void SaveHealthUpgrade()
     {
+        //Affect on max health
         string _path = Application.persistentDataPath + "/AffectOnHealth.txt";
         File.WriteAllText(_path, health.affectOnHealth.ToString());
         Debug.Log(_path);
 
+        //Level
         string _path1 = Application.persistentDataPath + "/HealthLevel.txt";
         File.WriteAllText(_path1, health.level.ToString());
         Debug.Log(_path1);
     }
 
+
+    //Store data for affect on XP and XP upgrade level
     public void SaveXPUpgrade()
     {
+        //Affect on xp
         string _path = Application.persistentDataPath + "/AffectOnXP.txt";
         File.WriteAllText(_path, xp.affectOnXP.ToString());
         Debug.Log(_path);
 
+        //Level
         string _path1 = Application.persistentDataPath + "/XPLevel.txt";
         File.WriteAllText(_path1, xp.level.ToString());
         Debug.Log(_path1);
     }
 
+    //Store data for affect on magnetism and level of magnetism upgrade
     public void SaveMagUpgrade()
     {
+        //Affect on mag
         string _path = Application.persistentDataPath + "/AffectOnMag.txt";
         File.WriteAllText(_path, mag.affectOnMag.ToString());
         Debug.Log(_path);
 
+        //Level
         string _path1 = Application.persistentDataPath + "/MagLevel.txt";
         File.WriteAllText(_path1, mag.level.ToString());
         Debug.Log(_path1);
     }
 
+
+    //Store data for affect on speed and speed upgrade level
     public void SaveSpeedUpgrade()
     {
+        //Affect on speed
         string _path = Application.persistentDataPath + "/AffectOnSpeed.txt";
         File.WriteAllText(_path, speed.affectOnSpeed.ToString());
         Debug.Log(_path);
 
+        //Level
         string _path1 = Application.persistentDataPath + "/SpeedLevel.txt";
         File.WriteAllText(_path1, speed.level.ToString());
         Debug.Log(_path1);
@@ -119,6 +135,7 @@ public class SaveData : MonoBehaviour
     //Call on continue game
     public void LoadPlayerData()
     {
+        //get path to money data, if it exists, show money in store
         string _path = Application.persistentDataPath + "/Money.txt";
         if(File.Exists(_path))
         {
@@ -131,6 +148,7 @@ public class SaveData : MonoBehaviour
 
     public void LoadHighScore()
     {
+        //get path to high score, if exists, then read and apply to UI
         string _path = Application.persistentDataPath + "/HighScore.txt";
         if(File.Exists(_path))
         {
@@ -141,6 +159,7 @@ public class SaveData : MonoBehaviour
         }
         else
         {
+            //If file does not exist yet, set text to show 0
             levelText.text = "Highest Level Achieved: " + 0.ToString();
         }
     }
@@ -320,9 +339,11 @@ public class SaveData : MonoBehaviour
             File.WriteAllText(_pathSpeedLvl, 0.ToString());
         }
 
-
+        //Load in the reset values
         LoadPlayerData();
         LoadUpgradeData();
+
+        //Set text and bool indicating if reset is true
         levelText.text = "Highest Level Achieved: " + 0.ToString();
         reset = true;
     }
