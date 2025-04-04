@@ -45,16 +45,17 @@ public class SaveData : MonoBehaviour
 
     private void Start()
     {
-        /*if(SceneManager.GetActiveScene().buildIndex == 0)
+        if(SceneManager.GetActiveScene().buildIndex == 0)
         {
-            LoadUpgradeData();
+            /*LoadUpgradeData();
             if(reset == false)
             {
                 storeButton.SetActive(true);
                 Debug.Log("Reset false");
-            }
-        }*/
-        LoadHighScore();
+            }*/
+            LoadHighScore();
+        }
+        
     }
 
     #region Saving
