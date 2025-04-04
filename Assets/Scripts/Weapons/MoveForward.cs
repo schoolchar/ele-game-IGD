@@ -5,19 +5,17 @@ using UnityEngine;
 
 public class MoveForward : MonoBehaviour
 {
-    public float speed;
+    public int speed = 5;
     public float enemyTakeDamage =1;
     public GameObject bullet;
 
     private GameObject enemy;
     EnemyHealth enemyHealth;
-    GameObject player;
-    Rigidbody rb;
 
+    public bool debugHealth;
+    
     private void Start()
     {
-       rb = GetComponent<Rigidbody>();
-        player = FindAnyObjectByType<PlayerMovement>().gameObject;
         StartCoroutine(BulletLifetime());
         //enemy = GameObject.FindGameObjectWithTag("Enemy");
     }
@@ -38,8 +36,7 @@ public class MoveForward : MonoBehaviour
 
     private void Move()
     {
-        rb.MovePosition(transform.forward * Time.deltaTime);
-        //transform.Translate(transform.forward * speed * Time.deltaTime);
+        transform.Translate(transform.forward * speed * Time.deltaTime);
     }
 
 
@@ -49,6 +46,11 @@ public class MoveForward : MonoBehaviour
         {
             Debug.Log("Enemy hit");
             enemyHealth = _collision.gameObject.GetComponent<EnemyHealth>();
+            if(debugHealth)
+            {
+                enemyTakeDamage = 100;
+            }
+
             enemyHealth.TakeDamage(enemyTakeDamage);
             //Destroy(_collision.gameObject);
 

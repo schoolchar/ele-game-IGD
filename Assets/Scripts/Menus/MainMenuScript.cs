@@ -13,7 +13,7 @@ public class MainMenu : MonoBehaviour
     {
        
         //Check if player has played at least once, if so enable button for store
-        if(FindAnyObjectByType<PlayerMovement>() != null)
+        if(FindAnyObjectByType<PlayerMovement>() != null || FindAnyObjectByType<SaveData>().reset == false)
         {
             storeButton.SetActive(true);
         }

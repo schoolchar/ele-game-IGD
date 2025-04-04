@@ -5,11 +5,16 @@ using UnityEngine;
 public class UpgradeParent : MonoBehaviour, IUpgrade
 {
     protected PlayerHealth playerHealth;
+    [SerializeField] protected PlayerMovement playerMovement;
+    protected SaveData saveData;
     public UpgradeScriptObj scriptObj;
 
-    void Start()
+    public void Awake()
     {
+        //Set values
         playerHealth = FindAnyObjectByType<PlayerHealth>();
+        saveData = playerHealth.gameObject.GetComponent<SaveData>();
+        playerMovement = playerHealth.gameObject.GetComponent<PlayerMovement>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -30,6 +35,12 @@ public class UpgradeParent : MonoBehaviour, IUpgrade
     public virtual void ActivateUpgrade() 
     {
         ;
+    }
+
+    public virtual void IncreaseLevel()
+    {
+        //Increase level of upgrade
+        scriptObj.level++;
     }
 
 

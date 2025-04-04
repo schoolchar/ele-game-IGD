@@ -8,9 +8,10 @@ public class ChooseWeapons : MonoBehaviour
 {
     private int oldXPNum;
     private int currentXP;
-    private int nextMilestone = 1;
+    private int nextMilestone = 5;
     [SerializeField] private Canvas weaponsCanvas;
     private PlayerMovement player;
+    private PlayerHealth playerHealth;
 
     [SerializeField] private TextMeshProUGUI ringText;
     [SerializeField] private TextMeshProUGUI knifeText;
@@ -19,10 +20,11 @@ public class ChooseWeapons : MonoBehaviour
     private void Start()
     {
         player = FindAnyObjectByType<PlayerMovement>();
+        playerHealth = player.gameObject.GetComponent<PlayerHealth>();
     }
 
     /// <summary>
-    /// Enables weapon choosing menu, right now uses intervals of xp in 5
+    /// Enables weapon choosing menu, right now uses intervals mult 2
     /// </summary>
     public void ActivateMenu(int _currentXP)
     {
@@ -33,6 +35,7 @@ public class ChooseWeapons : MonoBehaviour
             weaponsCanvas.enabled = true;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            playerHealth.level++;
         }
     }
     /// <summary>
@@ -42,21 +45,22 @@ public class ChooseWeapons : MonoBehaviour
     {
         Time.timeScale = 1;
         oldXPNum = currentXP;
-        nextMilestone += 5;
+        nextMilestone *= 2;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         weaponsCanvas.enabled = false;
     }
 
+    //Enable the ring of fire weapon
     public void EnableRingOfFire()
     {
         ringText.text = "Ring of Fire enabled";
 
         player.ringOfFire.SetActive(true);
-        player.ringOfFireScript.enabled = true;
         DeactivateMenu();
     }
 
+    //Enable the knife throw weapon
     public void EnableKnifeThrow()
     {
         knifeText.text = "Knife Throw enabled";
