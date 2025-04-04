@@ -14,9 +14,11 @@ public class SaveData : MonoBehaviour
     [SerializeField] private UpgradeScriptObj mag;
     [SerializeField] private UpgradeScriptObj speed;
     [SerializeField] private UpgradeScriptObj lifeForce;
+    [SerializeField] private UpgradeScriptObj forcefield;
 
     [Header("Only on player")]
     [SerializeField] private PlayerHealth playerHealth;
+    [SerializeField] private ForcefieldOnPlayer forcefieldOnPlayer;
 
     [Header("Only on main menu")]
     [SerializeField] private GameObject storeButton;
@@ -31,11 +33,13 @@ public class SaveData : MonoBehaviour
     //AffectOnSpeed.txt
     //MagSpeed.txt
     //AffectOnLifeForce.txt
+    //ForceFieldActive.txt
     //HealthLevel.txt
     //XPLevel.txt
     //MagLevel.txt
     //SpeedLevel.txt
     //LifeForceLevel.txt
+    //ForcefieldLevel.txt
     //HighScore.txt
     //Money.txt
     //Lion.txt - bool but int not set 
@@ -145,6 +149,18 @@ public class SaveData : MonoBehaviour
         //Level
         string _path1 = Application.persistentDataPath + "/LifeForceLevel.txt";
         File.WriteAllText(_path1, lifeForce.level.ToString());
+        Debug.Log(_path1);
+    }
+
+    public void SaveForcefieldUpgrade()
+    {
+        string _path = Application.persistentDataPath + "/ForcefieldActive.txt";
+        File.WriteAllText(_path, 1.ToString()); //For now, this saves either 1 or nothing, 1 if activated, later make it save the time between activation
+        Debug.Log(_path);
+
+        //Level
+        string _path1 = Application.persistentDataPath + "/ForcefieldLevel.txt";
+        File.WriteAllText(_path1, forcefield.level.ToString());
         Debug.Log(_path1);
     }
     #endregion
@@ -279,7 +295,7 @@ public class SaveData : MonoBehaviour
 
         //Get life force level
         string _pathLifeForceLvl = Application.persistentDataPath + "/LifeForceLevel.txt";
-        if (File.Exists(_pathSpeedLvl))
+        if (File.Exists(_pathLifeForceLvl))
         {
             string _val = File.ReadAllText(_pathLifeForceLvl);
             lifeForce.level = int.Parse(_val);
@@ -289,6 +305,31 @@ public class SaveData : MonoBehaviour
                 playerHealth.lifeForce = true;
             }
             Debug.Log("Life force level loaded:" + lifeForce.level);
+            reset = false;
+        }
+
+        //Set forcefield upgrade active or inactive
+        string _pathForcefield = Application.persistentDataPath + "/ForcefieldActive.txt";
+        if (File.Exists(_pathForcefield))
+        {
+            //Read value
+            string _val = File.ReadAllText (_pathForcefield);
+            int _bool = int.Parse(_val);
+            //Checks if forcefield is on or off
+            if(_bool == 1)
+            {
+                forcefieldOnPlayer.forcefieldActive = true;
+                reset = false;
+            } 
+
+        }
+
+        string _pathForceFieldLvl = Application.persistentDataPath + "/ForcefieldLevel.txt";
+        if (File.Exists(_pathForceFieldLvl))
+        {
+            string _val = File.ReadAllText(_pathForceFieldLvl);
+            forcefield.level = int.Parse(_val);
+            Debug.Log("Forcefield level loaded:" + forcefield.level);
             reset = false;
         }
 
