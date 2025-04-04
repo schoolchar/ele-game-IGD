@@ -395,6 +395,8 @@ MonoBehaviour:
   xpMod: 0
   xpModVal: 0
   playerMovement: {fileID: 1690930992629750781}
+  lifeForce: 0
+  healthPerEnemy: 0
 --- !u!114 &-1059422275450723310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -545,6 +547,7 @@ MonoBehaviour:
   xp: {fileID: 11400000, guid: 1e3e635d04b4270408b4d884fc896d38, type: 2}
   mag: {fileID: 11400000, guid: 60f0ee77f6233de42986773750eb3ea3, type: 2}
   speed: {fileID: 11400000, guid: 163442cb1f935354b83a0eb5a6303248, type: 2}
+  lifeForce: {fileID: 11400000, guid: f22b2be1336e667429d4c0ea60a88d98, type: 2}
   playerHealth: {fileID: 2125592141690816146}
   storeButton: {fileID: 0}
   levelText: {fileID: 0}

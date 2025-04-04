@@ -13,6 +13,7 @@ public class SaveData : MonoBehaviour
     [SerializeField] private UpgradeScriptObj xp;
     [SerializeField] private UpgradeScriptObj mag;
     [SerializeField] private UpgradeScriptObj speed;
+    [SerializeField] private UpgradeScriptObj lifeForce;
 
     [Header("Only on player")]
     [SerializeField] private PlayerHealth playerHealth;
@@ -29,10 +30,12 @@ public class SaveData : MonoBehaviour
     //AffectOnMag.txt
     //AffectOnSpeed.txt
     //MagSpeed.txt
+    //AffectOnLifeForce.txt
     //HealthLevel.txt
     //XPLevel.txt
     //MagLevel.txt
     //SpeedLevel.txt
+    //LifeForceLevel.txt
     //HighScore.txt
     //Money.txt
     //Lion.txt - bool but int not set 
@@ -127,6 +130,20 @@ public class SaveData : MonoBehaviour
         //Level
         string _path1 = Application.persistentDataPath + "/SpeedLevel.txt";
         File.WriteAllText(_path1, speed.level.ToString());
+        Debug.Log(_path1);
+    }
+
+    //Store data for life force upgrade and level
+    public void SaveLifeForceUpgrade()
+    {
+        //Affect on health for life force, amount of health gained by killing an enemy
+        string _path = Application.persistentDataPath + "/AffectOnLifeForce.txt";
+        File.WriteAllText(_path, lifeForce.affectOnHealth.ToString());
+        Debug.Log(_path);
+
+        //Level
+        string _path1 = Application.persistentDataPath + "/LifeForceLevel.txt";
+        File.WriteAllText(_path1, lifeForce.level.ToString());
         Debug.Log(_path1);
     }
     #endregion
@@ -228,7 +245,7 @@ public class SaveData : MonoBehaviour
         }
 
         //Get affect on speed for upgrade
-        string _pathSpeed = Application.persistentDataPath + "/AffectOnSeed.txt";
+        string _pathSpeed = Application.persistentDataPath + "/AffectOnSpeed.txt";
         if (File.Exists(_pathSpeed))
         {
             string _val = File.ReadAllText(_pathSpeed);
@@ -247,6 +264,32 @@ public class SaveData : MonoBehaviour
             reset = false;
         }
 
+        //Get life force affect on health for upgrade
+        string _pathLifeForce = Application.persistentDataPath + "/AffectOnLifeForce.txt";
+        if (File.Exists(_pathLifeForce))
+        {
+            string _val = File.ReadAllText(_pathLifeForce);
+            lifeForce.affectOnHealth = int.Parse(_val);
+            //Set player health health per enemy
+            playerHealth.healthPerEnemy = int.Parse(_val);
+            Debug.Log("Affect on life force loaded" + lifeForce.affectOnHealth);
+            reset = false;
+        }
+
+        //Get life force level
+        string _pathLifeForceLvl = Application.persistentDataPath + "/LifeForceLevel.txt";
+        if (File.Exists(_pathSpeedLvl))
+        {
+            string _val = File.ReadAllText(_pathLifeForceLvl);
+            lifeForce.level = int.Parse(_val);
+            //Set life force to true on player if the level is greater than 0
+            if(lifeForce.level > 0)
+            {
+                playerHealth.lifeForce = true;
+            }
+            Debug.Log("Life force level loaded:" + lifeForce.level);
+            reset = false;
+        }
 
     }
 
@@ -326,7 +369,7 @@ public class SaveData : MonoBehaviour
         }
 
         //Get affect on speed for upgrade
-        string _pathSpeed = Application.persistentDataPath + "/AffectOnSeed.txt";
+        string _pathSpeed = Application.persistentDataPath + "/AffectOnSpeed.txt";
         if(File.Exists(_pathSpeed))
         {
             File.WriteAllText(_pathSpeed, 50.ToString());
@@ -338,6 +381,24 @@ public class SaveData : MonoBehaviour
         {
             File.WriteAllText(_pathSpeedLvl, 0.ToString());
         }
+
+
+        //Get affect on health for life force upgrade
+        string _pathLifeForce = Application.persistentDataPath + "/AffectOnLifeForce.txt";
+        if (File.Exists(_pathSpeed))
+        {
+            File.WriteAllText(_pathLifeForce, 1.ToString());
+        }
+
+        //Get life force level
+        string _pathLifeForceLvl = Application.persistentDataPath + "/LifeForceLevel.txt";
+        if (File.Exists(_pathLifeForceLvl))
+        {
+            File.WriteAllText(_pathLifeForceLvl, 0.ToString());
+        }
+
+        //Set life force in player health to false
+        playerHealth.lifeForce = false;
 
         //Load in the reset values
         LoadPlayerData();

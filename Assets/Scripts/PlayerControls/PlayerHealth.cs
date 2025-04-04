@@ -31,6 +31,10 @@ public class PlayerHealth : MonoBehaviour
     [Header("Ungrades - Trapeze")]
     public PlayerMovement playerMovement;
 
+    [Header("Upgrades - Life force")]
+    public bool lifeForce;
+    public int healthPerEnemy;
+
     private void Start()
     {
         //InitValues();
