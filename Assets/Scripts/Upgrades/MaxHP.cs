@@ -9,11 +9,13 @@ public class MaxHP : UpgradeParent
 
     private void Start()
     {
+        //Set text on screen to level
         leveltxt.text = "Level: " + scriptObj.level.ToString();
     }
 
     public override void ActivateUpgrade()
     {
+        //if level is 0
         if(scriptObj.level == 0)
         {
             //Increase the maximum health the player can have
@@ -21,6 +23,7 @@ public class MaxHP : UpgradeParent
         }
        else
         {
+            //If level is not 0, increase the affect on health and add to player's max health
             scriptObj.affectOnHealth += addition;
             playerHealth.maxHealth += scriptObj.affectOnHealth;
             addition *= 2;
@@ -28,12 +31,15 @@ public class MaxHP : UpgradeParent
         }
 
         IncreaseLevel();
+        //Save level increase
         saveData.SaveHealthUpgrade();
     }
 
     public override void IncreaseLevel()
     {
         base.IncreaseLevel();
+
+        //Change text on screen
         leveltxt.text = "Level: " + scriptObj.level.ToString();
     }
 }
