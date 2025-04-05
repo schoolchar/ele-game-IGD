@@ -28,7 +28,7 @@ public class LargeHammer : MonoBehaviour
     void InitializeObject()
     {
         interval -= Time.deltaTime;
-        if (interval < 0 )
+        if (interval < 0)
         {
             objectInstance = Instantiate(objectPrefab, transform.position + offset, Quaternion.identity);
             objectInstance.transform.Rotate(Vector3.forward, -90f);
@@ -36,15 +36,16 @@ public class LargeHammer : MonoBehaviour
             initialPosition = objectInstance.transform.position;
             rotationTimer = 0f;
             isRotating = true;
+            if (!newVal)
+            {
+                interval = 2.0f;
+            }
+            else
+            {
+                interval = tempNew;
+            }
         }
-        if (!newVal)
-        {
-            interval = 2.0f;
-        }
-        else
-        {
-            interval = tempNew;
-        }
+        
     }
 
     void Update()
@@ -77,5 +78,15 @@ public class LargeHammer : MonoBehaviour
         newVal = true;
         interval = newInterval;
         tempNew = newInterval;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            //damage stuff
+            Debug.Log("Enemy hit");
+            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1);
+        }
     }
 }

@@ -39,7 +39,6 @@ public class SeaLion : MonoBehaviour
         TrackPosition();
         if (thrownBall != null)
         {
-            Debug.Log("calculating distance");
             distance = Vector3.Distance(thrownBall.transform.position, launchPosition); //check the distance
             if (distance > maxDistance)
             {
@@ -64,7 +63,7 @@ public class SeaLion : MonoBehaviour
         if (distCond) //conditionals for missing a throw
         {
             Debug.Log("Distance reached, inflating");
-            Destroy(thrownBall);
+            Destroy(thrownBall.gameObject);
             thrownBall = null;
             staticBall.SetActive(true);
             preThrow = 4.0f;
@@ -75,10 +74,10 @@ public class SeaLion : MonoBehaviour
         if (targetHit) //conditionals for hitting a throw
         {
             Debug.Log("target hit, bouncing back");
-            thrownBall.transform.position = Vector3.MoveTowards(thrownBall.transform.position, player.transform.position, (speed * 3) * Time.deltaTime);
-            if (distance > 1.5f)
+            thrownBall.transform.position = Vector3.MoveTowards(thrownBall.transform.position, currPosition, (speed * 2) * Time.deltaTime);
+            if (distance < 3f)
             {
-                Destroy(thrownBall);
+                Destroy(thrownBall.gameObject);
                 thrownBall = null;
                 staticBall.SetActive(true);
                 preThrow = 1.0f;
@@ -103,4 +102,8 @@ public class SeaLion : MonoBehaviour
         thrownBall.velocity = -transform.forward * speed;
     }
 
+    public void setSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+    }
 }
