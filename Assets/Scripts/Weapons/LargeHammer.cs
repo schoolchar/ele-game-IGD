@@ -1,49 +1,81 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Apple;
 
 public class LargeHammer : MonoBehaviour
 {
-    public float waitTimer;
-    public GameObject hammer;
-    private GameObject hammerC;
-    public Transform player;
-    private Vector3 currPosition;
-    // Start is called before the first frame update
+    public GameObject objectPrefab;
+    public float rotationAngle = 180f;
+    public float rotationDuration = 1f;
+    public Vector3 offset = new Vector3(1, 0, 0);
+
+    private GameObject objectInstance;
+    private float rotationTimer = 0f;
+    
+    private bool isRotating = false;
+    private Vector3 initialPosition;
+
+    //variables for dynamic scaling
+    public float interval = 2.0f;
+    public float tempNew;
+    public bool newVal = false;
+
     void Start()
     {
-        waitTimer = 2.0f;
     }
 
-    // Update is called once per frame
+
+    void InitializeObject()
+    {
+        interval -= Time.deltaTime;
+        if (interval < 0 )
+        {
+            objectInstance = Instantiate(objectPrefab, transform.position + offset, Quaternion.identity);
+            objectInstance.transform.Rotate(Vector3.forward, -90f);
+            objectInstance.transform.SetParent(transform);
+            initialPosition = objectInstance.transform.position;
+            rotationTimer = 0f;
+            isRotating = true;
+        }
+        if (!newVal)
+        {
+            interval = 2.0f;
+        }
+        else
+        {
+            interval = tempNew;
+        }
+    }
+
     void Update()
     {
-        TrackPosition();
-        waitTimer -= Time.deltaTime;
-        
-        if (waitTimer <= 0)
+        if (isRotating)
         {
-            Swing();
+            RotateObject();
         }
-        
+        if (!isRotating)
+        {
+            InitializeObject();
+        }
     }
 
-    void TrackPosition()
+    void RotateObject()
     {
-        currPosition = player.position;
+        rotationTimer += Time.deltaTime;
+        float angle = Mathf.Lerp(0, rotationAngle, rotationTimer / rotationDuration);
+        objectInstance.transform.RotateAround(transform.position, Vector3.up, angle * Time.deltaTime);
+
+        if (rotationTimer >= rotationDuration)
+        {
+            isRotating = false;
+            Destroy(objectInstance);
+        }
     }
 
-    void Swing()
+    public void SetInterval(float newInterval)
     {
-        Vector3 endRotate = new Vector3(45, 0, 0);
-        hammerC = Instantiate(hammer, currPosition, Quaternion.Euler(-45, 0, 0));
-        Debug.Log("hammer created");
-        hammerC.transform.eulerAngles = Vector3.Lerp(transform.rotation.eulerAngles, endRotate, Time.deltaTime);
-        if (hammerC != null)
-        {
-            Destroy(hammerC);
-            waitTimer = 2.0f;
-        }
+        newVal = true;
+        interval = newInterval;
+        tempNew = newInterval;
     }
 }

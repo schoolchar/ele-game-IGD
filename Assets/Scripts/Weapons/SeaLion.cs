@@ -99,7 +99,8 @@ public class SeaLion : MonoBehaviour
         Debug.Log("Throwing");
         launchPosition = currPosition;
         staticBall.SetActive(false); //get rid of the one above head
-        thrownBall = (Rigidbody) Instantiate(ballPrefabT, launchPosition + offset, spawnPt.transform.rotation); //put ball infront of player
-        thrownBall.velocity = transform.forward * speed;
+        thrownBall = Instantiate(ballPrefabT, launchPosition + offset, spawnPt.transform.rotation); //put ball infront of player
+        thrownBall.velocity = -transform.forward * speed;
     }
+
 }
