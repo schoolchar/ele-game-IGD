@@ -7,6 +7,11 @@ TagManager:
   - Enemy
   - HPText
   - XPText
+  - knife
+  - fire
+  - Projectile
+  - Pickup
+  - PlayerMesh
   layers:
   - Default
   - TransparentFX
@@ -16,9 +21,9 @@ TagManager:
   - UI
   - Ground
   - Player
-  - 
-  - 
-  - 
+  - Enemy
+  - Knife
+  - weapon
   - 
   - 
   - 

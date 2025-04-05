@@ -6,10 +6,18 @@ using UnityEngine;
 public class MoveForward : MonoBehaviour
 {
     public int speed = 5;
+    public float enemyTakeDamage =1;
+    public GameObject bullet;
 
+    private GameObject enemy;
+    EnemyHealth enemyHealth;
+
+    public bool debugHealth;
+    
     private void Start()
     {
         StartCoroutine(BulletLifetime());
+        //enemy = GameObject.FindGameObjectWithTag("Enemy");
     }
 
 
@@ -17,17 +25,18 @@ public class MoveForward : MonoBehaviour
     void Update()
     {
         Move();
+        
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        
         HitEnemy(collision);
+        //DestroyBullet();
     }
 
     private void Move()
     {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        transform.Translate(transform.forward * speed * Time.deltaTime);
     }
 
 
@@ -36,13 +45,22 @@ public class MoveForward : MonoBehaviour
         if(_collision.gameObject.tag == "Enemy")
         {
             Debug.Log("Enemy hit");
-            Destroy(_collision.gameObject);
+            enemyHealth = _collision.gameObject.GetComponent<EnemyHealth>();
+            if(debugHealth)
+            {
+                enemyTakeDamage = 100;
+            }
+
+            enemyHealth.TakeDamage(enemyTakeDamage);
+            //Destroy(_collision.gameObject);
+
             DestroyBullet();
         }
     }
 
     void DestroyBullet()
     {
+        Debug.Log("Bullet destroy called");
         Destroy(this.gameObject);
     }
 

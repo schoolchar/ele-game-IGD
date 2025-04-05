@@ -6,10 +6,16 @@ public class Lion : MonoBehaviour, ICharacterActions
 {
     //Lion attack: Slash
     private bool isAttacking;
-    private int damage;
-    private int attackWait;
+    private int damage = 1;
+    private int attackWait = 3;
     [SerializeField] private GameObject paw;
     [SerializeField] private Animator animator;
+
+
+    private void OnEnable()
+    {
+        StartCoroutine(TimeAttack());
+    }
 
 
     private void OnTriggerEnter(Collider collision)
@@ -20,8 +26,9 @@ public class Lion : MonoBehaviour, ICharacterActions
 
     void HitEnemy(Collider _collision)
     {
-        if(_collision.gameObject.tag == "Enemy" && isAttacking)
+        if(_collision.gameObject.tag == "Enemy" && isAttacking) 
         {
+            Debug.Log("enemy hit");
             Attack(_collision.gameObject.GetComponent<EnemyHealth>());
         }
     }
@@ -41,8 +48,10 @@ public class Lion : MonoBehaviour, ICharacterActions
 
     IEnumerator TurnOffAttack()
     {
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(1).Length);
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(0).Length);
         isAttacking= false;
+
+        StartCoroutine(TimeAttack());
     }
 
 }

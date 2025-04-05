@@ -48,12 +48,15 @@ public class PlayerMovement : MonoBehaviour
     //ref for rigidbody
     Rigidbody rb;
 
+
+    //Weapon upgrades
+    public GameObject ringOfFire;
+    public Knifethrow knifeThrow;
+
     // on start up, i may be over-commenting
     private void Start()
     {
-        readyToJump = true;
-        rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
+       InitValues();
     }
 
     //goes every update
@@ -79,6 +82,16 @@ public class PlayerMovement : MonoBehaviour
         moving();
     }
 
+    public void InitValues()
+    {
+        readyToJump = true;
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
+
+        //Do not dstroy player
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     //gets if player is using horizontal or vertical inputs
     private void inputs()
     {
@@ -90,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
         {
             readyToJump = false;
 
-            jump();
+            //jump();
 
             //calls the jumpReset function, delayed by jumpCooldown variable
             Invoke(nameof(jumpReset), jumpCooldown);

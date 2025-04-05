@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: XPModifier
   m_EditorClassIdentifier: 
   affectOnHealth: 0
-  affectOnXP: 15
+  affectOnXP: 2
   affectOnSpeed: 0
+  affectOnMag: 0
+  magSpeed: 0

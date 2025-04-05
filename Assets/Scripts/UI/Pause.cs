@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Pause : MonoBehaviour
 {
     public GameObject PauseMenu;
     public bool isPaused;
-    private PlayerHealth PlayerHealth;
+    private PlayerHealth playerHealth;
+    private PlayerMovement playerMovement;
 
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
         isPaused = false;
+        playerHealth = FindAnyObjectByType<PlayerHealth>();
+        playerHealth.InitValues();
+        playerMovement = playerHealth.gameObject.GetComponent<PlayerMovement>();
+        playerMovement.InitValues();
     }
 
     // Update is called once per frame
@@ -42,4 +49,8 @@ public class Pause : MonoBehaviour
         isPaused = false;
     }
 
+    public void QuitPause()
+    {
+        SceneManager.LoadScene(0);
+    }
 }

@@ -6,22 +6,29 @@ using UnityEngine;
 public class Magnetism : UpgradeParent
 {
     SphereCollider magCollider;
+    private float radiusMult = 0.1f;
     public List<GameObject> pickup;
     public GameObject player;
     bool pulling;
 
+    bool active;
     private void Start()
     {
         magCollider = GetComponent<SphereCollider>();
-        float magRadius = scriptObj.affectOnMag; //variable to ease typing + neatness
-        magCollider.radius = magRadius;
+
+        if(active)
+        {
+            float magRadius = scriptObj.affectOnMag; //variable to ease typing + neatness
+            magCollider.radius = magRadius;
+        }
+        
     }
 
     //this function will take the above info and check if pickup items cross the radius
     //then the objects will start moving to the player
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Pickup")) 
+        if(other.gameObject.CompareTag("Pickup") && active) 
         {
             pickup.Add(other.gameObject);
             pulling = true;
@@ -37,5 +44,28 @@ public class Magnetism : UpgradeParent
                 pickup[i].transform.position = Vector3.MoveTowards(pickup[i].transform.position, player.transform.position, scriptObj.magSpeed * Time.deltaTime);
             }
         }
+    }
+
+    public override void ActivateUpgrade()
+    {
+        if(scriptObj.level == 0)
+        {
+            active = true;
+            magCollider.radius = scriptObj.magSpeed;
+        }
+        else
+        {
+            magCollider.radius *= radiusMult;
+            radiusMult += 0.1f;
+        }
+
+        IncreaseLevel();
+        saveData.SaveMagUpgrade();
+    }
+
+
+    public UpgradeScriptObj GetScriptObj()
+    {
+        return scriptObj;
     }
 }
