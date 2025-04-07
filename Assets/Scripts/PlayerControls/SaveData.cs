@@ -13,6 +13,7 @@ public class SaveData : MonoBehaviour
     [SerializeField] private UpgradeScriptObj xp;
     [SerializeField] private UpgradeScriptObj mag;
     [SerializeField] private UpgradeScriptObj speed;
+    [SerializeField] private UpgradeScriptObj lifeForce;
 
     [Header("Only on player")]
     [SerializeField] private PlayerHealth playerHealth;
@@ -29,10 +30,12 @@ public class SaveData : MonoBehaviour
     //AffectOnMag.txt
     //AffectOnSpeed.txt
     //MagSpeed.txt
+    //AffectOnLifeForce.txt
     //HealthLevel.txt
     //XPLevel.txt
     //MagLevel.txt
     //SpeedLevel.txt
+    //LifeForceLevel.txt
     //HighScore.txt
     //Money.txt
     //Lion.txt - bool but int not set 
@@ -42,19 +45,21 @@ public class SaveData : MonoBehaviour
 
     private void Start()
     {
-        /*if(SceneManager.GetActiveScene().buildIndex == 0)
+        if(SceneManager.GetActiveScene().buildIndex == 0)
         {
-            LoadUpgradeData();
+            /*LoadUpgradeData();
             if(reset == false)
             {
                 storeButton.SetActive(true);
                 Debug.Log("Reset false");
-            }
-        }*/
-        LoadHighScore();
+            }*/
+            LoadHighScore();
+        }
+        
     }
 
     #region Saving
+    //Save the amount of money the player has
     public void SaveMoney()
     {
         string _path = Application.persistentDataPath + "/Money.txt";
@@ -62,7 +67,8 @@ public class SaveData : MonoBehaviour
         Debug.Log(_path);
     }
 
-    public void SaveHighScore(int _score) //Right now set ti highest level in a run
+    //Save the highest level the player has reached in one run
+    public void SaveHighScore(int _score) 
     {
         string _path = Application.persistentDataPath + "/HighScore.txt";
         File.WriteAllText(_path, _score.ToString());
@@ -70,47 +76,75 @@ public class SaveData : MonoBehaviour
        
     }
 
+    //Store data for affect on max health and max health upgrade lavel
     public void SaveHealthUpgrade()
     {
+        //Affect on max health
         string _path = Application.persistentDataPath + "/AffectOnHealth.txt";
         File.WriteAllText(_path, health.affectOnHealth.ToString());
         Debug.Log(_path);
 
+        //Level
         string _path1 = Application.persistentDataPath + "/HealthLevel.txt";
         File.WriteAllText(_path1, health.level.ToString());
         Debug.Log(_path1);
     }
 
+
+    //Store data for affect on XP and XP upgrade level
     public void SaveXPUpgrade()
     {
+        //Affect on xp
         string _path = Application.persistentDataPath + "/AffectOnXP.txt";
         File.WriteAllText(_path, xp.affectOnXP.ToString());
         Debug.Log(_path);
 
+        //Level
         string _path1 = Application.persistentDataPath + "/XPLevel.txt";
         File.WriteAllText(_path1, xp.level.ToString());
         Debug.Log(_path1);
     }
 
+    //Store data for affect on magnetism and level of magnetism upgrade
     public void SaveMagUpgrade()
     {
+        //Affect on mag
         string _path = Application.persistentDataPath + "/AffectOnMag.txt";
         File.WriteAllText(_path, mag.affectOnMag.ToString());
         Debug.Log(_path);
 
+        //Level
         string _path1 = Application.persistentDataPath + "/MagLevel.txt";
         File.WriteAllText(_path1, mag.level.ToString());
         Debug.Log(_path1);
     }
 
+
+    //Store data for affect on speed and speed upgrade level
     public void SaveSpeedUpgrade()
     {
+        //Affect on speed
         string _path = Application.persistentDataPath + "/AffectOnSpeed.txt";
         File.WriteAllText(_path, speed.affectOnSpeed.ToString());
         Debug.Log(_path);
 
+        //Level
         string _path1 = Application.persistentDataPath + "/SpeedLevel.txt";
         File.WriteAllText(_path1, speed.level.ToString());
+        Debug.Log(_path1);
+    }
+
+    //Store data for life force upgrade and level
+    public void SaveLifeForceUpgrade()
+    {
+        //Affect on health for life force, amount of health gained by killing an enemy
+        string _path = Application.persistentDataPath + "/AffectOnLifeForce.txt";
+        File.WriteAllText(_path, lifeForce.affectOnHealth.ToString());
+        Debug.Log(_path);
+
+        //Level
+        string _path1 = Application.persistentDataPath + "/LifeForceLevel.txt";
+        File.WriteAllText(_path1, lifeForce.level.ToString());
         Debug.Log(_path1);
     }
     #endregion
@@ -119,6 +153,7 @@ public class SaveData : MonoBehaviour
     //Call on continue game
     public void LoadPlayerData()
     {
+        //get path to money data, if it exists, show money in store
         string _path = Application.persistentDataPath + "/Money.txt";
         if(File.Exists(_path))
         {
@@ -131,6 +166,7 @@ public class SaveData : MonoBehaviour
 
     public void LoadHighScore()
     {
+        //get path to high score, if exists, then read and apply to UI
         string _path = Application.persistentDataPath + "/HighScore.txt";
         if(File.Exists(_path))
         {
@@ -141,6 +177,7 @@ public class SaveData : MonoBehaviour
         }
         else
         {
+            //If file does not exist yet, set text to show 0
             levelText.text = "Highest Level Achieved: " + 0.ToString();
         }
     }
@@ -209,7 +246,7 @@ public class SaveData : MonoBehaviour
         }
 
         //Get affect on speed for upgrade
-        string _pathSpeed = Application.persistentDataPath + "/AffectOnSeed.txt";
+        string _pathSpeed = Application.persistentDataPath + "/AffectOnSpeed.txt";
         if (File.Exists(_pathSpeed))
         {
             string _val = File.ReadAllText(_pathSpeed);
@@ -228,6 +265,32 @@ public class SaveData : MonoBehaviour
             reset = false;
         }
 
+        //Get life force affect on health for upgrade
+        string _pathLifeForce = Application.persistentDataPath + "/AffectOnLifeForce.txt";
+        if (File.Exists(_pathLifeForce))
+        {
+            string _val = File.ReadAllText(_pathLifeForce);
+            lifeForce.affectOnHealth = int.Parse(_val);
+            //Set player health health per enemy
+            playerHealth.healthPerEnemy = int.Parse(_val);
+            Debug.Log("Affect on life force loaded" + lifeForce.affectOnHealth);
+            reset = false;
+        }
+
+        //Get life force level
+        string _pathLifeForceLvl = Application.persistentDataPath + "/LifeForceLevel.txt";
+        if (File.Exists(_pathSpeedLvl))
+        {
+            string _val = File.ReadAllText(_pathLifeForceLvl);
+            lifeForce.level = int.Parse(_val);
+            //Set life force to true on player if the level is greater than 0
+            if(lifeForce.level > 0)
+            {
+                playerHealth.lifeForce = true;
+            }
+            Debug.Log("Life force level loaded:" + lifeForce.level);
+            reset = false;
+        }
 
     }
 
@@ -307,7 +370,7 @@ public class SaveData : MonoBehaviour
         }
 
         //Get affect on speed for upgrade
-        string _pathSpeed = Application.persistentDataPath + "/AffectOnSeed.txt";
+        string _pathSpeed = Application.persistentDataPath + "/AffectOnSpeed.txt";
         if(File.Exists(_pathSpeed))
         {
             File.WriteAllText(_pathSpeed, 50.ToString());
@@ -321,8 +384,28 @@ public class SaveData : MonoBehaviour
         }
 
 
+        //Get affect on health for life force upgrade
+        string _pathLifeForce = Application.persistentDataPath + "/AffectOnLifeForce.txt";
+        if (File.Exists(_pathSpeed))
+        {
+            File.WriteAllText(_pathLifeForce, 1.ToString());
+        }
+
+        //Get life force level
+        string _pathLifeForceLvl = Application.persistentDataPath + "/LifeForceLevel.txt";
+        if (File.Exists(_pathLifeForceLvl))
+        {
+            File.WriteAllText(_pathLifeForceLvl, 0.ToString());
+        }
+
+        //Set life force in player health to false
+        playerHealth.lifeForce = false;
+
+        //Load in the reset values
         LoadPlayerData();
         LoadUpgradeData();
+
+        //Set text and bool indicating if reset is true
         levelText.text = "Highest Level Achieved: " + 0.ToString();
         reset = true;
     }

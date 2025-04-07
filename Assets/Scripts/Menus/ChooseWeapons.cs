@@ -51,6 +51,7 @@ public class ChooseWeapons : MonoBehaviour
         weaponsCanvas.enabled = false;
     }
 
+    //Enable the ring of fire weapon
     public void EnableRingOfFire()
     {
         ringText.text = "Ring of Fire enabled";
@@ -59,6 +60,7 @@ public class ChooseWeapons : MonoBehaviour
         DeactivateMenu();
     }
 
+    //Enable the knife throw weapon
     public void EnableKnifeThrow()
     {
         knifeText.text = "Knife Throw enabled";

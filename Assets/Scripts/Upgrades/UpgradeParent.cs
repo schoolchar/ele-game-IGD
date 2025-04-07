@@ -11,6 +11,7 @@ public class UpgradeParent : MonoBehaviour, IUpgrade
 
     public void Awake()
     {
+        //Set values
         playerHealth = FindAnyObjectByType<PlayerHealth>();
         saveData = playerHealth.gameObject.GetComponent<SaveData>();
         playerMovement = playerHealth.gameObject.GetComponent<PlayerMovement>();
@@ -38,6 +39,7 @@ public class UpgradeParent : MonoBehaviour, IUpgrade
 
     public virtual void IncreaseLevel()
     {
+        //Increase level of upgrade
         scriptObj.level++;
     }
 

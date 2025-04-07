@@ -41,7 +41,20 @@ public class EnemyHealth : MonoBehaviour
         }
         if (health <= 0)
         {
-            FindAnyObjectByType<PlayerHealth>().AddXP(xpOnDeath);
+            PlayerHealth _playerHealth = FindAnyObjectByType<PlayerHealth>();
+            _playerHealth.AddXP(xpOnDeath);
+
+            //Check if player has the life force upgrade
+            if(_playerHealth.lifeForce)
+            {
+                //Add health when enemy dies
+                _playerHealth.health += _playerHealth.healthPerEnemy;
+                //Check if this puts the player over their max health
+                if(_playerHealth.health > maxHealth)
+                {
+                    _playerHealth.health = _playerHealth.maxHealth;
+                }
+            }
             moneyDrop.DropCoins();
            // Destroy(this.gameObject);
         }
