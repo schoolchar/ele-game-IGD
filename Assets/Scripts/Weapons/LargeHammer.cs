@@ -8,6 +8,7 @@ public class LargeHammer : MonoBehaviour
     public float rotationAngle = 180f;
     public float rotationDuration = 1f;
     public Vector3 offset = new Vector3(1, 0, 0);
+    public Transform spawnPt; //for sake of aiming rotaion
 
     private GameObject objectInstance;
     private float rotationTimer = 0f;
@@ -16,7 +17,7 @@ public class LargeHammer : MonoBehaviour
     private Vector3 initialPosition;
 
     //variables for dynamic scaling
-    public float interval = 2.0f;
+    public float interval = 3.0f;
     public float tempNew;
     public bool newVal = false;
 
@@ -31,14 +32,14 @@ public class LargeHammer : MonoBehaviour
         if (interval < 0)
         {
             objectInstance = Instantiate(objectPrefab, transform.position + offset, Quaternion.identity);
+            objectInstance.transform.SetParent(spawnPt);
             objectInstance.transform.Rotate(Vector3.forward, -90f);
-            objectInstance.transform.SetParent(transform);
             initialPosition = objectInstance.transform.position;
             rotationTimer = 0f;
             isRotating = true;
             if (!newVal)
             {
-                interval = 2.0f;
+                interval = 3.0f;
             }
             else
             {

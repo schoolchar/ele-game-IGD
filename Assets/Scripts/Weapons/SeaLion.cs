@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SeaLion : MonoBehaviour
 {
-    private float preThrow = 5.0f;
+    private float preThrow = 3.5f;
     public GameObject ballPrefabS;
     public Rigidbody ballPrefabT;
     public GameObject player;
@@ -26,7 +26,7 @@ public class SeaLion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        offset = new Vector3(0f, 0f, 1.0f);
+        offset = new Vector3(0f, 0f, 1.5f);
         offsetS = new Vector3(0f, 2.0f, 1.0f);
         staticBall = Instantiate(ballPrefabS, currPosition + offsetS, player.transform.rotation);
         staticBall.SetActive(true);
@@ -66,7 +66,7 @@ public class SeaLion : MonoBehaviour
             Destroy(thrownBall.gameObject);
             thrownBall = null;
             staticBall.SetActive(true);
-            preThrow = 4.0f;
+            preThrow = 2.5f;
             freezeTimer = false;
             distCond = false;
         }
@@ -99,7 +99,7 @@ public class SeaLion : MonoBehaviour
         launchPosition = currPosition;
         staticBall.SetActive(false); //get rid of the one above head
         thrownBall = Instantiate(ballPrefabT, launchPosition + offset, spawnPt.transform.rotation); //put ball infront of player
-        thrownBall.velocity = transform.forward * speed;
+        thrownBall.velocity = spawnPt.transform.forward * speed;
     }
 
     public void setSpeed(float newSpeed)
