@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 9b9d2005482671449ad290bfeb47d9e6
+guid: 7980a8cc7f362ad4d81a0f612c9889dc
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
   externalObjects: {}
   materials:
     materialImportMode: 2
-    materialName: 0
-    materialSearch: 1
+    materialName: 1
+    materialSearch: 0
     materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: LionIdle
+      name: ClownRun
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 30
+      lastFrame: 27
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

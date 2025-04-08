@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 9b9d2005482671449ad290bfeb47d9e6
+guid: 4b7e63f16c5125f449abaf6e38c05606
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
   externalObjects: {}
   materials:
     materialImportMode: 2
-    materialName: 0
-    materialSearch: 1
+    materialName: 2
+    materialSearch: 0
     materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: LionIdle
+      name: mixamo.com
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 30
+      lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
