@@ -8,7 +8,7 @@ public class EnemyHealth : MonoBehaviour
     public float health;
     public float maxHealth;
 
-    public Slider slider;
+    //public Slider slider;
 
     public int xpOnDeath;
     public float enemyTakeDamage = 2f;
@@ -22,7 +22,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void UpdateHealthBar(float currentValue, float maxValue)
     {
-        slider.value = currentValue / maxValue;
+        //slider.value = currentValue / maxValue;
     }
 
 
