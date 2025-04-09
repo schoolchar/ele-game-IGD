@@ -7,8 +7,8 @@ public class EnemyClown : MonoBehaviour
     [Header("Movement")]
     public Transform player;
     public float moveSpeed;
-    //public Animator animator;
-    private bool isStopped;
+    public Animator animator;
+    //private bool isStopped;
 
     [Header("Stopping Distance")]
     private float stoppingDistance;
@@ -20,13 +20,13 @@ public class EnemyClown : MonoBehaviour
 
     void Start()
     {
-        //animator.SetBool("IsMoving", true);
-        isStopped = false;
+        animator.SetBool("IsMoving", true);
+        //isStopped = false;
         StartCoroutine(TimeShoot());
-        stoppingDistance = 5f;
+        stoppingDistance = 10f;
         moveSpeed = 5f;
         player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
-        //animator = GetComponentInChildren<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -37,27 +37,27 @@ public class EnemyClown : MonoBehaviour
         //If enemy is within stopping distance, the enemy stops moving, else the enemy actilvily follows player.
         if (distance > stoppingDistance)
         {
-            //animator.SetBool("IsMoving", true);
-            isStopped = false;
             transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
             transform.LookAt(player.transform.position);
+            animator.SetBool("IsMoving", true);
+            //isStopped = false;
             moveSpeed = 5f;
         }
         else
         {
             moveSpeed = 0f;
-            isStopped = true;
-            //animator.SetBool("IsMoving", false);
+            //isStopped = true;
+            animator.SetBool("IsMoving", false);
         }
     }
 
     void Shoot()
     {
-        if (isStopped == true)
-        {
+        //if (isStopped == true)
+        //{
             Instantiate(bullet, spawnPt.transform.position, spawnPt.transform.rotation);
             StartCoroutine(TimeShoot());
-        }
+        //}
     }
 
     IEnumerator TimeShoot()
