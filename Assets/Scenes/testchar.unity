@@ -449,20 +449,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9143969666248933852, guid: 259417f3102801a4caa232a1157bcd46, type: 3}
   m_PrefabInstance: {fileID: 2140491183}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1939947466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1939947461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84ec67c2885e5a24c9b637d6106cb457, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  balls: {fileID: 8540683608769617040, guid: cdb8559f7f954df42b33a4fcd3907b02, type: 3}
-  positionOffset: {x: 0, y: 0, z: 2}
 --- !u!1001 &2140491183
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -527,10 +513,30 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9143969666248933852, guid: 259417f3102801a4caa232a1157bcd46, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 7645994862096061722, guid: 259417f3102801a4caa232a1157bcd46, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1939947466}
+      addedObject: {fileID: 2140491185}
   m_SourcePrefab: {fileID: 100100000, guid: 259417f3102801a4caa232a1157bcd46, type: 3}
+--- !u!1 &2140491184 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7645994862096061722, guid: 259417f3102801a4caa232a1157bcd46, type: 3}
+  m_PrefabInstance: {fileID: 2140491183}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2140491185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2140491184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ec67c2885e5a24c9b637d6106cb457, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  balls: {fileID: 8540683608769617040, guid: cdb8559f7f954df42b33a4fcd3907b02, type: 3}
+  positionOffset: {x: 0, y: 0, z: 2}
+  playerobj: {fileID: 1939947461}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

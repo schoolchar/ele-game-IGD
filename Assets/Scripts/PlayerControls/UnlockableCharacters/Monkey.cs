@@ -11,6 +11,7 @@ public class Monkey : MonoBehaviour
     // put infront of player
     public Vector3 positionOffset = new Vector3(0, 0, 2);
 
+    public GameObject playerobj;
     void Start()
     {
         // Calculate position
@@ -20,7 +21,7 @@ public class Monkey : MonoBehaviour
         GameObject instantiatedObject = Instantiate(balls, spawnPosition, Quaternion.identity);
 
         //makes child of player for moving
-        instantiatedObject.transform.SetParent(transform);
+        instantiatedObject.transform.SetParent(playerobj.transform);
     }
 
 }
