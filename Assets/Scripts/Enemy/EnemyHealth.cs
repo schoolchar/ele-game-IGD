@@ -28,8 +28,8 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(float _damage = 0)
     {
-        if(slider != null) 
-        UpdateHealthBar(health, maxHealth);
+        //if(slider != null) 
+       // UpdateHealthBar(health, maxHealth);
 
         if (_damage == 0)
         {
