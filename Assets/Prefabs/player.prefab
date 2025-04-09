@@ -410,8 +410,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 2066476162147660454, guid: 1b68fc4f3c3327f47b3e5a27a95cf7c1, type: 3}
-  - {fileID: 8215437133942422569, guid: a3091732e7c08b3498e7f445aa525e18, type: 3}
+  - {fileID: 2493815929604912168, guid: f396cb16f0644fa4c9658fceb853d7da, type: 3}
+  - {fileID: 1613636113566964064, guid: 6438e736e7e27c840bc5ba86de759a9d, type: 3}
   - {fileID: 6951876110663002591, guid: 113258b49195e7e4b962ab21d0e95bbf, type: 3}
   - {fileID: 1774706551322449466, guid: 57f0edd1d60c0774e99e8a560ed8e20e, type: 3}
   player: {fileID: 1394019053864438680}
