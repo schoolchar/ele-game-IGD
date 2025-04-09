@@ -195,6 +195,7 @@ Transform:
   - {fileID: 8298063471953436020}
   - {fileID: 1483500789775266299}
   - {fileID: 9047861976780311747}
+  - {fileID: 911962631144964268}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &6958148102252536532
@@ -239,7 +240,7 @@ MonoBehaviour:
   moveSpeed: 100
   groundDrag: 5
   orientation: {fileID: 8430957841030942930}
-  playerPhy: {fileID: 0}
+  playerPhy: {fileID: 331960211524314063}
   playerHeight: 1.75
   playerJumpForce: 10
   jumpCooldown: 0.25
@@ -292,8 +293,8 @@ MonoBehaviour:
   enemies:
   - {fileID: 2493815929604912168, guid: f396cb16f0644fa4c9658fceb853d7da, type: 3}
   - {fileID: 1613636113566964064, guid: 6438e736e7e27c840bc5ba86de759a9d, type: 3}
-  - {fileID: 6951876110663002591, guid: 113258b49195e7e4b962ab21d0e95bbf, type: 3}
-  - {fileID: 1774706551322449466, guid: 57f0edd1d60c0774e99e8a560ed8e20e, type: 3}
+  - {fileID: 531785152754730259, guid: 7510e33325b06ec4b9bfa0910c5c3d86, type: 3}
+  - {fileID: 6674855391675836649, guid: e427b4e25c84fc249b43219c037d1ce4, type: 3}
   player: {fileID: 1394019053864438680}
   spawnDistanceMin: 8
   spawnDistanceMax: 12
@@ -775,6 +776,38 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &3416813701237912503
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 911962631144964268}
+  m_Layer: 0
+  m_Name: Lion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &911962631144964268
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3416813701237912503}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2659860800649030101}
+  m_Father: {fileID: 331960211524314063}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4009431451348019332
 GameObject:
   m_ObjectHideFlags: 0
@@ -794,7 +827,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8298063471953436020
 Transform:
   m_ObjectHideFlags: 0
@@ -1293,6 +1326,109 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paw: {fileID: 8400739299538370443}
   animator: {fileID: 5525472425735261564}
+--- !u!1001 &2549882034140384830
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 911962631144964268}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 9b9d2005482671449ad290bfeb47d9e6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9b9d2005482671449ad290bfeb47d9e6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9b9d2005482671449ad290bfeb47d9e6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9b9d2005482671449ad290bfeb47d9e6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9b9d2005482671449ad290bfeb47d9e6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9b9d2005482671449ad290bfeb47d9e6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9b9d2005482671449ad290bfeb47d9e6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9b9d2005482671449ad290bfeb47d9e6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9b9d2005482671449ad290bfeb47d9e6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9b9d2005482671449ad290bfeb47d9e6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9b9d2005482671449ad290bfeb47d9e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9b9d2005482671449ad290bfeb47d9e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9b9d2005482671449ad290bfeb47d9e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9b9d2005482671449ad290bfeb47d9e6, type: 3}
+      propertyPath: m_Name
+      value: Standing Idle To Fight Idle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9b9d2005482671449ad290bfeb47d9e6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7660308324411063219}
+  m_SourcePrefab: {fileID: 100100000, guid: 9b9d2005482671449ad290bfeb47d9e6, type: 3}
+--- !u!4 &2659860800649030101 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9b9d2005482671449ad290bfeb47d9e6, type: 3}
+  m_PrefabInstance: {fileID: 2549882034140384830}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3432422288146543471 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9b9d2005482671449ad290bfeb47d9e6, type: 3}
+  m_PrefabInstance: {fileID: 2549882034140384830}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7660308324411063219
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3432422288146543471}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2e71ad0ac7c44394aabc441e9ef6ce86, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &3140908079709601024
 PrefabInstance:
   m_ObjectHideFlags: 0

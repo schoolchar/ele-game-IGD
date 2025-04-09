@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 7980a8cc7f362ad4d81a0f612c9889dc
+guid: 9ef1da95ff6bd0b4b96b17c0d1a77efb
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
   externalObjects: {}
   materials:
     materialImportMode: 2
-    materialName: 1
+    materialName: 2
     materialSearch: 0
     materialLocation: 0
   animations:
@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: ClownRun
+      name: Rat
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 27
+      lastFrame: 24
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

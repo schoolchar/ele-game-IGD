@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 1877311898859419148}
   - component: {fileID: 1746856664001536688}
   m_Layer: 8
-  m_Name: Clown1
+  m_Name: Clown
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
