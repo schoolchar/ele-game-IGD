@@ -13,7 +13,7 @@ public class EnemyHealth : MonoBehaviour
     public static int minDmg = -1;
     public static int maxDmg = 1;
 
-    public Slider slider;
+    //public Slider slider;
 
     public int xpOnDeath;
     public float enemyTakeDamage = 2f;
@@ -31,16 +31,20 @@ public class EnemyHealth : MonoBehaviour
 
     public void UpdateHealthBar(float currentValue, float maxValue)
     {
-        slider.value = currentValue / maxValue;
+        //slider.value = currentValue / maxValue;
     }
 
 
     public void TakeDamage(float _damage = 0)
     {
+        
         int additive = Random.Range(minDmg, maxDmg);
         if(slider != null) 
-        UpdateHealthBar(health, maxHealth);
+            UpdateHealthBar(health, maxHealth);
 
+        //if(slider != null) 
+        //UpdateHealthBar(health, maxHealth);
+        
 
         if (_damage == 0)
         {
