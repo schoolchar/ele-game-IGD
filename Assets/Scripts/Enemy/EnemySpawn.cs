@@ -11,14 +11,16 @@ public class EnemySpawn : MonoBehaviour
     public float spawnDistanceMin = 10f;
     public float spawnDistanceMax = 14f;
     public float spawnWait;
-    public float spawnMostWait = 5f;
-    public float spawnLeastWait = 2f;
+    public float spawnMostWait = 8f;
+    public float spawnLeastWait = 4f;
     public int startWait;
     public bool stop;
-    public float timeToIncrease = 25f;
+    public float timeToIncrease = 4f;
     public float increaseAmount = 0.5f;
 
     private float timer;
+    float timeUntilSpawnRateIncrease = 3f;
+    float spawnRateCountdown;
 
     private int randomEnemy;
 
@@ -33,11 +35,11 @@ public class EnemySpawn : MonoBehaviour
     void Update()
     {
         spawnWait = Random.Range(spawnLeastWait, spawnMostWait);
+        spawnRateCountdown -= Time.deltaTime;
     }
 
     IEnumerator waitSpawner()
     {
-
         Vector3 playerPosition = player.transform.position;
         yield return new WaitForSeconds(startWait);
 
@@ -54,7 +56,7 @@ public class EnemySpawn : MonoBehaviour
                 timer = 0f;
             }
 
-            randomEnemy = Random.Range(0, 4);
+            randomEnemy = Random.Range(0, 1);
             float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
             float distance = Random.Range(spawnDistanceMin, spawnDistanceMax);
             Vector3 spawnPosition = playerPosition + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * distance;

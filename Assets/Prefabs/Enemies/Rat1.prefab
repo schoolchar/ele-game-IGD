@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6204466360471245778}
   - component: {fileID: 4672162044383100958}
   - component: {fileID: 4287782539737538718}
-  - component: {fileID: 2823211311911481997}
+  - component: {fileID: 8611466404629444695}
   m_Layer: 8
   m_Name: Rat1
   m_TagString: Enemy
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 8912945283817817966}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.4288222, z: 0}
+  m_LocalPosition: {x: 0, y: 0.432, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -56,7 +56,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 0.76, z: 0.91}
-  m_Center: {x: 0, y: -0.06, z: 0.28}
+  m_Center: {x: 0, y: 0.06, z: 0.28}
 --- !u!54 &4672162044383100958
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
   maxHealth: 2
   xpOnDeath: 1
   enemyTakeDamage: 2
---- !u!114 &2823211311911481997
+--- !u!114 &8611466404629444695
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
