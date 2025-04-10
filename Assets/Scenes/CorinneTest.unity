@@ -360,11 +360,11 @@ PrefabInstance:
     - target: {fileID: -1059422275450723310, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
       propertyPath: spawns.Array.data[6]
       value: 
-      objectReference: {fileID: 6674855391675836649, guid: e427b4e25c84fc249b43219c037d1ce4, type: 3}
+      objectReference: {fileID: 8912945283817817966, guid: caecd5ed2de02074fa793fe79c0892a3, type: 3}
     - target: {fileID: -1059422275450723310, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
       propertyPath: spawns.Array.data[7]
       value: 
-      objectReference: {fileID: 531785152754730259, guid: 7510e33325b06ec4b9bfa0910c5c3d86, type: 3}
+      objectReference: {fileID: 8912945283817817966, guid: caecd5ed2de02074fa793fe79c0892a3, type: 3}
     - target: {fileID: -1059422275450723310, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
       propertyPath: enemies.Array.data[0]
       value: 
@@ -472,11 +472,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 284466562224143419, guid: c15360e40207334438b79c8f3047d1a8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.8741672
       objectReference: {fileID: 0}
     - target: {fileID: 284466562224143419, guid: c15360e40207334438b79c8f3047d1a8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.48562506
       objectReference: {fileID: 0}
     - target: {fileID: 1689084303225879165, guid: c15360e40207334438b79c8f3047d1a8, type: 3}
       propertyPath: rb
