@@ -1,3 +1,5 @@
+using System;
+using Random = UnityEngine.Random;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,19 +8,26 @@ using UnityEngine.UI;
 public class EnemyHealth : MonoBehaviour
 {
     public float health;
-    public float maxHealth;
+    public static float maxHealth;
+
+    public static int minDmg = -1;
+    public static int maxDmg = 1;
 
     //public Slider slider;
 
     public int xpOnDeath;
     public float enemyTakeDamage = 2f;
+    
 
     private MoneyDrop moneyDrop;
     private void Start()
     {
         health = maxHealth;
         moneyDrop = GetComponent<MoneyDrop>();
+        
     }
+
+
 
     public void UpdateHealthBar(float currentValue, float maxValue)
     {
@@ -28,8 +37,14 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(float _damage = 0)
     {
+        
+        int additive = Random.Range(minDmg, maxDmg);
+        if(slider != null) 
+            UpdateHealthBar(health, maxHealth);
+
         //if(slider != null) 
-       // UpdateHealthBar(health, maxHealth);
+        //UpdateHealthBar(health, maxHealth);
+        
 
         if (_damage == 0)
         {
@@ -37,7 +52,7 @@ public class EnemyHealth : MonoBehaviour
         }
         else
         {
-            health -= _damage;
+            health -= _damage + additive;
         }
         if (health <= 0)
         {
@@ -59,6 +74,8 @@ public class EnemyHealth : MonoBehaviour
            // Destroy(this.gameObject);
         }
     }
+
+   
 
     private void OnCollisionEnter(Collision _other)
     {

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SeaLion : MonoBehaviour
 {
-    private float preThrow = 3.5f;
+    private float preThrow = 2.0f;
     public GameObject ballPrefabS;
     public Rigidbody ballPrefabT;
     public GameObject player;
