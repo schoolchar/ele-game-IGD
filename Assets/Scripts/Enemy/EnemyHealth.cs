@@ -1,3 +1,5 @@
+using System;
+using Random = UnityEngine.Random;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +14,8 @@ public class EnemyHealth : MonoBehaviour
 
     public int xpOnDeath;
     public float enemyTakeDamage = 2f;
+    public int minDmg = -1;
+    public int maxDmg = 1;
 
     private MoneyDrop moneyDrop;
     private void Start()
@@ -28,8 +32,10 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(float _damage = 0)
     {
+        int additive = Random.Range(minDmg, maxDmg);
         if(slider != null) 
         UpdateHealthBar(health, maxHealth);
+
 
         if (_damage == 0)
         {
@@ -37,7 +43,7 @@ public class EnemyHealth : MonoBehaviour
         }
         else
         {
-            health -= _damage;
+            health -= _damage + additive;
         }
         if (health <= 0)
         {
@@ -57,6 +63,34 @@ public class EnemyHealth : MonoBehaviour
             }
             moneyDrop.DropCoins();
            // Destroy(this.gameObject);
+        }
+    }
+
+    private void Update()
+    {
+        DamageScaling();
+        HealthScaling();
+    }
+    private void DamageScaling()
+    {
+        float timer = 0f;
+        timer += Time.deltaTime;
+        Debug.Log("Player damage scaled");
+        if ((int)timer % 30 == 0)
+        {
+            maxDmg += 2;
+            minDmg += 2;
+        }
+    }
+
+    private void HealthScaling()
+    {
+        float timer = 0f;
+        timer += Time.deltaTime;
+        Debug.Log("Enemy health scaled");
+        if ((int)timer % 30 == 0)
+        {
+            maxHealth += 3;
         }
     }
 

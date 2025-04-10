@@ -10,7 +10,7 @@ public class OnBall : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             SeaLion.targetHit = true;
-            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1);
+            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(2);
         }
     }
 }
