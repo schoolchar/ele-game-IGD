@@ -8,23 +8,26 @@ using UnityEngine.UI;
 public class EnemyHealth : MonoBehaviour
 {
     public float health;
-    public float maxHealth;
+    public static float maxHealth;
+
+    public static int minDmg = -1;
+    public static int maxDmg = 1;
 
     public Slider slider;
 
     public int xpOnDeath;
     public float enemyTakeDamage = 2f;
-    public int minDmg = -1;
-    public int maxDmg = 1;
+    
 
     private MoneyDrop moneyDrop;
     private void Start()
     {
         health = maxHealth;
         moneyDrop = GetComponent<MoneyDrop>();
-        DamageScaling();
-        HealthScaling();
+        
     }
+
+
 
     public void UpdateHealthBar(float currentValue, float maxValue)
     {
@@ -68,28 +71,7 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    private void DamageScaling()
-    {
-        float timer = 0f;
-        timer += Time.deltaTime;
-        Debug.Log("Player damage scaled");
-        if ((int)timer % 30 == 0)
-        {
-            maxDmg += 2;
-            minDmg += 2;
-        }
-    }
-
-    private void HealthScaling()
-    {
-        float timer = 0f;
-        timer += Time.deltaTime;
-        Debug.Log("Enemy health scaled");
-        if ((int)timer % 30 == 0)
-        {
-            maxHealth += 3;
-        }
-    }
+   
 
     private void OnCollisionEnter(Collision _other)
     {
