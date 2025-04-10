@@ -22,6 +22,8 @@ public class EnemyHealth : MonoBehaviour
     {
         health = maxHealth;
         moneyDrop = GetComponent<MoneyDrop>();
+        DamageScaling();
+        HealthScaling();
     }
 
     public void UpdateHealthBar(float currentValue, float maxValue)
@@ -66,11 +68,6 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        DamageScaling();
-        HealthScaling();
-    }
     private void DamageScaling()
     {
         float timer = 0f;
