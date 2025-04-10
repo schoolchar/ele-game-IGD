@@ -9,36 +9,29 @@ public class GlobalScaling : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DamageScaling();
-        HealthScaling();
+        InvokeRepeating("DamageScaling", 30f, 30f);
+        InvokeRepeating("HealthScaling", 30f, 30f);
     }
 
     // Update is called once per frame
     private void Update()
     {
         timer += Time.deltaTime;
-        Debug.Log((int)timer);
+        if (timer - (int)timer == 0)
+            Debug.Log((int)timer);
     }
 
     private void DamageScaling()
     {
-
-
-        if ((int)timer % 30 == 0)
-        {
-            Debug.Log("Player damage scaled");
-            EnemyHealth.maxDmg += 2;
-            EnemyHealth.minDmg += 2;
-        }
+        Debug.Log("Player damage scaled");
+        EnemyHealth.maxDmg += 2;
+        EnemyHealth.minDmg += 2;
     }
 
     private void HealthScaling()
     {
+        Debug.Log("Enemy health scaled");
+        EnemyHealth.maxHealth += 3;
 
-        if ((int)timer % 30 == 0)
-        {
-            Debug.Log("Enemy health scaled");
-            EnemyHealth.maxHealth += 3;
-        }
     }
 }
