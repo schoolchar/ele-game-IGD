@@ -29,6 +29,9 @@ public class EnemySpawn : MonoBehaviour
     private float timer;
     private float addBearTimer;
     private float addClownTimer;
+    private float randomRangeSpawnTimer;
+
+    private int randomRangeSpawn;
 
     private int randomEnemy;
 
@@ -47,6 +50,7 @@ public class EnemySpawn : MonoBehaviour
         timer += Time.deltaTime;
         addBearTimer += Time.deltaTime;
         addClownTimer += Time.deltaTime;
+        randomRangeSpawnTimer += Time.deltaTime;
     }
 
     private void FixedUpdate()
@@ -71,6 +75,12 @@ public class EnemySpawn : MonoBehaviour
             spawns.Add(clown);
             addClownTimer = 0f;
         }
+
+        if (randomRangeSpawnTimer >= 60f)
+        {
+            randomRangeSpawn++;
+            randomRangeSpawnTimer = 0f;
+        }
     }
 
     IEnumerator waitSpawner()
@@ -80,7 +90,7 @@ public class EnemySpawn : MonoBehaviour
 
         while (!stop)
         {
-            randomEnemy = Random.Range(0, 30);
+            randomEnemy = Random.Range(0, randomRangeSpawn);
             float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
             float distance = Random.Range(spawnDistanceMin, spawnDistanceMax);
             Vector3 spawnPosition = playerPosition + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * distance;
