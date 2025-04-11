@@ -1,0 +1,5 @@
+For this lab, we used text files to write to and read from for saving data.  The data that is saved is how much money the player has, the highest level the player has reached, and which upgrades the player has unlocked/the level they are unlocked to (magnetism, life force, max hp increase, xp gain modifier, and speed increase). 
+The player can see this saved in the UI, with highest level on the main menu and the money and upgrade levels in the store scene.  
+The user can also see this on the development side in debug statements
+The clear data option on the main menu resets everything that has been saved to 0
+All saving is done in SaveData.cs
