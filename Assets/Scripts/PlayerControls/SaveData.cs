@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class SaveData : MonoBehaviour
 {
@@ -59,6 +60,9 @@ public class SaveData : MonoBehaviour
             }*/
             LoadHighScore();
         }
+
+        if(SceneManager.GetActiveScene().buildIndex == 1)
+            PlayerHealth.onPlayerDeath += CALLBACK_CheckForSaveHighScore;
         
     }
 
@@ -461,5 +465,32 @@ public class SaveData : MonoBehaviour
         levelText.text = "Highest Level Achieved: " + 0.ToString();
         reset = true;
     }
+    #endregion
+
+    #region Events and Callbacks
+    /// <summary>
+    /// Callback for onPlayerDeath in player health, checks if the player has a new highest level, saves
+    /// </summary>
+    public void CALLBACK_CheckForSaveHighScore()
+    {
+        Debug.Log("This is  = " + this.gameObject.name);
+        //Check if this is the highest level the player has reached
+        string _path = Application.persistentDataPath + "/HighScore.txt";
+        if (File.Exists(_path))
+        {
+            //get path, if it is the highest, override data in file
+            int _highScore = int.Parse(File.ReadAllText(_path));
+            if (playerHealth.level > _highScore)
+            {
+                SaveHighScore(playerHealth.level);
+            }
+        }
+        else
+        {
+            SaveHighScore(playerHealth.level);
+        }
+    } //END CALLBACK_CheckForSaveHighScore()
+
+
     #endregion
 }

@@ -8,6 +8,10 @@ using System.IO;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public delegate void OnPlayerDeath();
+    public static event OnPlayerDeath onPlayerDeath;
+
+
     //Controls player XP, health, and upgrades that affect xp and health
     public int maxHealth;
     public int health;
@@ -97,12 +101,10 @@ public class PlayerHealth : MonoBehaviour
         {
             //Disable weapons
             Debug.Log("Player dies");
-            playerMovement.ringOfFire.SetActive(false);
-            playerMovement.knifeThrow.hasKnife = false;
-            playerMovement.knifeThrow.enabled = false;
 
+            onPlayerDeath?.Invoke();
             //Check if this is the highest level the player has reached
-            string _path = Application.persistentDataPath + "/HighScore.txt";
+            /*string _path = Application.persistentDataPath + "/HighScore.txt";
             if(File.Exists(_path))
             {
                 //get path, if it is the highest, override data in file
@@ -115,7 +117,7 @@ public class PlayerHealth : MonoBehaviour
             else
             {
                 saveData.SaveHighScore(level);
-            }
+            }*/
 
 
             //Reset level and load menu
