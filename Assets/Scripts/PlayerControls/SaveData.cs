@@ -399,7 +399,11 @@ public class SaveData : MonoBehaviour
         }
 
         //Set life force in player health to false
-        playerHealth.lifeForce = false;
+        if(playerHealth != null)
+        {
+            playerHealth.lifeForce = false;
+        }
+        
 
         //Load in the reset values
         LoadPlayerData();
