@@ -158,8 +158,11 @@ public class SaveData : MonoBehaviour
         if(File.Exists(_path))
         {
             string _val = File.ReadAllText(_path);
-            playerHealth.money = int.Parse(_val);
-            Debug.Log("Money loaded: " + playerHealth.money);
+            if (playerHealth != null)
+            {
+                playerHealth.money = int.Parse(_val);
+                Debug.Log("Money loaded: " + playerHealth.money);
+            }
         }
 
     }
@@ -272,8 +275,12 @@ public class SaveData : MonoBehaviour
             string _val = File.ReadAllText(_pathLifeForce);
             lifeForce.affectOnHealth = int.Parse(_val);
             //Set player health health per enemy
-            playerHealth.healthPerEnemy = int.Parse(_val);
-            Debug.Log("Affect on life force loaded" + lifeForce.affectOnHealth);
+            if(playerHealth != null)
+            {
+                playerHealth.healthPerEnemy = int.Parse(_val);
+                Debug.Log("Affect on life force loaded" + lifeForce.affectOnHealth);
+            }
+            
             reset = false;
         }
 
