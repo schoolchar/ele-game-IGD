@@ -1,0 +1,7 @@
+For the delegate event, player health (PlayerHealth.cs) has an event and corresponding delegate for OnPlayerDeath.  
+This event has listeners in PlayerMovement.cs and SaveData.cs, which respectively call CALLBACK_ResetWeapons() and CALLBACK_CheckForSaveHighScore(). 
+Reset weapons sets all equipped weapons to inactive, and Check for save high score checks if the level the player reached before dying was the higehst they have reached, if so it saves that score
+
+For the exception, an exception is thrown and caught if the player's health is below 0.  
+This is in Playerhealth.cs
+In CheckForDeath(), it tries decrementing the health, and catches it with health = 0 if the decrement would have been lower than zero.  An exception is thrown.
