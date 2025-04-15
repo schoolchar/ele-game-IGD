@@ -88,9 +88,6 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
-        //Set as delegate for event
-        PlayerHealth.onPlayerDeath += CALLBACK_ResetWeapons;
-
         //Do not dstroy player
         DontDestroyOnLoad(this.gameObject);
     }
@@ -153,13 +150,4 @@ public class PlayerMovement : MonoBehaviour
     {
         readyToJump = true;
     }
-    /// <summary>
-    /// Reset weapons to be off on player death
-    /// </summary>
-    public void CALLBACK_ResetWeapons()
-    {
-        ringOfFire.SetActive(false);
-        knifeThrow.hasKnife = false;
-        knifeThrow.enabled = false;
-    } //END ResetWeapons()
 }
