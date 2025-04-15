@@ -290,20 +290,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7a1053bca24e9c4bacfa2bab9c8023c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
-  - {fileID: 2493815929604912168, guid: f396cb16f0644fa4c9658fceb853d7da, type: 3}
-  - {fileID: 1613636113566964064, guid: 6438e736e7e27c840bc5ba86de759a9d, type: 3}
-  - {fileID: 531785152754730259, guid: 7510e33325b06ec4b9bfa0910c5c3d86, type: 3}
-  - {fileID: 6674855391675836649, guid: e427b4e25c84fc249b43219c037d1ce4, type: 3}
   player: {fileID: 1394019053864438680}
+  spawns:
+  - {fileID: 8912945283817817966, guid: caecd5ed2de02074fa793fe79c0892a3, type: 3}
+  - {fileID: 8912945283817817966, guid: caecd5ed2de02074fa793fe79c0892a3, type: 3}
+  - {fileID: 8912945283817817966, guid: caecd5ed2de02074fa793fe79c0892a3, type: 3}
+  - {fileID: 2493815929604912168, guid: f396cb16f0644fa4c9658fceb853d7da, type: 3}
+  - {fileID: 2493815929604912168, guid: f396cb16f0644fa4c9658fceb853d7da, type: 3}
+  - {fileID: 6674855391675836649, guid: e427b4e25c84fc249b43219c037d1ce4, type: 3}
+  - {fileID: 8912945283817817966, guid: caecd5ed2de02074fa793fe79c0892a3, type: 3}
+  - {fileID: 8912945283817817966, guid: caecd5ed2de02074fa793fe79c0892a3, type: 3}
+  rat1: {fileID: 8912945283817817966, guid: caecd5ed2de02074fa793fe79c0892a3, type: 3}
+  rat2: {fileID: 2493815929604912168, guid: f396cb16f0644fa4c9658fceb853d7da, type: 3}
+  clown: {fileID: 6674855391675836649, guid: e427b4e25c84fc249b43219c037d1ce4, type: 3}
+  bear: {fileID: 531785152754730259, guid: 7510e33325b06ec4b9bfa0910c5c3d86, type: 3}
   spawnDistanceMin: 8
   spawnDistanceMax: 12
   spawnWait: 0
-  spawnMostWait: 6
-  spawnLeastWait: 1
+  spawnMostWait: 12
+  spawnLeastWait: 6
   startWait: 0
   stop: 0
-  timeToIncrease: 25
+  timeToIncrease: 4
+  timeToAddBear: 60
+  timeToAddClown: 90
   increaseAmount: 0.5
 --- !u!114 &561606230722805421
 MonoBehaviour:
@@ -429,7 +439,9 @@ MonoBehaviour:
   mag: {fileID: 11400000, guid: 60f0ee77f6233de42986773750eb3ea3, type: 2}
   speed: {fileID: 11400000, guid: 163442cb1f935354b83a0eb5a6303248, type: 2}
   lifeForce: {fileID: 11400000, guid: f22b2be1336e667429d4c0ea60a88d98, type: 2}
+  forcefield: {fileID: 0}
   playerHealth: {fileID: 2125592141690816146}
+  forcefieldOnPlayer: {fileID: 0}
   storeButton: {fileID: 0}
   levelText: {fileID: 0}
   reset: 1
