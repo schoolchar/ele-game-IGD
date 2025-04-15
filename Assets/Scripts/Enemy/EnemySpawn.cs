@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemySpawn : MonoBehaviour
@@ -24,23 +23,26 @@ public class EnemySpawn : MonoBehaviour
     public float timeToIncrease = 4f;
     public float timeToAddBear = 60f;
     public float timeToAddClown = 90f;
+    public float timeToAddEnemy = 60f;
     public float increaseAmount = 0.5f;
 
     private float timer;
     private float addBearTimer;
     private float addClownTimer;
+    private float addEnemyTimer;
     private float randomRangeSpawnTimer;
 
-    private int randomRangeSpawn;
-
+    public int randomRangeSpawn = 8;
     private int randomEnemy;
+
+    //PlayerHealth playerHealth;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+        //playerHealth = player.GetComponent<PlayerHealth>();
         StartCoroutine(waitSpawner());
-
     }
 
     // Update is called once per frame
@@ -76,6 +78,11 @@ public class EnemySpawn : MonoBehaviour
             addClownTimer = 0f;
         }
 
+        if (addEnemyTimer >= timeToAddEnemy)
+        {
+
+        }
+
         if (randomRangeSpawnTimer >= 60f)
         {
             randomRangeSpawn++;
@@ -86,6 +93,7 @@ public class EnemySpawn : MonoBehaviour
     IEnumerator waitSpawner()
     {
         Vector3 playerPosition = player.transform.position;
+        
         yield return new WaitForSeconds(startWait);
 
         while (!stop)
@@ -98,4 +106,5 @@ public class EnemySpawn : MonoBehaviour
             yield return new WaitForSeconds(spawnWait);
         }
     }
+        
 }

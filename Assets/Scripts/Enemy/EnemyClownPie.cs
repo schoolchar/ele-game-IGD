@@ -12,7 +12,7 @@ public class EnemyClownPie : MonoBehaviour
     {
         transform.position += transform.forward * moveSpeed * Time.deltaTime;
         transform.LookAt(player.transform.position);
-        Destroy(bullet, 5f);
+        Destroy(bullet, 10f);
     }
 
     private void OnCollisionEnter(Collision collision)
