@@ -5,11 +5,12 @@ using UnityEngine;
 public class OnBall : MonoBehaviour 
 {
     // Start is called before the first frame update
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
             SeaLion.targetHit = true;
+            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1);
         }
     }
 }
