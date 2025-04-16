@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemySpawn : MonoBehaviour
@@ -22,17 +21,13 @@ public class EnemySpawn : MonoBehaviour
     public int startWait;
     public bool stop;
     public float timeToIncrease = 4f;
-    public float timeToAddBear = 60f;
-    public float timeToAddClown = 90f;
+    public float timeToAddBear = 3f;
+    public float timeToAddClown = 6f;
     public float increaseAmount = 0.5f;
 
     private float timer;
     private float addBearTimer;
     private float addClownTimer;
-    private float randomRangeSpawnTimer;
-
-    private int randomRangeSpawn;
-
     private int randomEnemy;
 
     // Start is called before the first frame update
@@ -40,7 +35,7 @@ public class EnemySpawn : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         StartCoroutine(waitSpawner());
-
+        //spawns.Add(bear);
     }
 
     // Update is called once per frame
@@ -50,19 +45,6 @@ public class EnemySpawn : MonoBehaviour
         timer += Time.deltaTime;
         addBearTimer += Time.deltaTime;
         addClownTimer += Time.deltaTime;
-        randomRangeSpawnTimer += Time.deltaTime;
-    }
-
-    private void FixedUpdate()
-    {
-        if (timer >= timeToIncrease)
-        {
-            if (spawnMostWait > 4f) // Prevent negative or very small intervals
-            {
-                spawnMostWait -= increaseAmount;
-            }
-            timer = 0f;
-        }
 
         if (addBearTimer >= timeToAddBear)
         {
@@ -75,22 +57,36 @@ public class EnemySpawn : MonoBehaviour
             spawns.Add(clown);
             addClownTimer = 0f;
         }
+    }
 
-        if (randomRangeSpawnTimer >= 60f)
+    private void FixedUpdate()
+    {
+        if (timer >= timeToIncrease)
         {
-            randomRangeSpawn++;
-            randomRangeSpawnTimer = 0f;
+            if (spawnMostWait > 4f) // Prevent negative or very small intervals
+            {
+                spawnMostWait -= increaseAmount;
+            }
+            timer = 0f;
         }
     }
 
     IEnumerator waitSpawner()
     {
         Vector3 playerPosition = player.transform.position;
+        
         yield return new WaitForSeconds(startWait);
 
         while (!stop)
         {
-            randomEnemy = Random.Range(0, randomRangeSpawn);
+            if (spawns.Count == 0)
+            {
+                Debug.LogWarning("No enemies in spawn list!");
+                yield return null;
+                continue;
+            }
+
+            randomEnemy = Random.Range(0, spawns.Count);
             float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
             float distance = Random.Range(spawnDistanceMin, spawnDistanceMax);
             Vector3 spawnPosition = playerPosition + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * distance;
@@ -98,4 +94,5 @@ public class EnemySpawn : MonoBehaviour
             yield return new WaitForSeconds(spawnWait);
         }
     }
+        
 }
