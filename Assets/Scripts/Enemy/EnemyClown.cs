@@ -18,8 +18,12 @@ public class EnemyClown : MonoBehaviour
     [SerializeField] GameObject spawnPt;
     private float waitTime = 2.5f;
 
+    Pause Pause;
+    public AudioSource clownSound;
+
     void Start()
     {
+        clownSound = GetComponent<AudioSource>();
         animator.SetBool("IsMoving", true);
         //isStopped = false;
         StartCoroutine(TimeShoot());
@@ -27,10 +31,21 @@ public class EnemyClown : MonoBehaviour
         moveSpeed = 5f;
         player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
         animator = GetComponentInChildren<Animator>();
+        Pause = GameObject.Find("GameManager").GetComponent<Pause>();
     }
 
     void Update()
     {
+        if (Pause.PauseMenu.activeSelf)
+        {
+            Debug.Log("Rat sound not Playing");
+            clownSound.Pause();
+        }
+        else
+        {
+            Debug.Log("Rat sound Playing");
+            clownSound.UnPause();
+        }
         float distance = Vector3.Distance(transform.position, player.transform.position);
         transform.LookAt(player.transform.position);
 
