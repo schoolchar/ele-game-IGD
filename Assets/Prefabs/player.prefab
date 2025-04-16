@@ -298,8 +298,8 @@ MonoBehaviour:
   - {fileID: 2493815929604912168, guid: f396cb16f0644fa4c9658fceb853d7da, type: 3}
   - {fileID: 2493815929604912168, guid: f396cb16f0644fa4c9658fceb853d7da, type: 3}
   - {fileID: 6674855391675836649, guid: e427b4e25c84fc249b43219c037d1ce4, type: 3}
-  - {fileID: 8912945283817817966, guid: caecd5ed2de02074fa793fe79c0892a3, type: 3}
-  - {fileID: 8912945283817817966, guid: caecd5ed2de02074fa793fe79c0892a3, type: 3}
+  - {fileID: 6674855391675836649, guid: e427b4e25c84fc249b43219c037d1ce4, type: 3}
+  - {fileID: 531785152754730259, guid: 7510e33325b06ec4b9bfa0910c5c3d86, type: 3}
   rat1: {fileID: 8912945283817817966, guid: caecd5ed2de02074fa793fe79c0892a3, type: 3}
   rat2: {fileID: 2493815929604912168, guid: f396cb16f0644fa4c9658fceb853d7da, type: 3}
   clown: {fileID: 6674855391675836649, guid: e427b4e25c84fc249b43219c037d1ce4, type: 3}
