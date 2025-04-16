@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OnBall : MonoBehaviour 
+public class OnHammerObject : MonoBehaviour
 {
-    // Start is called before the first frame update
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            SeaLion.targetHit = true;
+            //damage stuff
+            Debug.Log("Enemy hit");
         }
     }
 }

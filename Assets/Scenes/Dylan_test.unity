@@ -122,11 +122,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &832278492 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4009431451348019332, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
-  m_PrefabInstance: {fileID: 1225222961}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1150806626 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8430957841030942930, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
@@ -184,10 +179,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 561606230722805421, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1394019053864438680, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
       propertyPath: m_Name
       value: player
@@ -218,13 +209,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 331960211524314063, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2089050266}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1394019053864438680, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1955329705}
-    - targetCorrespondingSourceObject: {fileID: 1394019053864438680, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1955329716}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
 --- !u!1 &1269355468
 GameObject:
@@ -484,11 +469,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 284466562224143419, guid: c15360e40207334438b79c8f3047d1a8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8741672
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 284466562224143419, guid: c15360e40207334438b79c8f3047d1a8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.48562506
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1689084303225879165, guid: c15360e40207334438b79c8f3047d1a8, type: 3}
       propertyPath: rb
@@ -701,11 +686,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &1887439828 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1394019053864438680, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
-  m_PrefabInstance: {fileID: 1225222961}
-  m_PrefabAsset: {fileID: 0}
 --- !u!54 &1955329693 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 6958148102252536532, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
@@ -714,47 +694,6 @@ Rigidbody:
 --- !u!4 &1955329694 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 331960211524314063, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
-  m_PrefabInstance: {fileID: 1225222961}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1955329705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1887439828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0541d3470ce83b345b8a5b1c6cee96f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ballPrefabS: {fileID: 1866140774743508609, guid: 602803e6a83e0ea42b772f8cbc48cb40, type: 3}
-  ballPrefabT: {fileID: -1381275811172190132, guid: d0ac13f0ee3e52d45b6ee0af3c6b9640, type: 3}
-  player: {fileID: 832278492}
-  spawnPt: {fileID: 2055829275}
-  distance: 0
---- !u!114 &1955329716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1887439828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 715211cbe1028b442b1abc46fb2a6fe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectPrefab: {fileID: 7468702162027896120, guid: bf3027b48ba7a344c8dc33f7ca1ecd71, type: 3}
-  rotationAngle: 180
-  rotationDuration: 1
-  offset: {x: 1, y: 0, z: 0}
-  interval: 2
-  tempNew: 0
-  newVal: 0
---- !u!1 &2055829275 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 99386652840804824, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
   m_PrefabInstance: {fileID: 1225222961}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2089050265

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SeaLion : MonoBehaviour
 {
-    private float preThrow = 3.5f;
+    private float preThrow = 5.0f;
     public GameObject ballPrefabS;
     public Rigidbody ballPrefabT;
     public GameObject player;
@@ -26,7 +26,7 @@ public class SeaLion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        offset = new Vector3(0f, 0f, 1.5f);
+        offset = new Vector3(0f, 0f, 1.0f);
         offsetS = new Vector3(0f, 2.0f, 1.0f);
         staticBall = Instantiate(ballPrefabS, currPosition + offsetS, player.transform.rotation);
         staticBall.SetActive(true);
@@ -39,6 +39,7 @@ public class SeaLion : MonoBehaviour
         TrackPosition();
         if (thrownBall != null)
         {
+            Debug.Log("calculating distance");
             distance = Vector3.Distance(thrownBall.transform.position, launchPosition); //check the distance
             if (distance > maxDistance)
             {
@@ -63,10 +64,10 @@ public class SeaLion : MonoBehaviour
         if (distCond) //conditionals for missing a throw
         {
             Debug.Log("Distance reached, inflating");
-            Destroy(thrownBall.gameObject);
+            Destroy(thrownBall);
             thrownBall = null;
             staticBall.SetActive(true);
-            preThrow = 2.5f;
+            preThrow = 4.0f;
             freezeTimer = false;
             distCond = false;
         }
@@ -74,10 +75,10 @@ public class SeaLion : MonoBehaviour
         if (targetHit) //conditionals for hitting a throw
         {
             Debug.Log("target hit, bouncing back");
-            thrownBall.transform.position = Vector3.MoveTowards(thrownBall.transform.position, currPosition, (speed * 2) * Time.deltaTime);
-            if (distance < 3f)
+            thrownBall.transform.position = Vector3.MoveTowards(thrownBall.transform.position, player.transform.position, (speed * 3) * Time.deltaTime);
+            if (distance > 1.5f)
             {
-                Destroy(thrownBall.gameObject);
+                Destroy(thrownBall);
                 thrownBall = null;
                 staticBall.SetActive(true);
                 preThrow = 1.0f;
@@ -98,12 +99,7 @@ public class SeaLion : MonoBehaviour
         Debug.Log("Throwing");
         launchPosition = currPosition;
         staticBall.SetActive(false); //get rid of the one above head
-        thrownBall = Instantiate(ballPrefabT, launchPosition + offset, spawnPt.transform.rotation); //put ball infront of player
-        thrownBall.velocity = spawnPt.transform.forward * speed;
-    }
-
-    public void setSpeed(float newSpeed)
-    {
-        speed = newSpeed;
+        thrownBall = (Rigidbody) Instantiate(ballPrefabT, launchPosition + offset, spawnPt.transform.rotation); //put ball infront of player
+        thrownBall.velocity = transform.forward * speed;
     }
 }
