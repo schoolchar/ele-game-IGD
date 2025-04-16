@@ -56,14 +56,14 @@ public class EnemySpawn : MonoBehaviour
         {
             spawns1Active = false;
             spawns2Active = true;
-            Debug.Log("Spawn2 active");
+            //Debug.Log("Spawn2 active");
         }
 
         if (timerNextList >= timeForSpawn3List)
         {
             spawns2Active = false;
             spawns3Active = true;
-            Debug.Log("Spawn3 active");
+            //Debug.Log("Spawn3 active");
         }
     }
 
@@ -90,7 +90,7 @@ public class EnemySpawn : MonoBehaviour
         {
             if (spawns1.Count == 0 || spawns2.Count == 0 || spawns3.Count == 0)
             {
-                Debug.LogWarning("No enemies in spawn list!");
+                //Debug.LogWarning("No enemies in spawn list!");
                 yield return null;
                 continue;
             }

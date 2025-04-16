@@ -252,6 +252,10 @@ MonoBehaviour:
   isGround:
     serializedVersion: 2
     m_Bits: 64
+  animatorLion: {fileID: 7660308324411063219}
+  animatorSeal: {fileID: 1046378461919767043}
+  animatorMonkey: {fileID: 8236641116901666650}
+  animatorElephant: {fileID: 5972065909425864310}
   ringOfFire: {fileID: 7899741544625694635}
   knifeThrow: {fileID: 5785051854309656066}
 --- !u!114 &2125592141690816146
