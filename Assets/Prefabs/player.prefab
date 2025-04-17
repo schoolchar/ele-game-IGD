@@ -226,7 +226,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 4
+  m_Constraints: 0
   m_CollisionDetection: 1
 --- !u!114 &1690930992629750781
 MonoBehaviour:
@@ -299,10 +299,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1394019053864438680}
   spawns1:
-  - {fileID: 8912945283817817966, guid: caecd5ed2de02074fa793fe79c0892a3, type: 3}
-  - {fileID: 8912945283817817966, guid: caecd5ed2de02074fa793fe79c0892a3, type: 3}
-  - {fileID: 8912945283817817966, guid: caecd5ed2de02074fa793fe79c0892a3, type: 3}
-  - {fileID: 2493815929604912168, guid: f396cb16f0644fa4c9658fceb853d7da, type: 3}
+  - {fileID: 6674855391675836649, guid: e427b4e25c84fc249b43219c037d1ce4, type: 3}
+  - {fileID: 6674855391675836649, guid: e427b4e25c84fc249b43219c037d1ce4, type: 3}
+  - {fileID: 6674855391675836649, guid: e427b4e25c84fc249b43219c037d1ce4, type: 3}
+  - {fileID: 6674855391675836649, guid: e427b4e25c84fc249b43219c037d1ce4, type: 3}
   spawns2:
   - {fileID: 8912945283817817966, guid: caecd5ed2de02074fa793fe79c0892a3, type: 3}
   - {fileID: 8912945283817817966, guid: caecd5ed2de02074fa793fe79c0892a3, type: 3}
@@ -331,9 +331,12 @@ MonoBehaviour:
   startWait: 0
   stop: 0
   timeToIncrease: 4
-  timeForSpawn2List: 5
-  timeForSpawn3List: 10
+  timeForSpawn2List: 60
+  timeForSpawn3List: 120
   increaseAmount: 0.5
+  spawns1Active: 0
+  spawns2Active: 0
+  spawns3Active: 0
 --- !u!114 &561606230722805421
 MonoBehaviour:
   m_ObjectHideFlags: 0
