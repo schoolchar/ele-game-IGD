@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class SwitchPlayer : MonoBehaviour
 {
-    Elephant elephantComp;
-    Lion lionComp;
-    BasicShoot baseComp;
-    MeshRenderer playerMesh;
+    public Elephant elephantComp;
+    public Lion lionComp;
+    public SeaLion seaLionComp;
+    public Monkey monkeyComp;
+    public BasicShoot baseComp;
+
+    public CharacterID[] playerModels;
+    public GameObject characterActive;
+
 
     public Color[] playerColors;
     private void Start()
@@ -16,8 +21,14 @@ public class SwitchPlayer : MonoBehaviour
         elephantComp = FindAnyObjectByType<Elephant>();
         lionComp = FindAnyObjectByType<Lion>();
         baseComp = FindAnyObjectByType<BasicShoot>();
+        seaLionComp = FindAnyObjectByType<SeaLion>();
+        monkeyComp = FindAnyObjectByType<Monkey>();
 
-        playerMesh = GameObject.FindWithTag("PlayerMesh").GetComponent<MeshRenderer>();
+        playerModels = FindObjectsByType<CharacterID>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+
+        characterActive = FindAnyObjectByType<PlayerMovement>().characterActive;
+
+       // playerMesh = GameObject.FindWithTag("PlayerMesh").GetComponent<MeshRenderer>();
     }
 
     //Player chooses Lion character
@@ -27,8 +38,20 @@ public class SwitchPlayer : MonoBehaviour
         lionComp.enabled = true;
         elephantComp.enabled = false;
         baseComp.enabled = false;
+        monkeyComp.enabled = false;
+        seaLionComp.enabled = false;
 
-        playerMesh.material.color = playerColors[0];
+        characterActive.SetActive(false);
+        for (int i = 0; i < playerModels.Length; i++)
+        {
+            if (playerModels[i].animal == "Lion")
+            {
+                playerModels[i].gameObject.SetActive(true);
+            }
+        }
+
+
+        //playerMesh.material.color = playerColors[0];
     }
 
     //Player chooses elephant character
@@ -37,20 +60,58 @@ public class SwitchPlayer : MonoBehaviour
         //Enable elephant. disable everything else
         lionComp.enabled = false;
         elephantComp.enabled = true;
+        seaLionComp.enabled = false;
+        monkeyComp.enabled = false;
         baseComp.enabled = false;
 
-        playerMesh.material.color = playerColors[1];
+        characterActive.SetActive(false);
+        for (int i = 0; i < playerModels.Length; i++)
+        {
+            if (playerModels[i].animal == "Elephant")
+            {
+                playerModels[i].gameObject.SetActive(true);
+            }
+        }
+
+        //playerMesh.material.color = playerColors[1];
     }
 
-    //Player chooses base character, temp while we finish all player characters
-    public void ActivateBase()
+    public void ActivateSeal()
     {
-        //enable base, disable everything else
+        seaLionComp.enabled = true;
         lionComp.enabled = false;
+        monkeyComp.enabled = false;
+        baseComp.enabled = false;
         elephantComp.enabled = false;
-        baseComp.enabled = true;
 
-        playerMesh.material.color = playerColors[2];
+        characterActive.SetActive(false);
+        for (int i = 0; i < playerModels.Length; i++)
+        {
+            if (playerModels[i].animal == "Seal")
+            {
+                playerModels[i].gameObject.SetActive(true);
+            }
+        }
     }
+
+    public void ActivateMonkey()
+    {
+        monkeyComp.enabled = true;
+        seaLionComp.enabled = false;
+        lionComp.enabled = false;
+        baseComp.enabled = false;
+        elephantComp.enabled = false;
+
+        characterActive.SetActive(false);
+        for (int i = 0; i < playerModels.Length; i++)
+        {
+            if (playerModels[i].animal == "Monkey")
+            {
+                playerModels[i].gameObject.SetActive(true);
+            }
+        }
+    }
+
+    
 
 }

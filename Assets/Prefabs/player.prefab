@@ -170,6 +170,8 @@ GameObject:
   - component: {fileID: -3503242722923072897}
   - component: {fileID: 5172935694428711339}
   - component: {fileID: -7658899717858874445}
+  - component: {fileID: 9074714960743363315}
+  - component: {fileID: 647872399150599252}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -258,6 +260,7 @@ MonoBehaviour:
   animatorElephant: {fileID: 5972065909425864310}
   ringOfFire: {fileID: 7899741544625694635}
   knifeThrow: {fileID: 5785051854309656066}
+  characterActive: {fileID: 3416813701237912503}
 --- !u!114 &2125592141690816146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,6 +467,38 @@ MonoBehaviour:
   storeButton: {fileID: 0}
   levelText: {fileID: 0}
   reset: 1
+--- !u!114 &9074714960743363315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394019053864438680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0541d3470ce83b345b8a5b1c6cee96f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballPrefabS: {fileID: 1866140774743508609, guid: 602803e6a83e0ea42b772f8cbc48cb40, type: 3}
+  ballPrefabT: {fileID: -1381275811172190132, guid: d0ac13f0ee3e52d45b6ee0af3c6b9640, type: 3}
+  player: {fileID: 1394019053864438680}
+  spawnPt: {fileID: 0}
+  distance: 0
+--- !u!114 &647872399150599252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394019053864438680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ec67c2885e5a24c9b637d6106cb457, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  balls: {fileID: 579662117110123568, guid: 87b6a3b8e1abb0049ac41f5d34114720, type: 3}
+  positionOffset: {x: 0, y: 0, z: 2}
+  playerobj: {fileID: 2988728467627136014}
 --- !u!1 &1555237959989853747
 GameObject:
   m_ObjectHideFlags: 0
@@ -816,6 +851,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 678945271071527585}
+  - component: {fileID: 1227040409488546610}
   m_Layer: 0
   m_Name: Monkey
   m_TagString: Untagged
@@ -839,6 +875,19 @@ Transform:
   - {fileID: 4453207495976332282}
   m_Father: {fileID: 331960211524314063}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1227040409488546610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2988728467627136014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892f4bfa0d97113449755166575ccb05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animal: Monkey
 --- !u!1 &3416813701237912503
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,6 +898,7 @@ GameObject:
   m_Component:
   - component: {fileID: 911962631144964268}
   - component: {fileID: 8412654454325526124}
+  - component: {fileID: 7090496512068674566}
   m_Layer: 0
   m_Name: Lion
   m_TagString: Player
@@ -893,6 +943,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.56, z: 1.66}
   m_Center: {x: 0, y: 0.8, z: 0}
+--- !u!114 &7090496512068674566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3416813701237912503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892f4bfa0d97113449755166575ccb05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animal: Lion
 --- !u!1 &3470221175158633835
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,6 +965,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8062042572403599447}
+  - component: {fileID: 5747671224796820900}
   m_Layer: 0
   m_Name: Seal
   m_TagString: Untagged
@@ -925,6 +989,19 @@ Transform:
   - {fileID: 3646684575119374641}
   m_Father: {fileID: 331960211524314063}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5747671224796820900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3470221175158633835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892f4bfa0d97113449755166575ccb05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animal: Seal
 --- !u!1 &4009431451348019332
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,6 +1146,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 545778055927036239}
+  - component: {fileID: 372623132353316183}
   m_Layer: 0
   m_Name: Elephant
   m_TagString: Untagged
@@ -1092,6 +1170,19 @@ Transform:
   - {fileID: 6382762320788656738}
   m_Father: {fileID: 331960211524314063}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &372623132353316183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4078106372057756186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892f4bfa0d97113449755166575ccb05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animal: Elephant
 --- !u!1 &4170697916228129724
 GameObject:
   m_ObjectHideFlags: 0

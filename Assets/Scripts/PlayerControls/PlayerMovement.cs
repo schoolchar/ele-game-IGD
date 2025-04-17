@@ -58,6 +58,9 @@ public class PlayerMovement : MonoBehaviour
     public GameObject ringOfFire;
     public Knifethrow knifeThrow;
 
+    //Character active
+    public GameObject characterActive;
+
     // on start up, i may be over-commenting
     private void Start()
     {
