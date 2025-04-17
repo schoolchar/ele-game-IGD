@@ -1,0 +1,4 @@
+In this lab, we created an object pool for the enemy clown bullets(pies). 
+The ObjectPooler logic is located in the Assets/Scripts/Enemy folder on ObjectPooler.cs, EnemyClownPie.cs, and Shooter.cs. ObjectPooler.cs manages the prefab and poolsize of the pool. 
+EnemyClown.cs manages the movement of the bullets and when to return the bullets if they never make contact with the player.
+Lastly, Shooter.cs tells the game when to set a bullet active.
