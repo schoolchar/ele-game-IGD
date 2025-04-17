@@ -18,7 +18,7 @@ public class ObjectPooler : MonoBehaviour
         }
     }
 
-    //Set the gameoject to active
+    //Set the gameobject to active
     public GameObject GetObject()
     {
         if (pool.Count > 0)
