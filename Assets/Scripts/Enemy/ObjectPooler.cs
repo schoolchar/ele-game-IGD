@@ -4,7 +4,7 @@ using UnityEngine;
 public class ObjectPooler : MonoBehaviour
 {
     public GameObject prefab;
-    public int poolSize = 20;
+    public int poolSize = 10;
 
     private Queue<GameObject> pool = new Queue<GameObject>();
 
@@ -18,6 +18,7 @@ public class ObjectPooler : MonoBehaviour
         }
     }
 
+    //Set the gameobject to active
     public GameObject GetObject()
     {
         if (pool.Count > 0)
@@ -29,6 +30,7 @@ public class ObjectPooler : MonoBehaviour
         return null; // or expand pool dynamically
     }
 
+    //Set the gameobject to inactive
     public void ReturnObject(GameObject obj)
     {
         obj.SetActive(false);

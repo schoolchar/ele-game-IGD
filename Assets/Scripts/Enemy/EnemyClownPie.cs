@@ -13,6 +13,7 @@ public class EnemyClownPie : MonoBehaviour
 
     private void Start()
     {
+        //find player
         player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
     }
 
@@ -23,10 +24,13 @@ public class EnemyClownPie : MonoBehaviour
 
     void Update()
     {
-        //transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+        //always look at the player
         transform.LookAt(player.transform.position);
+        //movement
         transform.Translate(transform.forward * speed * Time.deltaTime);
         timer -= Time.deltaTime;
+
+        //when timer runs out, set bullet inactive
         if (timer <= 0)
         {
             ReturnToPool();
@@ -38,6 +42,7 @@ public class EnemyClownPie : MonoBehaviour
         FindObjectOfType<ObjectPooler>().ReturnObject(gameObject);
     }
 
+    //when bullet collides with player, set bullet inactive
     private void OnCollisionEnter(Collision _other)
     {
         if(_other.gameObject.tag == "Player")

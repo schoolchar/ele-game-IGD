@@ -12,6 +12,7 @@ public class Shooter : MonoBehaviour
 
     private void Start()
     {
+        //find clown
         enemyClown = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyClown>();
     }
 
@@ -20,10 +21,11 @@ public class Shooter : MonoBehaviour
     {
         shootTimer += Time.deltaTime;
 
+        //If clown is not moving, set active bullet
         if (enemyClown.isStopped == true)
         {
-            Debug.Log("Attack!!");
-        if (shootTimer > 2.5f)
+            //After 2.8 seconds have passed since the last bullet, set active the next
+            if (shootTimer > 2.8f)
             {
                 GameObject bullet = pooler.GetObject();
                 if (bullet != null)
@@ -32,6 +34,7 @@ public class Shooter : MonoBehaviour
                     bullet.transform.rotation = transform.rotation;
                 }
 
+                //reset shoot timer
                 shootTimer = 0;
             }
         }
