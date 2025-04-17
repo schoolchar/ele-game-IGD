@@ -8,7 +8,7 @@ public class EnemyClown : MonoBehaviour
     public Transform player;
     public float moveSpeed;
     public Animator animator;
-    //private bool isStopped;
+    public bool isStopped;
 
     [Header("Stopping Distance")]
     private float stoppingDistance;
@@ -25,13 +25,12 @@ public class EnemyClown : MonoBehaviour
     {
         clownSound = GetComponent<AudioSource>();
         animator.SetBool("IsMoving", true);
-        //isStopped = false;
-        StartCoroutine(TimeShoot());
         stoppingDistance = 10f;
         moveSpeed = 5f;
         player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
         animator = GetComponentInChildren<Animator>();
         Pause = GameObject.Find("GameManager").GetComponent<Pause>();
+        isStopped = false;
     }
 
     void Update()
@@ -55,30 +54,15 @@ public class EnemyClown : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
             transform.LookAt(player.transform.position);
             animator.SetBool("IsMoving", true);
-            //isStopped = false;
+            isStopped = false;
             moveSpeed = 5f;
         }
         else
         {
             moveSpeed = 0f;
-            //isStopped = true;
+            isStopped = true;
             animator.SetBool("IsMoving", false);
         }
-    }
-
-    void Shoot()
-    {
-        //if (isStopped == true)
-        //{
-            Instantiate(bullet, spawnPt.transform.position, spawnPt.transform.rotation);
-            StartCoroutine(TimeShoot());
-        //}
-    }
-
-    IEnumerator TimeShoot()
-    {
-        yield return new WaitForSeconds(waitTime);
-        Shoot();
     }
 
     private void OnCollisionEnter(Collision _other)
