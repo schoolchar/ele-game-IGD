@@ -23,6 +23,9 @@ public class DialogueManager : MonoBehaviour
         dialogueLines.Push("Second line");
         dialogueLines.Push("First line"); //Read from a file, this is testing
 
+        //Also testing
+        lines = System.IO.File.ReadAllLines(Application.persistentDataPath + "/TestDoc.txt");
+
 
         ShowNextLine();
     }
