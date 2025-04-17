@@ -852,6 +852,7 @@ GameObject:
   m_Component:
   - component: {fileID: 678945271071527585}
   - component: {fileID: 1227040409488546610}
+  - component: {fileID: 5620466533177813660}
   m_Layer: 0
   m_Name: Monkey
   m_TagString: Untagged
@@ -888,6 +889,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animal: Monkey
+--- !u!65 &5620466533177813660
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2988728467627136014}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 2.113455, z: 1}
+  m_Center: {x: 0, y: 0.5567275, z: 0}
 --- !u!1 &3416813701237912503
 GameObject:
   m_ObjectHideFlags: 0
@@ -966,6 +988,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8062042572403599447}
   - component: {fileID: 5747671224796820900}
+  - component: {fileID: 9086472621850117604}
   m_Layer: 0
   m_Name: Seal
   m_TagString: Untagged
@@ -1002,6 +1025,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animal: Seal
+--- !u!65 &9086472621850117604
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3470221175158633835}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 2.0655494, z: 1}
+  m_Center: {x: 0, y: 0.5327748, z: 0}
 --- !u!1 &4009431451348019332
 GameObject:
   m_ObjectHideFlags: 0
@@ -1147,13 +1191,14 @@ GameObject:
   m_Component:
   - component: {fileID: 545778055927036239}
   - component: {fileID: 372623132353316183}
+  - component: {fileID: 3127876156298933412}
   m_Layer: 0
   m_Name: Elephant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &545778055927036239
 Transform:
   m_ObjectHideFlags: 0
@@ -1183,6 +1228,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animal: Elephant
+--- !u!65 &3127876156298933412
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4078106372057756186}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.5724132, z: 1}
+  m_Center: {x: 0, y: 0.89068234, z: 0}
 --- !u!1 &4170697916228129724
 GameObject:
   m_ObjectHideFlags: 0
