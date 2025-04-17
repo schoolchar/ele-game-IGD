@@ -8,40 +8,25 @@ public class EnemyClown : MonoBehaviour
     public Transform player;
     public float moveSpeed;
     public Animator animator;
-    private bool isStopped;
+    public bool isStopped;
 
     [Header("Stopping Distance")]
     private float stoppingDistance;
 
-    [Header("Shoot")]
-    //[SerializeField] GameObject bullet;
-    [SerializeField] GameObject spawnPt;
-    //private float waitTime = 2.5f;
-    public ObjectPooler pooler;
-
     void Start()
     {
         animator.SetBool("IsMoving", true);
-        //isStopped = false;
-        //StartCoroutine(TimeShoot());
         stoppingDistance = 10f;
         moveSpeed = 5f;
         player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
         animator = GetComponentInChildren<Animator>();
+        isStopped = false;
     }
 
     void Update()
     {
         float distance = Vector3.Distance(transform.position, player.transform.position);
         transform.LookAt(player.transform.position);
-        
-        // Set Active bullet
-        GameObject bullet = pooler.GetObject();
-        if (bullet != null)
-        {
-            bullet.transform.position = transform.position;
-            bullet.transform.rotation = transform.rotation;
-        }
 
         //If enemy is within stopping distance, the enemy stops moving, else the enemy actilvily follows player.
         if (distance > stoppingDistance)
