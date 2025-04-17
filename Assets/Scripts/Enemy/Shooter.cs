@@ -12,6 +12,7 @@ public class Shooter : MonoBehaviour
 
     private void Start()
     {
+        //find clown
         enemyClown = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyClown>();
     }
 
