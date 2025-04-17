@@ -35,6 +35,10 @@ public class EnemySpawn : MonoBehaviour
     private float timerNextList;
     private int randomEnemy;
 
+
+    //Object pooling
+    [SerializeField] private int poolSize;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -118,5 +122,22 @@ public class EnemySpawn : MonoBehaviour
             yield return new WaitForSeconds(spawnWait);
         }
     }
-        
+
+    #region Object Pooling
+
+    void CreatePool()
+    {
+        for(int i = 0; i < poolSize; i++)
+        {
+            int _idx = Random.Range(0, poolSize - i);
+
+            if(_idx == 0)
+            {
+               
+            }
+        }
+    }
+
+    #endregion
+
 }
