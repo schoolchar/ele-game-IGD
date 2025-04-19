@@ -10,7 +10,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private Image textBox;
 
-    [SerializeField] private string[] lines; //Change to a stack? make it only fill back up when data is cleared?
+    [SerializeField] private string[] lines;
     [SerializeField] private string currentLine;
 
     //Test
@@ -19,12 +19,12 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
-        dialogueLines.Push("Third line");
-        dialogueLines.Push("Second line");
-        dialogueLines.Push("First line"); //Read from a file, this is testing
-
-        //Also testing
         lines = System.IO.File.ReadAllLines(Application.persistentDataPath + "/TestDoc.txt");
+
+        for(int i = lines.Length - 1; i > -1; i--)
+        {
+            dialogueLines.Push(lines[i]);
+        }
 
 
         ShowNextLine();
