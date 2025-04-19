@@ -66,15 +66,15 @@ public class PlayerMovement : MonoBehaviour
     {
         InitValues();
 
-        animatorLion = GetComponentInChildren<Animator>();
-        animatorSeal = GetComponent<Animator>();
-        animatorMonkey = GetComponent<Animator>();
-        animatorElephant = GetComponent<Animator>();
+        animatorLion = GameObject.FindGameObjectWithTag("Lion").GetComponent<Animator>();
+/*        animatorSeal = GameObject.FindGameObjectWithTag("Seal").GetComponent<Animator>();
+        animatorMonkey = GameObject.FindGameObjectWithTag("Monkey").GetComponent<Animator>();
+        animatorElephant = GameObject.FindGameObjectWithTag("Elephant").GetComponent<Animator>();*/
 
         animatorLion.SetBool("IsMoving", false);
-            animatorSeal.SetBool("IsMoving", false);
+           /* animatorSeal.SetBool("IsMoving", false);
             animatorMonkey.SetBool("IsMoving", false);
-            animatorElephant.SetBool("IsMoving", false);
+            animatorElephant.SetBool("IsMoving", false);*/
     }
 
     //goes every update

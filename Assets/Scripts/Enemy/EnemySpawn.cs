@@ -27,9 +27,9 @@ public class EnemySpawn : MonoBehaviour
     public float timeForSpawn3List = 120f;
     public float increaseAmount = 0.5f;
 
-    private bool spawns1Active;
-    private bool spawns2Active;
-    private bool spawns3Active;
+    public bool spawns1Active;
+    public bool spawns2Active;
+    public bool spawns3Active;
 
     private float timerMostWait;
     private float timerNextList;

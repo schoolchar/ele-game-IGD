@@ -12,6 +12,10 @@ TagManager:
   - Projectile
   - Pickup
   - PlayerMesh
+  - Lion
+  - Seal
+  - Monkey
+  - Elephant
   layers:
   - Default
   - TransparentFX
