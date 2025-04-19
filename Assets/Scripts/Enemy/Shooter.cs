@@ -5,7 +5,6 @@ using UnityEngine;
 public class Shooter : MonoBehaviour
 {
     public ObjectPooler pooler;
-    //public GameObject EnemyClownObj;
     public Transform player;
     EnemyClown enemyClown;
     private float shootTimer;
@@ -25,7 +24,7 @@ public class Shooter : MonoBehaviour
         if (enemyClown.isStopped == true)
         {
             //After 2.8 seconds have passed since the last bullet, set active the next
-            if (shootTimer > 2.8f)
+            if (shootTimer > 2.6f)
             {
                 GameObject bullet = pooler.GetObject();
                 if (bullet != null)
