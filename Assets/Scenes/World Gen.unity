@@ -458,11 +458,11 @@ PrefabInstance:
       objectReference: {fileID: 2140199219}
     - target: {fileID: 6581500841922422729, guid: c15360e40207334438b79c8f3047d1a8, type: 3}
       propertyPath: m_XAxis.m_InvertInput
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6581500841922422729, guid: c15360e40207334438b79c8f3047d1a8, type: 3}
       propertyPath: m_YAxis.m_InvertInput
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6876540705635933190, guid: c15360e40207334438b79c8f3047d1a8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -580,6 +580,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1394019053864438680, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2140199221}
+    - targetCorrespondingSourceObject: {fileID: 1394019053864438680, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2140199222}
   m_SourcePrefab: {fileID: 100100000, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
 --- !u!54 &2140199217 stripped
 Rigidbody:
@@ -608,7 +611,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1334238970}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83d7941ea66d753459baaaf6e4690b48, type: 3}
   m_Name: 
@@ -617,6 +620,21 @@ MonoBehaviour:
   spawnInterval: 3
   spawnDistance: 1
   heightOffset: 1
+  playerTransform: {fileID: 2140199219}
+--- !u!114 &2140199222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334238970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 632b0f489389d1a4a8871938a9ffd61c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nukePrefab: {fileID: 5304287473480124943, guid: 8c8558eece0830f4fa366e285ebed953, type: 3}
+  spawnInterval: 5
   playerTransform: {fileID: 2140199219}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
