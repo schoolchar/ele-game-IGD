@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WeaponBase : MonoBehaviour
 {
+
+
     //All weapons should inherit from this class
     //Do not fill in the methods here, they are intentionally left blank
     //This is so that the children can define the behavior for it, but other scripts can easily find and activate the behavior of each weapon because they are not 

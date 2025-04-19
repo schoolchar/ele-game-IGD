@@ -7,7 +7,7 @@ public class Lion : MonoBehaviour, ICharacterActions
     //Lion attack: Slash
     private bool isAttacking;
     private int damage = 1;
-    private int attackWait = 3;
+    private float attackWait = 0.5f;
     [SerializeField] private GameObject paw;
     [SerializeField] private Animator animator;
 

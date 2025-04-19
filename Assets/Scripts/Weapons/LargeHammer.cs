@@ -1,8 +1,9 @@
 using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class LargeHammer : MonoBehaviour
+public class LargeHammer : WeaponBase
 {
     public GameObject objectPrefab;
     public float rotationAngle = 180f;
@@ -21,31 +22,39 @@ public class LargeHammer : MonoBehaviour
     public float tempNew;
     public bool newVal = false;
 
-    void Start()
-    {
-    }
 
-
-    void InitializeObject()
+    bool hammerActive;
+    public override void ActivateThisWeapon()
     {
-        interval -= Time.deltaTime;
-        if (interval < 0)
+        Debug.Log("Hammer activated");
+        if(!hammerActive)
         {
-            objectInstance = Instantiate(objectPrefab, transform.position + offset, Quaternion.identity);
-            objectInstance.transform.SetParent(spawnPt);
-            objectInstance.transform.Rotate(Vector3.forward, -90f);
-            initialPosition = objectInstance.transform.position;
-            rotationTimer = 0f;
-            isRotating = true;
-            if (!newVal)
+            interval -= Time.deltaTime;
+            if (interval < 0)
             {
-                interval = 3.0f;
+                objectInstance = Instantiate(objectPrefab, transform.position + offset, Quaternion.identity);
+                objectInstance.transform.SetParent(spawnPt);
+                objectInstance.transform.Rotate(Vector3.forward, -90f);
+                initialPosition = objectInstance.transform.position;
+                rotationTimer = 0f;
+                isRotating = true;
+                if (!newVal)
+                {
+                    interval = 3.0f;
+                }
+                else
+                {
+                    interval = tempNew;
+                }
             }
-            else
-            {
-                interval = tempNew;
-            }
+
+            hammerActive = true;
         }
+        else
+        {
+            Debug.Log("Hammer upgrade what is the scaling for this weapon");
+        }
+       
         
     }
 
@@ -55,10 +64,7 @@ public class LargeHammer : MonoBehaviour
         {
             RotateObject();
         }
-        if (!isRotating)
-        {
-            InitializeObject();
-        }
+        
     }
 
     void RotateObject()
@@ -71,6 +77,9 @@ public class LargeHammer : MonoBehaviour
         {
             isRotating = false;
             Destroy(objectInstance);
+
+            StartCoroutine(TimeReload());
+            
         }
     }
 
@@ -89,5 +98,22 @@ public class LargeHammer : MonoBehaviour
             Debug.Log("Enemy hit");
             collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1);
         }
+    }
+
+
+    IEnumerator TimeReload()
+    {
+        yield return new WaitForSeconds(3);
+        Reload();
+    }
+
+    void Reload()
+    {
+        objectInstance = Instantiate(objectPrefab, transform.position + offset, Quaternion.identity);
+        objectInstance.transform.SetParent(spawnPt);
+        objectInstance.transform.Rotate(Vector3.forward, -90f);
+        initialPosition = objectInstance.transform.position;
+        rotationTimer = 0f;
+        isRotating = true;
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Palmmedia.ReportGenerator.Core.Parser.Analysis;
 using UnityEngine;
 
-public class Ringoffire : MonoBehaviour
+public class Ringoffire : WeaponBase
 {
     public Transform player;
     public float distance = 1.0f;
@@ -11,19 +11,30 @@ public class Ringoffire : MonoBehaviour
     private Vector3 lastPlayerPosition;
     private float playerSpeed;
     float adjustedSpeed;
+    bool fireActive;
 
     // Start is called before the first frame update
-    void OnEnable()
+    public override void ActivateThisWeapon()
     {
         player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
         lastPlayerPosition = player.position;
+        fireActive = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdatePlayerSpeed();
-        FireRing();
+        Debug.Log("Fire activated");
+        if (fireActive)
+        {
+            UpdatePlayerSpeed();
+            FireRing();
+        }
+        else
+        {
+            baseSpeed += (baseSpeed + playerSpeed) * 1.5f;
+        }
+        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -35,7 +46,6 @@ public class Ringoffire : MonoBehaviour
     {
         if (_collision.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("Enemy hit");
             _collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1);
         }
     }

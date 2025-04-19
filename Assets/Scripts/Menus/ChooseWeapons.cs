@@ -6,13 +6,20 @@ using TMPro;
 
 public class ChooseWeapons : MonoBehaviour
 {
+    [System.Serializable]
     public struct WeaponsData
     {
         public string name;
         public int level;
         public int index; //Index in allWeaponsData
         public GameObject inSceneObj;
+        public WeaponBase script;
     }
+
+    //Ring of fire - 0
+    //Knife Throw - 1
+    //Hammer - 2
+    //Turret - 3
 
 
     private int oldXPNum;
@@ -29,14 +36,41 @@ public class ChooseWeapons : MonoBehaviour
     [SerializeField] private Button[] weaponMenu; //Buttons on weapons menu
     [SerializeField] private TextMeshProUGUI[] weaponMenuText; //Corresponding text for each button
     public WeaponsData[] allWeaponsData; //Will need to assign indeces for each weapons
-    public WeaponsData[] weaponOptions = new WeaponsData[3];
-    int[] showWeapons = new int[3];
+    public int[] weaponOptions = new int[3] { -1, -1, -1}; //The ideces for each button (ie button 1 is 0, button 2 is 1, etc).  What is stored in each is the index that the assigned weapon is in in allWeaponsData
+    [SerializeField] List<int> availableOps = new List<int>(); //Needs to be the same size as allWeaponsData
+
+
 
 
     private void Start()
     {
+        //availableOps = new List<int>(3);
+        
+         for(int i = 0; i < allWeaponsData.Length; i++)
+         {
+             availableOps.Add(i);
+         }
+
+        Debug.Log("avalable opstopns = " + availableOps.Count);
+
         player = FindAnyObjectByType<PlayerMovement>();
         playerHealth = player.gameObject.GetComponent<PlayerHealth>();
+
+
+        //Set objects in script
+        //Ring of fire
+        allWeaponsData[0].script = FindAnyObjectByType<Ringoffire>();
+        allWeaponsData[0].inSceneObj = allWeaponsData[0].script.gameObject;
+        allWeaponsData[0].inSceneObj.SetActive(false);
+
+        allWeaponsData[1].inSceneObj = FindAnyObjectByType<Knifethrow>().knife;
+        allWeaponsData[1].script = FindAnyObjectByType<Knifethrow>();
+        allWeaponsData[1].script.enabled = false;
+        allWeaponsData[1].inSceneObj.SetActive(false);
+
+        allWeaponsData[2].script = FindAnyObjectByType<LargeHammer>();
+        allWeaponsData[2].script = allWeaponsData[2].script;
+        allWeaponsData[2].script.enabled = false;
     }
 
     /// <summary>
@@ -68,6 +102,12 @@ public class ChooseWeapons : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         weaponsCanvas.enabled = false;
+        
+
+        for(int i = 0; i < weaponOptions.Length; i++)
+        {
+            weaponOptions[i] = -1;
+        }
     }
 
     //Enable the ring of fire weapon
@@ -97,68 +137,96 @@ public class ChooseWeapons : MonoBehaviour
         //Chose random weapons to show
         
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < weaponMenu.Length; i++)
         {
-            int _tmp = Random.Range(0, allWeaponsData.Length - 1);
-            
+            int _rTmp = Random.Range(0, availableOps.Count - 1);
+            Debug.Log("Choose at index " + _rTmp);
+            int _tmp = availableOps[_rTmp];
+            availableOps.RemoveAt(_rTmp);
+            weaponOptions[i] = _tmp; //store chosen weapon in options, this will correspond to the button that the weapon is at
+
             //Ensure that among the chosen ones, the same one does not show more than once
-            for (int j = 0; j < showWeapons.Length; j++)
+           /* for (int j = 0; j < availableOps.Count; j++)
             {
-                if (_tmp == showWeapons[j])
+                if (_tmp == weaponOptions[i])
                 {
+                   
                     i--;
                     break;
 
                 }
-                else
-                {
-                    showWeapons[i] = _tmp; //store the index that the wep
-                    weaponOptions[i] = allWeaponsData[_tmp]; //store chosen weapon in options, this will correspond to the button that the weapon is at
-                }
-            }
+               
+                weaponOptions[i] = _tmp; //store chosen weapon in options, this will correspond to the button that the weapon is at
+                
+            }*/
 
 
         }
+
+        
 
         //Input data onto buttons
         for (int i = 0; i < weaponMenuText.Length; i++)
         {
-            weaponMenuText[i].text = weaponOptions[i].name + " " + weaponOptions[i].level;
+            weaponMenuText[i].text = allWeaponsData[weaponOptions[i]].name + " " + allWeaponsData[weaponOptions[i]].level;
             
         }
-        ActivateWeapon();
+
+
+        //Re-initialize the available options after choosing
+
+        availableOps.Clear();
+        for (int i = 0; i < allWeaponsData.Length; i++)
+        {
+            availableOps.Add(i);
+        }
+
+
+        //ActivateWeapon();
 
     } //END RandomizeWeaponSelection()
 
     /// <summary>
     /// Attach respective enabling method to each button
     /// </summary>
-    public void ActivateWeapon()
+    public void ActivateWeapon(int _idx)
     {
-        for(int i = 0; i < weaponOptions.Length; i++)
+        /* for(int i = 0; i < weaponOptions.Length; i++)
+         {
+             switch (allWeaponsData[weaponOptions[i]].index)
+             {
+                 case 0:
+                     if (allWeaponsData[weaponOptions[i]].level == 0)
+                         weaponMenu[i].onClick.AddListener(this.EnableRingOfFire);
+                     else
+                     {
+                         //Something for upgading the weapon
+                     }
+                     break;
+                 case 1:
+                     if (allWeaponsData[weaponOptions[i]].level == 0)
+                         weaponMenu[i].onClick.AddListener(this.EnableRingOfFire);
+                     else
+                     {
+                         //Something for upgading the weapon
+                     }
+                     break;
+                // case 2:
+                // case 3:
+             }
+         }*/
+
+        if(allWeaponsData[weaponOptions[_idx]].inSceneObj != null)
         {
-            switch (weaponOptions[i].index)
-            {
-                case 0:
-                    if (weaponOptions[i].level == 0)
-                        weaponMenu[i].onClick.AddListener(this.EnableRingOfFire);
-                    else
-                    {
-                        //Something for upgading the weapon
-                    }
-                    break;
-                case 1:
-                    if (weaponOptions[i].level == 0)
-                        weaponMenu[i].onClick.AddListener(this.EnableRingOfFire);
-                    else
-                    {
-                        //Something for upgading the weapon
-                    }
-                    break;
-               // case 2:
-               // case 3:
-            }
+            allWeaponsData[weaponOptions[_idx]].inSceneObj.SetActive(true);
         }
-       
+        
+        allWeaponsData[weaponOptions[_idx]].script.enabled = true;
+        allWeaponsData[weaponOptions[_idx]].script.ActivateThisWeapon();
+        allWeaponsData[weaponOptions[_idx]].level++;
+
+        DeactivateMenu();
+
+
     } //END ActivateWeapon()
 }

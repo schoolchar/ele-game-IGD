@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class Knifethrow : MonoBehaviour
+public class Knifethrow : WeaponBase
 {
     // The layer mask for the enemy
     public LayerMask EnemyLayerMask;
@@ -23,14 +23,26 @@ public class Knifethrow : MonoBehaviour
     //get component player script
     public bool hasKnife = true;
 
+    bool knifeActive;
+
 
     //Player
     [SerializeField] private GameObject player;
 
-    private void OnEnable()
+    public override void ActivateThisWeapon()
     {
-        hasKnife = true;
-        StartCoroutine(TimeShooting());
+        Debug.Log("Knife activated");
+        if (!hasKnife)
+        {
+            hasKnife = true;
+            StartCoroutine(TimeShooting());
+            knifeActive = true;
+        }
+        else
+        {
+            projectileSpeed += 1.5f;
+        }
+        
     }
 
     void Update()
