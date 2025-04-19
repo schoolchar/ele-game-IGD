@@ -12,14 +12,30 @@ public class EnemyRat2 : MonoBehaviour
     private float stoppingDistance;
     public bool playerAlive;
 
+    Pause Pause;
+     public AudioSource ratSound;
+
     void Start()
     {
+        ratSound = GetComponent<AudioSource>();
         stoppingDistance = 1.1f;
         moveSpeed = 5f;
         player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
+        Pause = GameObject.Find("GameManager").GetComponent<Pause>();
     }
     void Update()
     {
+        if (Pause.PauseMenu.activeSelf)
+        {
+            Debug.Log("Rat sound not Playing");
+            ratSound.Pause();
+        }
+        else
+        {
+            Debug.Log("Rat sound Playing");
+            ratSound.UnPause();
+        }
+        
         float distance = Vector3.Distance(transform.position, player.transform.position);
         transform.LookAt(player.transform.position);
 

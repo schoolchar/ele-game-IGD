@@ -294,21 +294,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -1059422275450723310, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
-      propertyPath: enemies.Array.data[0]
+      propertyPath: playerHealth
       value: 
-      objectReference: {fileID: 6674855391675836649, guid: e427b4e25c84fc249b43219c037d1ce4, type: 3}
-    - target: {fileID: -1059422275450723310, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
-      propertyPath: enemies.Array.data[1]
-      value: 
-      objectReference: {fileID: 1613636113566964064, guid: 6438e736e7e27c840bc5ba86de759a9d, type: 3}
-    - target: {fileID: -1059422275450723310, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
-      propertyPath: enemies.Array.data[2]
-      value: 
-      objectReference: {fileID: 2493815929604912168, guid: f396cb16f0644fa4c9658fceb853d7da, type: 3}
-    - target: {fileID: -1059422275450723310, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
-      propertyPath: enemies.Array.data[3]
-      value: 
-      objectReference: {fileID: 531785152754730259, guid: 7510e33325b06ec4b9bfa0910c5c3d86, type: 3}
+      objectReference: {fileID: 1525570280}
     - target: {fileID: 331960211524314063, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -507,6 +495,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1525570280 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2125592141690816146, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
+  m_PrefabInstance: {fileID: 589256314}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a337c9313fcd2cc4d9e19ea0447720a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1613150283
 GameObject:
   m_ObjectHideFlags: 0

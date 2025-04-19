@@ -48,6 +48,11 @@ public class PlayerMovement : MonoBehaviour
     //ref for rigidbody
     Rigidbody rb;
 
+    //Animation
+    public Animator animatorLion;
+    public Animator animatorSeal;
+    public Animator animatorMonkey;
+    public Animator animatorElephant;
 
     //Weapon upgrades
     public GameObject ringOfFire;
@@ -56,7 +61,17 @@ public class PlayerMovement : MonoBehaviour
     // on start up, i may be over-commenting
     private void Start()
     {
-       InitValues();
+        InitValues();
+
+        animatorLion = GameObject.FindGameObjectWithTag("Lion").GetComponent<Animator>();
+/*        animatorSeal = GameObject.FindGameObjectWithTag("Seal").GetComponent<Animator>();
+        animatorMonkey = GameObject.FindGameObjectWithTag("Monkey").GetComponent<Animator>();
+        animatorElephant = GameObject.FindGameObjectWithTag("Elephant").GetComponent<Animator>();*/
+
+        animatorLion.SetBool("IsMoving", false);
+           /* animatorSeal.SetBool("IsMoving", false);
+            animatorMonkey.SetBool("IsMoving", false);
+            animatorElephant.SetBool("IsMoving", false);*/
     }
 
     //goes every update
@@ -80,6 +95,21 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         moving();
+
+        if(moveDirection.magnitude >= 0.01f)
+        {
+            animatorLion.SetBool("IsMoving", true);
+            animatorSeal.SetBool("IsMoving", true);
+            animatorMonkey.SetBool("IsMoving", true);
+            animatorElephant.SetBool("IsMoving", true);
+        }
+        else
+        {
+            animatorLion.SetBool("IsMoving", false);
+            animatorSeal.SetBool("IsMoving", false);
+            animatorMonkey.SetBool("IsMoving", false);
+            animatorElephant.SetBool("IsMoving", false);
+        }
     }
 
     public void InitValues()
@@ -87,6 +117,9 @@ public class PlayerMovement : MonoBehaviour
         readyToJump = true;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+
+        //Set as delegate for event
+        PlayerHealth.onPlayerDeath += CALLBACK_ResetWeapons;
 
         //Do not dstroy player
         DontDestroyOnLoad(this.gameObject);
@@ -150,4 +183,13 @@ public class PlayerMovement : MonoBehaviour
     {
         readyToJump = true;
     }
+    /// <summary>
+    /// Reset weapons to be off on player death
+    /// </summary>
+    public void CALLBACK_ResetWeapons()
+    {
+        ringOfFire.SetActive(false);
+        knifeThrow.hasKnife = false;
+        knifeThrow.enabled = false;
+    } //END ResetWeapons()
 }

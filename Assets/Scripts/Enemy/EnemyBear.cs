@@ -19,24 +19,38 @@ public class EnemyBear : MonoBehaviour
     [Header("Stopping Distance")]
     private float stoppingDistance;
 
+    Pause Pause;
+    public AudioSource bearSound;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        bearSound = GetComponent<AudioSource>();
         baseSpeed = 8f;
         randomSpeed = 5f;
         timerDuration = Random.Range(4f, 10f);
         increaseSpeed = 15f;
-        stoppingDistance = 1.5f;
+        stoppingDistance = 3f;
 
         moveSpeed = baseSpeed + Random.Range(-randomSpeed, randomSpeed);
         player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
-        
+        Pause = GameObject.Find("GameManager").GetComponent<Pause>();   
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Pause.PauseMenu.activeSelf)
+        {
+            Debug.Log("Rat sound not Playing");
+            bearSound.Pause();
+        }
+        else
+        {
+            Debug.Log("Rat sound Playing");
+            bearSound.UnPause();
+        }
         //If enemy is within stopping distance, the enemy stops moving, else the enemy actilvily follows player.
         float distance = Vector3.Distance(transform.position, player.transform.position);
         if (distance > stoppingDistance)
