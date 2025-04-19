@@ -19,6 +19,7 @@ public class EnemyClown : MonoBehaviour
     private float waitTime = 2.5f;
 
     Pause Pause;
+    PlayerHealth playerHealth;
     public AudioSource clownSound;
 
     void Start()
@@ -30,6 +31,7 @@ public class EnemyClown : MonoBehaviour
         player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
         animator = GetComponentInChildren<Animator>();
         Pause = GameObject.Find("GameManager").GetComponent<Pause>();
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         isStopped = false;
     }
 
@@ -62,6 +64,12 @@ public class EnemyClown : MonoBehaviour
             moveSpeed = 0f;
             isStopped = true;
             animator.SetBool("IsMoving", false);
+        }
+
+
+        if (playerHealth.health <= 0)
+        {
+            Destroy(this.gameObject);
         }
     }
 

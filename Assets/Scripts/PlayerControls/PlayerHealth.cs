@@ -73,10 +73,6 @@ public class PlayerHealth : MonoBehaviour
     }
 
 
-        
-    
-
-
     /// <summary>
     /// Decrease player health by 1 when it collides with an enemy
     /// </summary>

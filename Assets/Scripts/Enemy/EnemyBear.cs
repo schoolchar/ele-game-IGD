@@ -20,6 +20,7 @@ public class EnemyBear : MonoBehaviour
     private float stoppingDistance;
 
     Pause Pause;
+    PlayerHealth playerHealth;
     public AudioSource bearSound;
 
 
@@ -35,6 +36,7 @@ public class EnemyBear : MonoBehaviour
 
         moveSpeed = baseSpeed + Random.Range(-randomSpeed, randomSpeed);
         player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         Pause = GameObject.Find("GameManager").GetComponent<Pause>();   
     }
 
@@ -70,6 +72,12 @@ public class EnemyBear : MonoBehaviour
         {
             moveSpeed += increaseSpeed;
             currentTime = 0f;
+        }
+
+
+        if (playerHealth.health <= 0)
+        {
+            Destroy(this.gameObject);
         }
 
     }
