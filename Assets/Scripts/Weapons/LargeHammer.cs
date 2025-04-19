@@ -82,7 +82,7 @@ public class LargeHammer : MonoBehaviour
         }
         else
         {
-            newInterval -= (.25 * ((float)upgradeTier - 3));
+            newInterval = (.25f * ((float)upgradeTier - 3));
         }
         SetInterval(newInterval);
     }
