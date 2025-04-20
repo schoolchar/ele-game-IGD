@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemySpawn : MonoBehaviour
 {
-    //public GameObject[] enemies;
     public GameObject player;
     public List<GameObject> spawns1;
     public List<GameObject> spawns2;
@@ -34,6 +35,8 @@ public class EnemySpawn : MonoBehaviour
     private float timerMostWait;
     private float timerNextList;
     private int randomEnemy;
+
+    //Scene activeScene;
 
     // Start is called before the first frame update
     void Start()
@@ -65,6 +68,8 @@ public class EnemySpawn : MonoBehaviour
             spawns3Active = true;
             //Debug.Log("Spawn3 active");
         }
+
+        //Scene activeScene = SceneManager.GetActiveScene();
     }
 
     private void FixedUpdate()

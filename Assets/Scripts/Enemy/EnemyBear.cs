@@ -32,7 +32,7 @@ public class EnemyBear : MonoBehaviour
         randomSpeed = 5f;
         timerDuration = Random.Range(4f, 10f);
         increaseSpeed = 15f;
-        stoppingDistance = 3f;
+        stoppingDistance = 2.3f;
 
         moveSpeed = baseSpeed + Random.Range(-randomSpeed, randomSpeed);
         player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
