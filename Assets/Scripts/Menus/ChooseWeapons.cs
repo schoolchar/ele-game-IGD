@@ -14,13 +14,14 @@ public class ChooseWeapons : MonoBehaviour
         public GameObject inSceneObj;
     }
 
-
+    public int Knifelevel = 1;
     private int oldXPNum;
     private int currentXP;
     private int nextMilestone = 5;
     [SerializeField] private Canvas weaponsCanvas;
     private PlayerMovement player;
     private PlayerHealth playerHealth;
+    private KnifethrowTestUpgrade knifethrowTestUpgrade;
 
     [SerializeField] private TextMeshProUGUI ringText;
     [SerializeField] private TextMeshProUGUI knifeText;
@@ -37,6 +38,7 @@ public class ChooseWeapons : MonoBehaviour
     {
         player = FindAnyObjectByType<PlayerMovement>();
         playerHealth = player.gameObject.GetComponent<PlayerHealth>();
+      // knifethrowTestUpgrade.
     }
 
     /// <summary>
@@ -141,10 +143,11 @@ public class ChooseWeapons : MonoBehaviour
             {
                 case 0:
                     if (weaponOptions[i].level == 0)
-                        weaponMenu[i].onClick.AddListener(this.EnableRingOfFire);
+                        weaponMenu[i].onClick.AddListener(this.EnableKnifeThrow);
                     else
                     {
                         //Something for upgading the weapon
+                        Knifelevel ++;
                     }
                     break;
                 case 1:

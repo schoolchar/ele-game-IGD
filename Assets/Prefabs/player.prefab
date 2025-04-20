@@ -340,6 +340,7 @@ MonoBehaviour:
   spawns1Active: 0
   spawns2Active: 0
   spawns3Active: 0
+  poolSize: 0
 --- !u!114 &561606230722805421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -477,7 +478,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1394019053864438680}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0541d3470ce83b345b8a5b1c6cee96f9, type: 3}
   m_Name: 
@@ -1180,6 +1181,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   knife: {fileID: 6291107187475892311, guid: 9189478540e5d4f40813c74eb5a8a0af, type: 3}
+  level: 1
   projectileSpeed: 20
   fireRate: 1
   hasKnife: 1
