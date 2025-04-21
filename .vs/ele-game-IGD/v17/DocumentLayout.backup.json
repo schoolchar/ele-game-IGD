@@ -1,0 +1,118 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\rappa\\Desktop\\github\\ele-game-IGD\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{70A71A7E-630A-E4A8-0A96-9AFF672B29D5}|Assembly-CSharp.csproj|c:\\users\\rappa\\desktop\\github\\ele-game-igd\\assets\\scripts\\ui\\dialogue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70A71A7E-630A-E4A8-0A96-9AFF672B29D5}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\dialogue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70A71A7E-630A-E4A8-0A96-9AFF672B29D5}|Assembly-CSharp.csproj|c:\\users\\rappa\\desktop\\github\\ele-game-igd\\assets\\scripts\\weapons\\nukeprefab.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70A71A7E-630A-E4A8-0A96-9AFF672B29D5}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\weapons\\nukeprefab.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70A71A7E-630A-E4A8-0A96-9AFF672B29D5}|Assembly-CSharp.csproj|C:\\Users\\rappa\\Desktop\\github\\ele-game-IGD\\assets\\scripts\\weapons\\nuke.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70A71A7E-630A-E4A8-0A96-9AFF672B29D5}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\weapons\\nuke.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70A71A7E-630A-E4A8-0A96-9AFF672B29D5}|Assembly-CSharp.csproj|C:\\Users\\rappa\\Desktop\\github\\ele-game-IGD\\assets\\scripts\\playercontrols\\basicshoot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70A71A7E-630A-E4A8-0A96-9AFF672B29D5}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playercontrols\\basicshoot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70A71A7E-630A-E4A8-0A96-9AFF672B29D5}|Assembly-CSharp.csproj|C:\\Users\\rappa\\Desktop\\github\\ele-game-IGD\\assets\\scripts\\weapons\\knifethrow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70A71A7E-630A-E4A8-0A96-9AFF672B29D5}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\weapons\\knifethrow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70A71A7E-630A-E4A8-0A96-9AFF672B29D5}|Assembly-CSharp.csproj|C:\\Users\\rappa\\Desktop\\github\\ele-game-IGD\\assets\\scripts\\weapons\\turret.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70A71A7E-630A-E4A8-0A96-9AFF672B29D5}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\weapons\\turret.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Dialogue.cs",
+              "DocumentMoniker": "C:\\Users\\rappa\\Desktop\\github\\ele-game-IGD\\Assets\\Scripts\\UI\\Dialogue.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\Dialogue.cs",
+              "ToolTip": "C:\\Users\\rappa\\Desktop\\github\\ele-game-IGD\\Assets\\Scripts\\UI\\Dialogue.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\Dialogue.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwBwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T21:44:27.8Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "NukePrefab.cs",
+              "DocumentMoniker": "C:\\Users\\rappa\\Desktop\\github\\ele-game-IGD\\Assets\\Scripts\\Weapons\\NukePrefab.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Weapons\\NukePrefab.cs",
+              "ToolTip": "C:\\Users\\rappa\\Desktop\\github\\ele-game-IGD\\Assets\\Scripts\\Weapons\\NukePrefab.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Weapons\\NukePrefab.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAYwC0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T21:10:29.57Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Nuke.cs",
+              "DocumentMoniker": "C:\\Users\\rappa\\Desktop\\github\\ele-game-IGD\\Assets\\Scripts\\Weapons\\Nuke.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Weapons\\Nuke.cs",
+              "ToolTip": "C:\\Users\\rappa\\Desktop\\github\\ele-game-IGD\\Assets\\Scripts\\Weapons\\Nuke.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Weapons\\Nuke.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABkAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T20:56:44.005Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Knifethrow.cs",
+              "DocumentMoniker": "C:\\Users\\rappa\\Desktop\\github\\ele-game-IGD\\Assets\\Scripts\\Weapons\\Knifethrow.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Weapons\\Knifethrow.cs",
+              "ToolTip": "C:\\Users\\rappa\\Desktop\\github\\ele-game-IGD\\Assets\\Scripts\\Weapons\\Knifethrow.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Weapons\\Knifethrow.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T20:52:02.785Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Turret.cs",
+              "DocumentMoniker": "C:\\Users\\rappa\\Desktop\\github\\ele-game-IGD\\Assets\\Scripts\\Weapons\\Turret.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Weapons\\Turret.cs",
+              "ToolTip": "C:\\Users\\rappa\\Desktop\\github\\ele-game-IGD\\Assets\\Scripts\\Weapons\\Turret.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Weapons\\Turret.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T20:47:05.431Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BasicShoot.cs",
+              "DocumentMoniker": "C:\\Users\\rappa\\Desktop\\github\\ele-game-IGD\\Assets\\Scripts\\PlayerControls\\BasicShoot.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerControls\\BasicShoot.cs",
+              "ToolTip": "C:\\Users\\rappa\\Desktop\\github\\ele-game-IGD\\Assets\\Scripts\\PlayerControls\\BasicShoot.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerControls\\BasicShoot.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-15T18:15:14.694Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
