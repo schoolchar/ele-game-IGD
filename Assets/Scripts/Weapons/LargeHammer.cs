@@ -43,7 +43,7 @@ public class LargeHammer : MonoBehaviour
             }
             else
             {
-                interval = tempNew;
+                interval = interval - tempNew;
             }
         }
         
@@ -73,11 +73,25 @@ public class LargeHammer : MonoBehaviour
             Destroy(objectInstance);
         }
     }
+    public void LevelUp(int upgradeTier)
+    {
+        float newInterval;
+        if (upgradeTier < 3)
+        {
+            newInterval = (0.5f * (float)upgradeTier);
+        }
+        else
+        {
+            newInterval = (.25f * ((float)upgradeTier - 3));
+        }
+        SetInterval(newInterval);
+    }
+    
 
     public void SetInterval(float newInterval)
     {
         newVal = true;
-        interval = newInterval;
+        interval -= newInterval;
         tempNew = newInterval;
     }
 
