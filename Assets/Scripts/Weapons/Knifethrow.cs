@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Knifethrow : WeaponBase
 {
+    ChooseWeapons chooseWeapons;
     // The layer mask for the enemy
-    public LayerMask EnemyLayerMask;
+    public LayerMask enemyLayerMask;
 
     // The prefab of the sphere to shoot
     public GameObject knife;
@@ -20,13 +18,14 @@ public class Knifethrow : WeaponBase
 
     private float nextFireTime = 0.0f;
 
-    //get component player script
     public bool hasKnife = true;
 
     bool knifeActive;
 
+    // The level variable to determine the number of enemies to target
+    public int KnifeLevel;
 
-    //Player
+    //get component player script
     [SerializeField] private GameObject player;
 
     public override void ActivateThisWeapon()
@@ -35,7 +34,8 @@ public class Knifethrow : WeaponBase
         if (!hasKnife)
         {
             hasKnife = true;
-            StartCoroutine(TimeShooting());
+            InvokeRepeating("TimeShooting", 0f, fireRate); // Hopefully act the same way as a coroutine
+           // StartCoroutine(TimeShooting());
             knifeActive = true;
         }
         else
@@ -45,15 +45,25 @@ public class Knifethrow : WeaponBase
         
     }
 
+    void Start()
+    {
+      //  KnifeLevel = chooseWeapons.allWeaponsData[1].level; //Gets the level of knife throw
+    }
     void Update()
     {
-        /*if (Time.time > nextFireTime)
+
+      
+        
+       /* if (Time.time > nextFireTime)
         {
-            Debug.Log("time greter than fire time");
-            GameObject nearestEnemy = FindNearestEnemy();
-            if (nearestEnemy != null && hasKnife == true)
+            GameObject[] nearestEnemy = FindNearestEnemy(KnifeLevel);
+            if (nearestEnemy != null && nearestEnemy.Length > 0 && knife == true)
             {
-                ShootAt(nearestEnemy);
+                Debug.Log("Knife thrown");
+                foreach (GameObject enemy in nearestEnemy)
+                {
+                    ShootAt(enemy);
+                }
                 nextFireTime = Time.time + 1.0f / fireRate;
             }
         }*/
@@ -64,32 +74,44 @@ public class Knifethrow : WeaponBase
         DoDamage(collision);
     }
 
-    GameObject FindNearestEnemy()
+    GameObject[] FindNearestEnemy(int count)
     {
-        GameObject nearestEnemy = null;
-        float nearestDistance = Mathf.Infinity;
+        List<GameObject> nearestEnemy = new List<GameObject>();
+        float[] nearestDistance = new float[count];
+        for (int i = 0; i < count; i++)
+        {
+            nearestDistance[i] = Mathf.Infinity;
+        }
 
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, Mathf.Infinity, EnemyLayerMask);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, Mathf.Infinity, enemyLayerMask);
         foreach (Collider hitCollider in hitColliders)
         {
             float distance = Vector3.Distance(transform.position, hitCollider.transform.position);
-            if (distance < nearestDistance)
+            for (int i = 0; i < count; i++)
             {
-                nearestDistance = distance;
-                nearestEnemy = hitCollider.gameObject;
+                if (distance < nearestDistance[i])
+                {
+                    nearestDistance[i] = distance;
+                    if (nearestEnemy.Count > i)
+                    {
+                        nearestEnemy[i] = hitCollider.gameObject;
+                    }
+                    else
+                    {
+                        nearestEnemy.Add(hitCollider.gameObject);
+                    }
+                    break;
+                }
             }
         }
-        Debug.Log("Nearest enemy = " + nearestEnemy);
-        return nearestEnemy;
+
+        return nearestEnemy.ToArray();
     }
 
     void ShootAt(GameObject target)
     {
-        Debug.Log("Knife throw called");
         GameObject projectile = Instantiate(knife, transform.position, Quaternion.identity);
-
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
-  
         if (rb != null)
         {
             Vector3 direction = (target.transform.position - transform.position).normalized;
@@ -106,17 +128,20 @@ public class Knifethrow : WeaponBase
         }
     }
 
-    IEnumerator TimeShooting()
+    void TimeShooting()
     {
-        yield return new WaitForSeconds(fireRate);
-        Debug.Log("Knife");
-        GameObject nearestEnemy = FindNearestEnemy();
-        if (nearestEnemy != null && hasKnife == true)
+       // yield return new WaitForSeconds(fireRate);
+        GameObject[] nearestEnemy = FindNearestEnemy(KnifeLevel);
+        if (nearestEnemy != null)
         {
-            Debug.Log("Conditions for knife throw met");
-            ShootAt(nearestEnemy);
+            Debug.Log("Knife thrown");
+            foreach (GameObject enemy in nearestEnemy)
+            {
+                ShootAt(enemy);
+            }
             nextFireTime = Time.time + 1.0f / fireRate;
         }
-        StartCoroutine(TimeShooting());
+        
+        // StartCoroutine(TimeShooting());
     }
 }
