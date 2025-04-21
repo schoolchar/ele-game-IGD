@@ -296,7 +296,7 @@ MonoBehaviour:
   isStopped: 0
   bullet: {fileID: 0}
   spawnPt: {fileID: 0}
-  clownSound: {fileID: 0}
+  clownSound: {fileID: -6013055525320437079}
 --- !u!114 &1746856664001536688
 MonoBehaviour:
   m_ObjectHideFlags: 0

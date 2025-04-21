@@ -16,6 +16,7 @@ TagManager:
   - Seal
   - Monkey
   - Elephant
+  - RatGaze
   layers:
   - Default
   - TransparentFX
