@@ -27,6 +27,7 @@ public class EnemyRat2 : MonoBehaviour
     }
     void Update()
     {
+        //If pause menu is active , pause sound
         if (Pause.PauseMenu.activeSelf)
         {
             Debug.Log("Rat sound not Playing");
@@ -37,11 +38,11 @@ public class EnemyRat2 : MonoBehaviour
             Debug.Log("Rat sound Playing");
             ratSound.UnPause();
         }
-        
+
+        //If enemy is within stopping distance, the enemy stops moving, else the enemy actilvily follows player.
         float distance = Vector3.Distance(transform.position, player.transform.position);
         transform.LookAt(player.transform.position);
 
-        //If enemy is within stopping distance, the enemy stops moving, else the enemy actilvily follows player.
         if (distance > stoppingDistance)
         {
             transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
@@ -52,7 +53,7 @@ public class EnemyRat2 : MonoBehaviour
             moveSpeed = 0;
         }
 
-
+        //when player is dead, all enemies are destroyed
         if (playerHealth.health <= 0)
         {
             Destroy(this.gameObject);
@@ -60,12 +61,14 @@ public class EnemyRat2 : MonoBehaviour
 
     }
 
+    //If rat has entered the ratgaze collider, movement speed is 1
     private void OnCollisionEnter(Collision _other)
     {
         moveSpeed = 1f;
         Debug.Log("RatGazeOn");
     }
 
+    //If rat has exited the ratgaze collider, movement speed is back to 5
     private void OnCollisionExit(Collision _other)
     {
         moveSpeed = 5f;

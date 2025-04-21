@@ -11,11 +11,8 @@ public class EnemySpawn : MonoBehaviour
     public List<GameObject> spawns2;
     public List<GameObject> spawns3;
 
-    [Header("Spawns")]
-    public GameObject rat1;
-    public GameObject rat2;
-    public GameObject clown;
-    public GameObject bear;
+    [Header("Spawns")]    
+    private int randomEnemy;
 
     [Header("Time")]
     public float spawnDistanceMin = 10f;
@@ -23,7 +20,6 @@ public class EnemySpawn : MonoBehaviour
     public float spawnWait;
     public float spawnMostWait = 12f;
     public float spawnLeastWait = 6f;
-    public int startWait;
     public bool stop;
     public float timeToIncrease = 4f;
     public float timeForSpawn2List = 60f;
@@ -37,9 +33,6 @@ public class EnemySpawn : MonoBehaviour
     public bool spawns2Active;
     public bool spawns3Active;
     private bool isInGameScene;
-
-    private int randomEnemy;
-
 
     //Object pooling
     [SerializeField] private int poolSize;
@@ -57,6 +50,7 @@ public class EnemySpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Tells the spawner how long to wait before the next spawn
         spawnWait = Random.Range(spawnLeastWait, spawnMostWait);
         timerMostWait += Time.deltaTime;
         timerNextList += Time.deltaTime;
@@ -77,6 +71,7 @@ public class EnemySpawn : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         isInGameScene = currentScene.name == "GameScene";
 
+        //If player is in the game scene, enemies can spawn, else they cannot
         if (isInGameScene == true)
         {
             stop = false;
@@ -89,6 +84,7 @@ public class EnemySpawn : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //after _ sec decrease the time between new spawns
         if (timerMostWait >= timeToIncrease)
         {
             if (spawnMostWait > 4f) // Prevent negative or very small intervals
@@ -102,9 +98,8 @@ public class EnemySpawn : MonoBehaviour
 
     IEnumerator waitSpawner()
     {
+        //caluclate players position
         Vector3 playerPosition = player.transform.position;
-        
-        yield return new WaitForSeconds(startWait);
 
         while (!stop)
         {
@@ -120,6 +115,7 @@ public class EnemySpawn : MonoBehaviour
             float distance = Random.Range(spawnDistanceMin, spawnDistanceMax);
             Vector3 spawnPosition = playerPosition + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * distance;
 
+            //Depending on what spawner list is active, set randomEnemy to the correct range
             if (spawns1Active == true)
             {
                 randomEnemy = Random.Range(0, spawns1.Count);
