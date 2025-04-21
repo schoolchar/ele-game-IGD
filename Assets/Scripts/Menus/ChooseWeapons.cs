@@ -63,14 +63,24 @@ public class ChooseWeapons : MonoBehaviour
         allWeaponsData[0].inSceneObj = allWeaponsData[0].script.gameObject;
         allWeaponsData[0].inSceneObj.SetActive(false);
 
+        //Knife thow
         allWeaponsData[1].inSceneObj = FindAnyObjectByType<Knifethrow>().knife;
         allWeaponsData[1].script = FindAnyObjectByType<Knifethrow>();
         allWeaponsData[1].script.enabled = false;
         allWeaponsData[1].inSceneObj.SetActive(false);
 
+        //Hammer
         allWeaponsData[2].script = FindAnyObjectByType<LargeHammer>();
         allWeaponsData[2].script = allWeaponsData[2].script;
         allWeaponsData[2].script.enabled = false;
+
+        //Turret
+        allWeaponsData[3].script = FindAnyObjectByType<Turret>();
+        allWeaponsData[3].script.enabled = false;
+
+        //Nuke
+        allWeaponsData[4].script = FindAnyObjectByType<Nuke>();
+        allWeaponsData[4].script.enabled = false;
     }
 
     /// <summary>

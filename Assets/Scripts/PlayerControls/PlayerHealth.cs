@@ -129,21 +129,7 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log("Player dies");
 
             onPlayerDeath?.Invoke();
-            //Check if this is the highest level the player has reached
-            /*string _path = Application.persistentDataPath + "/HighScore.txt";
-            if(File.Exists(_path))
-            {
-                //get path, if it is the highest, override data in file
-                int _highScore = int.Parse(File.ReadAllText(_path));
-                if(level > _highScore)
-                {
-                    saveData.SaveHighScore(level);
-                }
-            }
-            else
-            {
-                saveData.SaveHighScore(level);
-            }*/
+            
 
 
             //Reset level and load menu

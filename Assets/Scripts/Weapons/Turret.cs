@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : MonoBehaviour
+public class Turret : WeaponBase
 {
     // Prefab turret
     public GameObject TurretPrefab;
@@ -20,7 +20,7 @@ public class Turret : MonoBehaviour
     public Transform playerTransform;
 
 
-    private void Start()
+    public override void ActivateThisWeapon()
     {
         StartCoroutine(SpawnTurret());
     }

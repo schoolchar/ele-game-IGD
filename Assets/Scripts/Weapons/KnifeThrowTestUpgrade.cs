@@ -26,7 +26,7 @@ public class KnifethrowTestUpgrade : MonoBehaviour
 
     void Start()
     {
-       KnifeLevel = chooseWeapons.Knifelevel; 
+       //KnifeLevel = chooseWeapons.Knifelevel; 
     }
     void Update()
     {

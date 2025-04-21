@@ -57,6 +57,9 @@ public class PlayerMovement : MonoBehaviour
     //Weapon upgrades
     public GameObject ringOfFire;
     public Knifethrow knifeThrow;
+    public LargeHammer hammer;
+    public Turret turret;
+    public Nuke nuke;
 
     //Character active
     public GameObject characterActive;
@@ -191,8 +194,13 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     public void CALLBACK_ResetWeapons()
     {
-        ringOfFire.SetActive(false);
+        //Set all to enabled so that when reloading game, weapon manager can access them
+        ringOfFire.SetActive(true);
         knifeThrow.hasKnife = false;
-        knifeThrow.enabled = false;
+        knifeThrow.enabled = true;
+        turret.enabled = true;
+        turret.StopAllCoroutines();
+        nuke.enabled = true;
+        nuke.StopAllCoroutines();
     } //END ResetWeapons()
 }

@@ -521,20 +521,30 @@ MonoBehaviour:
   - name: Ring Of Fire
     level: 0
     index: 0
+    inSceneObj: {fileID: 0}
     script: {fileID: 0}
   - name: Knife Throw
     level: 0
     index: 1
+    inSceneObj: {fileID: 0}
     script: {fileID: 0}
   - name: Rubber Hammer
     level: 0
     index: 2
+    inSceneObj: {fileID: 0}
     script: {fileID: 0}
   - name: Turret
     level: 0
     index: 3
+    inSceneObj: {fileID: 0}
+    script: {fileID: 0}
+  - name: Nuke
+    level: 0
+    index: 4
+    inSceneObj: {fileID: 0}
     script: {fileID: 0}
   weaponOptions: 000000000000000000000000
+  availableOps: 
 --- !u!1 &356865473
 GameObject:
   m_ObjectHideFlags: 0

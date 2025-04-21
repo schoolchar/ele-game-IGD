@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Nuke : MonoBehaviour
+public class Nuke : WeaponBase
 {
     //prefab
     public GameObject nukePrefab;
@@ -13,7 +13,7 @@ public class Nuke : MonoBehaviour
     // Spawn position
     public Transform playerTransform;
 
-    private void Start()
+    public override void ActivateThisWeapon()
     {
         // Start
         StartCoroutine(SpawnNukes());

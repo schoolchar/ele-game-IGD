@@ -34,6 +34,10 @@ public class MoneyCollect : MonoBehaviour
             //Destroy object
             Destroy(this.gameObject);
         }
+        else
+        {
+            Debug.Log("Can not collect");
+        }
     }
 
     //Money despawns if it is not collected in time
