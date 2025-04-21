@@ -129,9 +129,9 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log("Player dies");
 
             onPlayerDeath?.Invoke();
-            
 
 
+            xp = 0;
             //Reset level and load menu
             level = 0;
             SceneManager.LoadScene(0);
