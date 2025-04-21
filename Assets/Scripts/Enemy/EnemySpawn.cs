@@ -1,20 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemySpawn : MonoBehaviour
 {
-    //public GameObject[] enemies;
+    [Header ("Lists")]
     public GameObject player;
     public List<GameObject> spawns1;
     public List<GameObject> spawns2;
     public List<GameObject> spawns3;
 
+    [Header("Spawns")]
     public GameObject rat1;
     public GameObject rat2;
     public GameObject clown;
     public GameObject bear;
 
+    [Header("Time")]
     public float spawnDistanceMin = 10f;
     public float spawnDistanceMax = 14f;
     public float spawnWait;
@@ -26,13 +29,15 @@ public class EnemySpawn : MonoBehaviour
     public float timeForSpawn2List = 60f;
     public float timeForSpawn3List = 120f;
     public float increaseAmount = 0.5f;
+    private float timerMostWait;
+    private float timerNextList;
 
+    [Header("Bools")]
     public bool spawns1Active;
     public bool spawns2Active;
     public bool spawns3Active;
+    private bool isInGameScene;
 
-    private float timerMostWait;
-    private float timerNextList;
     private int randomEnemy;
 
 
@@ -60,14 +65,25 @@ public class EnemySpawn : MonoBehaviour
         {
             spawns1Active = false;
             spawns2Active = true;
-            //Debug.Log("Spawn2 active");
         }
 
         if (timerNextList >= timeForSpawn3List)
         {
             spawns2Active = false;
             spawns3Active = true;
-            //Debug.Log("Spawn3 active");
+        }
+
+        //gets scene name
+        Scene currentScene = SceneManager.GetActiveScene();
+        isInGameScene = currentScene.name == "GameScene";
+
+        if (isInGameScene == true)
+        {
+            stop = false;
+        }
+        else
+        {
+            stop = true;
         }
     }
 
@@ -92,13 +108,14 @@ public class EnemySpawn : MonoBehaviour
 
         while (!stop)
         {
+            //return null if no enemies are on screen
             if (spawns1.Count == 0 || spawns2.Count == 0 || spawns3.Count == 0)
             {
-                //Debug.LogWarning("No enemies in spawn list!");
                 yield return null;
                 continue;
             }
             
+            //Spawning logic
             float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
             float distance = Random.Range(spawnDistanceMin, spawnDistanceMax);
             Vector3 spawnPosition = playerPosition + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * distance;

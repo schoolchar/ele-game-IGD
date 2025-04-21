@@ -12,8 +12,9 @@ public class EnemyRat1 : MonoBehaviour
     private float stoppingDistance;
     public bool playerAlive;
 
-     Pause Pause;
-     public AudioSource ratSound;
+    Pause Pause;
+    PlayerHealth playerHealth;
+    public AudioSource ratSound;
 
     void Start()
     {
@@ -21,6 +22,7 @@ public class EnemyRat1 : MonoBehaviour
         stoppingDistance = 1.1f;
         moveSpeed = 5f;
         player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         Pause = GameObject.Find("GameManager").GetComponent<Pause>();
     }
     void Update()
@@ -48,6 +50,11 @@ public class EnemyRat1 : MonoBehaviour
         else
         {
             moveSpeed = 0;
+        }
+
+        if (playerHealth.health <= 0)
+        {
+            Destroy(this.gameObject);
         }
 
     }

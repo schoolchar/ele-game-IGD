@@ -13,6 +13,7 @@ public class EnemyRat2 : MonoBehaviour
     public bool playerAlive;
 
     Pause Pause;
+    PlayerHealth playerHealth;
      public AudioSource ratSound;
 
     void Start()
@@ -22,6 +23,7 @@ public class EnemyRat2 : MonoBehaviour
         moveSpeed = 5f;
         player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
         Pause = GameObject.Find("GameManager").GetComponent<Pause>();
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
     }
     void Update()
     {
@@ -48,6 +50,12 @@ public class EnemyRat2 : MonoBehaviour
         else
         {
             moveSpeed = 0;
+        }
+
+
+        if (playerHealth.health <= 0)
+        {
+            Destroy(this.gameObject);
         }
 
     }
