@@ -5,22 +5,26 @@ using UnityEngine;
 
 public class Ringoffire : WeaponBase
 {
-    ChooseWeapons chooseWeapons;
+    [SerializeField] ChooseWeapons chooseWeapons;
     public Transform player;
+    private Quaternion playerRotation;
     public int RingoffireLevel;
     public float distance = 1.0f;
     public float baseSpeed = 180.0f;
-    float oldSpeed;
-    float speedUpgrade = 0.25f;
+    float oldSpeed = 180.0f;
+    float speedUpgrade = 1.25f;
     private Vector3 lastPlayerPosition;
     private float playerSpeed;
     float adjustedSpeed;
-    bool fireActive;
+    public bool fireActive;
+    private int oldRingoffireLevel;
 
     // Start is called before the first frame update
     void Start()
     {
-       // RingoffireLevel = chooseWeapons.allWeaponsData[0].level; //Gets the level of ring of fire
+        chooseWeapons = FindAnyObjectByType<ChooseWeapons>();
+        RingoffireLevel = chooseWeapons.allWeaponsData[0].level; //Gets the level of ring of fire
+        oldRingoffireLevel = RingoffireLevel;
     }
     public override void ActivateThisWeapon()
     {
@@ -32,6 +36,8 @@ public class Ringoffire : WeaponBase
     // Update is called once per frame
     void Update()
     {
+        RingoffireLevel = chooseWeapons.allWeaponsData[0].level; //Updates the level of the ring of fire
+        
         Debug.Log("Fire activated");
         if (fireActive)
         {
@@ -53,6 +59,7 @@ public class Ringoffire : WeaponBase
     {
         if (_collision.gameObject.CompareTag("Enemy"))
         {
+            Debug.Log("Ring of fire has hit enemy");
             _collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1);
         }
     }
@@ -69,16 +76,19 @@ public class Ringoffire : WeaponBase
     {
         adjustedSpeed = (baseSpeed + playerSpeed) * 1.5f;
 
-        //What I think might work for the ring of fire upgrade. Supposed to incease the speed of the ring of fire every time it is upgraded
-
-      /*  if(RingoffireLevel == 1)
+        if(oldRingoffireLevel != RingoffireLevel)
         {
-            adjustedSpeed = (baseSpeed + playerSpeed) * 1.5f;
-            oldSpeed = adjustedSpeed;
-        }
-        if(RingoffireLevel > 1)
-        {
+            oldRingoffireLevel++;
             adjustedSpeed = oldSpeed * speedUpgrade;
+        }
+
+        oldSpeed = adjustedSpeed;
+
+       /* if (Time.timeScale == 1)
+        {
+            playerRotation = Quaternion.LookRotation(player.position - transform.position);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, playerRotation, baseSpeed * Time.deltaTime);
+            transform.RotateAround(player.position, Vector3.down, adjustedSpeed * Time.deltaTime);  
         }*/
 
         // Rotate around the player with the adjusted speed

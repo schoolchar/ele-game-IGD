@@ -276,8 +276,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a337c9313fcd2cc4d9e19ea0447720a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
-  health: 10
+  maxHealth: 100
+  health: 100
   xp: 0
   money: 0
   level: 0
@@ -481,7 +481,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1394019053864438680}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!1 &1555237959989853747
 GameObject:
   m_ObjectHideFlags: 0
@@ -1114,13 +1114,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92b0113cd3b34cb428aa58404ec937e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chooseWeapons: {fileID: 0}
   enemyLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   knife: {fileID: 6291107187475892311, guid: 9189478540e5d4f40813c74eb5a8a0af, type: 3}
   projectileSpeed: 20
   fireRate: 1
-  hasKnife: 1
+  hasKnife: 0
   KnifeLevel: 0
   player: {fileID: 1394019053864438680}
 --- !u!1 &4078106372057756186

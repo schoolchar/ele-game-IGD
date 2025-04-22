@@ -2064,6 +2064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98404eced536804f897a9036a2ba745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Fire: {fileID: 0}
   PauseMenu: {fileID: 1275372919}
   isPaused: 0
 --- !u!1 &1604657242
@@ -2127,6 +2128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98404eced536804f897a9036a2ba745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Fire: {fileID: 6291107187475892311, guid: 4342c354115f07647a854cde4b49e132, type: 3}
   PauseMenu: {fileID: 1275372919}
   isPaused: 0
 --- !u!82 &1604657246
