@@ -170,6 +170,7 @@ GameObject:
   - component: {fileID: -3503242722923072897}
   - component: {fileID: 5172935694428711339}
   - component: {fileID: -7658899717858874445}
+  - component: {fileID: 3533716702727816994}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -473,6 +474,14 @@ MonoBehaviour:
   storeButton: {fileID: 0}
   levelText: {fileID: 0}
   reset: 1
+--- !u!81 &3533716702727816994
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394019053864438680}
+  m_Enabled: 1
 --- !u!1 &1555237959989853747
 GameObject:
   m_ObjectHideFlags: 0
@@ -1105,13 +1114,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92b0113cd3b34cb428aa58404ec937e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyLayerMask:
+  enemyLayerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   knife: {fileID: 6291107187475892311, guid: 9189478540e5d4f40813c74eb5a8a0af, type: 3}
   projectileSpeed: 20
   fireRate: 1
   hasKnife: 1
+  KnifeLevel: 0
   player: {fileID: 1394019053864438680}
 --- !u!1 &4078106372057756186
 GameObject:
