@@ -6,6 +6,7 @@ using System;
 public class Knifethrow : WeaponBase
 {
     [SerializeField] ChooseWeapons chooseWeapons;
+
     // The layer mask for the enemy
     public LayerMask enemyLayerMask;
 
@@ -28,8 +29,8 @@ public class Knifethrow : WeaponBase
 
     // The level variable to determine the number of enemies to target
     public int KnifeLevel;
-
     private int oldKnifeLevel;
+    public AudioSource knifeSound;
 
     //get component player script
     [SerializeField] private GameObject player;
@@ -53,7 +54,7 @@ public class Knifethrow : WeaponBase
 
     void Start()
     {
-
+        knifeSound = GetComponent<AudioSource>();
         chooseWeapons = FindAnyObjectByType<ChooseWeapons>();
         KnifeLevel = chooseWeapons.allWeaponsData[1].level; //Gets the level of knife throw
         oldKnifeLevel = KnifeLevel;
@@ -172,6 +173,7 @@ public class Knifethrow : WeaponBase
             Debug.Log("Knife thrown");
             foreach (GameObject enemy in nearestEnemy)
             {
+                knifeSound.Play();
                 ShootAt(enemy);
             }
             nextFireTime = Time.time + 1.0f / fireRate;

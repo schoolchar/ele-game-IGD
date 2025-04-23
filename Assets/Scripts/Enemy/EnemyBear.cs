@@ -21,7 +21,7 @@ public class EnemyBear : MonoBehaviour
 
     Pause Pause;
     PlayerHealth playerHealth;
-    public AudioSource bearSound;
+    AudioSource bearSound;
 
 
     // Start is called before the first frame update
@@ -45,12 +45,12 @@ public class EnemyBear : MonoBehaviour
     {
         if (Pause.PauseMenu.activeSelf)
         {
-            Debug.Log("Rat sound not Playing");
+            Debug.Log("Bear sound not Playing");
             bearSound.Pause();
         }
         else
         {
-            Debug.Log("Rat sound Playing");
+            Debug.Log("Bear sound Playing");
             bearSound.UnPause();
         }
         //If enemy is within stopping distance, the enemy stops moving, else the enemy actilvily follows player.

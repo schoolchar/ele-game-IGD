@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Lion : MonoBehaviour, ICharacterActions
 {
+    public AudioSource lionSound;
     //Lion attack: Slash
     private bool isAttacking;
     private int damage = 1;
@@ -11,7 +12,10 @@ public class Lion : MonoBehaviour, ICharacterActions
     [SerializeField] private GameObject paw;
     [SerializeField] private Animator animator;
 
-
+    void Start()
+    {
+        lionSound = GetComponent<AudioSource>();
+    }
     private void OnEnable()
     {
         StartCoroutine(TimeAttack());
@@ -42,6 +46,7 @@ public class Lion : MonoBehaviour, ICharacterActions
     {
         yield return new WaitForSeconds(attackWait);
         isAttacking = true;
+        lionSound.Play();
         animator.SetTrigger("Slash");
         StartCoroutine(TurnOffAttack());
     }

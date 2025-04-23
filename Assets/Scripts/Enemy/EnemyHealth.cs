@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
+    private AudioSource[] audioSources;
     public float health;
     public float maxHealth;
 
@@ -16,6 +17,7 @@ public class EnemyHealth : MonoBehaviour
     private MoneyDrop moneyDrop;
     private void Start()
     {
+        audioSources = GetComponents<AudioSource>();
         health = maxHealth;
         moneyDrop = GetComponent<MoneyDrop>();
     }
@@ -38,6 +40,7 @@ public class EnemyHealth : MonoBehaviour
         else
         {
             health -= _damage;
+            audioSources[1].Play();
         }
         if (health <= 0)
         {

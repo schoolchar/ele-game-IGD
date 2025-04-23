@@ -21,9 +21,8 @@ public class LargeHammer : WeaponBase
     public float interval = 3.0f;
     public float tempNew;
     public bool newVal = false;
-
-
     bool hammerActive;
+    public AudioSource hammerSound;
     public override void ActivateThisWeapon()
     {
         Debug.Log("Hammer activated");
@@ -32,6 +31,7 @@ public class LargeHammer : WeaponBase
             interval -= Time.deltaTime;
             if (interval < 0)
             {
+                hammerSound.Play();
                 objectInstance = Instantiate(objectPrefab, transform.position + offset, Quaternion.identity);
                 objectInstance.transform.SetParent(spawnPt);
                 objectInstance.transform.Rotate(Vector3.forward, -90f);
@@ -56,6 +56,11 @@ public class LargeHammer : WeaponBase
         }
        
         
+    }
+
+    void Start()
+    {
+        hammerSound = GetComponent<AudioSource>();
     }
 
     void Update()

@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class ElephantWaterAttack : MonoBehaviour
 {
+    public AudioSource waterSound;
+
+    void Start()
+    {
+        waterSound = GetComponent<AudioSource>();
+        waterSound.Play();
+    }
     void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Enemy")

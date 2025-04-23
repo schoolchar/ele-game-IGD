@@ -18,10 +18,12 @@ public class Ringoffire : WeaponBase
     float adjustedSpeed;
     public bool fireActive;
     private int oldRingoffireLevel;
+    public AudioSource fireSound;
 
     // Start is called before the first frame update
     void Start()
     {
+        fireSound = GetComponent<AudioSource>();
         chooseWeapons = FindAnyObjectByType<ChooseWeapons>();
         RingoffireLevel = chooseWeapons.allWeaponsData[0].level; //Gets the level of ring of fire
         oldRingoffireLevel = RingoffireLevel;
@@ -41,6 +43,7 @@ public class Ringoffire : WeaponBase
         Debug.Log("Fire activated");
         if (fireActive)
         {
+            fireSound.Play();
             UpdatePlayerSpeed();
             FireRing();
         }

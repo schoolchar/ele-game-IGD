@@ -20,7 +20,7 @@ public class EnemyClown : MonoBehaviour
 
     Pause Pause;
     PlayerHealth playerHealth;
-    public AudioSource clownSound;
+    AudioSource clownSound;
 
     void Start()
     {
@@ -39,12 +39,12 @@ public class EnemyClown : MonoBehaviour
     {
         if (Pause.PauseMenu.activeSelf)
         {
-            Debug.Log("Rat sound not Playing");
+            Debug.Log("clown sound not Playing");
             clownSound.Pause();
         }
         else
         {
-            Debug.Log("Rat sound Playing");
+            Debug.Log("clown sound Playing");
             clownSound.UnPause();
         }
         float distance = Vector3.Distance(transform.position, player.transform.position);

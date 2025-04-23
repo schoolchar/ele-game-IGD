@@ -14,7 +14,7 @@ public class EnemyRat1 : MonoBehaviour
 
     Pause Pause;
     PlayerHealth playerHealth;
-    public AudioSource ratSound;
+    AudioSource ratSound;
 
     void Start()
     {

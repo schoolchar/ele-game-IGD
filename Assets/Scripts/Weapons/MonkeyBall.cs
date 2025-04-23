@@ -10,7 +10,13 @@ public class MonkeyBall : MonoBehaviour
     EnemyHealth enemyHealth;
 
     public bool debugHealth;
+    public AudioSource monkeySound;
 
+    void Start()
+    {
+        monkeySound = GetComponent<AudioSource>();
+        monkeySound.Play();
+    }
     private void OnCollisionEnter(Collision collision)
     {
         HitEnemy(collision);

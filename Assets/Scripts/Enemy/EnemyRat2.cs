@@ -11,10 +11,9 @@ public class EnemyRat2 : MonoBehaviour
     [Header("Stopping Distance")]
     private float stoppingDistance;
     public bool playerAlive;
-
     Pause Pause;
     PlayerHealth playerHealth;
-     public AudioSource ratSound;
+    AudioSource ratSound;
 
     void Start()
     {

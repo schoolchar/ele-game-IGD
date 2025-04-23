@@ -115,6 +115,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7468702162027896120}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e11250d797b0d7429c243acca9bbc7f, type: 3}
+  m_Script: {fileID: 11500000, guid: 715211cbe1028b442b1abc46fb2a6fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPrefab: {fileID: 0}
+  rotationAngle: 180
+  rotationDuration: 1
+  offset: {x: 1, y: 0, z: 0}
+  spawnPt: {fileID: 0}
+  interval: 3
+  tempNew: 0
+  newVal: 0
+  hammerSound: {fileID: 0}
