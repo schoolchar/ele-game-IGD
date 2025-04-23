@@ -6,6 +6,8 @@ using TMPro;
 
 public class ChooseWeapons : MonoBehaviour
 {
+    public AudioSource levelSound;
+
     [System.Serializable]
     public struct WeaponsData
     {
@@ -44,6 +46,8 @@ public class ChooseWeapons : MonoBehaviour
 
     private void Start()
     {
+        levelSound = GetComponent<AudioSource>();
+
         //availableOps = new List<int>(3);
         
          for(int i = 0; i < allWeaponsData.Length; i++)
@@ -94,6 +98,7 @@ public class ChooseWeapons : MonoBehaviour
         //Check that xp is at next milestone, prevents running every time that xp is gained
         if(_currentXP >= nextMilestone && _currentXP != oldXPNum)
         {
+            levelSound.Play();
             Time.timeScale = 0;
             weaponsCanvas.enabled = true;
             Cursor.lockState = CursorLockMode.None;
