@@ -39,9 +39,11 @@ public class PlayerHealth : MonoBehaviour
     [Header("Upgrades - Life force")]
     public bool lifeForce;
     public int healthPerEnemy;
+    public AudioSource damageSound;
 
     private void Start()
     {
+        damageSound = GetComponent<AudioSource>();
         //InitValues();
     }
 
@@ -84,6 +86,7 @@ public class PlayerHealth : MonoBehaviour
             //Decrement health
             health--;
             int _tempHealth = health;
+            damageSound.Play();
 
 
             //Check if player is at 0 or less health
