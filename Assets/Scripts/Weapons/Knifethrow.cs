@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using System;
+using Unity.VisualScripting.InputSystem;
 
 public class Knifethrow : WeaponBase
 {
@@ -15,8 +16,8 @@ public class Knifethrow : WeaponBase
 
     // The speed of the projectile
     public float projectileSpeed = 20.0f;
-    float oldSpeed = 20.0f;
-    float speedUpgrade = 1.25f;
+   // float oldSpeed = 20.0f;
+   // float speedUpgrade = 1.25f;
 
     // The rate of fire
     public float fireRate = 1.0f;
@@ -80,7 +81,11 @@ public class Knifethrow : WeaponBase
 
     private void OnCollisionEnter(Collision collision)
     {
-        DoDamage(collision);
+        Physics.IgnoreLayerCollision(9, 9, true);
+        Physics.IgnoreLayerCollision(9, 7, true);
+        Physics.IgnoreLayerCollision(9, 10, true);
+        Physics.IgnoreLayerCollision(9, 12, true);
+        Physics.IgnoreLayerCollision(9, 13, true);
     }
 
    /* GameObject FindNearestEnemy()
@@ -138,32 +143,23 @@ public class Knifethrow : WeaponBase
 
     void ShootAt(GameObject target)
     {
-       /* if(oldKnifeLevel != KnifeLevel)
+        if(oldKnifeLevel != KnifeLevel)
         {
             oldKnifeLevel++;
-            projectileSpeed = oldSpeed * speedUpgrade;
+           // projectileSpeed = oldSpeed * speedUpgrade;
         }
 
-        oldSpeed = projectileSpeed;*/
+       // oldSpeed = projectileSpeed;
 
         GameObject projectile = Instantiate(knife, transform.position, Quaternion.identity);
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         if (rb != null)
         {
             Vector3 direction = (target.transform.position - transform.position).normalized;
+            transform.rotation = Quaternion.LookRotation(direction);
             rb.velocity = direction * projectileSpeed;
         }
     }
-
-    void DoDamage(Collision _collision)
-    {
-        if (_collision.gameObject.layer == 8)
-        {
-            _collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1);
-            transform.position = player.transform.position;
-        }
-    }
-
     void TimeShooting()
     {
        // yield return new WaitForSeconds(fireRate);

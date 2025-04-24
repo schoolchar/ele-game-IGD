@@ -11,8 +11,6 @@ public class EnemyRat1 : MonoBehaviour
     [Header("Stopping Distance")]
     private float stoppingDistance;
     public bool playerAlive;
-
-    Pause Pause;
     PlayerHealth playerHealth;
     AudioSource ratSound;
 
@@ -23,12 +21,11 @@ public class EnemyRat1 : MonoBehaviour
         moveSpeed = 5f;
         player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
-        Pause = GameObject.Find("GameManager").GetComponent<Pause>();
     }
     void Update()
     {
-        //If pause menu is active , pause sound
-        if (Pause.PauseMenu.activeSelf)
+        //If time is set to 0, pause sound
+        if (Time.timeScale == 0f)
         {
             Debug.Log("Rat sound not Playing");
             ratSound.Pause();

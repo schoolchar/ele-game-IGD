@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8430957841030942930}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: orientation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: -7658899717858874445}
   - component: {fileID: 3533716702727816994}
   - component: {fileID: 1908737065217755605}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -932,7 +932,7 @@ GameObject:
   m_Component:
   - component: {fileID: 678945271071527585}
   - component: {fileID: 5124206244216261339}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Monkey
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -986,7 +986,7 @@ GameObject:
   m_Component:
   - component: {fileID: 911962631144964268}
   - component: {fileID: 8412654454325526124}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Lion
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1040,7 +1040,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8062042572403599447}
   - component: {fileID: 2100029114959373258}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Seal
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1098,7 +1098,7 @@ GameObject:
   - component: {fileID: 5777958391361081663}
   - component: {fileID: 5785051854309656066}
   - component: {fileID: 3626927792530979435}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: playerOBJ
   m_TagString: PlayerMesh
   m_Icon: {fileID: 0}
@@ -1221,7 +1221,7 @@ MonoBehaviour:
   fireRate: 1
   hasKnife: 0
   KnifeLevel: 0
-  knifeSound: {fileID: 0}
+  knifeSound: {fileID: 3626927792530979435}
   player: {fileID: 1394019053864438680}
 --- !u!82 &3626927792530979435
 AudioSource:
@@ -1329,7 +1329,7 @@ GameObject:
   m_Component:
   - component: {fileID: 545778055927036239}
   - component: {fileID: 992408666664653721}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Elephant
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -2203,7 +2203,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6622975909662256221, guid: 9189478540e5d4f40813c74eb5a8a0af, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2435,6 +2436,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 331960211524314063}
     m_Modifications:
+    - target: {fileID: 4175257443291938015, guid: 4342c354115f07647a854cde4b49e132, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653454671790380459, guid: 4342c354115f07647a854cde4b49e132, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5151963170061296447, guid: 4342c354115f07647a854cde4b49e132, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2492,23 +2501,31 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 331960211524314063}
     - target: {fileID: 8430249380449250953, guid: 4342c354115f07647a854cde4b49e132, type: 3}
+      propertyPath: distance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8430249380449250953, guid: 4342c354115f07647a854cde4b49e132, type: 3}
+      propertyPath: baseSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8430249380449250953, guid: 4342c354115f07647a854cde4b49e132, type: 3}
       propertyPath: fireSound
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6599646653052209370}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6291107187475892311, guid: 4342c354115f07647a854cde4b49e132, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7507773754743664956}
+      addedObject: {fileID: 6599646653052209370}
   m_SourcePrefab: {fileID: 100100000, guid: 4342c354115f07647a854cde4b49e132, type: 3}
 --- !u!1 &7899741544625694635 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6291107187475892311, guid: 4342c354115f07647a854cde4b49e132, type: 3}
   m_PrefabInstance: {fileID: 4246619241226645500}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &7507773754743664956
+--- !u!82 &6599646653052209370
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2522,7 +2539,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2564,7 +2581,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
