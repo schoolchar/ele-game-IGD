@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6700747163801399788}
   - component: {fileID: 8851269503862232480}
   - component: {fileID: 8376161101677676072}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: monkeyBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
