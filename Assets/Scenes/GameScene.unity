@@ -507,7 +507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14480a667de0c4148bf39c5d9ad0e014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelSound: {fileID: 318593276}
+  levelSound: {fileID: 0}
   weaponsCanvas: {fileID: 318593273}
   ringText: {fileID: 1617355126}
   knifeText: {fileID: 2069944986}
@@ -2239,7 +2239,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 29a1238e38fb3b841aefec065b96f31c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.35
   m_Pitch: 1
   Loop: 1
   Mute: 0

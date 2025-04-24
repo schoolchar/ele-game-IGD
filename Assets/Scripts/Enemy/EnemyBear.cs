@@ -18,6 +18,8 @@ public class EnemyBear : MonoBehaviour
 
     [Header("Stopping Distance")]
     private float stoppingDistance;
+
+    Pause Pause;
     PlayerHealth playerHealth;
     AudioSource bearSound;
 
@@ -34,14 +36,15 @@ public class EnemyBear : MonoBehaviour
 
         moveSpeed = baseSpeed + Random.Range(-randomSpeed, randomSpeed);
         player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
-        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();  
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        Pause = GameObject.Find("GameManager").GetComponent<Pause>();   
     }
 
     // Update is called once per frame
     void Update()
     {
-        //If time is set to 0, pause sound
-        if (Time.timeScale == 0f)
+        //If pause menu is active , pause sound
+        if (Pause.PauseMenu.activeSelf)
         {
             Debug.Log("Bear sound not Playing");
             bearSound.Pause();

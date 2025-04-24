@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7527330444544243112}
   - component: {fileID: 2602480690652435497}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: monkeyBalls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
