@@ -21,14 +21,17 @@ public class LargeHammer : WeaponBase
     public float interval = 3.0f;
     public float tempNew;
     public bool newVal = false;
-    bool hammerActive;
+    public bool hammerActive;
     public AudioSource hammerSound;
     public override void ActivateThisWeapon()
     {
         Debug.Log("Hammer activated");
         if(!hammerActive)
         {
-            interval -= Time.deltaTime;
+            while(!hammerActive && interval >= 0)
+            {
+                interval -= Time.deltaTime;
+            }
             if (interval < 0)
             {
                 hammerSound.Play();
@@ -65,6 +68,10 @@ public class LargeHammer : WeaponBase
 
     void Update()
     {
+        while (!hammerActive && interval >= 0)
+        {
+            interval -= Time.deltaTime;
+        }
         if (isRotating)
         {
             RotateObject();

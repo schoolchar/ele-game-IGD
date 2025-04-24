@@ -197,6 +197,7 @@ public class PlayerMovement : MonoBehaviour
         //Set all to enabled so that when reloading game, weapon manager can access them
         ringOfFire.SetActive(true);
         knifeThrow.hasKnife = false;
+        hammer.hammerActive = false;
         knifeThrow.enabled = true;
         turret.enabled = true;
         turret.StopAllCoroutines();
