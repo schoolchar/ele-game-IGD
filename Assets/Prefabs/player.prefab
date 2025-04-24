@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 1908737065217755605}
   m_Layer: 0
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -328,16 +328,11 @@ MonoBehaviour:
   - {fileID: 6674855391675836649, guid: e427b4e25c84fc249b43219c037d1ce4, type: 3}
   - {fileID: 531785152754730259, guid: 7510e33325b06ec4b9bfa0910c5c3d86, type: 3}
   - {fileID: 531785152754730259, guid: 7510e33325b06ec4b9bfa0910c5c3d86, type: 3}
-  rat1: {fileID: 8912945283817817966, guid: caecd5ed2de02074fa793fe79c0892a3, type: 3}
-  rat2: {fileID: 2493815929604912168, guid: f396cb16f0644fa4c9658fceb853d7da, type: 3}
-  clown: {fileID: 6674855391675836649, guid: e427b4e25c84fc249b43219c037d1ce4, type: 3}
-  bear: {fileID: 531785152754730259, guid: 7510e33325b06ec4b9bfa0910c5c3d86, type: 3}
   spawnDistanceMin: 8
   spawnDistanceMax: 12
   spawnWait: 0
   spawnMostWait: 12
   spawnLeastWait: 6
-  startWait: 0
   stop: 0
   timeToIncrease: 4
   timeForSpawn2List: 60
@@ -379,7 +374,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Height: 1
@@ -1510,7 +1505,7 @@ GameObject:
   - component: {fileID: 3007845253310577663}
   m_Layer: 0
   m_Name: RatGaze
-  m_TagString: Untagged
+  m_TagString: RatGaze
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1545,14 +1540,14 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
+  m_Radius: 1.32
+  m_Height: 1.31
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.2, z: 0}
 --- !u!1 &4749324913742113231
 GameObject:
   m_ObjectHideFlags: 0

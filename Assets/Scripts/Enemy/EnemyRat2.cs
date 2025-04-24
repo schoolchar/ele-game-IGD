@@ -6,14 +6,15 @@ public class EnemyRat2 : MonoBehaviour
 {
     [Header("Movement")]
     public Transform player;
-    public float moveSpeed;
+    private float moveSpeed;
 
     [Header("Stopping Distance")]
     private float stoppingDistance;
     public bool playerAlive;
+
     Pause Pause;
     PlayerHealth playerHealth;
-    AudioSource ratSound;
+    public AudioSource ratSound;
 
     void Start()
     {
@@ -26,6 +27,7 @@ public class EnemyRat2 : MonoBehaviour
     }
     void Update()
     {
+        //If pause menu is active , pause sound
         if (Pause.PauseMenu.activeSelf)
         {
             Debug.Log("Rat sound not Playing");
@@ -36,11 +38,11 @@ public class EnemyRat2 : MonoBehaviour
             Debug.Log("Rat sound Playing");
             ratSound.UnPause();
         }
-        
+
+        //If enemy is within stopping distance, the enemy stops moving, else the enemy actilvily follows player.
         float distance = Vector3.Distance(transform.position, player.transform.position);
         transform.LookAt(player.transform.position);
 
-        //If enemy is within stopping distance, the enemy stops moving, else the enemy actilvily follows player.
         if (distance > stoppingDistance)
         {
             transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
@@ -51,7 +53,7 @@ public class EnemyRat2 : MonoBehaviour
             moveSpeed = 0;
         }
 
-
+        //when player is dead, all enemies are destroyed
         if (playerHealth.health <= 0)
         {
             Destroy(this.gameObject);
@@ -59,15 +61,24 @@ public class EnemyRat2 : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision _other)
+    //If rat has entered the ratgaze collider, movement speed is 1
+    private void OnTriggerEnter(Collider other)
     {
-        moveSpeed = 1f;
-        Debug.Log("RatGazeOn");
+        if (other.tag == "RatGaze")
+        {
+            moveSpeed = 1f;
+            Debug.Log("RatGazeOn");
+        }
+        
     }
 
-    private void OnCollisionExit(Collision _other)
+    //If rat has exited the ratgaze collider, movement speed is back to 5
+    private void OnTriggerExit(Collider other)
     {
-        moveSpeed = 5f;
-        Debug.Log("RatGazeOff");
+        if (other.tag == "RatGaze")
+        {
+            moveSpeed = 5f;
+            Debug.Log("RatGazeOn");
+        }
     }
 }

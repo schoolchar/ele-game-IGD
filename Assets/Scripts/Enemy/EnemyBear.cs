@@ -43,6 +43,7 @@ public class EnemyBear : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //If pause menu is active , pause sound
         if (Pause.PauseMenu.activeSelf)
         {
             Debug.Log("Bear sound not Playing");
@@ -53,7 +54,8 @@ public class EnemyBear : MonoBehaviour
             Debug.Log("Bear sound Playing");
             bearSound.UnPause();
         }
-        //If enemy is within stopping distance, the enemy stops moving, else the enemy actilvily follows player.
+
+        //If enemy is within stopping distance, enemy stops moving, else the enemy activily follows player.
         float distance = Vector3.Distance(transform.position, player.transform.position);
         if (distance > stoppingDistance)
         {
@@ -74,7 +76,7 @@ public class EnemyBear : MonoBehaviour
             currentTime = 0f;
         }
 
-
+        //when player is dead, all enemies are destroyed
         if (playerHealth.health <= 0)
         {
             Destroy(this.gameObject);
