@@ -33,7 +33,7 @@ public class LargeHammer : WeaponBase
             {
                 hammerSound.Play();
                 objectInstance = Instantiate(objectPrefab, transform.position + offset, Quaternion.identity);
-                objectInstance.transform.SetParent(spawnPt, false);
+                objectInstance.transform.SetParent(spawnPt);
                 objectInstance.transform.Rotate(Vector3.forward, -90f);
                 initialPosition = objectInstance.transform.position;
                 rotationTimer = 0f;
@@ -86,20 +86,6 @@ public class LargeHammer : WeaponBase
             StartCoroutine(TimeReload());
             
         }
-    }
-
-    public void LevelUp(int upgradeTier)
-    {
-        float newInterval;
-        if (upgradeTier < 3)
-        {
-            newInterval = (0.5f * (float)upgradeTier);
-        }
-        else 
-        {
-            newInterval -= (.25 * ((float)upgradeTier - 3));
-        }
-        SetInterval(newInterval);
     }
 
     public void SetInterval(float newInterval)
