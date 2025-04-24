@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8750737781293113071}
   - component: {fileID: 4297368344094506622}
   - component: {fileID: 1438405584264621429}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pie
   m_TagString: Enemy
   m_Icon: {fileID: 0}
