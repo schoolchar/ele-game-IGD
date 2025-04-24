@@ -97,7 +97,7 @@ public class LargeHammer : WeaponBase
         }
         else 
         {
-            newInterval -= (.25 * ((float)upgradeTier - 3));
+            newInterval = (.25f * ((float)upgradeTier - 3));
         }
         SetInterval(newInterval);
     }
@@ -105,8 +105,7 @@ public class LargeHammer : WeaponBase
     public void SetInterval(float newInterval)
     {
         newVal = true;
-        interval = newInterval;
-        tempNew = newInterval;
+        tempNew = interval - newInterval;
     }
 
     private void OnCollisionEnter(Collision collision)
