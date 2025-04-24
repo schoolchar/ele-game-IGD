@@ -23,6 +23,7 @@ public class Destroy : MonoBehaviour
 
     void HitEnemy(Collision _collision)
     {
+        //If the knife collides with an enemy, enemy takes damage
         if(_collision.gameObject.layer == 8)
         {
             Debug.Log("Enemy hit");

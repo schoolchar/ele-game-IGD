@@ -23,6 +23,7 @@ public class Ringoffire : WeaponBase
     // Start is called before the first frame update
     void Start()
     {
+        //Ring of fire game object ignores specific game objects depending on their layer
         Physics.IgnoreLayerCollision(10, 9, true);
         Physics.IgnoreLayerCollision(10, 10, true);
         Physics.IgnoreLayerCollision(10, 12, true);
@@ -43,7 +44,8 @@ public class Ringoffire : WeaponBase
     // Update is called once per frame
     void Update()
     {
-        RingoffireLevel = chooseWeapons.allWeaponsData[0].level; //Updates the level of the ring of fire
+        //Updates the level of the ring of fire
+        RingoffireLevel = chooseWeapons.allWeaponsData[0].level; 
         
         Debug.Log("Fire activated");
         if (fireActive)
@@ -63,9 +65,9 @@ public class Ringoffire : WeaponBase
     {
         HitEnemy(collision);
     }
-
     void HitEnemy(Collision _collision)
     {
+        //If the ring of fire collides with an enemy, enemy takes damage
         if (_collision.gameObject.layer == 8)
         {
             Debug.Log("Ring of fire has hit enemy");
@@ -80,7 +82,6 @@ public class Ringoffire : WeaponBase
         playerSpeed = playerMovement.magnitude / Time.deltaTime;
         lastPlayerPosition = player.position;
     }*/
-
     void FireRing()
     {
         adjustedSpeed = baseSpeed;
@@ -93,13 +94,18 @@ public class Ringoffire : WeaponBase
         }
 
        // oldSpeed = adjustedSpeed;
-       baseSpeed = adjustedSpeed;
+        //Speed of rotation
+        baseSpeed = adjustedSpeed;
 
+        //Rotation angle
         float angle = Time.time * adjustedSpeed;
+
+        //Updates the player's x,y, and z postion 
         float x = player.position.x + Mathf.Cos(angle) * distance;
         float y = player.position.y;
         float z = player.position.z + Mathf.Sin(angle) * distance;
 
+        //Updates the postion of the ring of fire based on the player's position
         transform.position = new Vector3(x, y, z);
 
        /* if (Time.timeScale == 1)

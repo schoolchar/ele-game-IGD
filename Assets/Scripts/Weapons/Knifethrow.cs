@@ -11,7 +11,7 @@ public class Knifethrow : WeaponBase
     // The layer mask for the enemy
     public LayerMask enemyLayerMask;
 
-    // The prefab of the sphere to shoot
+    // The prefab of the knife to shoot
     public GameObject knife;
 
     // The speed of the projectile
@@ -43,7 +43,6 @@ public class Knifethrow : WeaponBase
         {
             hasKnife = true;
             InvokeRepeating("TimeShooting", 0f, fireRate); 
-           // StartCoroutine(TimeShooting());
             knifeActive = true;
         }
         else
@@ -55,6 +54,7 @@ public class Knifethrow : WeaponBase
 
     void Start()
     {
+        //Knife game object ignores specific game objects depending on their layer
         Physics.IgnoreLayerCollision(9, 9, true);
         Physics.IgnoreLayerCollision(9, 7, true);
         Physics.IgnoreLayerCollision(9, 10, true);
@@ -68,7 +68,8 @@ public class Knifethrow : WeaponBase
     }
     void Update()
     {
-        KnifeLevel = chooseWeapons.allWeaponsData[1].level; //Updates the level of the knife throw
+        //Updates the level of the knife
+        KnifeLevel = chooseWeapons.allWeaponsData[1].level; 
         
        /* if (Time.time > nextFireTime)
         {
@@ -104,6 +105,7 @@ public class Knifethrow : WeaponBase
         return nearestEnemy;
     }*/
 
+    //Function that calculates the nearest enemy
     GameObject[] FindNearestEnemy(int count)
     {
         List<GameObject> nearestEnemy = new List<GameObject>();
@@ -138,6 +140,8 @@ public class Knifethrow : WeaponBase
         return nearestEnemy.ToArray();
     }
 
+
+    //Function that creates a knife and shoots at the target
     void ShootAt(GameObject target)
     {
         if(oldKnifeLevel != KnifeLevel)
@@ -150,6 +154,7 @@ public class Knifethrow : WeaponBase
 
         GameObject projectile = Instantiate(knife, transform.position, Quaternion.identity);
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
+
         if (rb != null)
         {
             Vector3 direction = (target.transform.position - transform.position).normalized;
@@ -157,6 +162,10 @@ public class Knifethrow : WeaponBase
             rb.velocity = direction * projectileSpeed;
         }
     }
+
+    /*Function that uses a list to call the ShootAt function on the nearest enemies equal to the knife level.
+    For example, if the knife level is 1, only one knife is thrown. If the knife level is 2, two knifes 
+    will be thrown if there is more then 1 enemy with the knifes shooting at the nearest 2 enemies.*/
     void TimeShooting()
     {
        // yield return new WaitForSeconds(fireRate);
