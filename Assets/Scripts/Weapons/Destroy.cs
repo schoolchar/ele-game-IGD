@@ -23,7 +23,7 @@ public class Destroy : MonoBehaviour
 
     void HitEnemy(Collision _collision)
     {
-        if(_collision.gameObject.tag == "Enemy")
+        if(_collision.gameObject.layer == 8)
         {
             Debug.Log("Enemy hit");
             _collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1);

@@ -55,6 +55,12 @@ public class Knifethrow : WeaponBase
 
     void Start()
     {
+        Physics.IgnoreLayerCollision(9, 9, true);
+        Physics.IgnoreLayerCollision(9, 7, true);
+        Physics.IgnoreLayerCollision(9, 10, true);
+        Physics.IgnoreLayerCollision(9, 12, true);
+        Physics.IgnoreLayerCollision(9, 13, true);
+
         knifeSound = GetComponent<AudioSource>();
         chooseWeapons = FindAnyObjectByType<ChooseWeapons>();
         KnifeLevel = chooseWeapons.allWeaponsData[1].level; //Gets the level of knife throw
@@ -77,15 +83,6 @@ public class Knifethrow : WeaponBase
                 nextFireTime = Time.time + 1.0f / fireRate;
             }
         }*/
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        Physics.IgnoreLayerCollision(9, 9, true);
-        Physics.IgnoreLayerCollision(9, 7, true);
-        Physics.IgnoreLayerCollision(9, 10, true);
-        Physics.IgnoreLayerCollision(9, 12, true);
-        Physics.IgnoreLayerCollision(9, 13, true);
     }
 
    /* GameObject FindNearestEnemy()

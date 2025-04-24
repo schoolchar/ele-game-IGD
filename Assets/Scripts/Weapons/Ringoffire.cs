@@ -23,6 +23,11 @@ public class Ringoffire : WeaponBase
     // Start is called before the first frame update
     void Start()
     {
+        Physics.IgnoreLayerCollision(10, 9, true);
+        Physics.IgnoreLayerCollision(10, 10, true);
+        Physics.IgnoreLayerCollision(10, 12, true);
+        Physics.IgnoreLayerCollision(10, 13, true);
+
         fireSound = GetComponent<AudioSource>();
         chooseWeapons = FindAnyObjectByType<ChooseWeapons>();
         RingoffireLevel = chooseWeapons.allWeaponsData[0].level; //Gets the level of ring of fire
@@ -61,7 +66,7 @@ public class Ringoffire : WeaponBase
 
     void HitEnemy(Collision _collision)
     {
-        if (_collision.gameObject.CompareTag("Enemy"))
+        if (_collision.gameObject.layer == 8)
         {
             Debug.Log("Ring of fire has hit enemy");
             _collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1);
