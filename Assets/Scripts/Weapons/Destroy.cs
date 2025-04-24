@@ -13,7 +13,7 @@ public class Destroy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Destroy(this.gameObject, 8f);  
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -26,7 +26,7 @@ public class Destroy : MonoBehaviour
         if(_collision.gameObject.tag == "Enemy")
         {
             Debug.Log("Enemy hit");
-            Destroy(_collision.gameObject);
+            _collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1);
             Destroy(this.gameObject);
         }
     }

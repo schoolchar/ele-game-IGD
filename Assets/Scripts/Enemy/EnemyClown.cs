@@ -17,8 +17,6 @@ public class EnemyClown : MonoBehaviour
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject spawnPt;
     private float waitTime = 2.5f;
-
-    Pause Pause;
     PlayerHealth playerHealth;
     AudioSource clownSound;
 
@@ -30,15 +28,14 @@ public class EnemyClown : MonoBehaviour
         moveSpeed = 5f;
         player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
         animator = GetComponentInChildren<Animator>();
-        Pause = GameObject.Find("GameManager").GetComponent<Pause>();
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         isStopped = false;
     }
 
     void Update()
     {
-        //If pause menu is active , pause sound
-        if (Pause.PauseMenu.activeSelf)
+        //If time is set to 0, pause sound
+        if (Time.timeScale == 0f)
         {
             Debug.Log("clown sound not Playing");
             clownSound.Pause();

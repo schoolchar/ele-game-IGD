@@ -7,15 +7,15 @@ public class Ringoffire : WeaponBase
 {
     [SerializeField] ChooseWeapons chooseWeapons;
     public Transform player;
-    private Quaternion playerRotation;
+   // private Quaternion playerRotation;
     public int RingoffireLevel;
-    public float distance = 1.0f;
-    public float baseSpeed = 180.0f;
-    float oldSpeed = 180.0f;
-    float speedUpgrade = 1.25f;
-    private Vector3 lastPlayerPosition;
-    private float playerSpeed;
+    public float distance = 2.0f;
+    public float baseSpeed = 5f;
     float adjustedSpeed;
+    float Upgrade = 1.25f;
+
+    //private Vector3 lastPlayerPosition;
+   // private float playerSpeed;
     public bool fireActive;
     private int oldRingoffireLevel;
     public AudioSource fireSound;
@@ -30,8 +30,8 @@ public class Ringoffire : WeaponBase
     }
     public override void ActivateThisWeapon()
     {
-        player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
-        lastPlayerPosition = player.position;
+       // player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
+      //  lastPlayerPosition = player.position;
         fireActive = true;
     }
 
@@ -44,13 +44,14 @@ public class Ringoffire : WeaponBase
         if (fireActive)
         {
             fireSound.Play();
-            UpdatePlayerSpeed();
+            //UpdatePlayerSpeed();
             FireRing();
         }
-        else
+       /* else
         {
-            baseSpeed += (baseSpeed + playerSpeed) * 1.5f;
-        }
+           // baseSpeed += (baseSpeed + playerSpeed) * 1.5f;
+           // orbitSpeed += (orbitSpeed + playerSpeed) * 1.5f;
+        }*/
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -67,25 +68,34 @@ public class Ringoffire : WeaponBase
         }
     }
 
-    void UpdatePlayerSpeed()
+   /* void UpdatePlayerSpeed()
     {
         // Calculate the player's speed based on movement since the last frame
         Vector3 playerMovement = player.position - lastPlayerPosition;
         playerSpeed = playerMovement.magnitude / Time.deltaTime;
         lastPlayerPosition = player.position;
-    }
+    }*/
 
     void FireRing()
     {
-        adjustedSpeed = (baseSpeed + playerSpeed) * 1.5f;
+        adjustedSpeed = baseSpeed;
 
         if(oldRingoffireLevel != RingoffireLevel)
         {
+            Debug.Log("Level up");
             oldRingoffireLevel++;
-            adjustedSpeed = oldSpeed * speedUpgrade;
+            adjustedSpeed = baseSpeed * Upgrade;
         }
 
-        oldSpeed = adjustedSpeed;
+       // oldSpeed = adjustedSpeed;
+       baseSpeed = adjustedSpeed;
+
+        float angle = Time.time * adjustedSpeed;
+        float x = player.position.x + Mathf.Cos(angle) * distance;
+        float y = player.position.y;
+        float z = player.position.z + Mathf.Sin(angle) * distance;
+
+        transform.position = new Vector3(x, y, z);
 
        /* if (Time.timeScale == 1)
         {
@@ -95,14 +105,14 @@ public class Ringoffire : WeaponBase
         }*/
 
         // Rotate around the player with the adjusted speed
-        transform.RotateAround(player.position, Vector3.down, adjustedSpeed * Time.deltaTime);
+       // transform.RotateAround(player.position, Vector3.down, adjustedSpeed * Time.deltaTime);
 
         // Maintain the specified distance from the player
-        transform.position = player.position + (transform.position - player.position).normalized * distance;
+       // transform.position = player.position + (transform.position - player.position).normalized * distance;
     }
 
     // Method to set the distance dynamically
-    public void SetDistance(float newDistance)
+   /* public void SetDistance(float newDistance)
     {
         distance = newDistance;
     }
@@ -111,5 +121,5 @@ public class Ringoffire : WeaponBase
     public void SetBaseSpeed(float newBaseSpeed)
     {
         baseSpeed = newBaseSpeed;
-    }
+    }*/
 }

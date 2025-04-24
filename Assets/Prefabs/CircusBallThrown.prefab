@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7791427319791147790}
   - component: {fileID: -1381275811172190132}
   - component: {fileID: 8659108437585326596}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CircusBallThrown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ee8efb76ea160d46bcc20ed5dd18521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballSound: {fileID: 0}
 --- !u!54 &-1381275811172190132
 Rigidbody:
   m_ObjectHideFlags: 0
