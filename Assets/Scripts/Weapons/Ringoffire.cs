@@ -29,7 +29,6 @@ public class Ringoffire : WeaponBase
         Physics.IgnoreLayerCollision(10, 12, true);
         Physics.IgnoreLayerCollision(10, 13, true);
 
-        fireSound = GetComponent<AudioSource>();
         chooseWeapons = FindAnyObjectByType<ChooseWeapons>();
         RingoffireLevel = chooseWeapons.allWeaponsData[0].level; //Gets the level of ring of fire
         oldRingoffireLevel = RingoffireLevel;
@@ -50,7 +49,6 @@ public class Ringoffire : WeaponBase
         Debug.Log("Fire activated");
         if (fireActive)
         {
-            fireSound.Play();
             //UpdatePlayerSpeed();
             FireRing();
         }
