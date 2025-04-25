@@ -42,7 +42,7 @@ public class Knifethrow : WeaponBase
         if (!hasKnife)
         {
             hasKnife = true;
-            InvokeRepeating("TimeShooting", 0f, fireRate); 
+           // InvokeRepeating("TimeShooting", 0f, fireRate); 
             knifeActive = true;
         }
         else
@@ -71,19 +71,10 @@ public class Knifethrow : WeaponBase
         //Updates the level of the knife
         KnifeLevel = chooseWeapons.allWeaponsData[1].level; 
         
-       /* if (Time.time > nextFireTime)
+        if (Time.time > nextFireTime)
         {
-            GameObject[] nearestEnemy = FindNearestEnemy(KnifeLevel);
-            if (nearestEnemy != null && nearestEnemy.Length > 0 && knife == true)
-            {
-                Debug.Log("Knife thrown");
-                foreach (GameObject enemy in nearestEnemy)
-                {
-                    ShootAt(enemy);
-                }
-                nextFireTime = Time.time + 1.0f / fireRate;
-            }
-        }*/
+            TimeShooting();
+        }
     }
 
    /* GameObject FindNearestEnemy()
@@ -158,7 +149,7 @@ public class Knifethrow : WeaponBase
         if (rb != null)
         {
             Vector3 direction = (target.transform.position - transform.position).normalized;
-            transform.rotation = Quaternion.LookRotation(direction);
+            transform.LookAt(direction);
             rb.velocity = direction * projectileSpeed;
         }
     }
