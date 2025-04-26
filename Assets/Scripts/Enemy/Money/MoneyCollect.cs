@@ -24,8 +24,10 @@ public class MoneyCollect : MonoBehaviour
     //if player collides w/ money, then increase moeny the player has
     void AddMoney(Collider _other)
     {
-        if(_other.gameObject.GetComponent<PlayerHealth>() != null)
+        //if(_other.gameObject.GetComponent<PlayerHealth>() != null)
+        if(_other.gameObject.GetComponent<PlayerHealth>())
         {
+            Debug.Log("Money is collected???????");
             PlayerHealth _player = _other.gameObject.GetComponent<PlayerHealth>();
             //Increase money
             _player.money++;
