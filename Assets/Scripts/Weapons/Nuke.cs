@@ -21,13 +21,14 @@ public class Nuke : WeaponBase
 
     private IEnumerator SpawnNukes()
     {
-        while (true)
-        {
+        
+        
             //spawns nuke
             GameObject spawnedNuke = Instantiate(nukePrefab, playerTransform.position, Quaternion.identity);
 
             //waits
             yield return new WaitForSeconds(spawnInterval);
-        }
+        StartCoroutine(SpawnNukes());
+        
     }
 }
