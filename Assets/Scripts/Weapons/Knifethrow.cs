@@ -172,6 +172,10 @@ public class Knifethrow : WeaponBase
             nextFireTime = Time.time + 1.0f / fireRate;
             Array.Clear(nearestEnemy, 0, nearestEnemy.Length);
         }
+        else
+        {
+            Debug.Log("No enemies");
+        }
         
         // StartCoroutine(TimeShooting());
     }

@@ -21,7 +21,7 @@ public class Shooter : MonoBehaviour
         shootTimer += Time.deltaTime;
 
         //If clown is not moving, set active bullet
-        if (enemyClown.isStopped == true)
+        if (enemyClown != null && enemyClown.isStopped == true)
         {
             //After 2.8 seconds have passed since the last bullet, set active the next
             if (shootTimer > 2.6f)
