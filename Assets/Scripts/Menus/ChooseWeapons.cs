@@ -55,7 +55,7 @@ public class ChooseWeapons : MonoBehaviour
              availableOps.Add(i);
          }
 
-        Debug.Log("avalable opstopns = " + availableOps.Count);
+        //Debug.Log("avalable opstopns = " + availableOps.Count);
 
         player = FindAnyObjectByType<PlayerMovement>();
         playerHealth = player.gameObject.GetComponent<PlayerHealth>();
@@ -155,7 +155,7 @@ public class ChooseWeapons : MonoBehaviour
         for (int i = 0; i < weaponMenu.Length; i++)
         {
             int _rTmp = Random.Range(0, availableOps.Count);
-            Debug.Log("Choose at index " + _rTmp);
+            //Debug.Log("Choose at index " + _rTmp);
             int _tmp = availableOps[_rTmp];
             availableOps.RemoveAt(_rTmp);
             weaponOptions[i] = _tmp; //store chosen weapon in options, this will correspond to the button that the weapon is at

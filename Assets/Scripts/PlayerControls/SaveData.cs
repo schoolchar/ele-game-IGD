@@ -72,7 +72,7 @@ public class SaveData : MonoBehaviour
     {
         string _path = Application.persistentDataPath + "/Money.txt";
         File.WriteAllText(_path, playerHealth.money.ToString());
-        Debug.Log(_path);
+        //Debug.Log(_path);
     }
 
     //Save the highest level the player has reached in one run
@@ -80,7 +80,7 @@ public class SaveData : MonoBehaviour
     {
         string _path = Application.persistentDataPath + "/HighScore.txt";
         File.WriteAllText(_path, _score.ToString());
-        Debug.Log(_path);
+        //Debug.Log(_path);
        
     }
 
@@ -90,12 +90,12 @@ public class SaveData : MonoBehaviour
         //Affect on max health
         string _path = Application.persistentDataPath + "/AffectOnHealth.txt";
         File.WriteAllText(_path, health.affectOnHealth.ToString());
-        Debug.Log(_path);
+        //Debug.Log(_path);
 
         //Level
         string _path1 = Application.persistentDataPath + "/HealthLevel.txt";
         File.WriteAllText(_path1, health.level.ToString());
-        Debug.Log(_path1);
+        //Debug.Log(_path1);
     }
 
 
@@ -105,12 +105,12 @@ public class SaveData : MonoBehaviour
         //Affect on xp
         string _path = Application.persistentDataPath + "/AffectOnXP.txt";
         File.WriteAllText(_path, xp.affectOnXP.ToString());
-        Debug.Log(_path);
+        //Debug.Log(_path);
 
         //Level
         string _path1 = Application.persistentDataPath + "/XPLevel.txt";
         File.WriteAllText(_path1, xp.level.ToString());
-        Debug.Log(_path1);
+        //Debug.Log(_path1);
     }
 
     //Store data for affect on magnetism and level of magnetism upgrade
@@ -119,12 +119,12 @@ public class SaveData : MonoBehaviour
         //Affect on mag
         string _path = Application.persistentDataPath + "/AffectOnMag.txt";
         File.WriteAllText(_path, mag.affectOnMag.ToString());
-        Debug.Log(_path);
+       // Debug.Log(_path);
 
         //Level
         string _path1 = Application.persistentDataPath + "/MagLevel.txt";
         File.WriteAllText(_path1, mag.level.ToString());
-        Debug.Log(_path1);
+        //Debug.Log(_path1);
     }
 
 
@@ -134,12 +134,12 @@ public class SaveData : MonoBehaviour
         //Affect on speed
         string _path = Application.persistentDataPath + "/AffectOnSpeed.txt";
         File.WriteAllText(_path, speed.affectOnSpeed.ToString());
-        Debug.Log(_path);
+        //Debug.Log(_path);
 
         //Level
         string _path1 = Application.persistentDataPath + "/SpeedLevel.txt";
         File.WriteAllText(_path1, speed.level.ToString());
-        Debug.Log(_path1);
+        //Debug.Log(_path1);
     }
 
     //Store data for life force upgrade and level
@@ -148,24 +148,24 @@ public class SaveData : MonoBehaviour
         //Affect on health for life force, amount of health gained by killing an enemy
         string _path = Application.persistentDataPath + "/AffectOnLifeForce.txt";
         File.WriteAllText(_path, lifeForce.affectOnHealth.ToString());
-        Debug.Log(_path);
+        //Debug.Log(_path);
 
         //Level
         string _path1 = Application.persistentDataPath + "/LifeForceLevel.txt";
         File.WriteAllText(_path1, lifeForce.level.ToString());
-        Debug.Log(_path1);
+        //Debug.Log(_path1);
     }
 
     public void SaveForcefieldUpgrade()
     {
         string _path = Application.persistentDataPath + "/ForcefieldActive.txt";
         File.WriteAllText(_path, 1.ToString()); //For now, this saves either 1 or nothing, 1 if activated, later make it save the time between activation
-        Debug.Log(_path);
+        //Debug.Log(_path);
 
         //Level
         string _path1 = Application.persistentDataPath + "/ForcefieldLevel.txt";
         File.WriteAllText(_path1, forcefield.level.ToString());
-        Debug.Log(_path1);
+        //Debug.Log(_path1);
     }
     #endregion
 
@@ -181,7 +181,7 @@ public class SaveData : MonoBehaviour
             if (playerHealth != null)
             {
                 playerHealth.money = int.Parse(_val);
-                Debug.Log("Money loaded: " + playerHealth.money);
+                //Debug.Log("Money loaded: " + playerHealth.money);
             }
         }
 
@@ -196,7 +196,7 @@ public class SaveData : MonoBehaviour
             string _val = File.ReadAllText(_path);
             int _level = int.Parse(_val);
             levelText.text = "Highest Level Achieved: " + _level;
-            Debug.Log("Highest level loaded: " + _level);
+            //Debug.Log("Highest level loaded: " + _level);
         }
         else
         {
@@ -214,7 +214,7 @@ public class SaveData : MonoBehaviour
         {
             string _val = File.ReadAllText(_pathHealth);
             health.affectOnHealth = int.Parse(_val);
-            Debug.Log("Affect on health loaded: " + health.affectOnHealth);
+           // Debug.Log("Affect on health loaded: " + health.affectOnHealth);
             reset = false;
         }
 
@@ -224,7 +224,7 @@ public class SaveData : MonoBehaviour
         {
             string _val = File.ReadAllText(_pathHealthLvl);
             health.level = int.Parse(_val);
-            Debug.Log("Health upgrade level loaded: " + health.level);
+           // Debug.Log("Health upgrade level loaded: " + health.level);
             reset = false;
         }
 
@@ -234,7 +234,7 @@ public class SaveData : MonoBehaviour
         {
             string _val = File.ReadAllText(_pathXP);
             xp.affectOnXP = int.Parse(_val);
-            Debug.Log("Affect on xp loaded: " + xp.affectOnXP);
+            //Debug.Log("Affect on xp loaded: " + xp.affectOnXP);
             reset = false;
         }
 
@@ -244,7 +244,7 @@ public class SaveData : MonoBehaviour
         {
             string _val = File.ReadAllText(_pathXPLvl);
             xp.level = int.Parse(_val);
-            Debug.Log("XP level loaded" + xp.level);
+            //Debug.Log("XP level loaded" + xp.level);
             reset = false;
         }
 
@@ -254,7 +254,7 @@ public class SaveData : MonoBehaviour
         {
             string _val = File.ReadAllText(_pathMag);
             mag.affectOnMag = int.Parse(_val);
-            Debug.Log("Affect on magnetism loaded" + mag.affectOnMag);
+           // Debug.Log("Affect on magnetism loaded" + mag.affectOnMag);
             reset = false;
         }
 
@@ -264,7 +264,7 @@ public class SaveData : MonoBehaviour
         {
             string _val = File.ReadAllText(_pathMagLvl);
             mag.level = int.Parse(_val);
-            Debug.Log("Magnetism level loaded:" + mag.level);
+            //Debug.Log("Magnetism level loaded:" + mag.level);
             reset = false;
         }
 
@@ -274,7 +274,7 @@ public class SaveData : MonoBehaviour
         {
             string _val = File.ReadAllText(_pathSpeed);
             speed.affectOnSpeed = int.Parse(_val);
-            Debug.Log("Affect on magnetism loaded" + speed.affectOnSpeed);
+            //Debug.Log("Affect on magnetism loaded" + speed.affectOnSpeed);
             reset = false;
         }
 
@@ -284,7 +284,7 @@ public class SaveData : MonoBehaviour
         {
             string _val = File.ReadAllText(_pathSpeedLvl);
             speed.level = int.Parse(_val);
-            Debug.Log("Magnetism level loaded:" + speed.level);
+            //Debug.Log("Magnetism level loaded:" + speed.level);
             reset = false;
         }
 
@@ -298,7 +298,7 @@ public class SaveData : MonoBehaviour
             if(playerHealth != null)
             {
                 playerHealth.healthPerEnemy = int.Parse(_val);
-                Debug.Log("Affect on life force loaded" + lifeForce.affectOnHealth);
+                //Debug.Log("Affect on life force loaded" + lifeForce.affectOnHealth);
             }
             
             reset = false;

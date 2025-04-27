@@ -15,7 +15,7 @@ public class MoneyDrop : MonoBehaviour
     /// </summary>
     public void DropCoins() //Should be called on enemy death
     {
-        Debug.Log("Drop coins");
+        //Debug.Log("Drop coins");
         int _posInx = 0;
 
         //Instantiate moeny for every coin enemy has

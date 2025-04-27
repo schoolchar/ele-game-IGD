@@ -25,18 +25,18 @@ public class LargeHammer : WeaponBase
     public AudioSource hammerSound;
     public override void ActivateThisWeapon()
     {
-        Debug.Log("Hammer activated");
+        //Debug.Log("Hammer activated");
         if(!hammerActive)
         {
-            Debug.Log("Hammer not active");
+            //Debug.Log("Hammer not active");
             if(interval >= 0)
             {
-                Debug.Log("Interval is greater or equal to 0");
+               // Debug.Log("Interval is greater or equal to 0");
                 interval -= Time.deltaTime;
             }
             if (interval < 0)
             {
-                Debug.Log("Interval is less than 0");
+               // Debug.Log("Interval is less than 0");
                 hammerSound.Play();
                 objectInstance = Instantiate(objectPrefab, transform.position + offset, objectPrefab.transform.rotation);
                 objectInstance.transform.SetParent(spawnPt, false);
@@ -120,7 +120,7 @@ public class LargeHammer : WeaponBase
         if (collision.gameObject.tag == "Enemy")
         {
             //damage stuff
-            Debug.Log("Enemy hit");
+            //Debug.Log("Enemy hit");
             collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(5);
         }
     }

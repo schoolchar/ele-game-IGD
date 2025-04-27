@@ -44,7 +44,7 @@ public class MoveForward : MonoBehaviour
     {
         if(_collision.gameObject.tag == "Enemy")
         {
-            Debug.Log("Enemy hit");
+            //Debug.Log("Enemy hit");
             enemyHealth = _collision.gameObject.GetComponent<EnemyHealth>();
             if(debugHealth)
             {
@@ -60,7 +60,7 @@ public class MoveForward : MonoBehaviour
 
     void DestroyBullet()
     {
-        Debug.Log("Bullet destroy called");
+        //Debug.Log("Bullet destroy called");
         Destroy(this.gameObject);
     }
 

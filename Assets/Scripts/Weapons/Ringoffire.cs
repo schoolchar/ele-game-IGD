@@ -49,7 +49,7 @@ public class Ringoffire : WeaponBase
         //Updates the level of the ring of fire
          
         
-        Debug.Log("Fire activated");
+        //Debug.Log("Fire activated");
         if (fireActive)
         {
             //UpdatePlayerSpeed();
@@ -72,7 +72,7 @@ public class Ringoffire : WeaponBase
         //If the ring of fire collides with an enemy, enemy takes damage
         if (_collision.gameObject.layer == 8)
         {
-            Debug.Log("Ring of fire has hit enemy");
+            //Debug.Log("Ring of fire has hit enemy");
             _collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1);
         }
     }
@@ -90,7 +90,7 @@ public class Ringoffire : WeaponBase
 
         if(oldRingoffireLevel != RingoffireLevel)
         {
-            Debug.Log("Level up");
+            //Debug.Log("Level up");
             oldRingoffireLevel++;
             adjustedSpeed = baseSpeed * Upgrade;
         }

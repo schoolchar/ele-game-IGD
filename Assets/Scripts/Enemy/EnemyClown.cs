@@ -37,12 +37,12 @@ public class EnemyClown : MonoBehaviour
         //If time is set to 0, pause sound
         if (Time.timeScale == 0f)
         {
-            Debug.Log("clown sound not Playing");
+            //Debug.Log("clown sound not Playing");
             clownSound.Pause();
         }
         else
         {
-            Debug.Log("clown sound Playing");
+            //Debug.Log("clown sound Playing");
             clownSound.UnPause();
         }
         

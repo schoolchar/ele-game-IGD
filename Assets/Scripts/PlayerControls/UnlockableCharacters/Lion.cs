@@ -32,7 +32,7 @@ public class Lion : MonoBehaviour, ICharacterActions
     {
         if(_collision.gameObject.GetComponent<EnemyHealth>() != null && isAttacking) 
         {
-            Debug.Log("enemy hit " + _collision.gameObject.name);
+            //Debug.Log("enemy hit " + _collision.gameObject.name);
             Attack(_collision.gameObject.GetComponent<EnemyHealth>());
         }
     }

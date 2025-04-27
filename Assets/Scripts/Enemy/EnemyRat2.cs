@@ -88,7 +88,7 @@ public class EnemyRat2 : MonoBehaviour
         if (other.gameObject.CompareTag("RatGaze"))
         {
             moveSpeed = 1f;
-            Debug.Log("RatGazeOn");
+            //Debug.Log("RatGazeOn");
         }
 
         if (other.gameObject.CompareTag("PlayerBody"))
@@ -106,7 +106,7 @@ public class EnemyRat2 : MonoBehaviour
         if (other.gameObject.CompareTag("RatGaze"))
         {
             moveSpeed = 5f;
-            Debug.Log("RatGazeOn");
+           // Debug.Log("RatGazeOn");
         }
     }
 }

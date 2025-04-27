@@ -53,7 +53,7 @@ public class CharacterStats : MonoBehaviour
         if (currentHealth <= 0)
         {
             //Run death code
-            Debug.Log("Player dies");
+            //Debug.Log("Player dies");
         }
 
     }

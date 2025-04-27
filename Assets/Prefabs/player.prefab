@@ -409,7 +409,6 @@ GameObject:
   - component: {fileID: -3503242722923072897}
   - component: {fileID: 5172935694428711339}
   - component: {fileID: -7658899717858874445}
-  - component: {fileID: 3533716702727816994}
   - component: {fileID: 1908737065217755605}
   - component: {fileID: 4845488100659345855}
   - component: {fileID: 8208251400799020166}
@@ -712,14 +711,6 @@ MonoBehaviour:
   storeButton: {fileID: 0}
   levelText: {fileID: 0}
   reset: 1
---- !u!81 &3533716702727816994
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1394019053864438680}
-  m_Enabled: 1
 --- !u!82 &1908737065217755605
 AudioSource:
   m_ObjectHideFlags: 0
@@ -833,6 +824,7 @@ MonoBehaviour:
   player: {fileID: 1394019053864438680}
   spawnPt: {fileID: 8789253353504759832}
   distance: 0
+  sealObj: {fileID: 3470221175158633835}
 --- !u!114 &8208251400799020166
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -42,7 +42,7 @@ public class DialogueManager : MonoBehaviour
     {
         if(dialogueLines.Count == 0)
         {
-            Debug.Log("Stack null");
+            //Debug.Log("Stack null");
             dialogueText.enabled = false;
             textBox.enabled = false;
             return;

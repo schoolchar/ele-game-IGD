@@ -22,14 +22,16 @@ public class SeaLion : MonoBehaviour
     public float distance;
     private bool distCond = false;
     private bool freezeTimer = false;
-
+    [SerializeField] private GameObject sealObj;
     // Start is called before the first frame update
     void Start()
     {
         offset = new Vector3(0f, 0f, 1.5f);
         offsetS = new Vector3(0f, 2.0f, 1.0f);
         staticBall = Instantiate(ballPrefabS, currPosition + offsetS, player.transform.rotation);
+        staticBall.transform.parent = sealObj.transform;
         staticBall.SetActive(true);
+        StartCoroutine(TimeBall());
 
     }
 
@@ -42,12 +44,12 @@ public class SeaLion : MonoBehaviour
             distance = Vector3.Distance(thrownBall.transform.position, launchPosition); //check the distance
             if (distance > maxDistance)
             {
-                Debug.Log("Distance reached.");
+                //Debug.Log("Distance reached.");
                 distCond = true;
             }
         }
         
-        if (preThrow >= 0 && !freezeTimer)
+       /* if (preThrow >= 0 && !freezeTimer)
         {
             preThrow -= Time.deltaTime;
         }
@@ -57,12 +59,14 @@ public class SeaLion : MonoBehaviour
             ThrowBall();
             freezeTimer = true;
             preThrow = 1f;
-        }
+        }*/
+
+
         //ensure this doesn't infinitely repeat
 
         if (distCond) //conditionals for missing a throw
         {
-            Debug.Log("Distance reached, inflating");
+         //   Debug.Log("Distance reached, inflating");
             Destroy(thrownBall.gameObject);
             thrownBall = null;
             staticBall.SetActive(true);
@@ -73,7 +77,7 @@ public class SeaLion : MonoBehaviour
 
         if (targetHit) //conditionals for hitting a throw
         {
-            Debug.Log("target hit, bouncing back");
+            //Debug.Log("target hit, bouncing back");
             thrownBall.transform.position = Vector3.MoveTowards(thrownBall.transform.position, currPosition, (speed * 2) * Time.deltaTime);
             if (distance < 3f)
             {
@@ -95,7 +99,7 @@ public class SeaLion : MonoBehaviour
 
     void ThrowBall()
     {
-        Debug.Log("Throwing");
+        //Debug.Log("Throwing");
         launchPosition = currPosition;
         staticBall.SetActive(false); //get rid of the one above head
         thrownBall = Instantiate(ballPrefabS, launchPosition + offset, spawnPt.transform.rotation).GetComponent<Rigidbody>(); //put ball infront of player
@@ -105,5 +109,13 @@ public class SeaLion : MonoBehaviour
     public void setSpeed(float newSpeed)
     {
         speed = newSpeed;
+    }
+
+    IEnumerator TimeBall()
+    {
+        yield return new WaitForSeconds(preThrow);
+
+        ThrowBall();
+        StartCoroutine(TimeBall());
     }
 }

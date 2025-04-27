@@ -26,7 +26,7 @@ public class Destroy : MonoBehaviour
         //If the knife collides with an enemy, enemy takes damage
         if(_collision.gameObject.layer == 8)
         {
-            Debug.Log("Enemy hit");
+            //Debug.Log("Enemy hit");
             _collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1);
             Destroy(this.gameObject);
         }

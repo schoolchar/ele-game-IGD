@@ -43,7 +43,7 @@ public class Knifethrow : WeaponBase
         KnifeLevel = chooseWeapons.allWeaponsData[1].level; //Gets the level of knife throw
         oldKnifeLevel = KnifeLevel;
 
-        Debug.Log("Knife activated");
+        //Debug.Log("Knife activated");
         if (!hasKnife)
         {
             hasKnife = true;
@@ -157,7 +157,7 @@ public class Knifethrow : WeaponBase
         GameObject[] nearestEnemy = FindNearestEnemy(KnifeLevel);
         if (nearestEnemy != null)
         {
-            Debug.Log("Knife thrown");
+            //Debug.Log("Knife thrown");
             foreach (GameObject enemy in nearestEnemy)
             {
                 knifeSound.Play();
@@ -168,7 +168,7 @@ public class Knifethrow : WeaponBase
         }
         else
         {
-            Debug.Log("No enemies");
+            //Debug.Log("No enemies");
         }
         
         // StartCoroutine(TimeShooting());

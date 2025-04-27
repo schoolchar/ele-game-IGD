@@ -46,12 +46,12 @@ public class EnemyBear : MonoBehaviour
         //If time is set to 0, pause sound
         if (Time.timeScale == 0f)
         {
-            Debug.Log("Bear sound not Playing");
+            //Debug.Log("Bear sound not Playing");
             bearSound.Pause();
         }
         else
         {
-            Debug.Log("Bear sound Playing");
+           // Debug.Log("Bear sound Playing");
             bearSound.UnPause();
         }
 

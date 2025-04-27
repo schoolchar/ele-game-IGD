@@ -30,12 +30,12 @@ public class EnemyRat1 : MonoBehaviour
         //If time is set to 0, pause sound
         if (Time.timeScale == 0f)
         {
-            Debug.Log("Rat sound not Playing");
+           // Debug.Log("Rat sound not Playing");
             ratSound.Pause();
         }
         else
         {
-            Debug.Log("Rat sound Playing");
+           // Debug.Log("Rat sound Playing");
             ratSound.UnPause();
         }
 
