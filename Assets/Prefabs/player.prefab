@@ -1892,7 +1892,7 @@ MonoBehaviour:
   objectPrefab: {fileID: 7468702162027896120, guid: bf3027b48ba7a344c8dc33f7ca1ecd71, type: 3}
   rotationAngle: 180
   rotationDuration: 1
-  offset: {x: 1, y: 0, z: 0}
+  offset: {x: 1, y: -1, z: 0}
   spawnPt: {fileID: 331960211524314063}
   interval: -1
   tempNew: 0

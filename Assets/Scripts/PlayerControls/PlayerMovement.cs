@@ -199,6 +199,8 @@ public class PlayerMovement : MonoBehaviour
         ringOfFire.GetComponent<Ringoffire>().fireActive = false;
         knifeThrow.hasKnife = false;
         hammer.hammerActive = false;
+        hammer.StopAllCoroutines();
+        hammer.interval = -1;
         knifeThrow.enabled = true;
         turret.enabled = true;
         turret.StopAllCoroutines();
