@@ -7,8 +7,11 @@ public class MainMenuMusic : MonoBehaviour
 {
     public static MainMenuMusic instance;
     public AudioSource music;
+    public bool inGame;
     void Awake()
     {
+        inGame = false;
+
         //Game object can be moved across scenes without being destroyed
         if(instance == null)
         {
@@ -30,12 +33,13 @@ public class MainMenuMusic : MonoBehaviour
     {
         if(SceneManager.GetActiveScene().name == "GameScene")
         {
+            inGame = true;
             gameObject.GetComponent<AudioSource>().Stop();
         }
-        if(gameObject.GetComponent<AudioSource>().enabled == false)
+        if(SceneManager.GetActiveScene().name == "MainMenu" && inGame == true)
         {
-            gameObject.GetComponent<AudioSource>().enabled = true;
             gameObject.GetComponent<AudioSource>().Play();
+            inGame = false;
         }
     }
 }
