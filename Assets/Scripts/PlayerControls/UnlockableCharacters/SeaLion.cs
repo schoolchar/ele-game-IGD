@@ -90,7 +90,7 @@ public class SeaLion : MonoBehaviour
     void TrackPosition()
     {
         currPosition = player.transform.position;
-        staticBall.transform.position = currPosition + offsetS;
+        staticBall.transform.position = currPosition + offsetS; //Null error, says this object has been destroyed
     }
 
     void ThrowBall()
@@ -98,7 +98,7 @@ public class SeaLion : MonoBehaviour
         Debug.Log("Throwing");
         launchPosition = currPosition;
         staticBall.SetActive(false); //get rid of the one above head
-        thrownBall = Instantiate(ballPrefabT, launchPosition + offset, spawnPt.transform.rotation); //put ball infront of player
+        thrownBall = Instantiate(ballPrefabS, launchPosition + offset, spawnPt.transform.rotation).GetComponent<Rigidbody>(); //put ball infront of player
         thrownBall.velocity = spawnPt.transform.forward * speed;
     }
 

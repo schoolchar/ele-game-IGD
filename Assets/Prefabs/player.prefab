@@ -94,7 +94,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6f6d994381747034f968fc5cadfc80e2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -315,6 +315,8 @@ GameObject:
   - component: {fileID: -7658899717858874445}
   - component: {fileID: 3533716702727816994}
   - component: {fileID: 1908737065217755605}
+  - component: {fileID: 4845488100659345855}
+  - component: {fileID: 8208251400799020166}
   m_Layer: 7
   m_Name: player
   m_TagString: Player
@@ -335,7 +337,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3471983021862821707}
   - {fileID: 8430957841030942930}
   - {fileID: 8298063471953436020}
   - {fileID: 1483500789775266299}
@@ -345,6 +346,7 @@ Transform:
   - {fileID: 678945271071527585}
   - {fileID: 545778055927036239}
   - {fileID: 7154615761032223812}
+  - {fileID: 8372596871534429567}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &6958148102252536532
@@ -719,6 +721,38 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4845488100659345855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394019053864438680}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0541d3470ce83b345b8a5b1c6cee96f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballPrefabS: {fileID: 1866140774743508609, guid: 602803e6a83e0ea42b772f8cbc48cb40, type: 3}
+  ballPrefabT: {fileID: 0}
+  player: {fileID: 1394019053864438680}
+  spawnPt: {fileID: 8789253353504759832}
+  distance: 0
+--- !u!114 &8208251400799020166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394019053864438680}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ec67c2885e5a24c9b637d6106cb457, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  balls: {fileID: 579662117110123568, guid: 87b6a3b8e1abb0049ac41f5d34114720, type: 3}
+  positionOffset: {x: 0, y: 0, z: 2}
+  playerobj: {fileID: 1394019053864438680}
 --- !u!1 &1555237959989853747
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,7 +816,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6f6d994381747034f968fc5cadfc80e2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -902,7 +936,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6f6d994381747034f968fc5cadfc80e2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1074,6 +1108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 678945271071527585}
   - component: {fileID: 8227452691259979170}
+  - component: {fileID: 3178402325604951332}
   m_Layer: 7
   m_Name: Monkey
   m_TagString: PlayerBody
@@ -1120,6 +1155,19 @@ CapsuleCollider:
   m_Height: 1.67
   m_Direction: 1
   m_Center: {x: 0, y: 0.78, z: 0.2}
+--- !u!114 &3178402325604951332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2988728467627136014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892f4bfa0d97113449755166575ccb05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animal: Monkey
 --- !u!1 &3416813701237912503
 GameObject:
   m_ObjectHideFlags: 0
@@ -1130,6 +1178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 911962631144964268}
   - component: {fileID: 1857451870261759527}
+  - component: {fileID: 2031685878952297520}
   m_Layer: 7
   m_Name: Lion
   m_TagString: PlayerBody
@@ -1151,6 +1200,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2659860800649030101}
+  - {fileID: 3471983021862821707}
   m_Father: {fileID: 331960211524314063}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &1857451870261759527
@@ -1174,6 +1224,19 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.96
   m_Center: {x: 0, y: 0.92, z: 0}
+--- !u!114 &2031685878952297520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3416813701237912503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892f4bfa0d97113449755166575ccb05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animal: Lion
 --- !u!1 &3470221175158633835
 GameObject:
   m_ObjectHideFlags: 0
@@ -1184,6 +1247,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8062042572403599447}
   - component: {fileID: 7615582491641083493}
+  - component: {fileID: 3665456968438747614}
   m_Layer: 7
   m_Name: Seal
   m_TagString: PlayerBody
@@ -1230,6 +1294,19 @@ CapsuleCollider:
   m_Height: 1.53
   m_Direction: 1
   m_Center: {x: 0, y: 0.74, z: 0}
+--- !u!114 &3665456968438747614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3470221175158633835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892f4bfa0d97113449755166575ccb05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animal: Seal
 --- !u!1 &4009431451348019332
 GameObject:
   m_ObjectHideFlags: 0
@@ -1475,6 +1552,7 @@ GameObject:
   m_Component:
   - component: {fileID: 545778055927036239}
   - component: {fileID: 7026999252157392596}
+  - component: {fileID: 173079702640942561}
   m_Layer: 7
   m_Name: Elephant
   m_TagString: PlayerBody
@@ -1521,6 +1599,19 @@ CapsuleCollider:
   m_Height: 2.05
   m_Direction: 1
   m_Center: {x: 0, y: 0.94, z: 0.2}
+--- !u!114 &173079702640942561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4078106372057756186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892f4bfa0d97113449755166575ccb05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animal: Elephant
 --- !u!1 &4170697916228129724
 GameObject:
   m_ObjectHideFlags: 0
@@ -1584,7 +1675,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6f6d994381747034f968fc5cadfc80e2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1759,7 +1850,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6f6d994381747034f968fc5cadfc80e2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2113,12 +2204,12 @@ Transform:
   m_GameObject: {fileID: 8400739299538370443}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.89, y: 0, z: 0.8}
+  m_LocalPosition: {x: 0.89, y: 1.3, z: 0.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6475487853174836376}
-  m_Father: {fileID: 331960211524314063}
+  m_Father: {fileID: 911962631144964268}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &7153890320901884700
 SphereCollider:
@@ -2273,6 +2364,37 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &8789253353504759832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8372596871534429567}
+  m_Layer: 0
+  m_Name: SpawnPt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8372596871534429567
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8789253353504759832}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.38835248, y: -0.4, z: 1.46}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 331960211524314063}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2549882034140384830
 PrefabInstance:
   m_ObjectHideFlags: 0

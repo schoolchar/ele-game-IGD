@@ -9,7 +9,9 @@ public class ElephantWaterAttack : MonoBehaviour
     void Start()
     {
         waterSound = GetComponent<AudioSource>();
-        waterSound.Play();
+
+        if(waterSound != null)
+            waterSound.Play();
     }
     void OnTriggerStay(Collider other)
     {

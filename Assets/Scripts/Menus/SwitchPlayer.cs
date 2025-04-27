@@ -26,7 +26,15 @@ public class SwitchPlayer : MonoBehaviour
 
         playerModels = FindObjectsByType<CharacterID>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 
-        characterActive = FindAnyObjectByType<PlayerMovement>().characterActive;
+
+        for (int i = 0; i < playerModels.Length; i++)
+        {
+            if (playerModels[i].animal == "Lion") //Temporary, save and load from txt file
+            {
+               characterActive = playerModels[i].gameObject;
+            }
+        }
+        
 
        // playerMesh = GameObject.FindWithTag("PlayerMesh").GetComponent<MeshRenderer>();
     }
@@ -47,6 +55,7 @@ public class SwitchPlayer : MonoBehaviour
             if (playerModels[i].animal == "Lion")
             {
                 playerModels[i].gameObject.SetActive(true);
+                characterActive = playerModels[i].gameObject;
             }
         }
 
@@ -70,6 +79,7 @@ public class SwitchPlayer : MonoBehaviour
             if (playerModels[i].animal == "Elephant")
             {
                 playerModels[i].gameObject.SetActive(true);
+                characterActive = playerModels[i].gameObject;
             }
         }
 
@@ -90,6 +100,7 @@ public class SwitchPlayer : MonoBehaviour
             if (playerModels[i].animal == "Seal")
             {
                 playerModels[i].gameObject.SetActive(true);
+                characterActive = playerModels[i].gameObject;
             }
         }
     }
@@ -108,6 +119,7 @@ public class SwitchPlayer : MonoBehaviour
             if (playerModels[i].animal == "Monkey")
             {
                 playerModels[i].gameObject.SetActive(true);
+                characterActive = playerModels[i].gameObject;
             }
         }
     }
