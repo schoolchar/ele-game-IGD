@@ -34,7 +34,7 @@ public class MonkeyBall : MonoBehaviour
                 enemyTakeDamage = 100;
             }
 
-            Debug.Log("MONKEY BALL HITS ENEMY");
+            
             enemyHealth.TakeDamage(enemyTakeDamage);
         }
     }

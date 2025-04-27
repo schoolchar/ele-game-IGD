@@ -6,7 +6,7 @@ public class ElephantWaterAttack : MonoBehaviour
 {
     public AudioSource waterSound;
 
-    void Start()
+    void OnEnable()
     {
         waterSound = GetComponent<AudioSource>();
 
@@ -24,7 +24,7 @@ public class ElephantWaterAttack : MonoBehaviour
 
     public void Attack(EnemyHealth _enemy)
     {
-        _enemy.TakeDamage(0.5f); //Placeholder value
+        _enemy.TakeDamage(0.2f); //Placeholder value
     }
 
 }
