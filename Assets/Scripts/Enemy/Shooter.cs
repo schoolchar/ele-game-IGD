@@ -6,14 +6,10 @@ public class Shooter : MonoBehaviour
 {
     public ObjectPooler pooler;
     public Transform player;
-    EnemyClown enemyClown;
+    [SerializeField] EnemyClown enemyClown;
     private float shootTimer;
 
-    private void Start()
-    {
-        //find clown
-        enemyClown = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyClown>();
-    }
+  
 
     // Update is called once per frame
     void Update()
@@ -21,7 +17,7 @@ public class Shooter : MonoBehaviour
         shootTimer += Time.deltaTime;
 
         //If clown is not moving, set active bullet
-        if (enemyClown != null && enemyClown.isStopped == true)
+        if (enemyClown.isStopped == true)
         {
             //After 2.8 seconds have passed since the last bullet, set active the next
             if (shootTimer > 2.6f)

@@ -40,8 +40,10 @@ public class EnemyClownPie : MonoBehaviour
     void ReturnToPool()
     {
         ObjectPooler _op = FindObjectOfType<ObjectPooler>();
-        if(_op != null)
-        _op.ReturnObject(gameObject);
+        if (_op != null)
+            _op.ReturnObject(gameObject);
+        else
+            Destroy(this.gameObject);
     }
 
     //when bullet collides with player, set bullet inactive
