@@ -38,6 +38,11 @@ public class Knifethrow : WeaponBase
 
     public override void ActivateThisWeapon()
     {
+        knifeSound = GetComponent<AudioSource>();
+        chooseWeapons = FindAnyObjectByType<ChooseWeapons>();
+        KnifeLevel = chooseWeapons.allWeaponsData[1].level; //Gets the level of knife throw
+        oldKnifeLevel = KnifeLevel;
+
         Debug.Log("Knife activated");
         if (!hasKnife)
         {
@@ -69,7 +74,7 @@ public class Knifethrow : WeaponBase
     void Update()
     {
         //Updates the level of the knife
-        KnifeLevel = chooseWeapons.allWeaponsData[1].level; 
+        //KnifeLevel = chooseWeapons.allWeaponsData[1].level; 
         
         if (Time.time > nextFireTime)
         {
@@ -90,6 +95,12 @@ public class Knifethrow : WeaponBase
         }
 
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, Mathf.Infinity, enemyLayerMask);
+        
+        if(hitColliders.Length == 0)
+        {
+            return null;
+        }
+
         foreach (Collider hitCollider in hitColliders)
         {
             float distance = Vector3.Distance(transform.position, hitCollider.transform.position);

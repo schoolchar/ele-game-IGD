@@ -35,8 +35,11 @@ public class Ringoffire : WeaponBase
     }
     public override void ActivateThisWeapon()
     {
-       // player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
-      //  lastPlayerPosition = player.position;
+        // player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
+        //  lastPlayerPosition = player.position;
+        chooseWeapons = FindAnyObjectByType<ChooseWeapons>();
+        RingoffireLevel = chooseWeapons.allWeaponsData[0].level; //Gets the level of ring of fire
+        oldRingoffireLevel = RingoffireLevel;
         fireActive = true;
     }
 
@@ -44,12 +47,13 @@ public class Ringoffire : WeaponBase
     void Update()
     {
         //Updates the level of the ring of fire
-        RingoffireLevel = chooseWeapons.allWeaponsData[0].level; 
+         
         
         Debug.Log("Fire activated");
         if (fireActive)
         {
             //UpdatePlayerSpeed();
+            RingoffireLevel = chooseWeapons.allWeaponsData[0].level;
             FireRing();
         }
        /* else

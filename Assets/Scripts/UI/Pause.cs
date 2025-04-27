@@ -51,6 +51,9 @@ public class Pause : MonoBehaviour
 
     public void QuitPause()
     {
+        PlayerHealth _health = FindAnyObjectByType<PlayerHealth>();
+        _health.health = 0;
+        _health.CheckForDeath();
         SceneManager.LoadScene(0);
     }
 }
