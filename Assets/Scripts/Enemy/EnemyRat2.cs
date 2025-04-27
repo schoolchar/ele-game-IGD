@@ -21,7 +21,7 @@ public class EnemyRat2 : MonoBehaviour
     {
         ratSound = GetComponent<AudioSource>();
         stoppingDistance = 1.1f;
-        moveSpeed = 5f;
+        moveSpeed = 3f;
         player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
     }
@@ -46,7 +46,7 @@ public class EnemyRat2 : MonoBehaviour
         if (distance > stoppingDistance)
         {
             transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
-            moveSpeed = 5f;
+            moveSpeed = 3f;
         }
         else
         {

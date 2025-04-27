@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MonkeyBall : MonoBehaviour
 {
-    public float enemyTakeDamage = 1;
+    public float enemyTakeDamage = 10;
 
     private GameObject enemy;
     EnemyHealth enemyHealth;
@@ -17,13 +17,13 @@ public class MonkeyBall : MonoBehaviour
         monkeySound = GetComponent<AudioSource>();
         monkeySound.Play();
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         HitEnemy(collision);
     }
 
    
-    void HitEnemy(Collision _collision)
+    void HitEnemy(Collider _collision)
     {
         if (_collision.gameObject.tag == "Enemy")
         {
@@ -34,6 +34,7 @@ public class MonkeyBall : MonoBehaviour
                 enemyTakeDamage = 100;
             }
 
+            Debug.Log("MONKEY BALL HITS ENEMY");
             enemyHealth.TakeDamage(enemyTakeDamage);
         }
     }
