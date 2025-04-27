@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MonkeyBall : MonoBehaviour
 {
-    public float enemyTakeDamage = 10;
+    public float enemyTakeDamage = 2;
 
     private GameObject enemy;
     EnemyHealth enemyHealth;
