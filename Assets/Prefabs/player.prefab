@@ -372,7 +372,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 1
 --- !u!114 &1690930992629750781
 MonoBehaviour:
@@ -420,8 +420,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a337c9313fcd2cc4d9e19ea0447720a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  health: 100
+  maxHealth: 200
+  health: 200
   xp: 0
   money: 0
   level: 0
@@ -635,7 +635,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 456deeff4bd268f4d8cd867385e06988, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1073,10 +1073,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 678945271071527585}
-  - component: {fileID: 5124206244216261339}
+  - component: {fileID: 8227452691259979170}
   m_Layer: 7
   m_Name: Monkey
-  m_TagString: Player
+  m_TagString: PlayerBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1097,8 +1097,8 @@ Transform:
   - {fileID: 4453207495976332282}
   m_Father: {fileID: 331960211524314063}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5124206244216261339
-BoxCollider:
+--- !u!136 &8227452691259979170
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1115,9 +1115,11 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.12, y: 1.58, z: 1}
-  m_Center: {x: 0.06, y: 0.74, z: 0.16}
+  serializedVersion: 2
+  m_Radius: 0.56
+  m_Height: 1.67
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.78, z: 0.2}
 --- !u!1 &3416813701237912503
 GameObject:
   m_ObjectHideFlags: 0
@@ -1127,10 +1129,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 911962631144964268}
-  - component: {fileID: 8412654454325526124}
+  - component: {fileID: 1857451870261759527}
   m_Layer: 7
   m_Name: Lion
-  m_TagString: Player
+  m_TagString: PlayerBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1144,15 +1146,15 @@ Transform:
   m_GameObject: {fileID: 3416813701237912503}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -1.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2659860800649030101}
   m_Father: {fileID: 331960211524314063}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &8412654454325526124
-BoxCollider:
+--- !u!135 &1857451870261759527
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1170,8 +1172,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.56, z: 1.82}
-  m_Center: {x: 0, y: 0.8, z: -0.13}
+  m_Radius: 0.96
+  m_Center: {x: 0, y: 0.92, z: 0}
 --- !u!1 &3470221175158633835
 GameObject:
   m_ObjectHideFlags: 0
@@ -1181,10 +1183,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8062042572403599447}
-  - component: {fileID: 2100029114959373258}
+  - component: {fileID: 7615582491641083493}
   m_Layer: 7
   m_Name: Seal
-  m_TagString: Player
+  m_TagString: PlayerBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1198,15 +1200,15 @@ Transform:
   m_GameObject: {fileID: 3470221175158633835}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -1.194, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3646684575119374641}
   m_Father: {fileID: 331960211524314063}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2100029114959373258
-BoxCollider:
+--- !u!136 &7615582491641083493
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1223,9 +1225,11 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.92, y: 1.5, z: 0.59}
-  m_Center: {x: 0, y: 0.76, z: 0.08}
+  serializedVersion: 2
+  m_Radius: 0.39
+  m_Height: 1.53
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.74, z: 0}
 --- !u!1 &4009431451348019332
 GameObject:
   m_ObjectHideFlags: 0
@@ -1470,10 +1474,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 545778055927036239}
-  - component: {fileID: 992408666664653721}
+  - component: {fileID: 7026999252157392596}
   m_Layer: 7
   m_Name: Elephant
-  m_TagString: Player
+  m_TagString: PlayerBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1494,8 +1498,8 @@ Transform:
   - {fileID: 6382762320788656738}
   m_Father: {fileID: 331960211524314063}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &992408666664653721
-BoxCollider:
+--- !u!136 &7026999252157392596
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1512,9 +1516,11 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 2, z: 1.12}
-  m_Center: {x: 0, y: 0.99, z: 0.21}
+  serializedVersion: 2
+  m_Radius: 0.61
+  m_Height: 2.05
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.94, z: 0.2}
 --- !u!1 &4170697916228129724
 GameObject:
   m_ObjectHideFlags: 0
@@ -1682,7 +1688,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2

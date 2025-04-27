@@ -20,7 +20,10 @@ public class EnemyBear : MonoBehaviour
     private float stoppingDistance;
     PlayerHealth playerHealth;
     AudioSource bearSound;
+    private float backUpTimer;
+    public bool backUp;
 
+    private Vector3 backUpDirection;
 
     // Start is called before the first frame update
     void Start()
@@ -63,7 +66,27 @@ public class EnemyBear : MonoBehaviour
         else
         {
             moveSpeed = 0; 
-        } 
+        }
+
+        if (backUp == true)
+        {
+            backUpTimer += Time.deltaTime;
+            if (backUpTimer < 4f)
+            {
+                transform.position += backUpDirection * moveSpeed * Time.deltaTime;
+            }
+            else
+            {
+                backUp = false;
+                backUpTimer = 0f;
+            }
+            return;
+        }
+        else
+        {
+            transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+            moveSpeed = 5f;
+        }
 
         //If current time is greater than or equil to what is left of the timer duration, increase movment speed
         currentTime += Time.deltaTime;
@@ -79,6 +102,17 @@ public class EnemyBear : MonoBehaviour
             Destroy(this.gameObject);
         }
 
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("PlayerBody"))
+        {
+            backUp = true;
+            backUpTimer = 0f;
+
+            backUpDirection = (transform.position - player.position).normalized;
+        }
     }
 
 }

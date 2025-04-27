@@ -17,6 +17,7 @@ TagManager:
   - Monkey
   - Elephant
   - RatGaze
+  - PlayerBody
   layers:
   - Default
   - TransparentFX

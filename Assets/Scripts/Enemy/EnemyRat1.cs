@@ -13,6 +13,9 @@ public class EnemyRat1 : MonoBehaviour
     public bool playerAlive;
     PlayerHealth playerHealth;
     AudioSource ratSound;
+    private float backUpTimer;
+    public bool backUp;
+    private Vector3 backUpDirection;
 
     void Start()
     {
@@ -50,11 +53,42 @@ public class EnemyRat1 : MonoBehaviour
             moveSpeed = 0;
         }
 
+        if (backUp == true)
+        {
+            backUpTimer += Time.deltaTime;
+            if (backUpTimer < 4f)
+            {
+                transform.position += backUpDirection * moveSpeed * Time.deltaTime;
+            }
+            else
+            {
+                backUp = false;
+                backUpTimer = 0f;
+            }
+            return;
+        }
+        else
+        {
+            transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+            moveSpeed = 5f;
+        }
+
         //when player is dead, all enemies are destroyed
         if (playerHealth.health <= 0)
         {
             Destroy(this.gameObject);
         }
 
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("PlayerBody"))
+        {
+            backUp = true;
+            backUpTimer = 0f;
+
+            backUpDirection = (transform.position - player.position).normalized;
+        }
     }
 }
