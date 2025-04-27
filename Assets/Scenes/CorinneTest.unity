@@ -870,6 +870,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: knifethrow
       objectReference: {fileID: 0}
+    - target: {fileID: 6291107187475892311, guid: 9189478540e5d4f40813c74eb5a8a0af, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
