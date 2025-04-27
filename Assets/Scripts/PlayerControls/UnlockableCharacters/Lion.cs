@@ -11,6 +11,7 @@ public class Lion : MonoBehaviour, ICharacterActions
     private float attackWait = 0.5f;
     [SerializeField] private GameObject paw;
     [SerializeField] private Animator animator;
+    [SerializeField] private ParticleSystem slashVFX;
 
     void Start()
     {
@@ -48,6 +49,7 @@ public class Lion : MonoBehaviour, ICharacterActions
         isAttacking = true;
         lionSound.Play();
         animator.SetTrigger("Slash");
+        slashVFX.Play();
         StartCoroutine(TurnOffAttack());
     }
 
