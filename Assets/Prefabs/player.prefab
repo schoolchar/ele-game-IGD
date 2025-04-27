@@ -516,12 +516,12 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
+  m_Radius: 1.1303837
+  m_Height: 2.2607675
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: -0.015853167}
 --- !u!114 &2517030954607352414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -630,7 +630,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1394019053864438680}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 456deeff4bd268f4d8cd867385e06988, type: 3}
@@ -1894,11 +1894,11 @@ MonoBehaviour:
   rotationDuration: 1
   offset: {x: 1, y: 0, z: 0}
   spawnPt: {fileID: 331960211524314063}
-  interval: 3
+  interval: -1
   tempNew: 0
   newVal: 0
   hammerActive: 0
-  hammerSound: {fileID: 0}
+  hammerSound: {fileID: 333307955244343624}
 --- !u!82 &333307955244343624
 AudioSource:
   m_ObjectHideFlags: 0

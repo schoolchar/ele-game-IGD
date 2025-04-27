@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6007417851580927234}
   - component: {fileID: 89497021653663336}
   - component: {fileID: 1077058311994379349}
-  - component: {fileID: 7400932751698357216}
   - component: {fileID: 3076261045784911416}
+  - component: {fileID: 4276704864350270286}
   m_Layer: 12
   m_Name: TurretPrefab
   m_TagString: Untagged
@@ -103,30 +103,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7400932751698357216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 973281579595775730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92b0113cd3b34cb428aa58404ec937e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemyLayerMask:
-    serializedVersion: 2
-    m_Bits: 256
-  knife: {fileID: 0}
-  projectileSpeed: 20
-  fireRate: 1
-  hasKnife: 1
-  player: {fileID: 0}
 --- !u!114 &3076261045784911416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,3 +120,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 5
+--- !u!114 &4276704864350270286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973281579595775730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8246e8ab812e62846a8d9486c3a759b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 8764803723194342309, guid: f597d062fba7be94fb1fb0a4bc23f8a2, type: 3}
+  firePoint: {fileID: 8483665458792181918}
+  shotSpeed: 25
+  shootInterval: 0.5

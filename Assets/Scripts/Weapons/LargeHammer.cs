@@ -18,7 +18,7 @@ public class LargeHammer : WeaponBase
     private Vector3 initialPosition;
 
     //variables for dynamic scaling
-    public float interval = 3.0f;
+    public float interval = -1f;
     public float tempNew;
     public bool newVal = false;
     public bool hammerActive;
@@ -28,12 +28,15 @@ public class LargeHammer : WeaponBase
         Debug.Log("Hammer activated");
         if(!hammerActive)
         {
-            while(!hammerActive && interval >= 0)
+            Debug.Log("Hammer not active");
+            if(interval >= 0)
             {
+                Debug.Log("Interval is greater or equal to 0");
                 interval -= Time.deltaTime;
             }
             if (interval < 0)
             {
+                Debug.Log("Interval is less than 0");
                 hammerSound.Play();
                 objectInstance = Instantiate(objectPrefab, transform.position + offset, Quaternion.identity);
                 objectInstance.transform.SetParent(spawnPt, false);
@@ -68,10 +71,10 @@ public class LargeHammer : WeaponBase
 
     void Update()
     {
-        while (!hammerActive && interval >= 0)
+      /*  while (!hammerActive && interval >= 0)
         {
             interval -= Time.deltaTime;
-        }
+        }*/
         if (isRotating)
         {
             RotateObject();
