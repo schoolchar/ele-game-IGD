@@ -1894,11 +1894,11 @@ MonoBehaviour:
   rotationDuration: 1
   offset: {x: 1, y: 0, z: 0}
   spawnPt: {fileID: 331960211524314063}
-  interval: 3
+  interval: -1
   tempNew: 0
   newVal: 0
   hammerActive: 0
-  hammerSound: {fileID: 0}
+  hammerSound: {fileID: 333307955244343624}
 --- !u!82 &333307955244343624
 AudioSource:
   m_ObjectHideFlags: 0

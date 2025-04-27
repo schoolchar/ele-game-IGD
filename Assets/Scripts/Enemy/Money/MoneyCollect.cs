@@ -27,7 +27,7 @@ public class MoneyCollect : MonoBehaviour
         //if(_other.gameObject.GetComponent<PlayerHealth>() != null)
         if(_other.gameObject.GetComponent<PlayerHealth>())
         {
-            Debug.Log("Money is collected???????");
+            
             PlayerHealth _player = _other.gameObject.GetComponent<PlayerHealth>();
             //Increase money
             _player.money++;
@@ -36,10 +36,7 @@ public class MoneyCollect : MonoBehaviour
             //Destroy object
             Destroy(this.gameObject);
         }
-        else
-        {
-            Debug.Log("Can not collect");
-        }
+       
     }
 
     //Money despawns if it is not collected in time
