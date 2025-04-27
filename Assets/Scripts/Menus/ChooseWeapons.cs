@@ -154,26 +154,13 @@ public class ChooseWeapons : MonoBehaviour
 
         for (int i = 0; i < weaponMenu.Length; i++)
         {
-            int _rTmp = Random.Range(0, availableOps.Count - 1);
+            int _rTmp = Random.Range(0, availableOps.Count);
             Debug.Log("Choose at index " + _rTmp);
             int _tmp = availableOps[_rTmp];
             availableOps.RemoveAt(_rTmp);
             weaponOptions[i] = _tmp; //store chosen weapon in options, this will correspond to the button that the weapon is at
 
-            //Ensure that among the chosen ones, the same one does not show more than once
-           /* for (int j = 0; j < availableOps.Count; j++)
-            {
-                if (_tmp == weaponOptions[i])
-                {
-                   
-                    i--;
-                    break;
-
-                }
-               
-                weaponOptions[i] = _tmp; //store chosen weapon in options, this will correspond to the button that the weapon is at
-                
-            }*/
+            
 
 
         }

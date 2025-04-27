@@ -196,12 +196,15 @@ public class PlayerMovement : MonoBehaviour
     {
         //Set all to enabled so that when reloading game, weapon manager can access them
         ringOfFire.SetActive(true);
+        ringOfFire.GetComponent<Ringoffire>().fireActive = false;
         knifeThrow.hasKnife = false;
         hammer.hammerActive = false;
+        hammer.StopAllCoroutines();
+        hammer.interval = -1;
         knifeThrow.enabled = true;
         turret.enabled = true;
         turret.StopAllCoroutines();
-        nuke.enabled = true;
+        nuke.enabled = true; ;
         nuke.StopAllCoroutines();
     } //END ResetWeapons()
 }

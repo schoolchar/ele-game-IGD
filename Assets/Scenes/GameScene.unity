@@ -1735,7 +1735,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 331960211524314063, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
   tileSize: 10
-  radius: 5
+  radius: 10
   tilePrefabs:
   - {fileID: 405941489781696850, guid: e1b7167107224894f901615b9256dca5, type: 3}
   - {fileID: 6448981361676765761, guid: 1936c97ddc1931c4d81602eab9a787f7, type: 3}

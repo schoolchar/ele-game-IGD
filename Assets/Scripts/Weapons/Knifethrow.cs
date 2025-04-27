@@ -38,6 +38,11 @@ public class Knifethrow : WeaponBase
 
     public override void ActivateThisWeapon()
     {
+        knifeSound = GetComponent<AudioSource>();
+        chooseWeapons = FindAnyObjectByType<ChooseWeapons>();
+        KnifeLevel = chooseWeapons.allWeaponsData[1].level; //Gets the level of knife throw
+        oldKnifeLevel = KnifeLevel;
+
         Debug.Log("Knife activated");
         if (!hasKnife)
         {
@@ -69,7 +74,7 @@ public class Knifethrow : WeaponBase
     void Update()
     {
         //Updates the level of the knife
-        KnifeLevel = chooseWeapons.allWeaponsData[1].level; 
+        //KnifeLevel = chooseWeapons.allWeaponsData[1].level; 
         
         if (Time.time > nextFireTime)
         {
@@ -77,24 +82,7 @@ public class Knifethrow : WeaponBase
         }
     }
 
-   /* GameObject FindNearestEnemy()
-    {
-        GameObject nearestEnemy = null;
-        float nearestDistance = Mathf.Infinity;
-
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, Mathf.Infinity, enemyLayerMask);
-        foreach (Collider hitCollider in hitColliders)
-        {
-            float distance = Vector3.Distance(transform.position, hitCollider.transform.position);
-            if (distance < nearestDistance)
-            {
-                nearestDistance = distance;
-                nearestEnemy = hitCollider.gameObject;
-            }
-        }
-        Debug.Log("Nearest enemy = " + nearestEnemy);
-        return nearestEnemy;
-    }*/
+   
 
     //Function that calculates the nearest enemy
     GameObject[] FindNearestEnemy(int count)
@@ -107,6 +95,12 @@ public class Knifethrow : WeaponBase
         }
 
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, Mathf.Infinity, enemyLayerMask);
+        
+        if(hitColliders.Length == 0)
+        {
+            return null;
+        }
+
         foreach (Collider hitCollider in hitColliders)
         {
             float distance = Vector3.Distance(transform.position, hitCollider.transform.position);
@@ -172,19 +166,13 @@ public class Knifethrow : WeaponBase
             nextFireTime = Time.time + 1.0f / fireRate;
             Array.Clear(nearestEnemy, 0, nearestEnemy.Length);
         }
+        else
+        {
+            Debug.Log("No enemies");
+        }
         
         // StartCoroutine(TimeShooting());
     }
 
-   /* void TimeShooting()
-    {
-        Debug.Log("Knife");
-        GameObject nearestEnemy = FindNearestEnemy();
-        if (nearestEnemy != null && hasKnife == true)
-        {
-            Debug.Log("Conditions for knife throw met");
-            ShootAt(nearestEnemy);
-            nextFireTime = Time.time + 1.0f / fireRate;
-        }
-    }*/
+   
 }

@@ -30,9 +30,9 @@ public class Lion : MonoBehaviour, ICharacterActions
 
     void HitEnemy(Collider _collision)
     {
-        if(_collision.gameObject.tag == "Enemy" && isAttacking) 
+        if(_collision.gameObject.GetComponent<EnemyHealth>() != null && isAttacking) 
         {
-            Debug.Log("enemy hit");
+            Debug.Log("enemy hit " + _collision.gameObject.name);
             Attack(_collision.gameObject.GetComponent<EnemyHealth>());
         }
     }

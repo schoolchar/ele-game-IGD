@@ -118,7 +118,7 @@ public class PlayerHealth : MonoBehaviour
     /// <summary>
     /// Check if the player has dies
     /// </summary>
-    void CheckForDeath()
+    public void CheckForDeath()
     {
        if(health < 0)
         {

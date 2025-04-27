@@ -6,14 +6,10 @@ public class Shooter : MonoBehaviour
 {
     public ObjectPooler pooler;
     public Transform player;
-    EnemyClown enemyClown;
+    [SerializeField] EnemyClown enemyClown;
     private float shootTimer;
 
-    private void Start()
-    {
-        //find clown
-        enemyClown = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyClown>();
-    }
+  
 
     // Update is called once per frame
     void Update()

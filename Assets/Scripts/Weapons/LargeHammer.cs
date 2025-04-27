@@ -8,7 +8,7 @@ public class LargeHammer : WeaponBase
     public GameObject objectPrefab;
     public float rotationAngle = 180f;
     public float rotationDuration = 1f;
-    public Vector3 offset = new Vector3(1, 0, 0);
+    public Vector3 offset = new Vector3(0, 0, 0);
     public Transform spawnPt; //for sake of aiming rotaion
 
     private GameObject objectInstance;
@@ -38,7 +38,7 @@ public class LargeHammer : WeaponBase
             {
                 Debug.Log("Interval is less than 0");
                 hammerSound.Play();
-                objectInstance = Instantiate(objectPrefab, transform.position + offset, Quaternion.identity);
+                objectInstance = Instantiate(objectPrefab, transform.position + offset, objectPrefab.transform.rotation);
                 objectInstance.transform.SetParent(spawnPt, false);
                 objectInstance.transform.Rotate(Vector3.forward, -90f);
                 initialPosition = objectInstance.transform.position;
@@ -56,10 +56,7 @@ public class LargeHammer : WeaponBase
 
             hammerActive = true;
         }
-        else
-        {
-            Debug.Log("Hammer upgrade what is the scaling for this weapon");
-        }
+       
        
         
     }
@@ -86,7 +83,7 @@ public class LargeHammer : WeaponBase
     {
         rotationTimer += Time.deltaTime;
         float angle = Mathf.Lerp(0, rotationAngle, rotationTimer / rotationDuration);
-        objectInstance.transform.RotateAround(transform.position, Vector3.up, angle * Time.deltaTime);
+        objectInstance.transform.RotateAround(transform.position, Vector3.back, angle * Time.deltaTime);
 
         if (rotationTimer >= rotationDuration)
         {
@@ -124,7 +121,7 @@ public class LargeHammer : WeaponBase
         {
             //damage stuff
             Debug.Log("Enemy hit");
-            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1);
+            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(5);
         }
     }
 

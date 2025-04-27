@@ -14,7 +14,7 @@ public class Turret : WeaponBase
     public float spawnDistance = 2f;
 
     //spawn above ground
-    public float heightOffset = 1f;
+    public float heightOffset = 0.5f;
 
     //player
     public Transform playerTransform;

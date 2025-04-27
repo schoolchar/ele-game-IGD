@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooler: {fileID: 6792840779392285871}
   player: {fileID: 331960211524314063, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
+  enemyClown: {fileID: 1877311898859419148}
 --- !u!1 &1160302558250254070
 GameObject:
   m_ObjectHideFlags: 0

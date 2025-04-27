@@ -13,6 +13,9 @@ public class EnemyRat2 : MonoBehaviour
     public bool playerAlive;
     PlayerHealth playerHealth;
     public AudioSource ratSound;
+    private float backUpTimer;
+    public bool backUp;
+    private Vector3 backUpDirection;
 
     void Start()
     {
@@ -50,6 +53,26 @@ public class EnemyRat2 : MonoBehaviour
             moveSpeed = 0;
         }
 
+        if (backUp == true)
+        {
+            backUpTimer += Time.deltaTime;
+            if (backUpTimer < 4f)
+            {
+                transform.position += backUpDirection * moveSpeed * Time.deltaTime;
+            }
+            else
+            {
+                backUp = false;
+                backUpTimer = 0f;
+            }
+            return;
+        }
+        else
+        {
+            transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+            moveSpeed = 5f;
+        }
+
         //when player is dead, all enemies are destroyed
         if (playerHealth.health <= 0)
         {
@@ -58,21 +81,29 @@ public class EnemyRat2 : MonoBehaviour
 
     }
 
-    //If rat has entered the ratgaze collider, movement speed is 1
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "RatGaze")
+    
+    private void OnCollisionEnter(Collision other)
+    { 
+        //If rat has entered the ratgaze collider, movement speed is 1
+        if (other.gameObject.CompareTag("RatGaze"))
         {
             moveSpeed = 1f;
             Debug.Log("RatGazeOn");
         }
-        
+
+        if (other.gameObject.CompareTag("PlayerBody"))
+        {
+            backUp = true;
+            backUpTimer = 0f;
+
+            backUpDirection = (transform.position - player.position).normalized;
+        }
     }
 
-    //If rat has exited the ratgaze collider, movement speed is back to 5
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit(Collision other)
     {
-        if (other.tag == "RatGaze")
+        //If rat has entered the ratgaze collider, movement speed is 5
+        if (other.gameObject.CompareTag("RatGaze"))
         {
             moveSpeed = 5f;
             Debug.Log("RatGazeOn");
