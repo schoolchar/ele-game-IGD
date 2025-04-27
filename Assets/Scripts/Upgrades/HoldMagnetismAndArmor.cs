@@ -11,7 +11,7 @@ public class HoldMagnetismAndArmor : MonoBehaviour
 
     private void Start()
     {
-        if(FindAnyObjectByType<Magnetism>() != null)
+        /*if(FindAnyObjectByType<Magnetism>() != null)
         {
             Magnetism _mag = FindAnyObjectByType<Magnetism>();
             magLeveltxt.text = "Level: " + _mag.scriptObj.level.ToString();
@@ -19,10 +19,10 @@ public class HoldMagnetismAndArmor : MonoBehaviour
         else
         {
             magLeveltxt.text = "Level: " + 0.ToString();
-        }
+        }*/
 
 
-            armorLeveltxt.text = "Level: " + 0.ToString();
+            //armorLeveltxt.text = "Level: " + 0.ToString();
     }
 
     public void ActivateMagnetism()
