@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using System;
 using Unity.VisualScripting.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Knifethrow : WeaponBase
 {
@@ -32,6 +33,7 @@ public class Knifethrow : WeaponBase
     public int KnifeLevel;
     private int oldKnifeLevel;
     public AudioSource knifeSound;
+    private bool isInGameScene;
 
     //get component player script
     [SerializeField] private GameObject player;
@@ -70,6 +72,21 @@ public class Knifethrow : WeaponBase
         {
             TimeShooting();
         }
+
+        //gets scene name
+        Scene currentScene = SceneManager.GetActiveScene();
+        isInGameScene = currentScene.name == "GameScene";
+
+
+        //If player is in the game scene, enemies can spawn, else they cannot
+         if (isInGameScene == true)
+         {
+             knifeSound.UnPause();
+         }
+         else
+         { 
+             knifeSound.Pause();
+         }
     }
 
     public void InitOnLoad()
@@ -169,7 +186,7 @@ public class Knifethrow : WeaponBase
             //Debug.Log("Knife thrown");
             foreach (GameObject enemy in nearestEnemy)
             {
-                knifeSound.Play();
+                knifeSound.UnPause();
                 ShootAt(enemy);
             }
             nextFireTime = Time.time + 1.0f / fireRate;

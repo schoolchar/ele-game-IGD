@@ -71,7 +71,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if(debugHealth)
         {
-            maxHealth = 200;
+            maxHealth = 50;
         }
 
         health = maxHealth;

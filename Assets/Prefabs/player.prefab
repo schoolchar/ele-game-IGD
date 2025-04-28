@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf639efe3bc1dc44c878a1e9f9d8444c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterSound: {fileID: 0}
+  waterSound: {fileID: 5495482279638121218}
 --- !u!82 &5495482279638121218
 AudioSource:
   m_ObjectHideFlags: 0
@@ -412,6 +412,7 @@ GameObject:
   - component: {fileID: 4845488100659345855}
   - component: {fileID: 8208251400799020166}
   - component: {fileID: 925022211919348923}
+  - component: {fileID: 7079679208050756384}
   m_Layer: 7
   m_Name: player
   m_TagString: Player
@@ -518,8 +519,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a337c9313fcd2cc4d9e19ea0447720a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
-  health: 10
+  maxHealth: 50
+  health: 50
   xp: 0
   money: 0
   level: 0
@@ -853,6 +854,102 @@ MonoBehaviour:
   timeBwActive: 10
   deactivateTime: 3
   saveData: {fileID: -7658899717858874445}
+--- !u!82 &7079679208050756384
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394019053864438680}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1555237959989853747
 GameObject:
   m_ObjectHideFlags: 0
@@ -951,7 +1048,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf639efe3bc1dc44c878a1e9f9d8444c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterSound: {fileID: 0}
+  waterSound: {fileID: 5495482279638121218}
 --- !u!82 &5905543307779580377
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1167,7 +1264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf639efe3bc1dc44c878a1e9f9d8444c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterSound: {fileID: 0}
+  waterSound: {fileID: 5495482279638121218}
 --- !u!82 &3587236163205037633
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1708,7 +1805,7 @@ MonoBehaviour:
   knife: {fileID: 1364211188894526256, guid: a236031b86903564eb52701e2a90d392, type: 3}
   projectileSpeed: 20
   fireRate: 1
-  hasKnife: 0
+  hasKnife: 1
   KnifeLevel: 0
   knifeSound: {fileID: 3626927792530979435}
   player: {fileID: 1394019053864438680}
@@ -1723,14 +1820,14 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d9adeecd3d9021e439b08bb3f82e1ff4, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 140
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -1981,7 +2078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf639efe3bc1dc44c878a1e9f9d8444c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterSound: {fileID: 0}
+  waterSound: {fileID: 5495482279638121218}
 --- !u!82 &5743755102124430346
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2252,7 +2349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf639efe3bc1dc44c878a1e9f9d8444c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterSound: {fileID: 0}
+  waterSound: {fileID: 5495482279638121218}
 --- !u!82 &1864647966685023936
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2422,6 +2519,7 @@ MonoBehaviour:
   spawnDistance: 2
   heightOffset: 1
   playerTransform: {fileID: 331960211524314063}
+  active: 0
 --- !u!114 &7173295721076234343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2437,6 +2535,7 @@ MonoBehaviour:
   nukePrefab: {fileID: 5304287473480124943, guid: 8c8558eece0830f4fa366e285ebed953, type: 3}
   spawnInterval: 30
   playerTransform: {fileID: 331960211524314063}
+  active: 0
 --- !u!114 &3044671520743988543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3641,6 +3740,10 @@ PrefabInstance:
     - target: {fileID: 1364211188894526256, guid: a236031b86903564eb52701e2a90d392, type: 3}
       propertyPath: m_Name
       value: ModelKnifeThrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364211188894526256, guid: a236031b86903564eb52701e2a90d392, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1848013469842649482, guid: a236031b86903564eb52701e2a90d392, type: 3}
       propertyPath: m_LocalPosition.x
