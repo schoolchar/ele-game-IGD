@@ -19,6 +19,7 @@ public class AccessLevels : MonoBehaviour
     Knifethrow knifeThrow;
     [SerializeField] GameObject oldPlayer;
     PlayerMovement[] allPlayers;
+    EnemySpawn enemySpawn;
 
     //To access the level of any of these upgrades:
     //Do the variable associated w the upgrade and do .level after it
@@ -46,6 +47,9 @@ public class AccessLevels : MonoBehaviour
 
         knifeThrow = FindAnyObjectByType<Knifethrow>();
         knifeThrow.InitOnLoad();
+
+        enemySpawn = FindAnyObjectByType<EnemySpawn>();
+        enemySpawn.InitOnLoad();
 
         //Deal with loading in multiple players
        /* allPlayers = FindObjectsOfType<PlayerMovement>();

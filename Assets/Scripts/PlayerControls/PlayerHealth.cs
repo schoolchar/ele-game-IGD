@@ -71,7 +71,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if(debugHealth)
         {
-            maxHealth = 200;
+            maxHealth = 50;
         }
 
         health = maxHealth;
@@ -88,6 +88,14 @@ public class PlayerHealth : MonoBehaviour
             xpText.text = "XP = " + xp;
 
             chooseWeapons = FindAnyObjectByType<ChooseWeapons>();
+        }
+
+        //Check if any weapon objects were left active from previous round
+        GameObject _hammer = GameObject.FindGameObjectWithTag("Hammer");
+        LargeHammer _hammerS = GetComponentInChildren<LargeHammer>();
+        if (_hammer != null && _hammerS.enabled == false)
+        {
+            Destroy( _hammer );
         }
         
         
@@ -139,24 +147,26 @@ public class PlayerHealth : MonoBehaviour
     /// </summary>
     public void CheckForDeath()
     {
-       if(health < 0)
+       /*if(health < 0)
         {
             throw new System.Exception("Player health cannot be less than 0");
-        }
+        }*/
 
         //Check if player is at 0 health
         if (health <= 0)
         {
             //Disable weapons
-            Debug.Log("Player dies");
+            //Debug.Log("Player dies");
 
             onPlayerDeath?.Invoke();
 
 
-            xp = 0;
+           // xp = 0;
             //Reset level and load menu
             level = 0;
-            SceneManager.LoadScene(0);
+
+            FindAnyObjectByType<ResultsScreen>().ShowResults();
+            //SceneManager.LoadScene(0);
         }
         
     } //END CheckForDeath()

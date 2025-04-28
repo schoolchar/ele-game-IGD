@@ -19,10 +19,23 @@ public class Turret : WeaponBase
     //player
     public Transform playerTransform;
 
+    //Check if active
+    public bool active;
+
 
     public override void ActivateThisWeapon()
     {
-        StartCoroutine(SpawnTurret());
+        if(active)
+        {
+            spawnInterval -= 3;
+        }
+        else
+        {
+            active = true;
+            StartCoroutine(SpawnTurret());
+        }
+
+        
     }
 
     private IEnumerator SpawnTurret()

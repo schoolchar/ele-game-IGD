@@ -99,7 +99,7 @@ public class SwitchPlayer : MonoBehaviour
             monkeyComp.StopAllCoroutines();
             seaLionComp.StopAllCoroutines();
 
-
+           
 
             //Enable lion, disable everything else
             lionComp.enabled = true;
@@ -128,11 +128,7 @@ public class SwitchPlayer : MonoBehaviour
             }
 
         }
-        else
-        {
-
-        }
-
+        
         //playerMesh.material.color = playerColors[0];
     }
 

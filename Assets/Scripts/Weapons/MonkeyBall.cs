@@ -10,12 +10,11 @@ public class MonkeyBall : MonoBehaviour
     EnemyHealth enemyHealth;
 
     public bool debugHealth;
-    public AudioSource monkeySound;
+    public AudioSource monkeyAttackSound;
 
     void Start()
     {
-        monkeySound = GetComponent<AudioSource>();
-        monkeySound.Play();
+       
     }
     private void OnTriggerEnter(Collider collision)
     {
@@ -26,7 +25,8 @@ public class MonkeyBall : MonoBehaviour
     void HitEnemy(Collider _collision)
     {
         if (_collision.gameObject.tag == "Enemy")
-        {
+        { 
+            monkeyAttackSound.Play();
             enemyHealth = _collision.gameObject.GetComponent<EnemyHealth>();
             if (debugHealth)
             {

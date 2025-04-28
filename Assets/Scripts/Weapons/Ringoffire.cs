@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using Palmmedia.ReportGenerator.Core.Parser.Analysis;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Ringoffire : WeaponBase
 {
@@ -19,11 +19,13 @@ public class Ringoffire : WeaponBase
     public bool fireActive;
     private int oldRingoffireLevel;
     public AudioSource fireSound;
+    private bool isInGameScene;
 
     // Start is called before the first frame update
     void Start()
     {
         InitOnLoad();
+        fireSound.UnPause();
     }
 
     public void InitOnLoad()
@@ -38,7 +40,7 @@ public class Ringoffire : WeaponBase
         if(chooseWeapons != null)
         {
             RingoffireLevel = chooseWeapons.allWeaponsData[0].level; //Gets the level of ring of fire
-            oldRingoffireLevel = RingoffireLevel;
+            //oldRingoffireLevel = RingoffireLevel;
         }
        
     }
@@ -50,6 +52,7 @@ public class Ringoffire : WeaponBase
         RingoffireLevel = chooseWeapons.allWeaponsData[0].level; //Gets the level of ring of fire
         oldRingoffireLevel = RingoffireLevel;
         fireActive = true;
+        baseSpeed += Upgrade * RingoffireLevel;
     }
 
     // Update is called once per frame
@@ -65,11 +68,25 @@ public class Ringoffire : WeaponBase
             RingoffireLevel = chooseWeapons.allWeaponsData[0].level;
             FireRing();
         }
-       /* else
+        /* else
+         {
+            // baseSpeed += (baseSpeed + playerSpeed) * 1.5f;
+            // orbitSpeed += (orbitSpeed + playerSpeed) * 1.5f;
+         }*/
+
+        Scene currentScene = SceneManager.GetActiveScene();
+        isInGameScene = currentScene.name == "GameScene";
+
+        if (isInGameScene == true)
         {
-           // baseSpeed += (baseSpeed + playerSpeed) * 1.5f;
-           // orbitSpeed += (orbitSpeed + playerSpeed) * 1.5f;
-        }*/
+            fireSound.UnPause();
+        }
+        else
+        { 
+            fireSound.Pause();
+        }
+
+
     }
 
     private void OnCollisionEnter(Collision collision)

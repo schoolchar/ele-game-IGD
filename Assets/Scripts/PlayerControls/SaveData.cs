@@ -83,7 +83,7 @@ public class SaveData : MonoBehaviour
         } 
         else
         {
-            Debug.Log(_pathA);
+            //Debug.Log(_pathA);
         }
 
         if(SceneManager.GetActiveScene().buildIndex == 4)
@@ -398,7 +398,7 @@ public class SaveData : MonoBehaviour
             {
                 playerHealth.lifeForce = true;
             }
-            Debug.Log("Life force level loaded:" + lifeForce.level);
+           // Debug.Log("Life force level loaded:" + lifeForce.level);
             reset = false;
         }
 
@@ -433,7 +433,7 @@ public class SaveData : MonoBehaviour
         {
             string _val = File.ReadAllText(_pathForceFieldLvl);
             forcefield.level = int.Parse(_val);
-            Debug.Log("Forcefield level loaded:" + forcefield.level);
+            //Debug.Log("Forcefield level loaded:" + forcefield.level);
             reset = false;
         }
 
@@ -716,7 +716,7 @@ public class SaveData : MonoBehaviour
     /// </summary>
     public void CALLBACK_CheckForSaveHighScore()
     {
-        Debug.Log("This is  = " + this.gameObject.name);
+       // Debug.Log("This is  = " + this.gameObject.name);
         //Check if this is the highest level the player has reached
         string _path = Application.persistentDataPath + "/HighScore.txt";
         if (File.Exists(_path))

@@ -8,8 +8,6 @@ public class ElephantWaterAttack : MonoBehaviour
 
     void OnEnable()
     {
-        waterSound = GetComponent<AudioSource>();
-
         if(waterSound != null)
             waterSound.Play();
     }

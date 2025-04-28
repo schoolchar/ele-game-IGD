@@ -18,8 +18,8 @@ public class EnemySpawn : MonoBehaviour
     public float spawnDistanceMin = 10f;
     public float spawnDistanceMax = 14f;
     public float spawnWait;
-    private float spawnMostWait = 9f;
-    private float spawnLeastWait = 4f;
+    private float spawnMostWait = 10f;
+    private float spawnLeastWait = 5f;
     public bool stop;
     public float timeToIncrease = 4f;
     public float timeForSpawn2List = 60f;
@@ -40,11 +40,7 @@ public class EnemySpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
-        StartCoroutine(waitSpawner());
-        spawns1Active = true;
-        spawns2Active = false;
-        spawns3Active = false;
+       InitOnLoad();
     }
 
     // Update is called once per frame
@@ -71,6 +67,7 @@ public class EnemySpawn : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         isInGameScene = currentScene.name == "GameScene";
 
+
         //If player is in the game scene, enemies can spawn, else they cannot
         if (isInGameScene == true)
         {
@@ -80,6 +77,8 @@ public class EnemySpawn : MonoBehaviour
         {
             stop = true;
         }
+
+       // Debug.Log("Stop = " + stop);
     }
 
     private void FixedUpdate()
@@ -96,19 +95,48 @@ public class EnemySpawn : MonoBehaviour
         }
     }
 
+    public void InitOnLoad()
+    {
+        //If player is in the game scene, enemies can spawn, else they cannot
+        if (isInGameScene == true)
+        {
+            stop = false;
+        }
+        else
+        {
+            stop = true;
+        }
+
+        player = GameObject.FindWithTag("Player");
+        StartCoroutine(waitSpawner());
+        spawns1Active = true;
+        spawns2Active = false;
+        spawns3Active = false;
+
+        //gets scene name
+        Scene currentScene = SceneManager.GetActiveScene();
+        isInGameScene = currentScene.name == "GameScene";
+
+
+       
+    }
+
     IEnumerator waitSpawner()
     {
+        Debug.Log("Spawner function starts");
         //caluclate players position
         Vector3 playerPosition = player.transform.position;
 
-        while (!stop)
+        if(!stop)
         {
+            //Debug.Log("Stop is false");
             //return null if no enemies are on screen
-            if (spawns1.Count == 0 || spawns2.Count == 0 || spawns3.Count == 0)
+           /* if (spawns1.Count == 0 || spawns2.Count == 0 || spawns3.Count == 0)
             {
                 yield return null;
-                continue;
-            }
+                Debug.Log("Yield null");
+               // continue;
+            }*/
             
             //Spawning logic
             float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
@@ -118,22 +146,32 @@ public class EnemySpawn : MonoBehaviour
             //Depending on what spawner list is active, set randomEnemy to the correct range
             if (spawns1Active == true)
             {
+                Debug.Log("Spawns 1 active");
                 randomEnemy = Random.Range(0, spawns1.Count);
                 Instantiate(spawns1[randomEnemy], spawnPosition, player.transform.rotation);
             }
             else if(spawns2Active == true)
             {
+                Debug.Log("Spawns 2 active");
                 randomEnemy = Random.Range(0, spawns2.Count);
                 Instantiate(spawns2[randomEnemy], spawnPosition, player.transform.rotation);
             }
             else if(spawns3Active == true)
             {
+                Debug.Log("Spawns 3 active");
                 randomEnemy = Random.Range(0, spawns3.Count);
                 Instantiate(spawns3[randomEnemy], spawnPosition, player.transform.rotation);
             }
+            
 
-            yield return new WaitForSeconds(spawnWait);
         }
+        else
+        {
+            Debug.Log("Exit while loop no more spawning");
+        }
+        yield return new WaitForSeconds(spawnWait);
+        StartCoroutine(waitSpawner());
+
     }
 
     #region Object Pooling

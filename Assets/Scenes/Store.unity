@@ -1942,7 +1942,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1394019053864438680, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
-  playerSpawnpoint: {fileID: 1309223086}
+  playerSpawnpoint: {fileID: 500050161}
   newGame: 0
 --- !u!4 &500050161
 Transform:
@@ -1953,7 +1953,7 @@ Transform:
   m_GameObject: {fileID: 500050159}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.60445607, y: 1.2300525, z: 0.8086456}
+  m_LocalPosition: {x: 0, y: 1.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

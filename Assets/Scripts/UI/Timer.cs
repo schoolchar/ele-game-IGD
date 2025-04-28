@@ -14,4 +14,9 @@ public class Timer : MonoBehaviour
         timerVal = timerVal + Time.deltaTime;
         timertext.text = timerVal.ToString();
     }
+
+    public float PassTimeOnDeath()
+    {
+        return timerVal;
+    }
 }

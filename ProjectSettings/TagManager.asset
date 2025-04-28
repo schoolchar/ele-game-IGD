@@ -18,6 +18,7 @@ TagManager:
   - Elephant
   - RatGaze
   - PlayerBody
+  - Hammer
   layers:
   - Default
   - TransparentFX

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NukePrefab : MonoBehaviour
 {
@@ -16,6 +17,14 @@ public class NukePrefab : MonoBehaviour
     // Speed of scaling
     public float scaleSpeed = 1f;
 
+    public AudioSource audioSource;
+    private bool isInGameScene;
+
+    private void Start()
+    {
+        audioSource.UnPause();
+    }
+
     private void Update()
     {
         //increae scale over time using scale speed, goal set to targetScale
@@ -27,11 +36,26 @@ public class NukePrefab : MonoBehaviour
             //destroys
             Destroy(gameObject);
         }
+
+        //gets scene name
+        Scene currentScene = SceneManager.GetActiveScene();
+        isInGameScene = currentScene.name == "GameScene";
+
+
+        //If player is in the game scene, enemies can spawn, else they cannot
+        if (isInGameScene == true)
+        {
+            audioSource.UnPause();
+        }
+        else
+        {
+            audioSource.Pause();
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
         //if hit enemy
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        if (collision.gameObject.tag == "Enemy")
         {
             collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(50);
         }
