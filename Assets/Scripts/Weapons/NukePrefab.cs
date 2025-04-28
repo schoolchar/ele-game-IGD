@@ -20,11 +20,6 @@ public class NukePrefab : MonoBehaviour
     public AudioSource audioSource;
     private bool isInGameScene;
 
-    private void Start()
-    {
-        audioSource.UnPause();
-    }
-
     private void Update()
     {
         //increae scale over time using scale speed, goal set to targetScale

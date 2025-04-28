@@ -19,13 +19,12 @@ public class Ringoffire : WeaponBase
     public bool fireActive;
     private int oldRingoffireLevel;
     public AudioSource fireSound;
-    private bool isInGameScene;
+    public bool isInGameScene;
 
     // Start is called before the first frame update
     void Start()
     {
         InitOnLoad();
-        fireSound.UnPause();
     }
 
     public void InitOnLoad()
@@ -79,11 +78,11 @@ public class Ringoffire : WeaponBase
 
         if (isInGameScene == true)
         {
-            fireSound.UnPause();
+            fireSound.Play();
         }
         else
         { 
-            fireSound.Pause();
+            fireSound.Stop();
         }
 
 
