@@ -700,6 +700,13 @@ public class SaveData : MonoBehaviour
         }
 
 
+        //Dialogue loading 
+        PlayerPrefs.SetInt("MainMenuText", 0);
+        PlayerPrefs.SetInt("StoreText", 0);
+        PlayerPrefs.SetInt("GameText", 0);
+        PlayerPrefs.Save();
+
+
         //Load in the reset values
         LoadPlayerData();
         LoadUpgradeData();
