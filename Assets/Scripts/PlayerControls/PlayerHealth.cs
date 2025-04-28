@@ -89,6 +89,14 @@ public class PlayerHealth : MonoBehaviour
 
             chooseWeapons = FindAnyObjectByType<ChooseWeapons>();
         }
+
+        //Check if any weapon objects were left active from previous round
+        GameObject _hammer = GameObject.FindGameObjectWithTag("Hammer");
+        LargeHammer _hammerS = GetComponentInChildren<LargeHammer>();
+        if (_hammer != null && _hammerS.enabled == false)
+        {
+            Destroy( _hammer );
+        }
         
         
     }
