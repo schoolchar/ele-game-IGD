@@ -18,18 +18,29 @@ public class Forcefield : UpgradeParent
 
     public override void ActivateUpgrade()
     {
-        if(scriptObj.level == 0)
+        if(playerHealth.money >= scriptObj.cost)
         {
-            forceFieldScript.ActivateForcefield();
+            if (scriptObj.level == 0)
+            {
+                forceFieldScript.ActivateForcefield();
+            }
+            else
+            {
+                forceFieldScript.deactivateTime += levelChange;
+                scriptObj.deactivateTimeFF = (int)forceFieldScript.deactivateTime;
+                //saveData.SaveForcefieldUpgrade();
+            }
+
+            IncreaseLevel();
+            //Change cost for next level
+            ChangeCostBasedOnLevel();
+            saveData.SaveForcefieldUpgrade();
         }
         else
         {
-            forceFieldScript.deactivateTime += levelChange;
-            scriptObj.deactivateTimeFF = (int)forceFieldScript.deactivateTime;
-            //saveData.SaveForcefieldUpgrade();
+            storeMenu.NotEnoughMoney();
         }
-
-        IncreaseLevel();
+       
         
     }
 

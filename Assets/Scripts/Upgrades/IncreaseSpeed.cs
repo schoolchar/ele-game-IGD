@@ -16,22 +16,32 @@ public class IncreaseSpeed : UpgradeParent
 
     public override void ActivateUpgrade()
     {
-        //If level is 0
-        if(scriptObj.level == 0)
+        if(playerHealth.money >= scriptObj.cost)
         {
-            //Add affect on speed to player speed
-            playerMovement.moveSpeed += scriptObj.affectOnSpeed;
+            //If level is 0
+            if (scriptObj.level == 0)
+            {
+                //Add affect on speed to player speed
+                playerMovement.moveSpeed += scriptObj.affectOnSpeed;
+            }
+            else
+            {
+                //if level is not 0, increase the affect on speed and apply to player
+                scriptObj.affectOnSpeed += add;
+                playerMovement.moveSpeed += scriptObj.affectOnSpeed;
+            }
+
+            //Increase the upgrade's level, save
+            IncreaseLevel();
+            //Change cost for next level
+            ChangeCostBasedOnLevel();
+            saveData.SaveSpeedUpgrade();
         }
         else
         {
-            //if level is not 0, increase the affect on speed and apply to player
-            scriptObj.affectOnSpeed += add;
-            playerMovement.moveSpeed += scriptObj.affectOnSpeed;
+            storeMenu.NotEnoughMoney();
         }
-
-        //Increase the upgrade's level, save
-        IncreaseLevel();
-        saveData.SaveSpeedUpgrade();
+       
     }
 
     public override void IncreaseLevel()

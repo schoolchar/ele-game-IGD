@@ -16,24 +16,34 @@ public class LifeForceSteal : UpgradeParent
 
     public override void ActivateUpgrade()
     {
-        //If level is 0
-        if(scriptObj.level == 0)
+        if(playerHealth.money >= scriptObj.cost)
         {
-            //Set life force to true and add to health added per enemy killed
-            playerHealth.lifeForce = true;
-            playerHealth.healthPerEnemy += scriptObj.affectOnHealth;
+            //If level is 0
+            if (scriptObj.level == 0)
+            {
+                //Set life force to true and add to health added per enemy killed
+                playerHealth.lifeForce = true;
+                playerHealth.healthPerEnemy += scriptObj.affectOnHealth;
+            }
+            else
+            {
+                //If not level 0, increase the amount of health that is gained per enemy killed by 1
+                scriptObj.affectOnHealth += add;
+                playerHealth.healthPerEnemy += scriptObj.affectOnHealth;
+            }
+
+            //Increase upgrade level
+            IncreaseLevel();
+            //Change cost for next level
+            ChangeCostBasedOnLevel();
+            //Save
+            saveData.SaveLifeForceUpgrade();
         }
         else
         {
-            //If not level 0, increase the amount of health that is gained per enemy killed by 1
-            scriptObj.affectOnHealth += add;
-            playerHealth.healthPerEnemy += scriptObj.affectOnHealth;
+            storeMenu.NotEnoughMoney();
         }
        
-        //Increase upgrade level
-        IncreaseLevel();
-        //Save
-        saveData.SaveLifeForceUpgrade();
 
     }
 

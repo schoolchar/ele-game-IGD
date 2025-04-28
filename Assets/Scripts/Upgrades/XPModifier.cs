@@ -15,19 +15,29 @@ public class XPModifier : UpgradeParent
     }
     public override void ActivateUpgrade()
     {
-        if(scriptObj.level == 0)
+        if(playerHealth.money >= scriptObj.cost)
         {
-            playerHealth.xpMod = true;
-            playerHealth.xpModVal = scriptObj.affectOnXP;
+            if (scriptObj.level == 0)
+            {
+                playerHealth.xpMod = true;
+                playerHealth.xpModVal = scriptObj.affectOnXP;
+            }
+            else
+            {
+                scriptObj.affectOnXP += xpAdd;
+                playerHealth.xpModVal = scriptObj.affectOnXP;
+            }
+
+            IncreaseLevel();
+            //Change cost for next level
+            ChangeCostBasedOnLevel();
+            saveData.SaveXPUpgrade();
         }
         else
         {
-            scriptObj.affectOnXP += xpAdd;
-            playerHealth.xpModVal = scriptObj.affectOnXP;
+            storeMenu.NotEnoughMoney();
         }
         
-        IncreaseLevel();
-        saveData.SaveXPUpgrade();
     }
 
     public override void IncreaseLevel()

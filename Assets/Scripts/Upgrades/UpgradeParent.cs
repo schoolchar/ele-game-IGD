@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class UpgradeParent : MonoBehaviour, IUpgrade
 {
@@ -8,6 +9,8 @@ public class UpgradeParent : MonoBehaviour, IUpgrade
     [SerializeField] protected PlayerMovement playerMovement;
     protected SaveData saveData;
     public UpgradeScriptObj scriptObj;
+    [SerializeField] protected TextMeshProUGUI purchaseText;
+    protected StoreMenuScript storeMenu;
 
     public void Awake()
     {
@@ -15,6 +18,9 @@ public class UpgradeParent : MonoBehaviour, IUpgrade
         playerHealth = FindAnyObjectByType<PlayerHealth>();
         saveData = playerHealth.gameObject.GetComponent<SaveData>();
         playerMovement = playerHealth.gameObject.GetComponent<PlayerMovement>();
+        storeMenu = FindAnyObjectByType<StoreMenuScript>();
+
+        ChangeCostText();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -43,7 +49,18 @@ public class UpgradeParent : MonoBehaviour, IUpgrade
         scriptObj.level++;
     }
 
-
+    protected void ChangeCostText()
+    {
+        purchaseText.text = "Buy - $" + scriptObj.cost;
+    }
+    protected void ChangeCostBasedOnLevel()
+    {
+        playerHealth.money -= scriptObj.cost;
+        storeMenu.ShowMoneyText();
+        int _modVal = (scriptObj.level / 2) + scriptObj.cost;
+        scriptObj.cost += _modVal;
+        ChangeCostText(); ;
+    }
    
 
 }

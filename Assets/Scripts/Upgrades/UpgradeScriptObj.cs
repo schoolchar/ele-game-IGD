@@ -12,4 +12,5 @@ public class UpgradeScriptObj : ScriptableObject
     public int magSpeed;
     public int deactivateTimeFF;
     public int level;
+    public int cost;
 }

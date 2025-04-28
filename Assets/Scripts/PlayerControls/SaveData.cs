@@ -119,6 +119,10 @@ public class SaveData : MonoBehaviour
         string _path1 = Application.persistentDataPath + "/HealthLevel.txt";
         File.WriteAllText(_path1, health.level.ToString());
         //Debug.Log(_path1);
+
+        //Cost
+        string _path2 = Application.persistentDataPath + "/HealthCost.txt";
+        File.WriteAllText(_path2, health.cost.ToString());
     }
 
 
@@ -134,6 +138,10 @@ public class SaveData : MonoBehaviour
         string _path1 = Application.persistentDataPath + "/XPLevel.txt";
         File.WriteAllText(_path1, xp.level.ToString());
         //Debug.Log(_path1);
+
+        //Cost
+        string _path2 = Application.persistentDataPath + "/XPCost.txt";
+        File.WriteAllText(_path2, xp.cost.ToString());
     }
 
     //Store data for affect on magnetism and level of magnetism upgrade
@@ -148,6 +156,7 @@ public class SaveData : MonoBehaviour
         string _path1 = Application.persistentDataPath + "/MagLevel.txt";
         File.WriteAllText(_path1, mag.level.ToString());
         //Debug.Log(_path1);
+
     }
 
 
@@ -163,6 +172,10 @@ public class SaveData : MonoBehaviour
         string _path1 = Application.persistentDataPath + "/SpeedLevel.txt";
         File.WriteAllText(_path1, speed.level.ToString());
         //Debug.Log(_path1);
+
+        //Cost
+        string _path2 = Application.persistentDataPath + "/SpeedCost.txt";
+        File.WriteAllText(_path2, speed.cost.ToString());
     }
 
     //Store data for life force upgrade and level
@@ -177,6 +190,10 @@ public class SaveData : MonoBehaviour
         string _path1 = Application.persistentDataPath + "/LifeForceLevel.txt";
         File.WriteAllText(_path1, lifeForce.level.ToString());
         //Debug.Log(_path1);
+
+        //Cost
+        string _path2 = Application.persistentDataPath + "/LifeForceCost.txt";
+        File.WriteAllText(_path2, lifeForce.cost.ToString());
     }
 
     public void SaveForcefieldUpgrade()
@@ -189,6 +206,10 @@ public class SaveData : MonoBehaviour
         string _path1 = Application.persistentDataPath + "/ForcefieldLevel.txt";
         File.WriteAllText(_path1, forcefield.level.ToString());
         //Debug.Log(_path1);
+
+        //Cost
+        string _path2 = Application.persistentDataPath + "/ForcefieldCost.txt";
+        File.WriteAllText(_path2, forcefield.cost.ToString());
     }
 
     //Animals
@@ -261,6 +282,15 @@ public class SaveData : MonoBehaviour
             reset = false;
         }
 
+        //Get cost of health
+        string _pathHealthCost = Application.persistentDataPath + "/HealthCost.txt";
+        if (File.Exists(_pathHealthCost))
+        {
+            string _val = File.ReadAllText(_pathHealthCost);
+            health.cost = int.Parse(_val);
+            reset = false;
+        }
+
         //Get affect on xp for upgrade
         string _pathXP = Application.persistentDataPath + "/AffectOnXP.txt";
         if (File.Exists(_pathXP))
@@ -278,6 +308,14 @@ public class SaveData : MonoBehaviour
             string _val = File.ReadAllText(_pathXPLvl);
             xp.level = int.Parse(_val);
             //Debug.Log("XP level loaded" + xp.level);
+            reset = false;
+        }
+
+        string _pathXPCost = Application.persistentDataPath + "/XPCost.txt";
+        if(File.Exists(_pathXPCost))
+        {
+            string _val = File.ReadAllText(_pathXPCost);
+            xp.cost = int.Parse(_val);
             reset = false;
         }
 
@@ -321,6 +359,14 @@ public class SaveData : MonoBehaviour
             reset = false;
         }
 
+        string _pathSpeedCost = Application.persistentDataPath + "/SpeedCost.txt";
+        if(File.Exists(_pathSpeedCost))
+        {
+            string _val = File.ReadAllText(_pathSpeedCost);
+            speed.cost = int.Parse(_val);
+            reset = false;
+        }
+
         //Get life force affect on health for upgrade
         string _pathLifeForce = Application.persistentDataPath + "/AffectOnLifeForce.txt";
         if (File.Exists(_pathLifeForce))
@@ -352,6 +398,14 @@ public class SaveData : MonoBehaviour
             reset = false;
         }
 
+        string _pathLifeForceCost = Application.persistentDataPath + "LifeForceCost.txt";
+        if(File.Exists(_pathLifeForceCost))
+        {
+            string _val = File.ReadAllText (_pathLifeForceCost);
+            lifeForce.cost = int.Parse(_val);
+            reset = false;
+        }
+
         //Set forcefield upgrade active or inactive
         string _pathForcefield = Application.persistentDataPath + "/ForcefieldActive.txt";
         if (File.Exists(_pathForcefield))
@@ -379,7 +433,17 @@ public class SaveData : MonoBehaviour
             reset = false;
         }
 
+        string _pathForcefieldCost = Application.persistentDataPath + "/ForcefieldCost.txt";
+        if (File.Exists(_pathForcefieldCost))
+        {
+            string _val = File.ReadAllText(_pathForcefieldCost);
+            forcefield.cost = int.Parse(_val);
+            reset = false;
+        }
+
     }
+
+
 
     public void LoadPlayerAnimal()
     {
@@ -593,6 +657,36 @@ public class SaveData : MonoBehaviour
         if (File.Exists(_pathForcefieldLvl))
         {
             File.WriteAllText(_pathForcefieldLvl, 0.ToString());
+        }
+
+        string _pathHealthCost = Application.persistentDataPath + "/HealthCost.txt";
+        if (File.Exists(_pathHealthCost))
+        {
+            File.WriteAllText(_pathHealthCost, 30.ToString());
+        }
+
+        string _pathXPCost = Application.persistentDataPath + "/XPCost.txt";
+        if (File.Exists(_pathXPCost))
+        {
+            File.WriteAllText(_pathXPCost, 25.ToString());
+        }
+
+        string _pathSpeedCost = Application.persistentDataPath + "/SpeedCost.txt";
+        if (File.Exists(_pathSpeedCost))
+        {
+            File.WriteAllText(_pathSpeedCost, 60.ToString());
+        }
+
+        string _pathLifeForceCost = Application.persistentDataPath + "/LifeForceCost.txt";
+        if(File.Exists(_pathLifeForceCost))
+        {
+            File.WriteAllText(_pathLifeForceCost, 120.ToString());
+        }
+
+        string _pathForcefieldCost = Application.persistentDataPath + "/ForcefieldCost.txt";
+        if(File.Exists(_pathForcefieldCost))
+        {
+            File.WriteAllText(_pathForcefieldCost, 20.ToString());
         }
 
         string _pathAnimals = Application.persistentDataPath + "/Animals.txt";

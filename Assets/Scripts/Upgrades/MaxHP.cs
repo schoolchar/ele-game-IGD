@@ -7,6 +7,7 @@ public class MaxHP : UpgradeParent
     private int addition = 2;
     [SerializeField] private TextMeshProUGUI leveltxt;
 
+
     private void Start()
     {
         //Set text on screen to level
@@ -15,24 +16,34 @@ public class MaxHP : UpgradeParent
 
     public override void ActivateUpgrade()
     {
-        //if level is 0
-        if(scriptObj.level == 0)
+        if(playerHealth.money >= scriptObj.cost)
         {
-            //Increase the maximum health the player can have
-            playerHealth.maxHealth += scriptObj.affectOnHealth;
-        }
-       else
-        {
-            //If level is not 0, increase the affect on health and add to player's max health
-            scriptObj.affectOnHealth += addition;
-            playerHealth.maxHealth += scriptObj.affectOnHealth;
-            addition *= 2;
-            
-        }
+            //if level is 0
+            if (scriptObj.level == 0)
+            {
+                //Increase the maximum health the player can have
+                playerHealth.maxHealth += scriptObj.affectOnHealth;
+            }
+            else
+            {
+                //If level is not 0, increase the affect on health and add to player's max health
+                scriptObj.affectOnHealth += addition;
+                playerHealth.maxHealth += scriptObj.affectOnHealth;
+                addition *= 2;
 
-        IncreaseLevel();
-        //Save level increase
-        saveData.SaveHealthUpgrade();
+            }
+
+            IncreaseLevel();
+            //Change cost for next level
+            ChangeCostBasedOnLevel();
+            //Save level increase
+            saveData.SaveHealthUpgrade();
+        }
+        else
+        {
+            storeMenu.NotEnoughMoney();
+        }
+       
     }
 
     public override void IncreaseLevel()

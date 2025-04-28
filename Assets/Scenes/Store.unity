@@ -4812,7 +4812,6 @@ GameObject:
   - component: {fileID: 1309223086}
   - component: {fileID: 1309223085}
   - component: {fileID: 1309223084}
-  - component: {fileID: 1309223087}
   - component: {fileID: 1309223088}
   - component: {fileID: 1309223089}
   - component: {fileID: 1309223090}
@@ -4838,6 +4837,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 0}
   scriptObj: {fileID: 11400000, guid: 1e3e635d04b4270408b4d884fc896d38, type: 2}
+  purchaseText: {fileID: 1351157232}
   leveltxt: {fileID: 970227997}
 --- !u!114 &1309223085
 MonoBehaviour:
@@ -4853,6 +4853,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 0}
   scriptObj: {fileID: 11400000, guid: 57839554a6c85da438b9c57114758b9e, type: 2}
+  purchaseText: {fileID: 1322436210}
   leveltxt: {fileID: 1232983433}
 --- !u!4 &1309223086
 Transform:
@@ -4869,20 +4870,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1309223087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1309223083}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 257e7c0f8af827d44a2c8c0a2b87e1b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  magLeveltxt: {fileID: 0}
-  armorLeveltxt: {fileID: 0}
 --- !u!114 &1309223088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4927,6 +4914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 0}
   scriptObj: {fileID: 11400000, guid: 163442cb1f935354b83a0eb5a6303248, type: 2}
+  purchaseText: {fileID: 573194961}
   levelTxt: {fileID: 1397723872}
 --- !u!114 &1309223090
 MonoBehaviour:
@@ -4942,6 +4930,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 0}
   scriptObj: {fileID: 11400000, guid: f22b2be1336e667429d4c0ea60a88d98, type: 2}
+  purchaseText: {fileID: 1691793463}
   levelText: {fileID: 1692525238}
 --- !u!114 &1309223091
 MonoBehaviour:
@@ -4957,6 +4946,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 0}
   scriptObj: {fileID: 11400000, guid: c1a35b7474a3a83489bb5d32fc55cf26, type: 2}
+  purchaseText: {fileID: 439334876}
   levelText: {fileID: 992742133}
 --- !u!1 &1322436208
 GameObject:
