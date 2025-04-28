@@ -28,6 +28,7 @@ public class NukePrefab : MonoBehaviour
         // uses taget scale destroy because it never reaches the set scale, idk why but setting it 1 above works
         if (transform.localScale.x >= targetScaleDestroy && transform.localScale.y >= targetScaleDestroy && transform.localScale.z >= targetScaleDestroy)
         {
+            CheckOverlap();
             //destroys
             Destroy(gameObject);
         }
@@ -52,7 +53,7 @@ public class NukePrefab : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionExit(Collision collision)
     {
         //if hit enemy
         if (collision.gameObject.tag == "Enemy")
@@ -65,5 +66,28 @@ public class NukePrefab : MonoBehaviour
     {
         targetScaleDestroy = targetScaleDestroyBase + nukeLevel;
         nukeLevel ++;
+    }
+
+    private void CheckOverlap()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, targetScale / 2);
+
+        for(int i = 0; i < hitColliders.Length; i++)
+        {
+            if (hitColliders[i] != null && hitColliders[i].gameObject.layer == 8)
+            {
+                Debug.Log("Destroying " + hitColliders[i].name);
+                Destroy(hitColliders[i].gameObject);
+            }
+
+            /*if(hitColliders[i] != null && hitColliders[i].gameObject.layer == 7)
+            {
+                PlayerHealth _player = hitColliders[i].gameObject.GetComponent<PlayerHealth>();
+                if(_player != null)
+                {
+                    
+                }
+            }*/
+        }
     }
 }
