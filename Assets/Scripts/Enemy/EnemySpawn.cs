@@ -18,8 +18,8 @@ public class EnemySpawn : MonoBehaviour
     public float spawnDistanceMin = 10f;
     public float spawnDistanceMax = 14f;
     public float spawnWait;
-    public float spawnMostWait = 12f;
-    public float spawnLeastWait = 6f;
+    private float spawnMostWait = 9f;
+    private float spawnLeastWait = 4f;
     public bool stop;
     public float timeToIncrease = 4f;
     public float timeForSpawn2List = 60f;

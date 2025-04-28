@@ -9,8 +9,6 @@ public class Shooter : MonoBehaviour
     [SerializeField] EnemyClown enemyClown;
     private float shootTimer;
 
-  
-
     // Update is called once per frame
     void Update()
     {
@@ -20,7 +18,7 @@ public class Shooter : MonoBehaviour
         if (enemyClown.isStopped == true)
         {
             //After 2.8 seconds have passed since the last bullet, set active the next
-            if (shootTimer > 2.6f)
+            if (shootTimer > 2.8f)
             {
                 GameObject bullet = pooler.GetObject();
                 if (bullet != null)

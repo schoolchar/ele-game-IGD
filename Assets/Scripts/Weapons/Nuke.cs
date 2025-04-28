@@ -21,8 +21,6 @@ public class Nuke : WeaponBase
 
     private IEnumerator SpawnNukes()
     {
-        
-        
             //spawns nuke
             GameObject spawnedNuke = Instantiate(nukePrefab, playerTransform.position, Quaternion.identity);
 
@@ -30,5 +28,13 @@ public class Nuke : WeaponBase
             yield return new WaitForSeconds(spawnInterval);
         StartCoroutine(SpawnNukes());
         
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(50);
+        }
     }
 }
