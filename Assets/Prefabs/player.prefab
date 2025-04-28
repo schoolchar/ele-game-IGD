@@ -261,7 +261,6 @@ GameObject:
   - component: {fileID: 2125592141690816146}
   - component: {fileID: -1059422275450723310}
   - component: {fileID: 561606230722805421}
-  - component: {fileID: 2760391712373766440}
   - component: {fileID: -4972824317532668874}
   - component: {fileID: -3503242722923072897}
   - component: {fileID: 5172935694428711339}
@@ -270,6 +269,7 @@ GameObject:
   - component: {fileID: 4845488100659345855}
   - component: {fileID: 8208251400799020166}
   - component: {fileID: 925022211919348923}
+  - component: {fileID: 7169940571459305734}
   m_Layer: 7
   m_Name: player
   m_TagString: Player
@@ -453,29 +453,6 @@ MonoBehaviour:
   bullet: {fileID: 6291107187475892311, guid: 26b54513dd22c46458ab8dea0d1d717c, type: 3}
   spawnPt: {fileID: 0}
   playerPhys: {fileID: 0}
---- !u!136 &2760391712373766440
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1394019053864438680}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.1303837
-  m_Height: 2.2607675
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: -0.015853167}
 --- !u!114 &-4972824317532668874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -711,6 +688,27 @@ MonoBehaviour:
   timeBwActive: 10
   deactivateTime: 3
   saveData: {fileID: -7658899717858874445}
+--- !u!65 &7169940571459305734
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394019053864438680}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.5983058, z: 1.7854635}
+  m_Center: {x: 0, y: -0.29915303, z: 0.12532562}
 --- !u!1 &1555237959989853747
 GameObject:
   m_ObjectHideFlags: 0
