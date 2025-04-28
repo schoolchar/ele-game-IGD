@@ -634,6 +634,7 @@ MonoBehaviour:
   paw: {fileID: 8400739299538370443}
   animator: {fileID: 5525472425735261564}
   slashVFX: {fileID: 7437057460811700527}
+  slashSound: {fileID: 0}
 --- !u!114 &-3503242722923072897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2736,6 +2737,7 @@ MonoBehaviour:
   paw: {fileID: 8400739299538370443}
   animator: {fileID: 5525472425735261564}
   slashVFX: {fileID: 7437057460811700527}
+  slashSound: {fileID: 1640866153629177025}
 --- !u!82 &1640866153629177025
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2747,7 +2749,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 242a218046fe89949ba33afbebbc8923, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 0.2
   m_Pitch: 1
   Loop: 0

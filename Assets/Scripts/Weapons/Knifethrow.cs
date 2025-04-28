@@ -71,22 +71,17 @@ public class Knifethrow : WeaponBase
         if (Time.time > nextFireTime)
         {
             TimeShooting();
+
+            //If player is in the game scene
+            if (isInGameScene == true)
+            {
+                knifeSound.Play();
+            }
         }
 
         //gets scene name
         Scene currentScene = SceneManager.GetActiveScene();
         isInGameScene = currentScene.name == "GameScene";
-
-
-        //If player is in the game scene, enemies can spawn, else they cannot
-         if (isInGameScene == true)
-         {
-             knifeSound.UnPause();
-         }
-         else
-         { 
-             knifeSound.Pause();
-         }
     }
 
     public void InitOnLoad()
@@ -98,7 +93,6 @@ public class Knifethrow : WeaponBase
         Physics.IgnoreLayerCollision(9, 12, true);
         Physics.IgnoreLayerCollision(9, 13, true);
 
-        knifeSound = GetComponent<AudioSource>();
         chooseWeapons = FindAnyObjectByType<ChooseWeapons>();
 
         if(chooseWeapons != null)
@@ -186,8 +180,13 @@ public class Knifethrow : WeaponBase
             //Debug.Log("Knife thrown");
             foreach (GameObject enemy in nearestEnemy)
             {
-                knifeSound.UnPause();
                 ShootAt(enemy);
+
+                //If player is in the game scene, enemies can spawn, else they cannot
+                if (isInGameScene == true)
+                {
+                    knifeSound.Play();
+                }
             }
             nextFireTime = Time.time + 1.0f / fireRate;
             Array.Clear(nearestEnemy, 0, nearestEnemy.Length);

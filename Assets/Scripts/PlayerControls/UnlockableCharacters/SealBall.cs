@@ -18,18 +18,6 @@ public class SealBall : MonoBehaviour
         //gets scene name
         Scene currentScene = SceneManager.GetActiveScene();
         isInGameScene = currentScene.name == "GameScene";
-
-
-        //If player is in the game scene, enemies can spawn, else they cannot
-        if (isInGameScene == true)
-         {
-             sealBallBounce.UnPause();
-         }
-         else
-         {
-            sealBallBounce.Pause();
-         }
-
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -37,6 +25,11 @@ public class SealBall : MonoBehaviour
         //Check if this collides with an enemy, takes health from enemy
         if(collision.gameObject.layer == 8)
         {
+            //If player is in the game scene
+            if (isInGameScene == true)
+            {
+                sealBallBounce.Play();
+            }
             EnemyHealth _enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
             _enemyHealth.TakeDamage(3);
             sealBallBounce.UnPause();

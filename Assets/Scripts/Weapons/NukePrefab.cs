@@ -17,7 +17,7 @@ public class NukePrefab : MonoBehaviour
     // Speed of scaling
     public float scaleSpeed = 1f;
 
-    public AudioSource audioSource;
+    public AudioSource nukeSound;
     private bool isInGameScene;
 
     private void Update()
@@ -37,14 +37,10 @@ public class NukePrefab : MonoBehaviour
         isInGameScene = currentScene.name == "GameScene";
 
 
-        //If player is in the game scene, enemies can spawn, else they cannot
+        //If player is in the game scene
         if (isInGameScene == true)
         {
-            audioSource.UnPause();
-        }
-        else
-        {
-            audioSource.Pause();
+            nukeSound.Play();
         }
     }
     private void OnCollisionEnter(Collision collision)

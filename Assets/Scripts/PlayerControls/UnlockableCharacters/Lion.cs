@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Lion : MonoBehaviour, ICharacterActions
 {
-    public AudioSource lionSound;
     //Lion attack: Slash
     private bool isAttacking;
     private int damage = 1;
@@ -13,10 +13,16 @@ public class Lion : MonoBehaviour, ICharacterActions
     [SerializeField] private Animator animator;
     [SerializeField] private ParticleSystem slashVFX;
 
-    void Start()
+    private bool isInGameScene;
+    public AudioSource slashSound;
+
+    void Update()
     {
-        lionSound = GetComponent<AudioSource>();
+        //gets scene name
+        Scene currentScene = SceneManager.GetActiveScene();
+        isInGameScene = currentScene.name == "GameScene";
     }
+
     private void OnEnable()
     {
         StartCoroutine(TimeAttack());
@@ -31,7 +37,7 @@ public class Lion : MonoBehaviour, ICharacterActions
 
     void HitEnemy(Collider _collision)
     {
-        if(_collision.gameObject.GetComponent<EnemyHealth>() != null && isAttacking) 
+        if (_collision.gameObject.GetComponent<EnemyHealth>() != null && isAttacking)
         {
             //Debug.Log("enemy hit " + _collision.gameObject.name);
             Attack(_collision.gameObject.GetComponent<EnemyHealth>());
@@ -47,16 +53,20 @@ public class Lion : MonoBehaviour, ICharacterActions
     {
         yield return new WaitForSeconds(attackWait);
         isAttacking = true;
-        lionSound.Play();
         animator.SetTrigger("Slash");
-        slashVFX.Play();
+        if (isInGameScene == true)
+        {
+            slashVFX.Play();
+            slashSound.Play();
+        }
+
         StartCoroutine(TurnOffAttack());
     }
 
     IEnumerator TurnOffAttack()
     {
         yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(0).Length);
-        isAttacking= false;
+        isAttacking = false;
 
         StartCoroutine(TimeAttack());
     }

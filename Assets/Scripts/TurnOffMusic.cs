@@ -15,16 +15,10 @@ public class TurnOffMusic : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         isInGameScene = currentScene.name == "GameScene";
 
-
-        //If player is in the game scene, enemies can spawn, else they cannot
-         if (isInGameScene == true)
-         {
-             audioSource.UnPause();
-         }
-         else
-         { 
-             audioSource.Pause();
-         }
-
+        //If player is in the game scene
+        if (isInGameScene == true)
+        {
+            audioSource.Play();
+        }
     }
 }

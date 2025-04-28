@@ -27,7 +27,7 @@ public class Elephant : MonoBehaviour, ICharacterActions
 
     public void Attack(EnemyHealth _enemy)
     {
-        ;
+        
     }
 
     private IEnumerator DelayWaterSpread(int _nextWaterIndx)

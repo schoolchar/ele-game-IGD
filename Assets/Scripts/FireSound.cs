@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FireSound : MonoBehaviour
 {
     public AudioSource fireSound;
+    private bool isInGameScene;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,13 +18,13 @@ public class FireSound : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Time.timeScale == 0)
+        //gets scene name
+        Scene currentScene = SceneManager.GetActiveScene();
+        isInGameScene = currentScene.name == "GameScene";
+
+        if (Time.timeScale == 0)
         {
-            fireSound.Pause();
-        }
-        else
-        {
-            fireSound.UnPause();
+            fireSound.Play();
         }
         
     }

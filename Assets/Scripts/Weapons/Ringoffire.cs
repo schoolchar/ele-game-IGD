@@ -73,19 +73,16 @@ public class Ringoffire : WeaponBase
             // orbitSpeed += (orbitSpeed + playerSpeed) * 1.5f;
          }*/
 
+        //gets scene name
         Scene currentScene = SceneManager.GetActiveScene();
         isInGameScene = currentScene.name == "GameScene";
 
+
+        //If player is in the game scene
         if (isInGameScene == true)
         {
             fireSound.Play();
         }
-        else
-        { 
-            fireSound.Stop();
-        }
-
-
     }
 
     private void OnCollisionEnter(Collision collision)

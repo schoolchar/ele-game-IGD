@@ -1,16 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ElephantWaterAttack : MonoBehaviour
 {
     public AudioSource waterSound;
+    private bool isInGameScene;
 
     void OnEnable()
     {
-        if(waterSound != null)
-            waterSound.Play();
+        if (waterSound != null)
+        {
+            if (isInGameScene == true)
+            {
+               waterSound.Play();
+            }
+        }
     }
+
+    void Update()
+    {
+        //gets scene name
+        Scene currentScene = SceneManager.GetActiveScene();
+        isInGameScene = currentScene.name == "GameScene";
+    }
+
     void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Enemy")

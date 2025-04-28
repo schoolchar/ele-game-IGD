@@ -154,6 +154,7 @@ MonoBehaviour:
   baseSpeed: 5
   fireActive: 0
   fireSound: {fileID: 7797281656427687681}
+  isInGameScene: 0
 --- !u!82 &7797281656427687681
 AudioSource:
   m_ObjectHideFlags: 0
@@ -165,7 +166,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e9440a398e5caf74799bb95fe04a6d84, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
