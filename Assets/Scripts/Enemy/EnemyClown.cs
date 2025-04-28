@@ -70,14 +70,4 @@ public class EnemyClown : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
-    /*private void OnCollisionEnter(Collision _other)
-    {
-        //TakeDamage();
-
-        if (_other.gameObject.tag == "Projectile")
-        {
-            Destroy(_other.gameObject);
-        }
-    }*/
 }

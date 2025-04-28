@@ -33,7 +33,7 @@ public class NukePrefab : MonoBehaviour
         //if hit enemy
         if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            // damage function
+            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(50);
         }
     }
 
