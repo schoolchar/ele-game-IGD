@@ -210,7 +210,9 @@ public class PlayerMovement : MonoBehaviour
         knifeThrow.enabled = true;
         turret.enabled = true;
         turret.StopAllCoroutines();
+        turret.active = false;
         nuke.enabled = true; ;
+        nuke.active = false;
         nuke.StopAllCoroutines();
     } //END ResetWeapons()
 }

@@ -24,6 +24,8 @@ public class LargeHammer : WeaponBase
     public bool newVal = false;
     public bool hammerActive;
     public AudioSource hammerSound;
+    float hammerTime = 3;
+
     public override void ActivateThisWeapon()
     {
         //Debug.Log("Hammer activated");
@@ -56,6 +58,10 @@ public class LargeHammer : WeaponBase
             }
 
             hammerActive = true;
+        }
+        else
+        {
+            hammerTime -= 0.2f;
         }
        
        
@@ -129,7 +135,7 @@ public class LargeHammer : WeaponBase
 
     IEnumerator TimeReload()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(hammerTime);
         Reload();
     }
 
