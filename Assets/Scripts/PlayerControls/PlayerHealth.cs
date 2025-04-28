@@ -153,10 +153,10 @@ public class PlayerHealth : MonoBehaviour
             onPlayerDeath?.Invoke();
 
 
-            xp = 0;
+           // xp = 0;
             //Reset level and load menu
             level = 0;
-            SceneManager.LoadScene(0);
+            //SceneManager.LoadScene(0);
         }
         
     } //END CheckForDeath()

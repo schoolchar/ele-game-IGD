@@ -518,8 +518,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a337c9313fcd2cc4d9e19ea0447720a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 200
-  health: 200
+  maxHealth: 10
+  health: 10
   xp: 0
   money: 0
   level: 0
@@ -571,8 +571,6 @@ MonoBehaviour:
   spawnDistanceMin: 8
   spawnDistanceMax: 12
   spawnWait: 0
-  spawnMostWait: 12
-  spawnLeastWait: 6
   stop: 0
   timeToIncrease: 4
   timeForSpawn2List: 60
