@@ -53,6 +53,7 @@ public class Pause : MonoBehaviour
     {
         PlayerHealth _health = FindAnyObjectByType<PlayerHealth>();
         _health.health = 0;
+        _health.xp = 0;
         _health.CheckForDeath();
         SceneManager.LoadScene(0);
     }

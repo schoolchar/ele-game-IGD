@@ -39,7 +39,7 @@ public class AccessLevels : MonoBehaviour
     private void Start()
     {
         // Updates pause menu with upgrade levels, uncomment when put in scene
-        //UpdateUI();
+        UpdateUI();
 
         //Loading
         ringOfFire = FindAnyObjectByType<Ringoffire>(FindObjectsInactive.Include);
