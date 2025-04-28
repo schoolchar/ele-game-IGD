@@ -23,6 +23,7 @@ public class SwitchPlayer : MonoBehaviour
     SaveData saveData;
     PlayerHealth playerHealth;
     [SerializeField] StoreMenuScript storeMenu;
+    [SerializeField] private CarryOver carryOverData;
 
     public Color[] playerColors;
 
@@ -44,6 +45,7 @@ public class SwitchPlayer : MonoBehaviour
 
         playerModels = FindObjectsByType<CharacterID>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 
+        carryOverData = FindAnyObjectByType<CarryOver>();
 
         for (int i = 0; i < playerModels.Length; i++)
         {
@@ -83,32 +85,46 @@ public class SwitchPlayer : MonoBehaviour
             sealCostTxt.text = "Owned";
         }
 
+
+        
         
     }
 
     //Player chooses Lion character
     public void ActivateLion()
     {
-        //Enable lion, disable everything else
-        lionComp.enabled = true;
-        elephantComp.enabled = false;
-        baseComp.enabled = false;
-        monkeyComp.enabled = false;
-        seaLionComp.enabled = false;
+        if(lionComp != null)
+        {
+            //Enable lion, disable everything else
+            lionComp.enabled = true;
+            elephantComp.enabled = false;
+            baseComp.enabled = false;
+            monkeyComp.enabled = false;
+            seaLionComp.enabled = false;
 
-        characterActive.SetActive(false);
-        for (int i = 0; i < playerModels.Length; i++)
-        {
-            if (playerModels[i].animal == "Lion")
+            characterActive.SetActive(false);
+            for (int i = 0; i < playerModels.Length; i++)
             {
-                playerModels[i].gameObject.SetActive(true);
-                characterActive = playerModels[i].gameObject;
+                if (playerModels[i].animal == "Lion")
+                {
+                    playerModels[i].gameObject.SetActive(true);
+                    characterActive = playerModels[i].gameObject;
+                }
+                else
+                {
+                    playerModels[i].gameObject.SetActive(false);
+                }
             }
+
+            if (saveData != null)
+            {
+                saveData.SaveUnlockedAnimals(0);
+            }
+
         }
-        
-        if(saveData != null)
+        else
         {
-            saveData.SaveUnlockedAnimals(0);
+
         }
 
         //playerMesh.material.color = playerColors[0];
@@ -134,6 +150,10 @@ public class SwitchPlayer : MonoBehaviour
                 {
                     playerModels[i].gameObject.SetActive(true);
                     characterActive = playerModels[i].gameObject;
+                }
+                else
+                {
+                    playerModels[i].gameObject.SetActive(false);
                 }
             }
 
@@ -179,6 +199,10 @@ public class SwitchPlayer : MonoBehaviour
                     playerModels[i].gameObject.SetActive(true);
                     characterActive = playerModels[i].gameObject;
                 }
+                else
+                {
+                    playerModels[i].gameObject.SetActive(false);
+                }
             }
             if (access[3] == 0)
             {
@@ -219,6 +243,10 @@ public class SwitchPlayer : MonoBehaviour
                 {
                     playerModels[i].gameObject.SetActive(true);
                     characterActive = playerModels[i].gameObject;
+                }
+                else
+                {
+                    playerModels[i].gameObject.SetActive(false);
                 }
             }
 
