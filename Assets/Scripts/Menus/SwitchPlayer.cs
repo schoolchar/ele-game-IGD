@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+using TMPro;
 
 public class SwitchPlayer : MonoBehaviour
 {
@@ -10,12 +12,27 @@ public class SwitchPlayer : MonoBehaviour
     public Monkey monkeyComp;
     public BasicShoot baseComp;
 
+    [SerializeField] private TextMeshProUGUI elephantCostTxt;
+    [SerializeField] private TextMeshProUGUI monkeyCostTxt;
+    [SerializeField] private TextMeshProUGUI sealCostTxt;
+
+
     public CharacterID[] playerModels;
     public GameObject characterActive;
 
     SaveData saveData;
+    PlayerHealth playerHealth;
+    [SerializeField] StoreMenuScript storeMenu;
 
     public Color[] playerColors;
+
+    //Animal costs, lion is default/free
+    public int elephantCost = 30;
+    public int monkeyCost = 50;
+    public int sealCost = 80;
+
+    int[] access = new int[5];
+
     private void Start()
     {
         //Get the types of player characters' scripts on the player
@@ -37,8 +54,36 @@ public class SwitchPlayer : MonoBehaviour
         }
 
         saveData = FindAnyObjectByType<SaveData>();
+        playerHealth = FindAnyObjectByType<PlayerHealth>();
 
-       // playerMesh = GameObject.FindWithTag("PlayerMesh").GetComponent<MeshRenderer>();
+
+        //Load what animals are owned and which are not
+        string _path = Application.persistentDataPath + "/Animals.txt";
+        
+        if (File.Exists(_path))
+        {
+            string[] tmp = File.ReadAllLines(_path);
+            for(int i = 0; i < tmp.Length; i++)
+            {
+                access[i] = int.Parse(tmp[i]);
+            }
+        }
+
+        //Change text showing cost of each animal that is already owned
+        if (access[1] == 1)
+        {
+            elephantCostTxt.text = "Owned";
+        }
+        if (access[2] == 1)
+        {
+            monkeyCostTxt.text = "Owned";
+        }
+        if (access[3] == 1)
+        {
+            sealCostTxt.text = "Owned";
+        }
+
+        
     }
 
     //Player chooses Lion character
@@ -72,77 +117,131 @@ public class SwitchPlayer : MonoBehaviour
     //Player chooses elephant character
     public void ActivateElephant()
     {
-        //Enable elephant. disable everything else
-        lionComp.enabled = false;
-        elephantComp.enabled = true;
-        seaLionComp.enabled = false;
-        monkeyComp.enabled = false;
-        baseComp.enabled = false;
-
-        characterActive.SetActive(false);
-        for (int i = 0; i < playerModels.Length; i++)
+       
+        if (playerHealth.money >= elephantCost || access[1] == 1)
         {
-            if (playerModels[i].animal == "Elephant")
+            //Enable elephant. disable everything else
+            lionComp.enabled = false;
+            elephantComp.enabled = true;
+            seaLionComp.enabled = false;
+            monkeyComp.enabled = false;
+            baseComp.enabled = false;
+
+            characterActive.SetActive(false);
+            for (int i = 0; i < playerModels.Length; i++)
             {
-                playerModels[i].gameObject.SetActive(true);
-                characterActive = playerModels[i].gameObject;
+                if (playerModels[i].animal == "Elephant")
+                {
+                    playerModels[i].gameObject.SetActive(true);
+                    characterActive = playerModels[i].gameObject;
+                }
             }
-        }
 
-        if (saveData != null)
+            if (access[1] == 0)
+            {
+                playerHealth.money -= elephantCost;
+                storeMenu.ShowMoneyText();
+                elephantCostTxt.text = "Owned";
+
+            }
+
+            if (saveData != null)
+            {
+                saveData.SaveUnlockedAnimals(1);
+            }
+
+
+        }
+        else
         {
-            saveData.SaveUnlockedAnimals(1);
+            storeMenu.NotEnoughMoney();
         }
 
-        //playerMesh.material.color = playerColors[1];
+
     }
 
     public void ActivateSeal()
     {
-        seaLionComp.enabled = true;
-        lionComp.enabled = false;
-        monkeyComp.enabled = false;
-        baseComp.enabled = false;
-        elephantComp.enabled = false;
-
-        characterActive.SetActive(false);
-        for (int i = 0; i < playerModels.Length; i++)
+       
+        if (playerHealth.money >= sealCost || access[3] == 1)
         {
-            if (playerModels[i].animal == "Seal")
+            seaLionComp.enabled = true;
+            lionComp.enabled = false;
+            monkeyComp.enabled = false;
+            baseComp.enabled = false;
+            elephantComp.enabled = false;
+
+            characterActive.SetActive(false);
+            for (int i = 0; i < playerModels.Length; i++)
             {
-                playerModels[i].gameObject.SetActive(true);
-                characterActive = playerModels[i].gameObject;
+                if (playerModels[i].animal == "Seal")
+                {
+                    playerModels[i].gameObject.SetActive(true);
+                    characterActive = playerModels[i].gameObject;
+                }
+            }
+            if (access[3] == 0)
+            {
+                playerHealth.money -= sealCost;
+                storeMenu.ShowMoneyText();
+                sealCostTxt.text = "Owned";
+
+            }
+
+            if (saveData != null)
+            {
+                saveData.SaveUnlockedAnimals(3);
             }
         }
-
-        if (saveData != null)
+        else
         {
-            saveData.SaveUnlockedAnimals(3);
+            storeMenu.NotEnoughMoney();
         }
+
     }
 
     public void ActivateMonkey()
     {
-        monkeyComp.enabled = true;
-        seaLionComp.enabled = false;
-        lionComp.enabled = false;
-        baseComp.enabled = false;
-        elephantComp.enabled = false;
+         
 
-        characterActive.SetActive(false);
-        for (int i = 0; i < playerModels.Length; i++)
+        if (playerHealth.money >= monkeyCost || access[2] == 1)
         {
-            if (playerModels[i].animal == "Monkey")
+            monkeyComp.enabled = true;
+            seaLionComp.enabled = false;
+            lionComp.enabled = false;
+            baseComp.enabled = false;
+            elephantComp.enabled = false;
+
+            characterActive.SetActive(false);
+            for (int i = 0; i < playerModels.Length; i++)
             {
-                playerModels[i].gameObject.SetActive(true);
-                characterActive = playerModels[i].gameObject;
+                if (playerModels[i].animal == "Monkey")
+                {
+                    playerModels[i].gameObject.SetActive(true);
+                    characterActive = playerModels[i].gameObject;
+                }
             }
-        }
 
-        if (saveData != null)
-        {
-            saveData.SaveUnlockedAnimals(2);
+            if (access[2] == 0)
+            {
+                playerHealth.money -= monkeyCost;
+                storeMenu.ShowMoneyText();
+                monkeyCostTxt.text = "Owned";
+
+
+            }
+
+            if (saveData != null)
+            {
+                saveData.SaveUnlockedAnimals(2);
+            }
+
         }
+        else
+        {
+            storeMenu.NotEnoughMoney();
+        }
+      
     }
 
     
