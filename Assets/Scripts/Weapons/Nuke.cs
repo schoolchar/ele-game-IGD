@@ -7,7 +7,7 @@ public class Nuke : WeaponBase
 {
     //prefab
     public GameObject nukePrefab;
-    Vector3 scaleVal = Vector3.one;
+    float scaleVal;
     //spawntime 
     public float spawnInterval = 30f;
 
@@ -22,7 +22,7 @@ public class Nuke : WeaponBase
         if(active)
         {
             //spawnInterval -= 3f;
-            scaleVal *= 0.2f;
+            scaleVal += scaleVal * 0.3f;
         }
         else
         {
@@ -38,7 +38,7 @@ public class Nuke : WeaponBase
     {
             //spawns nuke
             GameObject spawnedNuke = Instantiate(nukePrefab, playerTransform.position, Quaternion.identity);
-        spawnedNuke.transform.localScale += scaleVal;
+        spawnedNuke.GetComponent<NukePrefab>().targetScale += scaleVal;
             //waits
             yield return new WaitForSeconds(spawnInterval);
         StartCoroutine(SpawnNukes());
