@@ -835,7 +835,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   balls: {fileID: 8540683608769617040, guid: cdb8559f7f954df42b33a4fcd3907b02, type: 3}
   positionOffset: {x: 0, y: -0.3, z: 2}
-  playerobj: {fileID: 4009431451348019332}
+  playerobj: {fileID: 2988728467627136014}
 --- !u!114 &925022211919348923
 MonoBehaviour:
   m_ObjectHideFlags: 0
