@@ -8,11 +8,6 @@ public class TurnOffMusic : MonoBehaviour
     private bool isInGameScene;
     public AudioSource audioSource;
 
-    private void Start()
-    {
-        audioSource.UnPause();
-    }
-
     // Update is called once per frame
     void Update()
     {
