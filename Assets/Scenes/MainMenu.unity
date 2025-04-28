@@ -197,6 +197,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 67850566}
   m_CullTransparentMesh: 1
+--- !u!1 &144260315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 144260316}
+  - component: {fileID: 144260317}
+  m_Layer: 0
+  m_Name: SaveStoreWOPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &144260316
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144260315}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 694.79285, y: 413.61792, z: 29.887367}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &144260317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144260315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14e3cae18d4f1094c9edce6a7110a92a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  savedUpgrades:
+  - upgradeActivated: 0
+    upgradeLevel: 0
+    modVal: 0
+  - upgradeActivated: 0
+    upgradeLevel: 0
+    modVal: 0
+  savedAnimals: []
+  changedOnThis: 0
 --- !u!1 &161684949
 GameObject:
   m_ObjectHideFlags: 0
@@ -1902,6 +1955,13 @@ MonoBehaviour:
   forcefield: {fileID: 11400000, guid: c1a35b7474a3a83489bb5d32fc55cf26, type: 2}
   playerHealth: {fileID: 0}
   forcefieldOnPlayer: {fileID: 0}
+  elephantComp: {fileID: 0}
+  lionComp: {fileID: 0}
+  seaLionComp: {fileID: 0}
+  monkeyComp: {fileID: 0}
+  baseComp: {fileID: 0}
+  playerModels: []
+  characterActive: {fileID: 0}
   storeButton: {fileID: 1843393337}
   levelText: {fileID: 467499377}
   reset: 1
@@ -2558,3 +2618,4 @@ SceneRoots:
   - {fileID: 688917895}
   - {fileID: 1579778707}
   - {fileID: 1353040482}
+  - {fileID: 144260316}
