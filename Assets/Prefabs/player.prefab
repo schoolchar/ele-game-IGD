@@ -835,8 +835,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84ec67c2885e5a24c9b637d6106cb457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  balls: {fileID: 579662117110123568, guid: 87b6a3b8e1abb0049ac41f5d34114720, type: 3}
-  positionOffset: {x: 0, y: 0, z: 2}
+  balls: {fileID: 8540683608769617040, guid: cdb8559f7f954df42b33a4fcd3907b02, type: 3}
+  positionOffset: {x: 0, y: -0.3, z: 2}
   playerobj: {fileID: 4009431451348019332}
 --- !u!114 &925022211919348923
 MonoBehaviour:
@@ -1419,12 +1419,11 @@ Transform:
   m_GameObject: {fileID: 2988728467627136014}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -1.286, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4453207495976332282}
-  - {fileID: 1004464789670014438}
   m_Father: {fileID: 331960211524314063}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &8227452691259979170
@@ -1559,7 +1558,7 @@ Transform:
   m_GameObject: {fileID: 3470221175158633835}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.194, z: 0}
+  m_LocalPosition: {x: 0, y: -1.286, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1865,7 +1864,7 @@ Transform:
   m_GameObject: {fileID: 4078106372057756186}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.1, z: 0}
+  m_LocalPosition: {x: 0, y: -1.314, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2663,55 +2662,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &8389907365336241508
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1004464789670014438}
-  - component: {fileID: 7565754764093146441}
-  m_Layer: 7
-  m_Name: RotatePos
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1004464789670014438
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8389907365336241508}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.71, z: 0.73}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 678945271071527585}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7565754764093146441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8389907365336241508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a060f87ae9223f642b1bfebcce499c8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ballPrefab: {fileID: 579662117110123568, guid: 87b6a3b8e1abb0049ac41f5d34114720, type: 3}
-  numberOfBalls: 3
-  centerObject: {fileID: 1004464789670014438}
-  radius: 0.5
-  speed: 50
 --- !u!1 &8400739299538370443
 GameObject:
   m_ObjectHideFlags: 0
