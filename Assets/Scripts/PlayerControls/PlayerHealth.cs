@@ -44,6 +44,7 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         damageSound = GetComponent<AudioSource>();
+        InitOnStartOnly();
         //InitValues();
     }
 
@@ -52,6 +53,19 @@ public class PlayerHealth : MonoBehaviour
         LoseHealth(other);
     }
 
+    private void InitOnStartOnly()
+    {
+        if(saveData.xp.level > 0)
+        {
+            xpMod = true;
+            xpModVal = saveData.xp.affectOnXP;
+        }
+
+        if (saveData.health.level > 0)
+        {
+            maxHealth += saveData.health.affectOnHealth;
+        }
+    }
 
    public void InitValues()
     {
@@ -161,5 +175,5 @@ public class PlayerHealth : MonoBehaviour
     }
 
 
-    
+
 }

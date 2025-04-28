@@ -4040,7 +4040,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 0}
   scriptObj: {fileID: 11400000, guid: c1a35b7474a3a83489bb5d32fc55cf26, type: 2}
-  levelText: {fileID: 0}
+  levelText: {fileID: 992742133}
 --- !u!1 &1322436208
 GameObject:
   m_ObjectHideFlags: 0

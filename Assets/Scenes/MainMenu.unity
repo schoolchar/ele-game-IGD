@@ -1899,7 +1899,7 @@ MonoBehaviour:
   mag: {fileID: 11400000, guid: 60f0ee77f6233de42986773750eb3ea3, type: 2}
   speed: {fileID: 11400000, guid: 163442cb1f935354b83a0eb5a6303248, type: 2}
   lifeForce: {fileID: 11400000, guid: f22b2be1336e667429d4c0ea60a88d98, type: 2}
-  forcefield: {fileID: 0}
+  forcefield: {fileID: 11400000, guid: c1a35b7474a3a83489bb5d32fc55cf26, type: 2}
   playerHealth: {fileID: 0}
   forcefieldOnPlayer: {fileID: 0}
   storeButton: {fileID: 1843393337}

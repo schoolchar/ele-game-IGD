@@ -504,6 +504,7 @@ MonoBehaviour:
   hammer: {fileID: 3044671520743988543}
   turret: {fileID: 4096245171782489962}
   nuke: {fileID: 7173295721076234343}
+  saveData: {fileID: -7658899717858874445}
   characterActive: {fileID: 0}
 --- !u!114 &2125592141690816146
 MonoBehaviour:
@@ -691,9 +692,20 @@ MonoBehaviour:
   mag: {fileID: 11400000, guid: 60f0ee77f6233de42986773750eb3ea3, type: 2}
   speed: {fileID: 11400000, guid: 163442cb1f935354b83a0eb5a6303248, type: 2}
   lifeForce: {fileID: 11400000, guid: f22b2be1336e667429d4c0ea60a88d98, type: 2}
-  forcefield: {fileID: 0}
+  forcefield: {fileID: 11400000, guid: c1a35b7474a3a83489bb5d32fc55cf26, type: 2}
   playerHealth: {fileID: 2125592141690816146}
-  forcefieldOnPlayer: {fileID: 0}
+  forcefieldOnPlayer: {fileID: 925022211919348923}
+  elephantComp: {fileID: -3503242722923072897}
+  lionComp: {fileID: -4972824317532668874}
+  seaLionComp: {fileID: 4845488100659345855}
+  monkeyComp: {fileID: 8208251400799020166}
+  baseComp: {fileID: 561606230722805421}
+  playerModels:
+  - {fileID: 2031685878952297520}
+  - {fileID: 173079702640942561}
+  - {fileID: 3178402325604951332}
+  - {fileID: 3665456968438747614}
+  characterActive: {fileID: 3416813701237912503}
   storeButton: {fileID: 0}
   levelText: {fileID: 0}
   reset: 1
@@ -841,6 +853,8 @@ MonoBehaviour:
   forcefieldActive: 0
   forceFieldObj: {fileID: 5562042385036284430}
   timeBwActive: 10
+  deactivateTime: 3
+  saveData: {fileID: -7658899717858874445}
 --- !u!1 &1555237959989853747
 GameObject:
   m_ObjectHideFlags: 0

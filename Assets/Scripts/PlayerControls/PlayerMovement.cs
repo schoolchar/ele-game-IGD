@@ -61,6 +61,9 @@ public class PlayerMovement : MonoBehaviour
     public Turret turret;
     public Nuke nuke;
 
+    //Upgrade management
+    [SerializeField] private SaveData saveData;
+
     //Character active
     public GameObject characterActive;
 
@@ -126,7 +129,10 @@ public class PlayerMovement : MonoBehaviour
 
         //Set as delegate for event
         PlayerHealth.onPlayerDeath += CALLBACK_ResetWeapons;
-
+        if(saveData.speed.level > 0)
+        {
+            moveSpeed += saveData.speed.affectOnSpeed;
+        }
         //Do not dstroy player
         DontDestroyOnLoad(this.gameObject);
     }

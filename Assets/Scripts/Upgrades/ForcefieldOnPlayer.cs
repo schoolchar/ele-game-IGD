@@ -7,10 +7,20 @@ public class ForcefieldOnPlayer : MonoBehaviour
    public bool forcefieldActive; //Keeps track of if able to use bw saving
     [SerializeField] private GameObject forceFieldObj;
     public float timeBwActive; //Scalable factor, increase in level decreases this NOT IMPLEMENTED YET
-    private float deactivateTime = 3;
+    public float deactivateTime = 3;
+    [SerializeField] private SaveData saveData;
 
     private void Start()
     {
+        deactivateTime = saveData.forcefield.deactivateTimeFF;
+        if(saveData.forcefield.level == 0)
+        {
+            forcefieldActive = false;
+        }
+        else
+        {
+            forcefieldActive = true;
+        }
         //In the event the forcefield is actiave between loads
         if(forcefieldActive)
         {
@@ -26,7 +36,7 @@ public class ForcefieldOnPlayer : MonoBehaviour
     }
 
     //Sets forcefield active
-    IEnumerator TimeForcefield()
+   public  IEnumerator TimeForcefield()
     {
         yield return new WaitForSeconds(timeBwActive);
         forceFieldObj.SetActive(true);

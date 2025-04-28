@@ -6,20 +6,30 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
-using static Cinemachine.DocumentationSortingAttribute;
 
 public class SaveData : MonoBehaviour
 {
-    [SerializeField] private UpgradeScriptObj health;
-    [SerializeField] private UpgradeScriptObj xp;
-    [SerializeField] private UpgradeScriptObj mag;
-    [SerializeField] private UpgradeScriptObj speed;
-    [SerializeField] private UpgradeScriptObj lifeForce;
-    [SerializeField] private UpgradeScriptObj forcefield;
+    public UpgradeScriptObj health;
+    public UpgradeScriptObj xp;
+    public UpgradeScriptObj mag;
+    public UpgradeScriptObj speed;
+    public UpgradeScriptObj lifeForce;
+    public UpgradeScriptObj forcefield;
+
+    private string[] defeaultAnim = new string[5] {"1", "0", "0", "0", "0"};
 
     [Header("Only on player")]
     [SerializeField] private PlayerHealth playerHealth;
     [SerializeField] private ForcefieldOnPlayer forcefieldOnPlayer;
+    //Animals
+    public Elephant elephantComp;
+    public Lion lionComp;
+    public SeaLion seaLionComp;
+    public Monkey monkeyComp;
+    public BasicShoot baseComp;
+
+    public CharacterID[] playerModels;
+    public GameObject characterActive;
 
     [Header("Only on main menu")]
     [SerializeField] private GameObject storeButton;
@@ -45,6 +55,7 @@ public class SaveData : MonoBehaviour
     //Money.txt
     //Lion.txt - bool but int not set 
     //Elephant.txt - bool but int not set
+    //Animals.txt -> 0 Lion, 1 Elephant, 2 Monkey, 3 Seal, 5 last active animal
 
     //Add more as upgrades are made
 
@@ -63,7 +74,19 @@ public class SaveData : MonoBehaviour
 
         if(SceneManager.GetActiveScene().buildIndex == 1)
             PlayerHealth.onPlayerDeath += CALLBACK_CheckForSaveHighScore;
-        
+
+        string _pathA = Application.persistentDataPath + "/Animals.txt";
+        if(File.Exists(_pathA) == false)
+        {
+            Debug.Log("Path does not exist");
+            File.WriteAllLines(_pathA, defeaultAnim);
+        } 
+        else
+        {
+            Debug.Log(_pathA);
+        }
+
+        LoadPlayerAnimal();
     }
 
     #region Saving
@@ -159,13 +182,23 @@ public class SaveData : MonoBehaviour
     public void SaveForcefieldUpgrade()
     {
         string _path = Application.persistentDataPath + "/ForcefieldActive.txt";
-        File.WriteAllText(_path, 1.ToString()); //For now, this saves either 1 or nothing, 1 if activated, later make it save the time between activation
+        File.WriteAllText(_path, forcefield.deactivateTimeFF.ToString()); //For now, this saves either 1 or nothing, 1 if activated, later make it save the time between activation
         //Debug.Log(_path);
 
         //Level
         string _path1 = Application.persistentDataPath + "/ForcefieldLevel.txt";
         File.WriteAllText(_path1, forcefield.level.ToString());
         //Debug.Log(_path1);
+    }
+
+    //Animals
+    public void SaveUnlockedAnimals(int _index)
+    {
+        string _path = Application.persistentDataPath + "/Animals.txt";
+        string[] tmp = File.ReadAllLines(_path);
+        tmp[_index] = "1";
+        tmp[4] = _index.ToString();
+        File.WriteAllLines(_path, tmp); 
     }
     #endregion
 
@@ -297,7 +330,7 @@ public class SaveData : MonoBehaviour
             //Set player health health per enemy
             if(playerHealth != null)
             {
-                playerHealth.healthPerEnemy = int.Parse(_val);
+                playerHealth.healthPerEnemy += int.Parse(_val);
                 //Debug.Log("Affect on life force loaded" + lifeForce.affectOnHealth);
             }
             
@@ -325,14 +358,16 @@ public class SaveData : MonoBehaviour
         {
             //Read value
             string _val = File.ReadAllText (_pathForcefield);
-            int _bool = int.Parse(_val);
+            forcefield.deactivateTimeFF = int.Parse(_val);
             //Checks if forcefield is on or off
-            if(_bool == 1)
+            if(forcefield.deactivateTimeFF > 3 && forcefieldOnPlayer != null)
             {
                 forcefieldOnPlayer.forcefieldActive = true;
-                reset = false;
-            } 
-
+                forcefieldOnPlayer.deactivateTime = forcefield.deactivateTimeFF;
+                //StartCoroutine(forcefieldOnPlayer.TimeForcefield());
+                
+            }
+            reset = false;
         }
 
         string _pathForceFieldLvl = Application.persistentDataPath + "/ForcefieldLevel.txt";
@@ -346,6 +381,96 @@ public class SaveData : MonoBehaviour
 
     }
 
+    public void LoadPlayerAnimal()
+    {
+        string _path = Application.persistentDataPath + "/Animals.txt";
+        if(File.Exists(_path) && GetComponent<PlayerHealth>() != null)
+        {
+            string[] tmp = File.ReadAllLines (_path);
+            int _activeAnimal = int.Parse(tmp[4]);
+
+            if (_activeAnimal == 0) //Lion
+            {
+                //Enable lion, disable everything else
+                lionComp.enabled = true;
+                elephantComp.enabled = false;
+                baseComp.enabled = false;
+                monkeyComp.enabled = false;
+                seaLionComp.enabled = false;
+
+                characterActive.SetActive(false);
+                for (int i = 0; i < playerModels.Length; i++)
+                {
+                    if (playerModels[i].animal == "Lion")
+                    {
+                        playerModels[i].gameObject.SetActive(true);
+                        characterActive = playerModels[i].gameObject;
+                    }
+                }
+            }
+            else if (_activeAnimal == 1) //Elephant
+            {
+                //Enable elephant. disable everything else
+                lionComp.enabled = false;
+                elephantComp.enabled = true;
+                seaLionComp.enabled = false;
+                monkeyComp.enabled = false;
+                baseComp.enabled = false;
+
+                characterActive.SetActive(false);
+                for (int i = 0; i < playerModels.Length; i++)
+                {
+                    if (playerModels[i].animal == "Elephant")
+                    {
+                        playerModels[i].gameObject.SetActive(true);
+                        characterActive = playerModels[i].gameObject;
+                    }
+                }
+            }
+            else if (_activeAnimal == 2) //Monkey
+            {
+                monkeyComp.enabled = true;
+                seaLionComp.enabled = false;
+                lionComp.enabled = false;
+                baseComp.enabled = false;
+                elephantComp.enabled = false;
+
+                characterActive.SetActive(false);
+                for (int i = 0; i < playerModels.Length; i++)
+                {
+                    if (playerModels[i].animal == "Monkey")
+                    {
+                        playerModels[i].gameObject.SetActive(true);
+                        characterActive = playerModels[i].gameObject;
+                    }
+                }
+            }
+            else if (_activeAnimal == 3) //Seal
+            {
+                seaLionComp.enabled = true;
+                lionComp.enabled = false;
+                monkeyComp.enabled = false;
+                baseComp.enabled = false;
+                elephantComp.enabled = false;
+
+                characterActive.SetActive(false);
+                for (int i = 0; i < playerModels.Length; i++)
+                {
+                    if (playerModels[i].animal == "Seal")
+                    {
+                        playerModels[i].gameObject.SetActive(true);
+                        characterActive = playerModels[i].gameObject;
+                    }
+                }
+
+            }
+        }
+        
+
+    }
+    #endregion
+
+    #region Clear Data
     //Call on new game
     public void ClearData()
     {
@@ -438,7 +563,7 @@ public class SaveData : MonoBehaviour
 
         //Get affect on health for life force upgrade
         string _pathLifeForce = Application.persistentDataPath + "/AffectOnLifeForce.txt";
-        if (File.Exists(_pathSpeed))
+        if (File.Exists(_pathLifeForce))
         {
             File.WriteAllText(_pathLifeForce, 1.ToString());
         }
@@ -455,7 +580,27 @@ public class SaveData : MonoBehaviour
         {
             playerHealth.lifeForce = false;
         }
-        
+
+        //Get affect on health for life force upgrade
+        string _pathForcefield = Application.persistentDataPath + "/ForcefieldActive.txt";
+        if (File.Exists(_pathForcefield))
+        {
+            File.WriteAllText(_pathForcefield, 3.ToString());
+        }
+
+        //Get life force level
+        string _pathForcefieldLvl = Application.persistentDataPath + "/ForcefieldLevel.txt";
+        if (File.Exists(_pathForcefieldLvl))
+        {
+            File.WriteAllText(_pathForcefieldLvl, 0.ToString());
+        }
+
+        string _pathAnimals = Application.persistentDataPath + "/Animals.txt";
+        if(File.Exists(_pathAnimals))
+        {
+            File.WriteAllLines(_pathAnimals, defeaultAnim);
+        }
+
 
         //Load in the reset values
         LoadPlayerData();

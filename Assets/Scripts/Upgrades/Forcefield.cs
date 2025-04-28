@@ -8,23 +8,40 @@ public class Forcefield : UpgradeParent
 
     ForcefieldOnPlayer forceFieldScript;
     [SerializeField] private TextMeshProUGUI levelText;
+    private int levelChange = 1;
 
     private void Start()
     {
         forceFieldScript = FindAnyObjectByType<ForcefieldOnPlayer>();
+        levelText.text = "Level: " + scriptObj.level.ToString();
     }
 
     public override void ActivateUpgrade()
     {
-        forceFieldScript.ActivateForcefield();
+        if(scriptObj.level == 0)
+        {
+            forceFieldScript.ActivateForcefield();
+        }
+        else
+        {
+            forceFieldScript.deactivateTime += levelChange;
+            scriptObj.deactivateTimeFF = (int)forceFieldScript.deactivateTime;
+            //saveData.SaveForcefieldUpgrade();
+        }
+
+        IncreaseLevel();
+        
     }
 
     public override void IncreaseLevel()
     {
-        base.IncreaseLevel();
+        
+         base.IncreaseLevel();
 
-        //Change text on screen
-        levelText.text = scriptObj.level.ToString();
-        saveData.SaveForcefieldUpgrade();
+         //Change text on screen
+         levelText.text = "Level: " + scriptObj.level.ToString();
+         saveData.SaveForcefieldUpgrade();
+        
+       
     }
 }

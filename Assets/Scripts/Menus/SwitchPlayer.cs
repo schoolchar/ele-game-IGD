@@ -13,6 +13,7 @@ public class SwitchPlayer : MonoBehaviour
     public CharacterID[] playerModels;
     public GameObject characterActive;
 
+    SaveData saveData;
 
     public Color[] playerColors;
     private void Start()
@@ -34,7 +35,8 @@ public class SwitchPlayer : MonoBehaviour
                characterActive = playerModels[i].gameObject;
             }
         }
-        
+
+        saveData = FindAnyObjectByType<SaveData>();
 
        // playerMesh = GameObject.FindWithTag("PlayerMesh").GetComponent<MeshRenderer>();
     }
@@ -58,7 +60,11 @@ public class SwitchPlayer : MonoBehaviour
                 characterActive = playerModels[i].gameObject;
             }
         }
-
+        
+        if(saveData != null)
+        {
+            saveData.SaveUnlockedAnimals(0);
+        }
 
         //playerMesh.material.color = playerColors[0];
     }
@@ -83,6 +89,11 @@ public class SwitchPlayer : MonoBehaviour
             }
         }
 
+        if (saveData != null)
+        {
+            saveData.SaveUnlockedAnimals(1);
+        }
+
         //playerMesh.material.color = playerColors[1];
     }
 
@@ -103,6 +114,11 @@ public class SwitchPlayer : MonoBehaviour
                 characterActive = playerModels[i].gameObject;
             }
         }
+
+        if (saveData != null)
+        {
+            saveData.SaveUnlockedAnimals(3);
+        }
     }
 
     public void ActivateMonkey()
@@ -121,6 +137,11 @@ public class SwitchPlayer : MonoBehaviour
                 playerModels[i].gameObject.SetActive(true);
                 characterActive = playerModels[i].gameObject;
             }
+        }
+
+        if (saveData != null)
+        {
+            saveData.SaveUnlockedAnimals(2);
         }
     }
 
