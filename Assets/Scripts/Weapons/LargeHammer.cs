@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LargeHammer : WeaponBase
 {
@@ -23,8 +24,12 @@ public class LargeHammer : WeaponBase
     public float tempNew;
     public bool newVal = false;
     public bool hammerActive;
-    public AudioSource hammerSound;
+    
     float hammerTime = 3;
+
+    private bool isInGameScene;
+    public AudioSource hammerSound;
+    private bool hasPlayed = false;
 
     public override void ActivateThisWeapon()
     {
@@ -63,9 +68,6 @@ public class LargeHammer : WeaponBase
         {
             hammerTime -= 0.2f;
         }
-       
-       
-        
     }
 
     void Start()
@@ -83,7 +85,21 @@ public class LargeHammer : WeaponBase
         {
             RotateObject();
         }
-        
+
+        //gets scene name
+        Scene currentScene = SceneManager.GetActiveScene();
+        isInGameScene = currentScene.name == "GameScene";
+
+        //If player is in the game scene
+        if (isInGameScene == true && hasPlayed == false)
+        {
+            if (hammerSound != null)
+           {
+                hammerSound.Play();
+                hasPlayed = true;
+            }
+        }
+
     }
 
     void RotateObject()

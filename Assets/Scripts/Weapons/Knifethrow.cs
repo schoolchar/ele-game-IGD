@@ -32,15 +32,12 @@ public class Knifethrow : WeaponBase
     // The level variable to determine the number of enemies to target
     public int KnifeLevel;
     private int oldKnifeLevel;
-    public AudioSource knifeSound;
-    private bool isInGameScene;
 
     //get component player script
     [SerializeField] private GameObject player;
 
     public override void ActivateThisWeapon()
     {
-        knifeSound = GetComponent<AudioSource>();
         chooseWeapons = FindAnyObjectByType<ChooseWeapons>();
         KnifeLevel = chooseWeapons.allWeaponsData[1].level; //Gets the level of knife throw
         oldKnifeLevel = KnifeLevel;
@@ -71,17 +68,7 @@ public class Knifethrow : WeaponBase
         if (Time.time > nextFireTime)
         {
             TimeShooting();
-
-            //If player is in the game scene
-            if (isInGameScene == true)
-            {
-                knifeSound.Play();
-            }
         }
-
-        //gets scene name
-        Scene currentScene = SceneManager.GetActiveScene();
-        isInGameScene = currentScene.name == "GameScene";
     }
 
     public void InitOnLoad()
@@ -181,12 +168,6 @@ public class Knifethrow : WeaponBase
             foreach (GameObject enemy in nearestEnemy)
             {
                 ShootAt(enemy);
-
-                //If player is in the game scene, enemies can spawn, else they cannot
-                if (isInGameScene == true)
-                {
-                    knifeSound.Play();
-                }
             }
             nextFireTime = Time.time + 1.0f / fireRate;
             Array.Clear(nearestEnemy, 0, nearestEnemy.Length);

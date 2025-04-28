@@ -18,8 +18,10 @@ public class Ringoffire : WeaponBase
    // private float playerSpeed;
     public bool fireActive;
     private int oldRingoffireLevel;
+
     public AudioSource fireSound;
     public bool isInGameScene;
+    private bool hasPlayed = false;
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +54,7 @@ public class Ringoffire : WeaponBase
         oldRingoffireLevel = RingoffireLevel;
         fireActive = true;
         baseSpeed += Upgrade * RingoffireLevel;
+        
     }
 
     // Update is called once per frame
@@ -77,11 +80,14 @@ public class Ringoffire : WeaponBase
         Scene currentScene = SceneManager.GetActiveScene();
         isInGameScene = currentScene.name == "GameScene";
 
-
         //If player is in the game scene
-        if (isInGameScene == true)
+        if (isInGameScene == true && hasPlayed == false)
         {
-            fireSound.Play();
+            if (fireSound != null)
+            {
+                fireSound.Play();
+                hasPlayed = true;
+            }
         }
     }
 

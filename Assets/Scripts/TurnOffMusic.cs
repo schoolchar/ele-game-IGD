@@ -7,6 +7,7 @@ public class TurnOffMusic : MonoBehaviour
 {
     private bool isInGameScene;
     public AudioSource audioSource;
+    private bool hasPlayed = false;
 
     // Update is called once per frame
     void Update()
@@ -16,9 +17,13 @@ public class TurnOffMusic : MonoBehaviour
         isInGameScene = currentScene.name == "GameScene";
 
         //If player is in the game scene
-        if (isInGameScene == true)
+        if (isInGameScene == true && hasPlayed == false)
         {
-            audioSource.Play();
+            if (audioSource != null)
+            {
+                audioSource.Play();
+                hasPlayed = true;
+            }
         }
     }
 }
