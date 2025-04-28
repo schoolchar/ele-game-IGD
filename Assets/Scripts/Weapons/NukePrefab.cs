@@ -52,6 +52,15 @@ public class NukePrefab : MonoBehaviour
         }
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        //if hit enemy
+        if (collision.gameObject.tag == "Enemy")
+        {
+            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(50);
+        }
+    }
+
     void levelup()
     {
         targetScaleDestroy = targetScaleDestroyBase + nukeLevel;
