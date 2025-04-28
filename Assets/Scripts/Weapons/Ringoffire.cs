@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Palmmedia.ReportGenerator.Core.Parser.Analysis;
 using UnityEngine;
 
 public class Ringoffire : WeaponBase
@@ -23,6 +22,11 @@ public class Ringoffire : WeaponBase
     // Start is called before the first frame update
     void Start()
     {
+        InitOnLoad();
+    }
+
+    public void InitOnLoad()
+    {
         //Ring of fire game object ignores specific game objects depending on their layer
         Physics.IgnoreLayerCollision(10, 9, true);
         Physics.IgnoreLayerCollision(10, 10, true);
@@ -30,8 +34,12 @@ public class Ringoffire : WeaponBase
         Physics.IgnoreLayerCollision(10, 13, true);
 
         chooseWeapons = FindAnyObjectByType<ChooseWeapons>();
-        RingoffireLevel = chooseWeapons.allWeaponsData[0].level; //Gets the level of ring of fire
-        oldRingoffireLevel = RingoffireLevel;
+        if(chooseWeapons != null)
+        {
+            RingoffireLevel = chooseWeapons.allWeaponsData[0].level; //Gets the level of ring of fire
+            //oldRingoffireLevel = RingoffireLevel;
+        }
+       
     }
     public override void ActivateThisWeapon()
     {
@@ -41,6 +49,7 @@ public class Ringoffire : WeaponBase
         RingoffireLevel = chooseWeapons.allWeaponsData[0].level; //Gets the level of ring of fire
         oldRingoffireLevel = RingoffireLevel;
         fireActive = true;
+        baseSpeed += Upgrade * RingoffireLevel;
     }
 
     // Update is called once per frame

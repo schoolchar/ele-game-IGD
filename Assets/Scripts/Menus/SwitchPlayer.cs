@@ -95,6 +95,12 @@ public class SwitchPlayer : MonoBehaviour
     {
         if(lionComp != null)
         {
+            elephantComp.StopAllCoroutines();
+            monkeyComp.StopAllCoroutines();
+            seaLionComp.StopAllCoroutines();
+
+           
+
             //Enable lion, disable everything else
             lionComp.enabled = true;
             elephantComp.enabled = false;
@@ -122,11 +128,7 @@ public class SwitchPlayer : MonoBehaviour
             }
 
         }
-        else
-        {
-
-        }
-
+        
         //playerMesh.material.color = playerColors[0];
     }
 
@@ -136,6 +138,12 @@ public class SwitchPlayer : MonoBehaviour
        
         if (playerHealth.money >= elephantCost || access[1] == 1)
         {
+
+            seaLionComp.StopAllCoroutines();
+            lionComp.StopAllCoroutines();
+            seaLionComp.StopAllCoroutines();
+
+
             //Enable elephant. disable everything else
             lionComp.enabled = false;
             elephantComp.enabled = true;
@@ -162,6 +170,7 @@ public class SwitchPlayer : MonoBehaviour
                 playerHealth.money -= elephantCost;
                 storeMenu.ShowMoneyText();
                 elephantCostTxt.text = "Owned";
+                access[1] = 1;
 
             }
 
@@ -185,6 +194,12 @@ public class SwitchPlayer : MonoBehaviour
        
         if (playerHealth.money >= sealCost || access[3] == 1)
         {
+            elephantComp.StopAllCoroutines();
+            lionComp.StopAllCoroutines();
+            monkeyComp.StopAllCoroutines();
+
+
+
             seaLionComp.enabled = true;
             lionComp.enabled = false;
             monkeyComp.enabled = false;
@@ -209,6 +224,7 @@ public class SwitchPlayer : MonoBehaviour
                 playerHealth.money -= sealCost;
                 storeMenu.ShowMoneyText();
                 sealCostTxt.text = "Owned";
+                access[3] = 1;
 
             }
 
@@ -230,6 +246,12 @@ public class SwitchPlayer : MonoBehaviour
 
         if (playerHealth.money >= monkeyCost || access[2] == 1)
         {
+            elephantComp.StopAllCoroutines();
+            lionComp.StopAllCoroutines();
+            seaLionComp.StopAllCoroutines();
+            
+
+
             monkeyComp.enabled = true;
             seaLionComp.enabled = false;
             lionComp.enabled = false;
@@ -255,7 +277,7 @@ public class SwitchPlayer : MonoBehaviour
                 playerHealth.money -= monkeyCost;
                 storeMenu.ShowMoneyText();
                 monkeyCostTxt.text = "Owned";
-
+                access[2] = 1;
 
             }
 
