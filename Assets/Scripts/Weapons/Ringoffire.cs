@@ -37,7 +37,7 @@ public class Ringoffire : WeaponBase
         if(chooseWeapons != null)
         {
             RingoffireLevel = chooseWeapons.allWeaponsData[0].level; //Gets the level of ring of fire
-            oldRingoffireLevel = RingoffireLevel;
+            //oldRingoffireLevel = RingoffireLevel;
         }
        
     }
@@ -49,6 +49,7 @@ public class Ringoffire : WeaponBase
         RingoffireLevel = chooseWeapons.allWeaponsData[0].level; //Gets the level of ring of fire
         oldRingoffireLevel = RingoffireLevel;
         fireActive = true;
+        baseSpeed += Upgrade * RingoffireLevel;
     }
 
     // Update is called once per frame
