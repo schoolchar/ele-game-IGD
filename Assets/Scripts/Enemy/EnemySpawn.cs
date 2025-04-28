@@ -162,16 +162,16 @@ public class EnemySpawn : MonoBehaviour
                 randomEnemy = Random.Range(0, spawns3.Count);
                 Instantiate(spawns3[randomEnemy], spawnPosition, player.transform.rotation);
             }
-            yield return new WaitForSeconds(spawnWait);
-            StartCoroutine(waitSpawner());
+            
 
         }
         else
         {
             Debug.Log("Exit while loop no more spawning");
         }
+        yield return new WaitForSeconds(spawnWait);
+        StartCoroutine(waitSpawner());
 
-       
     }
 
     #region Object Pooling
