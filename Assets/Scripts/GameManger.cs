@@ -33,7 +33,9 @@ public class GameManger : MonoBehaviour
 
     private void Start()
     {
-        player.GetComponent<PlayerHealth>().InitValues();
+        playerInstance.GetComponent<PlayerHealth>().InitValues();
+        playerInstance.transform.position = playerSpawnpoint.position;
+        //Debug.Log(playerSpawnpoint.position + " vx " + playerInstance.transform.position);
     }
 
     void SpawnPlayer()

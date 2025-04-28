@@ -139,16 +139,16 @@ public class PlayerHealth : MonoBehaviour
     /// </summary>
     public void CheckForDeath()
     {
-       if(health < 0)
+       /*if(health < 0)
         {
             throw new System.Exception("Player health cannot be less than 0");
-        }
+        }*/
 
         //Check if player is at 0 health
         if (health <= 0)
         {
             //Disable weapons
-            Debug.Log("Player dies");
+            //Debug.Log("Player dies");
 
             onPlayerDeath?.Invoke();
 
