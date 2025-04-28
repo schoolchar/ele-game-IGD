@@ -14,6 +14,12 @@ public class AccessLevels : MonoBehaviour
     [SerializeField] UpgradeScriptObj lifeForceUpgrade;
     [SerializeField] UpgradeScriptObj forcefieldUpgrade;
 
+    //All things that are on the player that need to be loaded every time they start the game
+    Ringoffire ringOfFire;
+    Knifethrow knifeThrow;
+    [SerializeField] GameObject oldPlayer;
+    PlayerMovement[] allPlayers;
+
     //To access the level of any of these upgrades:
     //Do the variable associated w the upgrade and do .level after it
     //eg the health upgrade's level is accessed by healthUpgrade.level
@@ -31,8 +37,33 @@ public class AccessLevels : MonoBehaviour
 
     private void Start()
     {
-        // Updates pause menu with upgrade levels
-        UpdateUI();
+        // Updates pause menu with upgrade levels, uncomment when put in scene
+        //UpdateUI();
+
+        //Loading
+        ringOfFire = FindAnyObjectByType<Ringoffire>(FindObjectsInactive.Include);
+        ringOfFire.InitOnLoad();
+
+        knifeThrow = FindAnyObjectByType<Knifethrow>();
+        knifeThrow.InitOnLoad();
+
+        //Deal with loading in multiple players
+       /* allPlayers = FindObjectsOfType<PlayerMovement>();
+        if(allPlayers.Length > 1)
+        {
+            GameObject _newPlayer = null;
+            for(int i = 0; i < allPlayers.Length; i++)
+            {
+                if (allPlayers[i].GetComponent<OldPlayerID>() == null)
+                {
+                    _newPlayer = allPlayers[i].gameObject;
+                }
+            }
+
+            _newPlayer.transform.position = oldPlayer.transform.position;
+            Destroy(oldPlayer);
+        }*/
+
     }
 
     //takes upgrades levels and sets to a string then to text

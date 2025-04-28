@@ -75,17 +75,22 @@ public class PlayerHealth : MonoBehaviour
         }
 
         health = maxHealth;
-
-      
-        //Change later to not use tags
-        hpText = GameObject.FindGameObjectWithTag("HPText").GetComponent<TextMeshProUGUI>();
-        xpText = GameObject.FindGameObjectWithTag("XPText").GetComponent<TextMeshProUGUI>();
-
-        hpText.text = "Health = " + health;
-        xpText.text = "XP = " + xp;
-
-        chooseWeapons = FindAnyObjectByType<ChooseWeapons>();
         saveData = GetComponent<SaveData>();
+
+
+        if (GameObject.FindGameObjectWithTag("HPText") != null)
+        {
+            //Change later to not use tags
+            hpText = GameObject.FindGameObjectWithTag("HPText").GetComponent<TextMeshProUGUI>();
+            xpText = GameObject.FindGameObjectWithTag("XPText").GetComponent<TextMeshProUGUI>();
+
+            hpText.text = "Health = " + health;
+            xpText.text = "XP = " + xp;
+
+            chooseWeapons = FindAnyObjectByType<ChooseWeapons>();
+        }
+        
+        
     }
 
 

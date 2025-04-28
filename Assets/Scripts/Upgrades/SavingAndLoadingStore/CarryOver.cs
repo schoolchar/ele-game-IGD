@@ -22,8 +22,15 @@ public class CarryOver : MonoBehaviour
     }
     
     public ToSaveUpgrades[] savedUpgrades; 
-    public ToSaveAnimals[] savedAnimals;
+    public ToSaveAnimals[] savedAnimals; //Same indexes as everywhere else
     public bool changedOnThis; //Keeps track of if anything was changed on this object vs the player
+
+    //Upgrade indexes
+    //Health - 0
+    //XP - 1
+    //Speed - 2
+    //Life force - 3
+    //Forcefield - 4
 
     private void Start()
     {
@@ -36,6 +43,17 @@ public class CarryOver : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    public void ChangeAnimalState(int _index)
+    {
+        changedOnThis = true;
+        //savedAnimals[_index].
+    }
+
+    public void ChangeUpgradeState(int _index)
+    {
+
     }
 
 

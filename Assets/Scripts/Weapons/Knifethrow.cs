@@ -59,17 +59,7 @@ public class Knifethrow : WeaponBase
 
     void Start()
     {
-        //Knife game object ignores specific game objects depending on their layer
-        Physics.IgnoreLayerCollision(9, 9, true);
-        Physics.IgnoreLayerCollision(9, 7, true);
-        Physics.IgnoreLayerCollision(9, 10, true);
-        Physics.IgnoreLayerCollision(9, 12, true);
-        Physics.IgnoreLayerCollision(9, 13, true);
-
-        knifeSound = GetComponent<AudioSource>();
-        chooseWeapons = FindAnyObjectByType<ChooseWeapons>();
-        KnifeLevel = chooseWeapons.allWeaponsData[1].level; //Gets the level of knife throw
-        oldKnifeLevel = KnifeLevel;
+        InitOnLoad();
     }
     void Update()
     {
@@ -82,6 +72,25 @@ public class Knifethrow : WeaponBase
         }
     }
 
+    public void InitOnLoad()
+    {
+        //Knife game object ignores specific game objects depending on their layer
+        Physics.IgnoreLayerCollision(9, 9, true);
+        Physics.IgnoreLayerCollision(9, 7, true);
+        Physics.IgnoreLayerCollision(9, 10, true);
+        Physics.IgnoreLayerCollision(9, 12, true);
+        Physics.IgnoreLayerCollision(9, 13, true);
+
+        knifeSound = GetComponent<AudioSource>();
+        chooseWeapons = FindAnyObjectByType<ChooseWeapons>();
+
+        if(chooseWeapons != null)
+        {
+            KnifeLevel = chooseWeapons.allWeaponsData[1].level; //Gets the level of knife throw
+            oldKnifeLevel = KnifeLevel;
+        }
+        
+    }
    
 
     //Function that calculates the nearest enemy

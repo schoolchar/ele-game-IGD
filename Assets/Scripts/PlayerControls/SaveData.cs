@@ -86,6 +86,10 @@ public class SaveData : MonoBehaviour
             Debug.Log(_pathA);
         }
 
+        if(SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            LoadPlayerData();
+        }
         LoadPlayerAnimal();
     }
 
@@ -235,7 +239,7 @@ public class SaveData : MonoBehaviour
             if (playerHealth != null)
             {
                 playerHealth.money = int.Parse(_val);
-                //Debug.Log("Money loaded: " + playerHealth.money);
+                Debug.Log("Money loaded: " + playerHealth.money);
             }
         }
 
