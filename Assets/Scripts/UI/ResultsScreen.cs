@@ -18,12 +18,14 @@ public class ResultsScreen : MonoBehaviour
     void Start()
     {
         playerHealth = FindAnyObjectByType<PlayerHealth>();
-        PlayerHealth.onPlayerDeath += CALLBACK_ShowResults;
+        //PlayerHealth.onPlayerDeath += CALLBACK_ShowResults;
     }
 
-    void CALLBACK_ShowResults()
+    public void ShowResults()
     {
-        resultsObj.SetActive(true);
+        //Debug.Log("Result obj = " + resultsObj.name);
+         resultsObj.SetActive(true);
+        //resultsObj.enabled = true;
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;

@@ -9,6 +9,7 @@ public class LargeHammer : WeaponBase
     public float rotationAngle = 180f;
     public float rotationDuration = 1f;
     public Vector3 offset = new Vector3(0, 0, 0);
+    public Transform realSpawnPos;
     public Transform spawnPt; //for sake of aiming rotaion
 
     private GameObject objectInstance;
@@ -38,7 +39,7 @@ public class LargeHammer : WeaponBase
             {
                // Debug.Log("Interval is less than 0");
                 hammerSound.Play();
-                objectInstance = Instantiate(objectPrefab, transform.position + offset, objectPrefab.transform.rotation);
+                objectInstance = Instantiate(objectPrefab, realSpawnPos.position, objectPrefab.transform.rotation);
                 objectInstance.transform.SetParent(spawnPt, false);
                 objectInstance.transform.Rotate(Vector3.forward, -90f);
                 initialPosition = objectInstance.transform.position;

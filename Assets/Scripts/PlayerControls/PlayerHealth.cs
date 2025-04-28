@@ -156,6 +156,8 @@ public class PlayerHealth : MonoBehaviour
            // xp = 0;
             //Reset level and load menu
             level = 0;
+
+            FindAnyObjectByType<ResultsScreen>().ShowResults();
             //SceneManager.LoadScene(0);
         }
         
