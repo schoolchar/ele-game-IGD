@@ -38,7 +38,7 @@ public class NukePrefab : MonoBehaviour
 
 
         //If player is in the game scene
-        if (isInGameScene == true)
+        if (isInGameScene == true && nukeSound != null)
         {
             nukeSound.Play();
         }

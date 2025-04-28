@@ -57,6 +57,24 @@ public class Ringoffire : WeaponBase
         
     }
 
+    private void OnEnable()
+    {
+        //gets scene name
+        Scene currentScene = SceneManager.GetActiveScene();
+        isInGameScene = currentScene.name == "GameScene";
+
+        //If player is in the game scene
+        if (isInGameScene == true && hasPlayed == false)
+        {
+            if (fireSound != null)
+            {
+                Debug.Log("fire playing");
+                fireSound.Play();
+                //hasPlayed = true;
+            }
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -76,19 +94,25 @@ public class Ringoffire : WeaponBase
             // orbitSpeed += (orbitSpeed + playerSpeed) * 1.5f;
          }*/
 
+
         //gets scene name
         Scene currentScene = SceneManager.GetActiveScene();
         isInGameScene = currentScene.name == "GameScene";
 
-        //If player is in the game scene
-        if (isInGameScene == true && hasPlayed == false)
+        if (isInGameScene == false)
         {
-            if (fireSound != null)
-            {
-                fireSound.Play();
-                hasPlayed = true;
-            }
+            Debug.Log("Fire sound should not be playing " + fireSound.gameObject);
+            fireSound.enabled = false;
+            //fireSound.Stop();
+
         }
+        else
+        {
+            fireSound.enabled = true;
+        }
+
+        
+        
     }
 
     private void OnCollisionEnter(Collision collision)
