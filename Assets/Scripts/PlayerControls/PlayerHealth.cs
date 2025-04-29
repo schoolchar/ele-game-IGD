@@ -97,7 +97,8 @@ public class PlayerHealth : MonoBehaviour
         {
             Destroy( _hammer );
         }
-        
+
+        saveData.LoadPlayerAnimal();
         
     }
 

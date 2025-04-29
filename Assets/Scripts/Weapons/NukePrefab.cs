@@ -77,7 +77,8 @@ public class NukePrefab : MonoBehaviour
             if (hitColliders[i] != null && hitColliders[i].gameObject.layer == 8)
             {
                 Debug.Log("Destroying " + hitColliders[i].name);
-                Destroy(hitColliders[i].gameObject);
+                //Destroy(hitColliders[i].gameObject);
+                hitColliders[i].gameObject.GetComponent<EnemyHealth>().TakeDamage(50);
             }
 
             /*if(hitColliders[i] != null && hitColliders[i].gameObject.layer == 7)

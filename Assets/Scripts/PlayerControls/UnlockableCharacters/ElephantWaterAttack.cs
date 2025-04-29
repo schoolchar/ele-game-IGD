@@ -37,7 +37,8 @@ public class ElephantWaterAttack : MonoBehaviour
 
     public void Attack(EnemyHealth _enemy)
     {
-        _enemy.TakeDamage(0.2f); //Placeholder value
+        if (_enemy != null)
+            _enemy.TakeDamage(0.2f); //Placeholder value
     }
 
 }
