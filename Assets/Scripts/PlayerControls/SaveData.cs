@@ -402,7 +402,7 @@ public class SaveData : MonoBehaviour
             reset = false;
         }
 
-        string _pathLifeForceCost = Application.persistentDataPath + "LifeForceCost.txt";
+        string _pathLifeForceCost = Application.persistentDataPath + "/LifeForceCost.txt";
         if(File.Exists(_pathLifeForceCost))
         {
             string _val = File.ReadAllText (_pathLifeForceCost);

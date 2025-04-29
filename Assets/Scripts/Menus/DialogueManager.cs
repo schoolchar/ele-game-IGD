@@ -10,6 +10,7 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private Image textBox;
+    [SerializeField] private TextMeshProUGUI instructions;
 
     [SerializeField] private string[] lines;
     [SerializeField] private string currentLine;
@@ -57,6 +58,7 @@ public class DialogueManager : MonoBehaviour
             
             dialogueText.enabled = false;
             textBox.enabled = false;
+            instructions.enabled = false;
             Time.timeScale = 1;
         }
 
@@ -74,6 +76,7 @@ public class DialogueManager : MonoBehaviour
             //Debug.Log("Stack null");
             dialogueText.enabled = false;
             textBox.enabled = false;
+            instructions.enabled = false;
             Time.timeScale = 1;
             CheckSceneForSave();
 
@@ -120,6 +123,7 @@ public class DialogueManager : MonoBehaviour
             {
                 dialogueText.enabled = false;
                 textBox.enabled = false;
+                instructions.enabled = false;
                 Time.timeScale = 1;
                 return 1;
             }
@@ -130,6 +134,7 @@ public class DialogueManager : MonoBehaviour
             {
                 dialogueText.enabled = false;
                 textBox.enabled = false;
+                instructions.enabled = false;
                 Time.timeScale = 1;
                 return 1;
             }
@@ -140,6 +145,7 @@ public class DialogueManager : MonoBehaviour
             {
                 dialogueText.enabled = false;
                 textBox.enabled = false;
+                instructions.enabled = false;
                 Time.timeScale = 1;
                 return 1;
             }

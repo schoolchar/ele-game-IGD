@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1232711738667412027}
   - component: {fileID: 7726686588283150747}
   - component: {fileID: 7990027304421683241}
+  - component: {fileID: 1563281537821612447}
   m_Layer: 0
   m_Name: Forcefield
   m_TagString: Untagged
@@ -116,8 +117,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ea98c6204d870334c87ab8e98e0918bf, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: b953302edc0a75e49a584fe8c267b444, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
@@ -202,3 +203,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1563281537821612447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3333738259205983605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faef6db08e07c3f40802bbb169ace356, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
