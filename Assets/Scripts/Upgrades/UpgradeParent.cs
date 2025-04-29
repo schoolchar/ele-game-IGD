@@ -53,6 +53,10 @@ public class UpgradeParent : MonoBehaviour, IUpgrade
     {
         purchaseText.text = "Buy - $" + scriptObj.cost;
     }
+
+    /// <summary>
+    /// Adjust cost of upgrades based on their level
+    /// </summary>
     protected void ChangeCostBasedOnLevel()
     {
         playerHealth.money -= scriptObj.cost;
@@ -60,7 +64,7 @@ public class UpgradeParent : MonoBehaviour, IUpgrade
         int _modVal = (scriptObj.level / 2) + scriptObj.cost;
         scriptObj.cost += _modVal;
         ChangeCostText(); ;
-    }
+    } //END ChangeCostBasedOnLevel()
    
 
 }

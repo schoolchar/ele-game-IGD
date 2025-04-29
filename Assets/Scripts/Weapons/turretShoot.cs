@@ -28,6 +28,9 @@ public class turretShoot : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Find the closest enemy to target shoot, using distance form turret
+    /// </summary>
     private GameObject FindNearestEnemy()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -45,13 +48,16 @@ public class turretShoot : MonoBehaviour
         }
 
         return nearestEnemy;
-    }
+    } //END FindNearestEnemy
 
+    /// <summary>
+    /// Instantiate and shoot bullet from turret
+    /// </summary>
     private void Shoot(GameObject target)
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
         Vector3 direction = (target.transform.position - firePoint.position).normalized;
         Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
         bulletRigidbody.velocity = direction * shotSpeed;
-    }
+    } //END Shoot()
 }

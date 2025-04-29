@@ -17,6 +17,7 @@ public class XPModifier : UpgradeParent
     {
         if(playerHealth.money >= scriptObj.cost)
         {
+            //Check if already owned, upgrade based on level
             if (scriptObj.level == 0)
             {
                 playerHealth.xpMod = true;

@@ -21,7 +21,9 @@ public class MonkeyBall : MonoBehaviour
         HitEnemy(collision);
     }
 
-   
+   /// <summary>
+   /// When monkey ball contacts an enemy, do damage
+   /// </summary>
     void HitEnemy(Collider _collision)
     {
         if (_collision.gameObject.tag == "Enemy")
@@ -37,5 +39,5 @@ public class MonkeyBall : MonoBehaviour
             
             enemyHealth.TakeDamage(enemyTakeDamage);
         }
-    }
+    } //END HitEnemy()
 }

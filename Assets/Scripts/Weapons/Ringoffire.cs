@@ -129,13 +129,7 @@ public class Ringoffire : WeaponBase
         }
     }
 
-   /* void UpdatePlayerSpeed()
-    {
-        // Calculate the player's speed based on movement since the last frame
-        Vector3 playerMovement = player.position - lastPlayerPosition;
-        playerSpeed = playerMovement.magnitude / Time.deltaTime;
-        lastPlayerPosition = player.position;
-    }*/
+   
     void FireRing()
     {
         adjustedSpeed = baseSpeed;
@@ -162,29 +156,8 @@ public class Ringoffire : WeaponBase
         //Updates the postion of the ring of fire based on the player's position
         transform.position = new Vector3(x, y, z);
 
-       /* if (Time.timeScale == 1)
-        {
-            playerRotation = Quaternion.LookRotation(player.position - transform.position);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, playerRotation, baseSpeed * Time.deltaTime);
-            transform.RotateAround(player.position, Vector3.down, adjustedSpeed * Time.deltaTime);  
-        }*/
-
-        // Rotate around the player with the adjusted speed
-       // transform.RotateAround(player.position, Vector3.down, adjustedSpeed * Time.deltaTime);
-
-        // Maintain the specified distance from the player
-       // transform.position = player.position + (transform.position - player.position).normalized * distance;
+       
     }
 
-    // Method to set the distance dynamically
-   /* public void SetDistance(float newDistance)
-    {
-        distance = newDistance;
-    }
-
-    // Method to set the base speed dynamically
-    public void SetBaseSpeed(float newBaseSpeed)
-    {
-        baseSpeed = newBaseSpeed;
-    }*/
+   
 }

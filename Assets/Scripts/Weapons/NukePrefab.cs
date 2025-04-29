@@ -68,12 +68,17 @@ public class NukePrefab : MonoBehaviour
         nukeLevel ++;
     }
 
+    /// <summary>
+    /// When nuke explodes, check for any enemy colliders within its range
+    /// </summary>
     private void CheckOverlap()
     {
+        //Get overlapping colliders
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, targetScale / 2);
 
         for(int i = 0; i < hitColliders.Length; i++)
         {
+            //If the colliders belong to enemies, do damage
             if (hitColliders[i] != null && hitColliders[i].gameObject.layer == 8)
             {
                 Debug.Log("Destroying " + hitColliders[i].name);
@@ -81,14 +86,7 @@ public class NukePrefab : MonoBehaviour
                 hitColliders[i].gameObject.GetComponent<EnemyHealth>().TakeDamage(50);
             }
 
-            /*if(hitColliders[i] != null && hitColliders[i].gameObject.layer == 7)
-            {
-                PlayerHealth _player = hitColliders[i].gameObject.GetComponent<PlayerHealth>();
-                if(_player != null)
-                {
-                    
-                }
-            }*/
+            
         }
-    }
+    } //END CheckOverlap()
 }
