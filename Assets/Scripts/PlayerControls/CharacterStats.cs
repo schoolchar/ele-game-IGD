@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
+    //REPLACED BY PLAYERHEALTH.CS
+
     public int xp;
     //public Stat damage;
     //public Stat armor;
@@ -32,7 +34,7 @@ public class CharacterStats : MonoBehaviour
         }
     }
 
-
+    //Decrease player health
     public void TakeDamage(int damage)
     {
         //damage -= armor.GetValue();

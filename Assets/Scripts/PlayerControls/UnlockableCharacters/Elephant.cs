@@ -18,6 +18,7 @@ public class Elephant : MonoBehaviour, ICharacterActions
 
     void OnTriggerStay(Collider other)
     {
+        //For every frame enemies stay in the water, do damage
         if(other.gameObject.tag == "Enemy")
         {
             Attack(other.gameObject.GetComponent<EnemyHealth>()); 
@@ -30,8 +31,12 @@ public class Elephant : MonoBehaviour, ICharacterActions
         
     }
 
+    /// <summary>
+    /// Expand water spout range
+    /// </summary>
     private IEnumerator DelayWaterSpread(int _nextWaterIndx)
     {
+        //After a half a second, enable the next water plane to create the illusion of water spreading in a spout
         yield return new WaitForSeconds(0.5f);
         waterPlanes[_nextWaterIndx].SetActive(true);
 
@@ -39,16 +44,22 @@ public class Elephant : MonoBehaviour, ICharacterActions
         {
             StartCoroutine(DelayWaterSpread(_nextWaterIndx + 1));
         }
-    }
+    } //END DelayWaterSpread()
 
+    /// <summary>
+    /// Start attack
+    /// </summary>
     private IEnumerator StartWaterSpout()
     {
         yield return new WaitForSeconds(timeBWAttack);
         waterPlanes[0].SetActive(true);
         StartCoroutine(EndWaterSpout());
         StartCoroutine(DelayWaterSpread(1));
-    }
+    } //END StartWaterSpout()
 
+    /// <summary>
+    /// Stop Attack
+    /// </summary>
     private IEnumerator EndWaterSpout()
     {
         yield return new WaitForSeconds(duration);
@@ -59,5 +70,5 @@ public class Elephant : MonoBehaviour, ICharacterActions
         }
         StopAllCoroutines();
         StartCoroutine(StartWaterSpout());
-    }
+    } //END EndWaterSpout()
 }

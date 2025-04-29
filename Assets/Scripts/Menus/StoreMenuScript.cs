@@ -13,6 +13,8 @@ public class StoreMenuScript : MonoBehaviour
     private void Start()
     {
         playerHealth = FindAnyObjectByType<PlayerHealth>();
+        SaveData _save = playerHealth.gameObject.GetComponent<SaveData>();
+        _save.LoadPlayerData();
         ShowMoneyText();
         
     }

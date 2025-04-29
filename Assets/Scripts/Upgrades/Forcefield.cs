@@ -16,8 +16,12 @@ public class Forcefield : UpgradeParent
         levelText.text = "Level: " + scriptObj.level.ToString();
     }
 
+    /// <summary>
+    /// Activate forcefield, start necessary functionalty
+    /// </summary>
     public override void ActivateUpgrade()
     {
+        //Check if player has enough money
         if(playerHealth.money >= scriptObj.cost)
         {
             if (scriptObj.level == 0)
@@ -31,6 +35,7 @@ public class Forcefield : UpgradeParent
                 //saveData.SaveForcefieldUpgrade();
             }
 
+            //Increase level of upgrade
             IncreaseLevel();
             //Change cost for next level
             ChangeCostBasedOnLevel();
@@ -42,8 +47,11 @@ public class Forcefield : UpgradeParent
         }
        
         
-    }
+    } //END ActivateUpgrade()
 
+    /// <summary>
+    /// Increase upgrade level
+    /// </summary>
     public override void IncreaseLevel()
     {
         
@@ -54,5 +62,5 @@ public class Forcefield : UpgradeParent
          saveData.SaveForcefieldUpgrade();
         
        
-    }
+    } //END IncreaseLevel()
 }

@@ -14,8 +14,10 @@ public class IncreaseSpeed : UpgradeParent
         levelTxt.text = "Level: " + scriptObj.level.ToString();
     }
 
+    //Activate increased speed
     public override void ActivateUpgrade()
     {
+        //Check if player has enough money to purchase
         if(playerHealth.money >= scriptObj.cost)
         {
             //If level is 0
@@ -42,13 +44,16 @@ public class IncreaseSpeed : UpgradeParent
             storeMenu.NotEnoughMoney();
         }
        
-    }
+    } //END ActivateUpgrade()
 
+    /// <summary>
+    /// IncreaseLevel of upgrade()
+    /// </summary>
     public override void IncreaseLevel()
     {
         base.IncreaseLevel();
 
         //Set text to reflect level
         levelTxt.text = "Level: " + scriptObj.level.ToString();
-    }
+    } //END IncreaseLevel()
 }

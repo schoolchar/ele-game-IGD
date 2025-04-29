@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class BasicShoot : MonoBehaviour
 {
+    //NOT INCLUDED IN FINAL PLAYER, EXISTS AS A YTEMPORARY WEAPON FOR TESTING
+
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject spawnPt;
     [SerializeField] private GameObject playerPhys;

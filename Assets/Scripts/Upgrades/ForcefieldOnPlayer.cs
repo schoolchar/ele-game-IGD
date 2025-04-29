@@ -12,6 +12,7 @@ public class ForcefieldOnPlayer : MonoBehaviour
 
     private void Start()
     {
+        //Change forcefield to active or inactive based on load/whether player previously bought it
         deactivateTime = saveData.forcefield.deactivateTimeFF;
         if(saveData.forcefield.level == 0)
         {

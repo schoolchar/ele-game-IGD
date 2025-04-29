@@ -139,14 +139,7 @@ public class EnemySpawn : MonoBehaviour
 
         if(!stop)
         {
-            //Debug.Log("Stop is false");
-            //return null if no enemies are on screen
-           /* if (spawns1.Count == 0 || spawns2.Count == 0 || spawns3.Count == 0)
-            {
-                yield return null;
-                Debug.Log("Yield null");
-               // continue;
-            }*/
+            
             
             //Spawning logic
             float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;

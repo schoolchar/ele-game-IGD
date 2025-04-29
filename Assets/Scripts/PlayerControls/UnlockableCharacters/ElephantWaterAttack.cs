@@ -28,17 +28,20 @@ public class ElephantWaterAttack : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
+        //DO damage every frame the enemy is contacting the collider of the water
         if (other.gameObject.tag == "Enemy")
         {
             Attack(other.gameObject.GetComponent<EnemyHealth>());
         }
     }
 
-
+    /// <summary>
+    /// Do damage
+    /// </summary>
     public void Attack(EnemyHealth _enemy)
     {
         if (_enemy != null)
-            _enemy.TakeDamage(0.2f); //Placeholder value
-    }
+            _enemy.TakeDamage(0.2f); 
+    } //END Attack()
 
 }
