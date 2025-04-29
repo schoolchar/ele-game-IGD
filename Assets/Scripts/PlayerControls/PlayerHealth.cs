@@ -3,15 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
+using System.IO;
+using Unity.VisualScripting;
 
 public class PlayerHealth : MonoBehaviour
 {
-    //Controls player XP, health, and upgrades that affect xp and health
+    public delegate void OnPlayerDeath();
+    public static event OnPlayerDeath onPlayerDeath;
 
-    public int maxHealth; //Maximum amount of health the player can have at any point
+
+    //Controls player XP, health, and upgrades that affect xp and health
+    public int maxHealth;
     public int health;
     public int xp;
+    public int money;
+    public int level; //Reset every run
 
+    public bool debugHealth;
+
+    public ChooseWeapons chooseWeapons;
+    public SaveData saveData;
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI hpText;
     [SerializeField] private TextMeshProUGUI xpText;
@@ -21,12 +33,19 @@ public class PlayerHealth : MonoBehaviour
     public bool xpMod;
     public int xpModVal;
 
-    //[Header("Ungrades - Trapeze")]
-    //public PlayerMovement playerMovement;
+    [Header("Ungrades - Trapeze")]
+    public PlayerMovement playerMovement;
+
+    [Header("Upgrades - Life force")]
+    public bool lifeForce;
+    public int healthPerEnemy;
+    public AudioSource damageSound;
 
     private void Start()
     {
-        InitValues();
+        damageSound = GetComponent<AudioSource>();
+        InitOnStartOnly();
+        //InitValues();
     }
 
     private void OnCollisionEnter(Collision other)
@@ -34,20 +53,52 @@ public class PlayerHealth : MonoBehaviour
         LoseHealth(other);
     }
 
-
-    void InitValues()
+    private void InitOnStartOnly()
     {
-        //Change later to not use tags
-
-        //Debug if statememt
-        if (hpText != null && xpText != null)
+        if(saveData.xp.level > 0)
         {
-            //hpText = GameObject.FindGameObjectWithTag("HPText").GetComponent<TextMeshProUGUI>();
-            //xpText = GameObject.FindGameObjectWithTag("XPText").GetComponent<TextMeshProUGUI>();
+            xpMod = true;
+            xpModVal = saveData.xp.affectOnXP;
+        }
+
+        if (saveData.health.level > 0)
+        {
+            maxHealth += saveData.health.affectOnHealth;
+        }
+    }
+
+   public void InitValues()
+    {
+        if(debugHealth)
+        {
+            maxHealth = 50;
+        }
+
+        health = maxHealth;
+        saveData = GetComponent<SaveData>();
+
+
+        if (GameObject.FindGameObjectWithTag("HPText") != null)
+        {
+            //Change later to not use tags
+            hpText = GameObject.FindGameObjectWithTag("HPText").GetComponent<TextMeshProUGUI>();
+            xpText = GameObject.FindGameObjectWithTag("XPText").GetComponent<TextMeshProUGUI>();
 
             hpText.text = "Health = " + health;
             xpText.text = "XP = " + xp;
+
+            chooseWeapons = FindAnyObjectByType<ChooseWeapons>();
         }
+
+        //Check if any weapon objects were left active from previous round
+        GameObject _hammer = GameObject.FindGameObjectWithTag("Hammer");
+        LargeHammer _hammerS = GetComponentInChildren<LargeHammer>();
+        if (_hammer != null && _hammerS.enabled == false)
+        {
+            Destroy( _hammer );
+        }
+        
+        
     }
 
 
@@ -57,39 +108,87 @@ public class PlayerHealth : MonoBehaviour
     void LoseHealth(Collision _other)
     {
         //Check for enemy
-        if (_other.gameObject.tag == "Enemy" && hpText != null)
+        if(_other.gameObject.tag == "Enemy")
         {
             //Decrement health
             health--;
-            hpText.text = "Health = " + health.ToString();
+            int _tempHealth = health;
+            damageSound.Play();
 
-            //Check if player is at 0 health
-            CheckForDeath();
+
+            //Check if player is at 0 or less health
+            try
+            {
+                //Try to determine death state
+                CheckForDeath();
+                Debug.Log("Player health is greater than zero, can be passed");
+            }
+            catch(System.ArgumentException e)
+            {
+                //If health is less than 0
+                health = 0;
+                CheckForDeath();
+                Debug.Log("Player health reset to 0 " + e);
+            }
+            finally
+            {
+                //Health has been checked
+                Debug.Log("Player health checked for death");
+            }
+
+
+            //Display current health, this way it never shows less than 0 health
+            hpText.text = "Health = " + health.ToString();
         }
     } //END LoseHealth()
 
     /// <summary>
-    /// 
+    /// Check if the player has dies
     /// </summary>
-    void CheckForDeath()
+    public void CheckForDeath()
     {
+       /*if(health < 0)
+        {
+            throw new System.Exception("Player health cannot be less than 0");
+        }*/
+
         //Check if player is at 0 health
         if (health <= 0)
         {
-            //Run death code
-            Debug.Log("Player dies");
-        }
+            //Disable weapons
+            //Debug.Log("Player dies");
 
+            onPlayerDeath?.Invoke();
+
+
+           // xp = 0;
+            //Reset level and load menu
+            level = 0;
+
+            FindAnyObjectByType<ResultsScreen>().ShowResults();
+            //SceneManager.LoadScene(0);
+        }
+        
     } //END CheckForDeath()
 
-    void AddXP(int xpGain)
+    //Add xp, called when enemies are killed
+    public void AddXP(int xpGain)
     {
+        //Check if the player has the xp upgrade
         if (xpMod)
         {
             xpGain *= xpModVal;
-            xpText.text = "XP = " + xp.ToString();
+           
         }
-
+        
+        //UI update
         xp += xpGain;
+        xpText.text = "XP = " + xp.ToString();
+
+        //New weapon call
+        chooseWeapons.ActivateMenu(xp);
     }
+
+
+
 }

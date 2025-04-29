@@ -4,49 +4,54 @@ using UnityEngine;
 
 public class EnemyClownPie : MonoBehaviour
 {
-    public int speed = 5;
+    //[SerializeField] GameObject bullet;
+    public float speed = 10f;
+    public float lifeTime = 15f;
+    public Transform player;
+
+    private float timer;
 
     private void Start()
     {
-        StartCoroutine(BulletLifetime());
+        //find player
+        player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
     }
 
+    void OnEnable()
+    {
+        timer = lifeTime;
+    }
 
-    // Update is called once per frame
     void Update()
     {
-        Move();
-    }
+        //always look at the player
+        transform.LookAt(player.transform.position);
+        //movement
+        transform.Translate(transform.forward * speed * Time.deltaTime);
+        timer -= Time.deltaTime;
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        HitPlayer(collision);
-    }
-
-    private void Move()
-    {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
-    }
-
-
-    void HitPlayer(Collision _collision)
-    {
-        if (_collision.gameObject.tag == "Player")
+        //when timer runs out, set bullet inactive
+        if (timer <= 0)
         {
-            Debug.Log("Enemy hit");
-            
-            DestroyBullet();
+            ReturnToPool();
         }
     }
 
-    void DestroyBullet()
+    void ReturnToPool()
     {
-        Destroy(this.gameObject);
+        ObjectPooler _op = FindObjectOfType<ObjectPooler>();
+        if (_op != null)
+            _op.ReturnObject(gameObject);
+        else
+            Destroy(this.gameObject);
     }
 
-    IEnumerator BulletLifetime()
+    //when bullet collides with player, set bullet inactive
+    private void OnCollisionEnter(Collision _other)
     {
-        yield return new WaitForSeconds(5);
-        DestroyBullet();
+        if(_other.gameObject.tag == "Player")
+        {
+            ReturnToPool();
+        }
     }
 }

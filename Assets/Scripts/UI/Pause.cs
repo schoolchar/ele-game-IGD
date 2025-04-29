@@ -8,12 +8,18 @@ public class Pause : MonoBehaviour
 {
     public GameObject PauseMenu;
     public bool isPaused;
-    private PlayerHealth PlayerHealth;
+    private PlayerHealth playerHealth;
+    private PlayerMovement playerMovement;
 
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
         isPaused = false;
+        playerHealth = FindAnyObjectByType<PlayerHealth>();
+        playerHealth.InitValues();
+        playerMovement = playerHealth.gameObject.GetComponent<PlayerMovement>();
+        playerMovement.InitValues();
     }
 
     // Update is called once per frame
@@ -45,6 +51,10 @@ public class Pause : MonoBehaviour
 
     public void QuitPause()
     {
+        PlayerHealth _health = FindAnyObjectByType<PlayerHealth>();
+        _health.health = 0;
+        _health.xp = 0;
+        _health.CheckForDeath();
         SceneManager.LoadScene(0);
     }
 }

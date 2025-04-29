@@ -4,25 +4,61 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+    private AudioSource[] audioSources;
     public float health;
-    private float damageTake = 2f;
+    public float maxHealth;
 
-    public void TakeDamage()
+    public int xpOnDeath;
+    public float enemyTakeDamage = 2f;
+
+    private MoneyDrop moneyDrop;
+
+    private void Start()
     {
-        health -= damageTake;
-        CheckForDeath();
+        audioSources = GetComponents<AudioSource>();
+        health = maxHealth;
+        moneyDrop = GetComponent<MoneyDrop>();
     }
 
-    private void CheckForDeath()
+    public void TakeDamage(float _damage = 0)
     {
+        if (_damage == 0)
+        {
+            health -= enemyTakeDamage;
+        }
+        else
+        {
+            health -= _damage;
+            audioSources[1].Play();
+        }
         if (health <= 0)
         {
-            Destroy(this.gameObject);
+            PlayerHealth _playerHealth = FindAnyObjectByType<PlayerHealth>();
+            _playerHealth.AddXP(xpOnDeath);
+
+            //Check if player has the life force upgrade
+            if(_playerHealth.lifeForce)
+            {
+                //Add health when enemy dies
+                _playerHealth.health += _playerHealth.healthPerEnemy;
+                //Check if this puts the player over their max health
+                if(_playerHealth.health > maxHealth)
+                {
+                    _playerHealth.health = _playerHealth.maxHealth;
+                }
+            }
+            moneyDrop.DropCoins();
+           // Destroy(this.gameObject);
         }
     }
 
     private void OnCollisionEnter(Collision _other)
     {
-        TakeDamage();
+        //TakeDamage();
+
+        if (_other.gameObject.tag == "Projectile")
+        {
+            Destroy(_other.gameObject);
+        }
     }
 }

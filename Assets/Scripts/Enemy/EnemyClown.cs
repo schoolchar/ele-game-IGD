@@ -7,6 +7,8 @@ public class EnemyClown : MonoBehaviour
     [Header("Movement")]
     public Transform player;
     public float moveSpeed;
+    public Animator animator;
+    public bool isStopped;
 
     [Header("Stopping Distance")]
     private float stoppingDistance;
@@ -14,43 +16,58 @@ public class EnemyClown : MonoBehaviour
     [Header("Shoot")]
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject spawnPt;
-    private float waitTime = 4f;
+    private float waitTime = 2.5f;
+    PlayerHealth playerHealth;
+    AudioSource clownSound;
 
     void Start()
     {
-        StartCoroutine(TimeShoot());
-        stoppingDistance = 5f;
+        clownSound = GetComponent<AudioSource>();
+        animator.SetBool("IsMoving", true);
+        stoppingDistance = 10f;
         moveSpeed = 5f;
         player = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
+        animator = GetComponentInChildren<Animator>();
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        isStopped = false;
     }
 
     void Update()
     {
-        float distance = Vector3.Distance(transform.position, player.transform.position);
-
+        //If time is set to 0, pause sound
+        if (Time.timeScale == 0f)
+        {
+            //Debug.Log("clown sound not Playing");
+            clownSound.Pause();
+        }
+        else
+        {
+            //Debug.Log("clown sound Playing");
+            clownSound.UnPause();
+        }
+        
         //If enemy is within stopping distance, the enemy stops moving, else the enemy actilvily follows player.
+        float distance = Vector3.Distance(transform.position, player.transform.position);
+        
         if (distance > stoppingDistance)
         {
             transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
             transform.LookAt(player.transform.position);
+            animator.SetBool("IsMoving", true);
+            isStopped = false;
             moveSpeed = 5f;
         }
         else
         {
             moveSpeed = 0f;
+            isStopped = true;
+            animator.SetBool("IsMoving", false);
         }
 
-    }
-
-    void Shoot()
-    {
-        Instantiate(bullet, spawnPt.transform.position, spawnPt.transform.rotation);
-        StartCoroutine(TimeShoot());
-    }
-
-    IEnumerator TimeShoot()
-    {
-        yield return new WaitForSeconds(waitTime);
-        Shoot();
+        //when player is dead, all enemies are destroyed
+        if (playerHealth.health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

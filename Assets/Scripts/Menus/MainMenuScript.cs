@@ -2,9 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+
+    public GameObject storeButton;
+
+    private void Start()
+    {
+       
+        //Check if player has played at least once, if so enable button for store
+       /* if(FindAnyObjectByType<PlayerMovement>() != null || FindAnyObjectByType<SaveData>().reset == false)
+        {
+            storeButton.SetActive(true);
+        }
+        else
+        {
+            storeButton.SetActive(false);
+        }*/
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
     public void Play()
     {
         SceneManager.LoadScene(1);

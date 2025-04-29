@@ -48,12 +48,39 @@ public class PlayerMovement : MonoBehaviour
     //ref for rigidbody
     Rigidbody rb;
 
+    //Animation
+    public Animator animatorLion;
+    public Animator animatorSeal;
+    public Animator animatorMonkey;
+    public Animator animatorElephant;
+
+    //Weapon upgrades
+    public GameObject ringOfFire;
+    public Knifethrow knifeThrow;
+    public LargeHammer hammer;
+    public Turret turret;
+    public Nuke nuke;
+
+    //Upgrade management
+    [SerializeField] private SaveData saveData;
+
+    //Character active
+    public GameObject characterActive;
+
     // on start up, i may be over-commenting
     private void Start()
     {
-        readyToJump = true;
-        rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
+        InitValues();
+
+       // animatorLion = GameObject.FindGameObjectWithTag("Lion").GetComponent<Animator>();
+/*        animatorSeal = GameObject.FindGameObjectWithTag("Seal").GetComponent<Animator>();
+        animatorMonkey = GameObject.FindGameObjectWithTag("Monkey").GetComponent<Animator>();
+        animatorElephant = GameObject.FindGameObjectWithTag("Elephant").GetComponent<Animator>();*/
+
+        //animatorLion.SetBool("IsMoving", false);
+           /* animatorSeal.SetBool("IsMoving", false);
+            animatorMonkey.SetBool("IsMoving", false);
+            animatorElephant.SetBool("IsMoving", false);*/
     }
 
     //goes every update
@@ -77,6 +104,37 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         moving();
+
+        if(moveDirection.magnitude >= 0.01f)
+        {
+            animatorLion.SetBool("IsMoving", true);
+            animatorSeal.SetBool("IsMoving", true);
+            animatorMonkey.SetBool("IsMoving", true);
+            animatorElephant.SetBool("IsMoving", true);
+        }
+        else
+        {
+            animatorLion.SetBool("IsMoving", false);
+            animatorSeal.SetBool("IsMoving", false);
+            animatorMonkey.SetBool("IsMoving", false);
+            animatorElephant.SetBool("IsMoving", false);
+        }
+    }
+
+    public void InitValues()
+    {
+        readyToJump = true;
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
+
+        //Set as delegate for event
+        PlayerHealth.onPlayerDeath += CALLBACK_ResetWeapons;
+        if(saveData.speed.level > 0)
+        {
+            moveSpeed += saveData.speed.affectOnSpeed;
+        }
+        //Do not dstroy player
+        DontDestroyOnLoad(this.gameObject);
     }
 
     //gets if player is using horizontal or vertical inputs
@@ -90,7 +148,7 @@ public class PlayerMovement : MonoBehaviour
         {
             readyToJump = false;
 
-            jump();
+            //jump();
 
             //calls the jumpReset function, delayed by jumpCooldown variable
             Invoke(nameof(jumpReset), jumpCooldown);
@@ -137,4 +195,24 @@ public class PlayerMovement : MonoBehaviour
     {
         readyToJump = true;
     }
+    /// <summary>
+    /// Reset weapons to be off on player death
+    /// </summary>
+    public void CALLBACK_ResetWeapons()
+    {
+        //Set all to enabled so that when reloading game, weapon manager can access them
+        ringOfFire.SetActive(true);
+        ringOfFire.GetComponent<Ringoffire>().fireActive = false;
+        knifeThrow.hasKnife = false;
+        hammer.hammerActive = false;
+        hammer.StopAllCoroutines();
+        hammer.interval = -1;
+        knifeThrow.enabled = true;
+        turret.enabled = true;
+        turret.StopAllCoroutines();
+        turret.active = false;
+        nuke.enabled = true; ;
+        nuke.active = false;
+        nuke.StopAllCoroutines();
+    } //END ResetWeapons()
 }

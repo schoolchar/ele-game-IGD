@@ -7,6 +7,18 @@ TagManager:
   - Enemy
   - HPText
   - XPText
+  - knife
+  - fire
+  - Projectile
+  - Pickup
+  - PlayerMesh
+  - Lion
+  - Seal
+  - Monkey
+  - Elephant
+  - RatGaze
+  - PlayerBody
+  - Hammer
   layers:
   - Default
   - TransparentFX
@@ -16,12 +28,12 @@ TagManager:
   - UI
   - Ground
   - Player
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - Knife
+  - weapon
+  - Forcefield
+  - turret
+  - coin
   - 
   - 
   - 

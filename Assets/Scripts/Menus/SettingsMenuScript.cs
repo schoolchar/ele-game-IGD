@@ -8,7 +8,7 @@ public class SettingsMenuScript : MonoBehaviour
     public void MainMenu()
     {
         SceneManager.LoadScene(0);
-        Debug.Log("hi");
+        //Debug.Log("hi");
     }
     
 }

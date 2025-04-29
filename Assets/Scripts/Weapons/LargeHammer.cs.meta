@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 715211cbe1028b442b1abc46fb2a6fe2
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - objectPrefab: {fileID: 7468702162027896120, guid: bf3027b48ba7a344c8dc33f7ca1ecd71, type: 3}
+  - spawnPt: {fileID: 331960211524314063, guid: a58044ba8f4bff84c9a9787b339323f6, type: 3}
+  - hammerSound: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
