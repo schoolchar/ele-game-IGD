@@ -29,8 +29,13 @@ public class ChunkLoader : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Instantiate tiles as player moves around world
+    /// </summary>
     void BuildFloor()
     {
+        //Use player position to determine placement of tiles
+
         Vector3 playerPosition = player.position;
         HashSet<Vector2> newActiveTiles = new HashSet<Vector2>();
 
@@ -70,5 +75,5 @@ public class ChunkLoader : MonoBehaviour
                 tile.Value.SetActive(false);
             }
         }
-    }
+    } //END BuildFloor()
 }

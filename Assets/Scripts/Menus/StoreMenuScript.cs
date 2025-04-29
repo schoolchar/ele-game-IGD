@@ -13,6 +13,8 @@ public class StoreMenuScript : MonoBehaviour
     private void Start()
     {
         playerHealth = FindAnyObjectByType<PlayerHealth>();
+        SaveData _save = playerHealth.gameObject.GetComponent<SaveData>();
+        _save.LoadPlayerData();
         ShowMoneyText();
         
     }
@@ -27,6 +29,7 @@ public class StoreMenuScript : MonoBehaviour
         moneyText.text = "Owned: $" + playerHealth.money.ToString();
     }
 
+    //Manage money UI showing if player can make purchases
     public void NotEnoughMoney()
     {
         notEnough.SetActive(true);

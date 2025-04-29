@@ -105,12 +105,14 @@ public class ChooseWeapons : MonoBehaviour
             Cursor.visible = true;
             playerHealth.level++;
         }
-    }
+    } //END ActivateMenu()
+
     /// <summary>
     /// Deactivates menu after choosing
     /// </summary>
     private void DeactivateMenu()
     {
+        //Undo everything activating the menu did
         Time.timeScale = 1;
         oldXPNum = currentXP;
         nextMilestone *= 2;
@@ -123,7 +125,7 @@ public class ChooseWeapons : MonoBehaviour
         {
             weaponOptions[i] = -1;
         }
-    }
+    } //END DeactivateMenu()
 
     //Enable the ring of fire weapon
     public void EnableRingOfFire()
@@ -132,7 +134,7 @@ public class ChooseWeapons : MonoBehaviour
 
         player.ringOfFire.SetActive(true);
         DeactivateMenu();
-    }
+    } //END EnableRingOfFire()
 
     //Enable the knife throw weapon
     public void EnableKnifeThrow()
@@ -142,7 +144,7 @@ public class ChooseWeapons : MonoBehaviour
         player.knifeThrow.enabled = true;
         player.knifeThrow.hasKnife = true;
         DeactivateMenu();
-    }
+    } //END EnableKnifeThrow()
 
     /// <summary>
     /// Randomize which weapons are assigned to the buttons on the weapon selection menu
@@ -193,36 +195,14 @@ public class ChooseWeapons : MonoBehaviour
     /// </summary>
     public void ActivateWeapon(int _idx)
     {
-        /* for(int i = 0; i < weaponOptions.Length; i++)
-         {
-             switch (allWeaponsData[weaponOptions[i]].index)
-             {
-                 case 0:
-                     if (allWeaponsData[weaponOptions[i]].level == 0)
-                         weaponMenu[i].onClick.AddListener(this.EnableRingOfFire);
-                     else
-                     {
-                         //Something for upgading the weapon
-                     }
-                     break;
-                 case 1:
-                     if (allWeaponsData[weaponOptions[i]].level == 0)
-                         weaponMenu[i].onClick.AddListener(this.EnableRingOfFire);
-                     else
-                     {
-                         //Something for upgading the weapon
-                     }
-                     break;
-                // case 2:
-                // case 3:
-             }
-         }*/
-
+        
+        //Use index of button to access the weapon assigned to each button on click
         if(allWeaponsData[weaponOptions[_idx]].inSceneObj != null)
         {
             allWeaponsData[weaponOptions[_idx]].inSceneObj.SetActive(true);
         }
         
+        //Enable the chosen weapon
         allWeaponsData[weaponOptions[_idx]].script.enabled = true;
         allWeaponsData[weaponOptions[_idx]].script.ActivateThisWeapon();
         allWeaponsData[weaponOptions[_idx]].level++;

@@ -34,7 +34,9 @@ public class Lion : MonoBehaviour, ICharacterActions
         HitEnemy(collision);
     }
 
-
+    /// <summary>
+    /// Attack enemy on contact if slahs animation is playing
+    /// </summary>
     void HitEnemy(Collider _collision)
     {
         if (_collision.gameObject.GetComponent<EnemyHealth>() != null && isAttacking)
@@ -42,13 +44,16 @@ public class Lion : MonoBehaviour, ICharacterActions
             //Debug.Log("enemy hit " + _collision.gameObject.name);
             Attack(_collision.gameObject.GetComponent<EnemyHealth>());
         }
-    }
+    } //END HitEnemy()
 
     public void Attack(EnemyHealth _enemy)
     {
         _enemy.TakeDamage(damage);
     }
 
+    /// <summary>
+    /// Delay and play slash animation
+    /// </summary>
     private IEnumerator TimeAttack()
     {
         yield return new WaitForSeconds(attackWait);
@@ -61,14 +66,17 @@ public class Lion : MonoBehaviour, ICharacterActions
         }
 
         StartCoroutine(TurnOffAttack());
-    }
+    } //END TimeAttack()
 
+    /// <summary>
+    /// Stop attack animation
+    /// </summary>
     IEnumerator TurnOffAttack()
     {
         yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(0).Length);
         isAttacking = false;
 
         StartCoroutine(TimeAttack());
-    }
+    } //END TurnOffAttack()
 
 }

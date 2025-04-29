@@ -4015,7 +4015,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 0}
   scriptObj: {fileID: 11400000, guid: 1e3e635d04b4270408b4d884fc896d38, type: 2}
-  purchaseText: {fileID: 1379261458}
+  purchaseText: {fileID: 1075152029}
   leveltxt: {fileID: 970227997}
 --- !u!114 &1309223085
 MonoBehaviour:
@@ -4031,7 +4031,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 0}
   scriptObj: {fileID: 11400000, guid: 57839554a6c85da438b9c57114758b9e, type: 2}
-  purchaseText: {fileID: 1075152029}
+  purchaseText: {fileID: 1379261458}
   leveltxt: {fileID: 1232983433}
 --- !u!4 &1309223086
 Transform:

@@ -37,19 +37,23 @@ public class CarryOver : MonoBehaviour
         DontDestroyOnLoad(this.gameObject); //Don't destroy until a player exists in the game, then pass over data and destroy
     }
 
+    //After passing off any information to the player instance, destroy this object
     public void DestroyThis()
     {
         if(SceneManager.GetActiveScene().buildIndex == 1 && !changedOnThis)
         {
             Destroy(this.gameObject);
         }
-    }
+    } //END DestroyThis()
 
+    /// <summary>
+    /// If player chooses an animal when player is not in the scene, save data
+    /// </summary>
     public void ChangeAnimalState(int _index)
     {
         changedOnThis = true;
         //savedAnimals[_index].
-    }
+    } //END ChangeAnimalState()
 
     public void ChangeUpgradeState(int _index)
     {

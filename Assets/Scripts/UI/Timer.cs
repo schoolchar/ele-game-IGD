@@ -15,8 +15,11 @@ public class Timer : MonoBehaviour
         timertext.text = timerVal.ToString();
     }
 
+    /// <summary>
+    /// For results page, check how long the player lasted in round
+    /// </summary>
     public float PassTimeOnDeath()
     {
         return timerVal;
-    }
+    } //END PassTimeOnDeath()
 }

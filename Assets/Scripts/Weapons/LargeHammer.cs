@@ -102,6 +102,9 @@ public class LargeHammer : WeaponBase
 
     }
 
+    /// <summary>
+    /// Rotate hammer when active to simulate hammer hitting enemies
+    /// </summary>
     void RotateObject()
     {
         rotationTimer += Time.deltaTime;
@@ -111,13 +114,15 @@ public class LargeHammer : WeaponBase
         if (rotationTimer >= rotationDuration)
         {
             isRotating = false;
+            //Once finished rotation, destroy
             Destroy(objectInstance);
 
             StartCoroutine(TimeReload());
             
         }
-    }
+    } //END RotateObject()
 
+    //Handle hammer level up
     public void LevelUp(int upgradeTier)
     {
         float newInterval;
@@ -130,7 +135,7 @@ public class LargeHammer : WeaponBase
             newInterval = (.25f * ((float)upgradeTier - 3));
         }
         SetInterval(newInterval);
-    }
+    } 
 
     public void SetInterval(float newInterval)
     {
@@ -155,6 +160,9 @@ public class LargeHammer : WeaponBase
         Reload();
     }
 
+    /// <summary>
+    /// Instantiate new hammer after interval has passed
+    /// </summary>
     void Reload()
     {
         objectInstance = Instantiate(objectPrefab, transform.position + offset, Quaternion.identity);
@@ -163,5 +171,5 @@ public class LargeHammer : WeaponBase
         initialPosition = objectInstance.transform.position;
         rotationTimer = 0f;
         isRotating = true;
-    }
+    } //END Reload()
 }

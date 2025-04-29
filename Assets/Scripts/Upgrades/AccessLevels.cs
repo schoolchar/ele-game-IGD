@@ -41,7 +41,7 @@ public class AccessLevels : MonoBehaviour
         // Updates pause menu with upgrade levels, uncomment when put in scene
         UpdateUI();
 
-        //Loading
+        //Load any scripts that are persistant but need to access information in game scene start
         ringOfFire = FindAnyObjectByType<Ringoffire>(FindObjectsInactive.Include);
         ringOfFire.InitOnLoad();
 
@@ -51,22 +51,7 @@ public class AccessLevels : MonoBehaviour
         enemySpawn = FindAnyObjectByType<EnemySpawn>();
         enemySpawn.InitOnLoad();
 
-        //Deal with loading in multiple players
-       /* allPlayers = FindObjectsOfType<PlayerMovement>();
-        if(allPlayers.Length > 1)
-        {
-            GameObject _newPlayer = null;
-            for(int i = 0; i < allPlayers.Length; i++)
-            {
-                if (allPlayers[i].GetComponent<OldPlayerID>() == null)
-                {
-                    _newPlayer = allPlayers[i].gameObject;
-                }
-            }
-
-            _newPlayer.transform.position = oldPlayer.transform.position;
-            Destroy(oldPlayer);
-        }*/
+        
 
     }
 

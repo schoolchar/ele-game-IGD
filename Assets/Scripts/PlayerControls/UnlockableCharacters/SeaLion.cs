@@ -49,17 +49,7 @@ public class SeaLion : MonoBehaviour
             }
         }
         
-       /* if (preThrow >= 0 && !freezeTimer)
-        {
-            preThrow -= Time.deltaTime;
-        }
-
-        if (preThrow <= 0)
-        {
-            ThrowBall();
-            freezeTimer = true;
-            preThrow = 1f;
-        }*/
+       
 
 
         //ensure this doesn't infinitely repeat
@@ -97,6 +87,9 @@ public class SeaLion : MonoBehaviour
         staticBall.transform.position = currPosition + offsetS; //Null error, says this object has been destroyed
     }
 
+    /// <summary>
+    /// Throw ball seal is carrying
+    /// </summary>
     void ThrowBall()
     {
         //Debug.Log("Throwing");
@@ -104,18 +97,21 @@ public class SeaLion : MonoBehaviour
         staticBall.SetActive(false); //get rid of the one above head
         thrownBall = Instantiate(ballPrefabS, launchPosition + offset, spawnPt.transform.rotation).GetComponent<Rigidbody>(); //put ball infront of player
         thrownBall.velocity = spawnPt.transform.forward * speed;
-    }
+    } //END ThrowBall()
 
     public void setSpeed(float newSpeed)
     {
         speed = newSpeed;
     }
 
+    /// <summary>
+    /// Repeat ball
+    /// </summary>
     IEnumerator TimeBall()
     {
         yield return new WaitForSeconds(preThrow);
 
         ThrowBall();
         StartCoroutine(TimeBall());
-    }
+    } //END TimeBall()
 }

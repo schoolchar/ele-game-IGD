@@ -20,19 +20,26 @@ public class EnemyHealth : MonoBehaviour
         moneyDrop = GetComponent<MoneyDrop>();
     }
 
+    /// <summary>
+    /// Decrease health on enemy
+    /// </summary>
     public void TakeDamage(float _damage = 0)
     {
+        //Check for default value if no damage value is passed
         if (_damage == 0)
         {
             health -= enemyTakeDamage;
+            audioSources[1].Play();
         }
         else
         {
+            //Decrease passed damage
             health -= _damage;
             audioSources[1].Play();
         }
         if (health <= 0)
         {
+            //Check for enemy death, add xp for death
             PlayerHealth _playerHealth = FindAnyObjectByType<PlayerHealth>();
             _playerHealth.AddXP(xpOnDeath);
 
@@ -47,10 +54,11 @@ public class EnemyHealth : MonoBehaviour
                     _playerHealth.health = _playerHealth.maxHealth;
                 }
             }
+            //Drop coins on death
             moneyDrop.DropCoins();
            // Destroy(this.gameObject);
         }
-    }
+    } //END TakeDamage()
 
     private void OnCollisionEnter(Collision _other)
     {

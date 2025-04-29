@@ -33,6 +33,7 @@ public class RotateBallsAroundObject : MonoBehaviour
         RotateBalls();
     }
 
+    //Spawn monkey's  juggling balls when monkey is enabled
     void SpawnBalls()
     {
         for (int i = 0; i < numberOfBalls; i++)
@@ -43,7 +44,7 @@ public class RotateBallsAroundObject : MonoBehaviour
             // Adds ball to the list
             balls.Add(ball);
         }
-    }
+    } //END SpawnBalls()
 
     void Juggle()
     {

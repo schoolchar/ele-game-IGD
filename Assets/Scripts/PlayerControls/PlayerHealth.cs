@@ -67,6 +67,9 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Initialize all variables that need to be set on start
+    /// </summary>
    public void InitValues()
     {
         if(debugHealth)
@@ -100,7 +103,7 @@ public class PlayerHealth : MonoBehaviour
 
         saveData.LoadPlayerAnimal();
         
-    }
+    } //END InitValues()
 
 
     /// <summary>
