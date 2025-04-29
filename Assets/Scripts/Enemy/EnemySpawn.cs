@@ -22,8 +22,8 @@ public class EnemySpawn : MonoBehaviour
     private float spawnLeastWait = 5f;
     public bool stop;
     public float timeToIncrease = 4f;
-    public float timeForSpawn2List = 60f;
-    public float timeForSpawn3List = 120f;
+    public float timeForSpawn2List = 35f;
+    public float timeForSpawn3List = 90f;
     public float increaseAmount = 0.5f;
     private float timerMostWait;
     private float timerNextList;
@@ -46,26 +46,36 @@ public class EnemySpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Tells the spawner how long to wait before the next spawn
-        spawnWait = Random.Range(spawnLeastWait, spawnMostWait);
-        timerMostWait += Time.deltaTime;
-        timerNextList += Time.deltaTime;
-
-        if (timerNextList >= timeForSpawn2List)
-        {
-            spawns1Active = false;
-            spawns2Active = true;
-        }
-
-        if (timerNextList >= timeForSpawn3List)
-        {
-            spawns2Active = false;
-            spawns3Active = true;
-        }
-
         //gets scene name
         Scene currentScene = SceneManager.GetActiveScene();
         isInGameScene = currentScene.name == "GameScene";
+
+        if(isInGameScene)
+        {
+            //Tells the spawner how long to wait before the next spawn
+            spawnWait = Random.Range(spawnLeastWait, spawnMostWait);
+            timerMostWait += Time.deltaTime;
+            timerNextList += Time.deltaTime;
+
+            if (timerNextList >= timeForSpawn2List)
+            {
+                spawns1Active = false;
+                spawns2Active = true;
+            }
+
+            if (timerNextList >= timeForSpawn3List)
+            {
+                spawns2Active = false;
+                spawns3Active = true;
+            }
+        }
+        else
+        {
+            timerNextList = 0;
+        }
+       
+
+        
 
 
         //If player is in the game scene, enemies can spawn, else they cannot

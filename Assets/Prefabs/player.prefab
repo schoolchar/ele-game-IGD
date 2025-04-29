@@ -431,8 +431,8 @@ MonoBehaviour:
   spawnWait: 0
   stop: 0
   timeToIncrease: 4
-  timeForSpawn2List: 60
-  timeForSpawn3List: 120
+  timeForSpawn2List: 35
+  timeForSpawn3List: 90
   increaseAmount: 0.5
   spawns1Active: 0
   spawns2Active: 0
