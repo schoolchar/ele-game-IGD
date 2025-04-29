@@ -459,6 +459,7 @@ public class SaveData : MonoBehaviour
 
             if (_activeAnimal == 0) //Lion
             {
+                Debug.Log("Load lion character");
                 //Enable lion, disable everything else
                 lionComp.enabled = true;
                 elephantComp.enabled = false;
@@ -478,6 +479,7 @@ public class SaveData : MonoBehaviour
             }
             else if (_activeAnimal == 1) //Elephant
             {
+                Debug.Log("Load elephant character");
                 //Enable elephant. disable everything else
                 lionComp.enabled = false;
                 elephantComp.enabled = true;
@@ -497,6 +499,7 @@ public class SaveData : MonoBehaviour
             }
             else if (_activeAnimal == 2) //Monkey
             {
+                Debug.Log("Load monkey character");
                 monkeyComp.enabled = true;
                 seaLionComp.enabled = false;
                 lionComp.enabled = false;
@@ -515,6 +518,7 @@ public class SaveData : MonoBehaviour
             }
             else if (_activeAnimal == 3) //Seal
             {
+                Debug.Log("Load seal character");
                 seaLionComp.enabled = true;
                 lionComp.enabled = false;
                 monkeyComp.enabled = false;
@@ -532,6 +536,10 @@ public class SaveData : MonoBehaviour
                 }
 
             }
+        }
+        else
+        {
+            Debug.Log("Failed to load animal");
         }
         
 
